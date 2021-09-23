@@ -56,7 +56,7 @@ void SceneManager::Run() {
 		currentScene->Update(timer->GetDeltaTime());
 		currentScene->Render();
 		GetEvents();
-		//SDL_GL_SwapWindow(window->getWindow()); I think this if for opengl
+		SDL_GL_SwapWindow(window->getWindow());
 		SDL_Delay(timer->GetSleepTime(fps));
 	}
 }
@@ -123,7 +123,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 
 	switch (scene) {
 	case SCENE0:  
-		currentScene = new Scene0(window->getWindow());
+		currentScene = new Scene0();
 		status = currentScene->OnCreate();
 		break;
 	default:

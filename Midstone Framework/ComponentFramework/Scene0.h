@@ -1,29 +1,41 @@
 #ifndef SCENE0_H
 #define SCENE0_H
-
-#include "MMath.h"
 #include "Scene.h"
-#include <SDL.h>
+#include "Vector.h"
+#include "Matrix.h"
+#include "Light.h"
 #include "Character.h"
-
 using namespace MATH;
-#define NUM_BALLS 1
+
+/// Forward declarations 
+union SDL_Event;
+class DemoObject;
+class Mesh;
+class Shader;
+class Texture;
 
 class Scene0 : public Scene {
 private:
-	SDL_Window* window;
+	Character* character;
+	//DemoObject* demoObject;
+	float numLight;
+	Vec3 lightArray[2];
+	Light* Light1;
+
+	Mesh* meshPtr;
+	Shader* shaderPtr;
+	Texture* texturePtr;
 	Matrix4 projectionMatrix;
-	Character* ballArray[NUM_BALLS];
-	SDL_Renderer* renderer;
+	Matrix4 viewMatrix;
 public:
-	explicit Scene0(SDL_Window* sdlWindow);
+	explicit Scene0();
 	virtual ~Scene0();
 
 	virtual bool OnCreate() override;
 	virtual void OnDestroy() override;
 	virtual void Update(const float deltaTime) override;
 	virtual void Render() const override;
-	virtual void HandleEvents(const SDL_Event &sdlEvent) override;
+	virtual void HandleEvents(const SDL_Event& sdlEvent) override;
 };
 
 
