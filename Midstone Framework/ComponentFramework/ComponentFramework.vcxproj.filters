@@ -111,6 +111,9 @@
     <ClCompile Include="Scene1.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="RatEnemy.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="Scene1.h">
       <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="RatEnemy.h">
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

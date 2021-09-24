@@ -52,8 +52,9 @@ bool Scene0::OnCreate() {
 		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
 		return false;
 	}
+	enemy1 = new RatEnemy(meshPtr, shaderPtr, texturePtr);
+	enemy1->setPos(Vec3(0.0, 0.0, -50.0));
 	character->setPos(Vec3(0.0, 0.0, -15.0));
-	character->setModelMatrix(MMath::translate(character->getPos()));
 
 	speed = 50;
 	return true;
@@ -74,10 +75,13 @@ void Scene0::getSpeed(const float speed_) {
 
 void Scene0::Update(const float deltaTime) {
 	character->Update(deltaTime);
-	printf("%f\n", speed);
+	enemy1->Update(deltaTime);
+	//printf("%f\n", speed);
 	static float rotation = 0.0f;
 	rotation += 1.5f;
 	character->setModelMatrix(MMath::translate(character->getPos()));
+	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()));
+	//printf("current pos: %f %f %f\n", enemy1->getPos().x, enemy1->getPos().y, enemy1->getPos().z);
 }
 
 void Scene0::Render() const {
@@ -100,7 +104,7 @@ void Scene0::Render() const {
 	glUniform1f(character->getShader()->getUniformID("numLight"), numLight);
 
 	character->Render();
-
+	enemy1->Render();
 	glUseProgram(0);
 }
 
@@ -110,4 +114,5 @@ void Scene0::OnDestroy() {
 	if (texturePtr) delete texturePtr, texturePtr = nullptr;
 	if (shaderPtr) delete shaderPtr, shaderPtr = nullptr;
 	if (character) delete character, character = nullptr;
+	if (enemy1) delete enemy1, enemy1 = nullptr;
 }

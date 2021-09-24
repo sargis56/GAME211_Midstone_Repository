@@ -73,7 +73,7 @@ void Scene1::getSpeed(const float speed_) {
 
 void Scene1::Update(const float deltaTime) {
 	character->Update(deltaTime);
-	printf("%f\n", speed);
+	//printf("%f\n", speed);
 	static float rotation = 0.0f;
 	rotation += 1.5f;
 	character->setModelMatrix(MMath::translate(character->getPos()));

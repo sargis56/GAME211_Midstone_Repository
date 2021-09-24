@@ -4,6 +4,7 @@
 #include "Vector.h"
 #include "Matrix.h"
 #include "Character.h"
+#include "RatEnemy.h"
 using namespace MATH;
 
 /// Forward declarations 
@@ -16,6 +17,7 @@ class Texture;
 class Scene0 : public Scene {
 private:
 	Character* character;
+	RatEnemy* enemy1;
 	//DemoObject* demoObject;
 	float numLight;
 	Vec3 lightArray[2];

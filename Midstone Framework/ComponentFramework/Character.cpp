@@ -55,4 +55,4 @@ void Character::HandleEvents(const SDL_Event& event) {
 	default:
 		break;
 	}
-} /// Just a stub
+}

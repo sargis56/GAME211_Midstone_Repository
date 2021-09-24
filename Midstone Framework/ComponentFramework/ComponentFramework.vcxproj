@@ -137,6 +137,7 @@
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Randomizer.cpp" />
+    <ClCompile Include="RatEnemy.cpp" />
     <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="PlanetaryObject.h" />
     <ClInclude Include="Randomizer.h" />
+    <ClInclude Include="RatEnemy.h" />
     <ClInclude Include="Scene1.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Matrix.h" />
