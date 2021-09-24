@@ -3,7 +3,7 @@
 #include "Scene.h"
 #include "Vector.h"
 #include "Matrix.h"
-#include "Light.h"
+#include "Character.h"
 using namespace MATH;
 
 /// Forward declarations 
@@ -15,16 +15,17 @@ class Texture;
 
 class Scene1 : public Scene {
 private:
-	DemoObject* demoObject;
+	Character* character;
+	//DemoObject* demoObject;
 	float numLight;
 	Vec3 lightArray[2];
-	Light* Light1;
 
 	Mesh* meshPtr;
 	Shader* shaderPtr;
 	Texture* texturePtr;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
+	float speed;
 public:
 	explicit Scene1();
 	virtual ~Scene1();
@@ -34,7 +35,10 @@ public:
 	virtual void Update(const float deltaTime) override;
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event& sdlEvent) override;
+
+	virtual float setSpeed() override;
+	virtual void getSpeed(const float speed_) override;
 };
 
 
-#endif // SCENE1_H
+#endif

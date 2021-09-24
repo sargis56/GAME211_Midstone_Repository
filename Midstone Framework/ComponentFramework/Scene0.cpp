@@ -11,10 +11,11 @@
 #include "MMath.h"
 #include "Debug.h"
 #include "Physics.h"
+#include "SceneManager.h"
 using namespace std;
 
 Scene0::Scene0() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr) {
-	Debug::Info("Created Scene1: ", __FILE__, __LINE__);
+	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
 }
 
 Scene0::~Scene0() {}
@@ -24,13 +25,6 @@ bool Scene0::OnCreate() {
 	lightArray[0] = Vec3(0.0f, 40.0f, 0.0f);
 	lightArray[1] = Vec3(0.0f, -20.0f, 0.0f);
 
-	//cout << "position: (" << Light1->position.x << ", " << Light1->position.y << ", " << Light1->position.z << ")" << endl;
-	//cout << "diffuse: (" << Light1->diffuse.x << ", " << Light1->diffuse.y << ", " << Light1->diffuse.z << ")" << endl;
-	//cout << "specular: (" << Light1->specular.x << ", " << Light1->specular.y << ", " << Light1->specular.z << ")" << endl;
-//	position = Vec3(0.0f, 40.0f, 0.0f);
-//	diffuse = Vec3(0.6f, 0.6f, 0.6f);
-//	specular = Vec3(0.1f, 0.6f, 0.6f);
-
 	projectionMatrix = MMath::perspective(30.0f, (16.0f / 9.0f), 0.5f, 100.0f);
 	viewMatrix = MMath::lookAt(Vec3(0.0f, 0.0f, 10.0f), Vec3(0.0f, 0.0f, 0.0f), Vec3(0.0f, 1.0f, 0.0f));
 
@@ -39,10 +33,6 @@ bool Scene0::OnCreate() {
 	}
 	meshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 
-	//Struct Shader
-	//shaderPtr = new Shader("shaders/phongVertStructs.glsl", "shaders/phongFragStructs.glsl");
-
-	//Multi Shader
 	shaderPtr = new Shader("shaders/multiPhongVert.glsl", "shaders/multiPhongFrag.glsl");
 
 	texturePtr = new Texture();
@@ -65,6 +55,7 @@ bool Scene0::OnCreate() {
 	character->setPos(Vec3(0.0, 0.0, -15.0));
 	character->setModelMatrix(MMath::translate(character->getPos()));
 
+	speed = 50;
 	return true;
 }
 
@@ -72,18 +63,21 @@ void Scene0::HandleEvents(const SDL_Event& sdlEvent) {
 	character->HandleEvents(sdlEvent);
 }
 
+float Scene0::setSpeed()
+{
+	return speed;
+}
+
+void Scene0::getSpeed(const float speed_) {
+	speed = speed_;
+}
+
 void Scene0::Update(const float deltaTime) {
 	character->Update(deltaTime);
-
+	printf("%f\n", speed);
 	static float rotation = 0.0f;
 	rotation += 1.5f;
-	//Matrix4 modelM = (MMath::rotate(180.0f, Vec3(1.0f, 0.0f, 0.0f)));
-	//Matrix4 modelM = MMath::rotate(rotation, Vec3(0.0f, 1.0f, 0.0f));
 	character->setModelMatrix(MMath::translate(character->getPos()));
-
-	/*demoObject->setVel(Vec3(1.0, 0.0, 0.0));
-	Physics::SimpleNewtonMotion(*demoObject, deltaTime);
-	demoObject->setModelMatrix(MMath::translate(demoObject->getPos()));*/
 }
 
 void Scene0::Render() const {

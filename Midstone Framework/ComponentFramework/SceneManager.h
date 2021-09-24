@@ -35,6 +35,9 @@ private:
 	bool isRunning;
 	bool fullScreen;
 	void BuildScene(SCENE_NUMBER scene_);
+
+	//characterStats
+	float speed;
 };
 
 

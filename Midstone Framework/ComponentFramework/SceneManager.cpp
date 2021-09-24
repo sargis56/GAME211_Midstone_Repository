@@ -3,6 +3,7 @@
 #include "Timer.h"
 #include "Window.h"
 #include "Scene0.h"
+#include "Scene1.h"
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
@@ -115,8 +116,9 @@ void SceneManager::GetEvents() {
 
 void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	bool status; 
-
 	if (currentScene != nullptr) {
+		//saving the speed of the player before the scene is destroyed
+		speed = currentScene->setSpeed();
 		delete currentScene;
 		currentScene = nullptr;
 	}
@@ -124,6 +126,14 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	switch (scene) {
 	case SCENE0:  
 		currentScene = new Scene0();
+		//sending the speed back to the new scene
+		currentScene->getSpeed(speed);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE1:
+		currentScene = new Scene1();
+		//sending the speed back to the new scene
+		currentScene->getSpeed(speed);
 		status = currentScene->OnCreate();
 		break;
 	default:
