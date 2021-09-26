@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "PhysicsObject.h"
 #include "Room.h"
+#include "Character.h"
 
 using namespace MATH;
 
@@ -33,6 +34,7 @@ public:
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event& event) override;
 
+	bool DamageCheck(Character* character);
 
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }

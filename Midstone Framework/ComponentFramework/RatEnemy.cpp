@@ -94,3 +94,13 @@ void RatEnemy::Render() const {
 void RatEnemy::HandleEvents(const SDL_Event& event) {
 	
 } /// Just a stub
+
+bool RatEnemy::DamageCheck(Character* character) {
+	if (character->getPos().x == pos.x && character->getPos().y == pos.y) { //fix floating point precision errors
+		return true;
+	}
+	//if () {//fix floating point precision errors
+	//	return true;
+	//}
+	return false;
+}
