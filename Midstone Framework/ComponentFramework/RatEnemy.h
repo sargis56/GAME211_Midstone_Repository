@@ -7,6 +7,7 @@
 #include "Texture.h"
 #include "GameObject.h"
 #include "PhysicsObject.h"
+#include "Room.h"
 
 using namespace MATH;
 
@@ -21,8 +22,9 @@ private:
 	bool moveOver = true;
 	float direction;
 	Vec3 desiredPos;
+	Room room;
 public:
-	RatEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_);
+	RatEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~RatEnemy();
 	virtual bool OnCreate() override;

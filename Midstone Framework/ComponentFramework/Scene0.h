@@ -5,6 +5,7 @@
 #include "Matrix.h"
 #include "Character.h"
 #include "RatEnemy.h"
+#include "Room.h"
 using namespace MATH;
 
 /// Forward declarations 
@@ -21,13 +22,14 @@ private:
 	//DemoObject* demoObject;
 	float numLight;
 	Vec3 lightArray[2];
+	float speed;
 
 	Mesh* meshPtr;
 	Shader* shaderPtr;
 	Texture* texturePtr;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
-	float speed;
+	Room room;
 public:
 	explicit Scene0();
 	virtual ~Scene0();

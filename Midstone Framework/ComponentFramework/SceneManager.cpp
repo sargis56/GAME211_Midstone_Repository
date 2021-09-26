@@ -130,12 +130,12 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		currentScene->getSpeed(speed);
 		status = currentScene->OnCreate();
 		break;
-	case SCENE1:
+	/*case SCENE1:
 		currentScene = new Scene1();
 		//sending the speed back to the new scene
 		currentScene->getSpeed(speed);
 		status = currentScene->OnCreate();
-		break;
+		break;*/
 	default:
 		Debug::Error("Incorrect scene number assigned in the manager", __FILE__, __LINE__);
 		currentScene = nullptr;

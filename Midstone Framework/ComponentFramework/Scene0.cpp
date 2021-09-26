@@ -21,6 +21,7 @@ Scene0::Scene0() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), tex
 Scene0::~Scene0() {}
 
 bool Scene0::OnCreate() {
+	room.setRoomBorders(Vec3(-9.0, -4.0, 0.0), Vec3(9.0, 4.0, 0.0));
 	numLight = 2;
 	lightArray[0] = Vec3(0.0f, 40.0f, 0.0f);
 	lightArray[1] = Vec3(0.0f, -20.0f, 0.0f);
@@ -28,32 +29,23 @@ bool Scene0::OnCreate() {
 	projectionMatrix = MMath::perspective(30.0f, (16.0f / 9.0f), 0.5f, 100.0f);
 	viewMatrix = MMath::lookAt(Vec3(0.0f, 0.0f, 10.0f), Vec3(0.0f, 0.0f, 0.0f), Vec3(0.0f, 1.0f, 0.0f));
 
-	if (ObjLoader::loadOBJ("meshes/Sphere.obj") == false) {
-		return false;
-	}
+	ObjLoader::loadOBJ("meshes/Sphere.obj");
+
 	meshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 
 	shaderPtr = new Shader("shaders/multiPhongVert.glsl", "shaders/multiPhongFrag.glsl");
 
 	texturePtr = new Texture();
-	if (meshPtr == nullptr || shaderPtr == nullptr || texturePtr == nullptr) {
-		Debug::FatalError("Couldn't create game object assets", __FILE__, __LINE__);
-		return false;
-	}
 
+	texturePtr->LoadImage("textures/skull_texture.jpg");
 
-	if (texturePtr->LoadImage("textures/skull_texture.jpg") == false) {
-		Debug::FatalError("Couldn't load texture", __FILE__, __LINE__);
-		return false;
-	}
-
-	character = new Character(meshPtr, shaderPtr, texturePtr);
+	character = new Character(meshPtr, shaderPtr, texturePtr, room);
 	if (character == nullptr) {
 		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
 		return false;
 	}
-	enemy1 = new RatEnemy(meshPtr, shaderPtr, texturePtr);
-	enemy1->setPos(Vec3(0.0, 0.0, -50.0));
+	enemy1 = new RatEnemy(meshPtr, shaderPtr, texturePtr, room);
+	enemy1->setPos(Vec3(0.0, 0.0, -15.0));
 	character->setPos(Vec3(0.0, 0.0, -15.0));
 
 	speed = 50;
@@ -77,11 +69,9 @@ void Scene0::Update(const float deltaTime) {
 	character->Update(deltaTime);
 	enemy1->Update(deltaTime);
 	//printf("%f\n", speed);
-	static float rotation = 0.0f;
-	rotation += 1.5f;
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()));
-	//printf("current pos: %f %f %f\n", enemy1->getPos().x, enemy1->getPos().y, enemy1->getPos().z);
+	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
 }
 
 void Scene0::Render() const {
@@ -99,7 +89,6 @@ void Scene0::Render() const {
 	glUniformMatrix4fv(character->getShader()->getUniformID("viewMatrix"), 1, GL_FALSE, viewMatrix);
 
 	//Multi Shader
-
 	glUniform3fv(character->getShader()->getUniformID("lightPos[0]"), 2, *lightArray);
 	glUniform1f(character->getShader()->getUniformID("numLight"), numLight);
 

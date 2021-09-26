@@ -7,6 +7,7 @@
 #include "Texture.h"
 #include "GameObject.h"
 #include "PhysicsObject.h"
+#include "Room.h"
 
 using namespace MATH;
 
@@ -18,10 +19,10 @@ private:
 	Mesh* mesh;
 	Shader* shader;
 	Texture* texture;
-	Character* parent;
+	Room room;
 public:
-	Character(Mesh* mesh_, Shader* shader_, Texture* texture_);
-	Character(Character* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
+	Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
+	//Character(Character* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~Character();
 	virtual bool OnCreate() override;
 	virtual void OnDestroy() override;
@@ -29,6 +30,8 @@ public:
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event& event) override;
 
+	inline Mesh* getMesh() const { return mesh; }
+	inline Texture* getTexture() const { return texture; }
 
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
