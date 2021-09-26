@@ -6,6 +6,7 @@
 #include "Character.h"
 #include "RatEnemy.h"
 #include "Room.h"
+#include "StaticMesh.h"
 using namespace MATH;
 
 /// Forward declarations 
@@ -19,14 +20,14 @@ class Scene0 : public Scene {
 private:
 	Character* character;
 	RatEnemy* enemy1;
+	StaticMesh* wall1, *wall2, *wall3, *wall4, *floor;
 	//DemoObject* demoObject;
-	float numLight;
-	Vec3 lightArray[2];
+	Vec3 light1;
 	float speed;
 
-	Mesh* meshPtr;
+	Mesh* meshPtr, *ratMeshPtr, *boxMesh;
 	Shader* shaderPtr;
-	Texture* texturePtr;
+	Texture* texturePtr, *wallTexture, *floorTexture;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
 	Room room;
@@ -39,6 +40,11 @@ public:
 	virtual void Update(const float deltaTime) override;
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event& sdlEvent) override;
+
+	void BuildCharacter();
+	void BuildRat();
+	void BuildWall();
+	void BuildFloor();
 
 	virtual float setSpeed() override;
 	virtual void getSpeed(const float speed_) override;
