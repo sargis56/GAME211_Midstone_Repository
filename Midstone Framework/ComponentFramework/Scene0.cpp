@@ -36,7 +36,7 @@ bool Scene0::OnCreate() {
 	character->setPos(Vec3(0.0, 0.0, -15.0));
 	BuildRat();
 	enemy1 = new RatEnemy(ratMeshPtr, shaderPtr, texturePtr, room);
-	enemy1->setPos(Vec3(0.0, 0.0, -15.0));
+	enemy1->setPos(Vec3(5.0, 4.5, -15.0));
 	BuildWall();
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
@@ -95,12 +95,18 @@ void Scene0::Update(const float deltaTime) {
 	//printf("%f\n", speed);
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f,0.5f,0.5f));
+
+	enemy1->RatEnemy::FollowPlayer(character, enemy1);
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
+
+
 	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
+
+
 }
 
 void Scene0::Render() const {

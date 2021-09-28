@@ -25,6 +25,10 @@ namespace  MATH {
 	#define DEGREES_TO_RADIANS (M_PI / 180.0f)
 	#endif	
 
+	#ifndef RADIANS_TO_DEGREES
+	#define RADIANS_TO_DEGREES (180.0f / M_PI)
+	#endif	
+
 	struct Vec2 {
 		float  x, y;
 		inline void set(float x_, float y_) {

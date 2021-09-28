@@ -1,5 +1,7 @@
 #include "RatEnemy.h"
 #include "MMath.h"
+#include "VMath.h"
+#include "Physics.h"
 #include <SDL.h>
 #include <cstdlib>
 
@@ -10,10 +12,15 @@ RatEnemy::RatEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_) 
 RatEnemy::~RatEnemy() {}
 
 bool RatEnemy::OnCreate() { 
+
+
 	return true; 
 }
 void RatEnemy::OnDestroy() {}				  /// Just a stub
 void RatEnemy::Update(float deltaTime_) {
+
+	
+
 	if (pos.x > desiredPos.x - 0.01 && pos.x < desiredPos.x + 0.01) { //fix floating point precision errors
 		pos.x = desiredPos.x;
 	}
@@ -104,3 +111,34 @@ bool RatEnemy::DamageCheck(Character* character) {
 	//}
 	return false;
 }
+
+bool RatEnemy::FollowPlayer(Character* character, RatEnemy* ratEnemy)
+{
+	if (VMath::distance(character->getPos(), ratEnemy->getPos()) < 5)
+	{
+		Vec3 moveEnemy;
+
+		Vec3 direction = character->getPos() - ratEnemy->getPos();
+		float angle = atan2(direction.y, direction.x) * RADIANS_TO_DEGREES; //Calculate the angle (in DEGREES) between player and enemy
+		ratEnemy->setModelMatrix(ratEnemy->getModelMatrix() * MMath::rotate(angle, Vec3(0.0f, 0.0f, 1.0f)) //Rotate the modelMatrix by the angle of rotation to face player
+															* MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f))); // Adjust enemy to FACE player 
+
+		direction.Normalize();
+		ratEnemy->MoveEnemy(ratEnemy, direction);
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
+}
+
+void RatEnemy::MoveEnemy(RatEnemy* ratEnemy, Vec3 direction)
+{
+	float moveSpeed = 0.1;
+	ratEnemy->setPos(ratEnemy->getPos() + (direction * moveSpeed)); //Move the enemy in the direction of the player at X speed
+
+}
+

@@ -24,6 +24,8 @@ private:
 	float direction;
 	Vec3 desiredPos;
 	Room room;
+	float moveSpeed;
+
 public:
 	RatEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -35,6 +37,9 @@ public:
 	virtual void HandleEvents(const SDL_Event& event) override;
 
 	bool DamageCheck(Character* character);
+	bool FollowPlayer(Character* character, RatEnemy* ratEnemy);
+	void MoveEnemy(RatEnemy* ratEnemy, Vec3 direction);
+
 
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
