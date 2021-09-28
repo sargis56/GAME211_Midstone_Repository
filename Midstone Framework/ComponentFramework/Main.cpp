@@ -13,7 +13,7 @@ int main(int argc, char* args[]) {
 	Debug::Info("Starting the GameSceneManager", __FILE__, __LINE__);
 	
 	SceneManager* gsm = new SceneManager();
-	if (gsm->Initialize(name, 1280, 720) ==  true) {
+	if (gsm->Initialize(name, 1600, 900) ==  true) {
 		gsm->Run();
 	} 
 	delete gsm;

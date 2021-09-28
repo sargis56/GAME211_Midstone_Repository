@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "Scene0.h"
 #include "Scene1.h"
+#include "TitleScreen.h"
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
@@ -43,7 +44,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		return false;
 	}
 	/********************************   Default first scene   ***********************/
-	BuildScene(SCENE0);
+	BuildScene(TITLESCREEN);
 	
 	return true;
 }
@@ -79,7 +80,7 @@ void SceneManager::GetEvents() {
 				BuildScene(SCENE0);
 				break;
 			case SDL_SCANCODE_F2:
-				BuildScene(SCENE1);
+				//BuildScene(SCENE1);
 				break;
 			case SDL_SCANCODE_F3:
 				BuildScene(SCENE2);
@@ -130,12 +131,12 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		currentScene->getSpeed(speed);
 		status = currentScene->OnCreate();
 		break;
-	/*case SCENE1:
-		currentScene = new Scene1();
+	case TITLESCREEN:
+		currentScene = new TitleScreen();
 		//sending the speed back to the new scene
-		currentScene->getSpeed(speed);
+		//currentScene->getSpeed(speed);
 		status = currentScene->OnCreate();
-		break;*/
+		break;
 	default:
 		Debug::Error("Incorrect scene number assigned in the manager", __FILE__, __LINE__);
 		currentScene = nullptr;
