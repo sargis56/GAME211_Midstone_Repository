@@ -18,9 +18,6 @@ bool RatEnemy::OnCreate() {
 }
 void RatEnemy::OnDestroy() {}				  /// Just a stub
 void RatEnemy::Update(float deltaTime_) {
-
-	
-
 	if (pos.x > desiredPos.x - 0.01 && pos.x < desiredPos.x + 0.01) { //fix floating point precision errors
 		pos.x = desiredPos.x;
 	}
