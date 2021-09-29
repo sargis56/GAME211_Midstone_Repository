@@ -67,7 +67,7 @@ bool SnakeEnemy::FollowPlayer(Character* character)
 
 void SnakeEnemy::MoveEnemy()
 {
-	float moveSpeed = 0.01;
+	float moveSpeed = 0.06;
 	pos = pos + (direction * moveSpeed); //Move the enemy in the direction of the player at X speed
 
 }
