@@ -1,1 +1,0 @@
-time, demoObject->getAngleAccel(),demoObject->getAngleVel(), demoObject->getAngleDisplacement() demoObject->getPos().x, demoObject->getPos().y, demoObject->getAccel().x, demoObject->getAccel().y, force.x, force.y, demoObject->getVel().x,demoObject->getVel().y 

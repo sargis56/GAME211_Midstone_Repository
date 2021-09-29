@@ -37,9 +37,6 @@ public:
 	virtual void HandleEvents(const SDL_Event& event) override;
 
 	bool DamageCheck(Character* character);
-	bool FollowPlayer(Character* character, RatEnemy* ratEnemy);
-	void MoveEnemy(RatEnemy* ratEnemy, Vec3 direction);
-
 
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }

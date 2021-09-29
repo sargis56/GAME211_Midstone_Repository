@@ -138,6 +138,7 @@
     <ClCompile Include="Randomizer.cpp" />
     <ClCompile Include="RatEnemy.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mesh.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="Scene0.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SkyBox.cpp" />
+    <ClCompile Include="SnakeEnemy.cpp" />
     <ClCompile Include="StaticMesh.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -168,6 +170,7 @@
     <ClInclude Include="Randomizer.h" />
     <ClInclude Include="RatEnemy.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="Scene1.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Mesh.h" />
@@ -178,6 +181,7 @@
     <ClInclude Include="Scene0.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SkyBox.h" />
+    <ClInclude Include="SnakeEnemy.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="StaticMesh.h" />
     <ClInclude Include="Texture.h" />

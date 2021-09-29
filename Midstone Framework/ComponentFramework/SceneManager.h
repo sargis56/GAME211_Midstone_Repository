@@ -16,7 +16,7 @@ private:
 	enum SCENE_NUMBER {
 		SCENE0 = 0,
 		TITLESCREEN,
-		SCENE2,
+		SCENE1,
 		SCENE3,
 		SCENE4,
 		SCENE5,

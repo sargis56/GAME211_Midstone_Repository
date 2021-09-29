@@ -44,7 +44,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		return false;
 	}
 	/********************************   Default first scene   ***********************/
-	BuildScene(SCENE0);
+	BuildScene(SCENE1);
 	
 	return true;
 }
@@ -78,21 +78,6 @@ void SceneManager::GetEvents() {
 				return;
 			case SDL_SCANCODE_F1:
 				BuildScene(SCENE0);
-				break;
-			case SDL_SCANCODE_F2:
-				//BuildScene(SCENE1);
-				break;
-			case SDL_SCANCODE_F3:
-				BuildScene(SCENE2);
-				break;
-			case SDL_SCANCODE_F4:
-				BuildScene(SCENE3);
-				break;
-			case SDL_SCANCODE_F5:
-				BuildScene(SCENEPHYSICS2);
-				break;
-			case SDL_SCANCODE_F6:
-				BuildScene(SCENEPHYSICS3);
 				break;
 			case SDL_SCANCODE_RETURN:
 				if (fullScreen == false) {
@@ -133,6 +118,12 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		break;
 	case TITLESCREEN:
 		currentScene = new TitleScreen();
+		//sending the speed back to the new scene
+		//currentScene->getSpeed(speed);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE1:
+		currentScene = new Scene1();
 		//sending the speed back to the new scene
 		//currentScene->getSpeed(speed);
 		status = currentScene->OnCreate();

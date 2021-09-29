@@ -4,6 +4,9 @@
 #include "Vector.h"
 #include "Matrix.h"
 #include "Character.h"
+#include "SnakeEnemy.h"
+#include "Room.h"
+#include "StaticMesh.h"
 using namespace MATH;
 
 /// Forward declarations 
@@ -16,16 +19,18 @@ class Texture;
 class Scene1 : public Scene {
 private:
 	Character* character;
+	SnakeEnemy* enemy1;
+	StaticMesh* wall1, *wall2, *wall3, *wall4, *floor;
 	//DemoObject* demoObject;
-	float numLight;
-	Vec3 lightArray[2];
+	Vec3 light1;
+	float speed;
 
-	Mesh* meshPtr;
+	Mesh* meshPtr, *ratMeshPtr, *boxMesh;
 	Shader* shaderPtr;
-	Texture* texturePtr;
+	Texture* texturePtr, *wallTexture, *floorTexture;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
-	float speed;
+	Room room;
 public:
 	explicit Scene1();
 	virtual ~Scene1();
@@ -36,9 +41,14 @@ public:
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event& sdlEvent) override;
 
+	void BuildCharacter();
+	void BuildSnake();
+	void BuildWall();
+	void BuildFloor();
+
 	virtual float setSpeed() override;
 	virtual void getSpeed(const float speed_) override;
 };
 
 
-#endif
+#endif // SCENE0_H
