@@ -36,7 +36,7 @@ public:
 	virtual void HandleEvents(const SDL_Event& event) override;
 
 	bool DamageCheck(Character* character);
-	bool FollowPlayer(Character* character);
+	float FollowPlayer(Character* character);
 	void MoveEnemy();
 
 

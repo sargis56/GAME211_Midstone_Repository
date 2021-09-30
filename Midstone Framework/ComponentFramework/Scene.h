@@ -1,5 +1,6 @@
 #ifndef SCENE_H
 #define SCENE_H
+#include "SceneManager.h"
 union SDL_Event;
 class Scene {
 public:

@@ -37,36 +37,34 @@ void SnakeEnemy::HandleEvents(const SDL_Event& event) {
 } /// Just a stub
 
 bool SnakeEnemy::DamageCheck(Character* character) {
-	if (character->getPos().x == pos.x && character->getPos().y == pos.y) { //fix floating point precision errors
+	if (VMath::distance(character->getPos(), pos) < 1) {
 		return true;
 	}
-	//if () {//fix floating point precision errors
-	//	return true;
-	//}
-	return false;
+	else {
+		return false;
+	}
 }
 
-bool SnakeEnemy::FollowPlayer(Character* character)
+float SnakeEnemy::FollowPlayer(Character* character)
 {
 	if (VMath::distance(character->getPos(), pos) < 6) {
 		direction = character->getPos() - pos;
 		float angle = atan2(direction.y, direction.x) * RADIANS_TO_DEGREES; //Calculate the angle (in DEGREES) between player and enemy
-		this->setModelMatrix(this->getModelMatrix() * MMath::rotate(angle, Vec3(0.0f, 0.0f, 1.0f)) //Rotate the modelMatrix by the angle of rotation to face player
-															* MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f))); // Adjust enemy to FACE player 
+		//this->setModelMatrix(this->getModelMatrix() * MMath::rotate(angle, Vec3(0.0f, 0.0f, 1.0f)) //Rotate the modelMatrix by the angle of rotation to face player
+															//* MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f))); // Adjust enemy to FACE player 
 		direction.Normalize();
 		MoveEnemy();
 
-		return true;
+		return angle;
 	}
 	else
 	{
-		return false;
+		return 0;
 	}
 
 }
 
-void SnakeEnemy::MoveEnemy()
-{
+void SnakeEnemy::MoveEnemy() {
 	float moveSpeed = 0.06;
 	pos = pos + (direction * moveSpeed); //Move the enemy in the direction of the player at X speed
 

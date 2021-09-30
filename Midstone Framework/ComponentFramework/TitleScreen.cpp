@@ -36,6 +36,8 @@ bool TitleScreen::OnCreate() {
 }
 
 void TitleScreen::HandleEvents(const SDL_Event& sdlEvent) {
+	button1->HandleEvents(sdlEvent);
+	button2->HandleEvents(sdlEvent);
 	//camera->HandleEvents(sdlEvent);
 }
 
@@ -47,8 +49,8 @@ void TitleScreen::BuildButtons() {
 	endTexture = new Texture();
 	endTexture->LoadImage("textures/red.jpg");
 	shaderPtr = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
-	button1 = new StaticMesh(boxMesh, shaderPtr, startTexture);
-	button2 = new StaticMesh(boxMesh, shaderPtr, endTexture);
+	button1 = new Button(boxMesh, shaderPtr, startTexture, 0, Vec3(410.0f, 430.0f, 0.0f), Vec3(1190.0f, 235.0f, 0.0f));
+	button2 = new Button(boxMesh, shaderPtr, endTexture, 1, Vec3(410.0f, 660.0f, 0.0f), Vec3(1190.0f, 470.0f, 0.0f));
 	button1->setModelMatrix(MMath::translate(Vec3(0.0, 0.9, 0.0)) * MMath::scale(3.0f, 0.75f, 0.5f));
 	button2->setModelMatrix(MMath::translate(Vec3(0.0, -0.9, 0.0)) * MMath::scale(3.0f, 0.75f, 0.5f));
 }

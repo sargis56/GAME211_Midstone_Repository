@@ -5,7 +5,7 @@
 #include "Matrix.h"
 #include "Trackball.h"
 #include "Camera.h"
-#include "StaticMesh.h"
+#include "Button.h"
 using namespace MATH;
 
 /// Forward declarations 
@@ -18,7 +18,7 @@ class Texture;
 class TitleScreen : public Scene {
 private:
 	Camera *camera;
-	StaticMesh* button1, *button2, *button3;
+	Button* button1, *button2, *button3;
 	Mesh* boxMesh;
 	Shader* shaderPtr;
 	Texture* startTexture, *endTexture;
