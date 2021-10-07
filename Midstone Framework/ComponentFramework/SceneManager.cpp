@@ -100,6 +100,10 @@ void SceneManager::GetEvents() {
 	}
 }
 
+void SceneManager::CurrentScene(std::string scene) {
+
+}
+
 void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	bool status; 
 	if (currentScene != nullptr) {
