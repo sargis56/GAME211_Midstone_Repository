@@ -7,6 +7,7 @@
 #include "RatEnemy.h"
 #include "Room.h"
 #include "StaticMesh.h"
+#include "MageTurretEnemy.h"
 using namespace MATH;
 
 /// Forward declarations 
@@ -19,7 +20,7 @@ class Texture;
 class Scene0 : public Scene {
 private:
 	Character* character;
-	RatEnemy* enemy1;
+	MageTurretEnemy* enemy1;
 	StaticMesh* wall1, *wall2, *wall3, *wall4, *floor;
 	//DemoObject* demoObject;
 	Vec3 light1;

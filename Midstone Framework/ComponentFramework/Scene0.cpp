@@ -35,8 +35,9 @@ bool Scene0::OnCreate() {
 	}
 	character->setPos(Vec3(0.0, 0.0, -15.0));
 	BuildRat();
-	enemy1 = new RatEnemy(ratMeshPtr, shaderPtr, texturePtr, room);
-	enemy1->setPos(Vec3(5.0, 4.5, -15.0));
+	enemy1 = new MageTurretEnemy(ratMeshPtr, shaderPtr, texturePtr, room);
+	enemy1->OnCreate();
+	enemy1->setPos(Vec3(0.0, 0.5, -15.0));
 	BuildWall();
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
