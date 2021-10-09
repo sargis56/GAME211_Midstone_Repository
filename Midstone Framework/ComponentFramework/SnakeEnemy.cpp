@@ -4,6 +4,7 @@
 #include "Physics.h"
 #include <SDL.h>
 #include <cstdlib>
+#include "ObjLoader.h"
 
 SnakeEnemy::SnakeEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_) :
 	mesh(mesh_), shader(shader_), texture(texture_), room(room_) {
@@ -11,15 +12,32 @@ SnakeEnemy::SnakeEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room roo
 
 SnakeEnemy::~SnakeEnemy() {}
 
+void SnakeEnemy::BuildVProjectile() {
+	ObjLoader::loadOBJ("meshes/Sphere.obj");
+	meshVProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	shaderVProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
+	textureVProjectile = new Texture();
+	textureVProjectile->LoadImage("textures/skull_texture.jpg");
+	vProjectile = new VenomProjectile(meshVProjectile, shaderVProjectile, textureVProjectile, room, pos);
+}
+
 bool SnakeEnemy::OnCreate() {
+	BuildVProjectile();
 	return true; 
 }
 void SnakeEnemy::OnDestroy() {}				  /// Just a stub
 void SnakeEnemy::Update(float deltaTime_) {
+vProjectile->setPos(pos);
+
+	vProjectile->VProjectileUpdate(attackDirection);
+
 	
+	vProjectile->setModelMatrix(MMath::translate(vProjectile->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
+
 }
 
 void SnakeEnemy::Render() const {
+	//vProjectile->Render();
 	Matrix3 normalMatrix = MMath::transpose(MMath::inverse(modelMatrix));
 	glUniformMatrix4fv(shader->getUniformID("modelMatrix"), 1, GL_FALSE, modelMatrix);
 	glUniformMatrix3fv(shader->getUniformID("normalMatrix"), 1, GL_FALSE, normalMatrix);
@@ -66,7 +84,19 @@ float SnakeEnemy::FollowPlayer(Character* character)
 
 void SnakeEnemy::MoveEnemy() {
 	float moveSpeed = 0.06;
-	pos = pos + (direction * moveSpeed); //Move the enemy in the direction of the player at X speed
-
+	pos += (direction * moveSpeed); //Move the enemy in the direction of the player at X speed
 }
 
+void SnakeEnemy::AttackPlayer(Character* chtr) {
+
+	Vec3 targetPos = Vec3(chtr->getPos().x, chtr->getPos().y, 0);
+
+	if (VMath::distance(chtr->getPos(), pos) < 3) {
+		attackDirection = chtr->getPos() - pos;
+		attackDirection.Normalize();
+		
+		
+
+	}
+
+}

@@ -9,6 +9,7 @@
 #include "PhysicsObject.h"
 #include "Room.h"
 #include "Character.h"
+#include "VenomProjectile.h"
 
 using namespace MATH;
 
@@ -17,18 +18,21 @@ class SnakeEnemy : public PhysicsObject, public GameObject {
 
 private:
 	Matrix4 modelMatrix;
-	Mesh* mesh;
-	Shader* shader;
-	Texture* texture;
-	Vec3 direction;
+	Mesh* mesh, *meshVProjectile;
+	Shader* shader, *shaderVProjectile;
+	Texture* texture, *textureVProjectile;
+	Vec3 direction, attackDirection;
 	Vec3 desiredPos;
 	Room room;
 	float moveSpeed;
+	VenomProjectile *vProjectile;
 
 public:
 	SnakeEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~SnakeEnemy();
+	void BuildVProjectile();
+
 	virtual bool OnCreate() override;
 	virtual void OnDestroy() override;
 	virtual void Update(const float deltaTime_) override;
@@ -38,6 +42,8 @@ public:
 	bool DamageCheck(Character* character);
 	float FollowPlayer(Character* character);
 	void MoveEnemy();
+
+	void AttackPlayer(Character* chtr);
 
 
 	inline Shader* getShader() const { return shader; }

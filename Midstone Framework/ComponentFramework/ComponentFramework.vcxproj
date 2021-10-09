@@ -156,6 +156,7 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TitleScreen.cpp" />
     <ClCompile Include="Trackball.cpp" />
+    <ClCompile Include="VenomProjectile.cpp" />
     <ClCompile Include="VMath.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -195,6 +196,7 @@
     <ClInclude Include="TitleScreen.h" />
     <ClInclude Include="Trackball.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="VenomProjectile.h" />
     <ClInclude Include="VMath.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

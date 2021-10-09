@@ -132,6 +132,9 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="VenomProjectile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -243,6 +246,9 @@
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Projectile.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="VenomProjectile.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
