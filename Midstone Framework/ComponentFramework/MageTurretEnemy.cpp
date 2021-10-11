@@ -44,10 +44,7 @@ void MageTurretEnemy::Update(float deltaTime_) {
 		projectile3->setPos(pos);
 		projectile3->setOver(false);
 	}
-	if (projectile4->ProjectileUpdate(Vec3(-100, 0, 0))) {
-		projectile4->setPos(pos);
-		projectile4->setOver(false);
-	}
+	
 	projectile1->setModelMatrix(MMath::translate(projectile1->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
 	projectile2->setModelMatrix(MMath::translate(projectile2->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
 	projectile3->setModelMatrix(MMath::translate(projectile3->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));

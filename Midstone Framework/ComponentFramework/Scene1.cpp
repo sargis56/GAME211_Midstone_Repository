@@ -89,12 +89,14 @@ void Scene1::getSpeed(const float speed_) {
 
 void Scene1::Update(const float deltaTime) {
 	character->Update(deltaTime);
+	enemy1->Update(deltaTime);
 	float enemyRot = enemy1->FollowPlayer(character);
 	if (enemy1->DamageCheck(character)) {
 		printf("DMG\n");
 	}
 	//printf("%f\n", speed);
 	character->setModelMatrix(MMath::translate(character->getPos()));
+
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::rotate(enemyRot, Vec3(0.0f, 0.0f, 1.0f)) * MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f)) * MMath::scale(0.5f, 0.5f, 0.5f));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));

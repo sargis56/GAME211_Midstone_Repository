@@ -13,7 +13,7 @@ SnakeEnemy::SnakeEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room roo
 SnakeEnemy::~SnakeEnemy() {}
 
 void SnakeEnemy::BuildVProjectile() {
-	ObjLoader::loadOBJ("meshes/Sphere.obj");
+	ObjLoader::loadOBJ("meshes/CoronaVirus.obj");
 	meshVProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderVProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureVProjectile = new Texture();
@@ -29,18 +29,14 @@ void SnakeEnemy::OnDestroy() {}				  /// Just a stub
 void SnakeEnemy::Update(float deltaTime_) {
 
 	
-	if (vProjectile->VProjectileUpdate(attackDirection)) {
-		vProjectile->setPos(pos);
-		vProjectile->setOver(false);
-	}
-
-	
-	vProjectile->setModelMatrix(MMath::translate(vProjectile->getPos()) * MMath::scale(0.2f, 0.2f, 0.2f));
+	vProjectile->VProjectileUpdate(attackDirection);
+	vProjectile->setModelMatrix(MMath::translate(pos) * MMath::scale(0.1f, 0.1f, 0.1f));	
+	printf(" %f    %f    \n", vProjectile->getPos().x, vProjectile->getPos().y);
 
 }
 
 void SnakeEnemy::Render() const {
-	vProjectile->Render();
+	
 	Matrix3 normalMatrix = MMath::transpose(MMath::inverse(modelMatrix));
 	glUniformMatrix4fv(shader->getUniformID("modelMatrix"), 1, GL_FALSE, modelMatrix);
 	glUniformMatrix3fv(shader->getUniformID("normalMatrix"), 1, GL_FALSE, normalMatrix);
@@ -48,7 +44,7 @@ void SnakeEnemy::Render() const {
 		glBindTexture(GL_TEXTURE_2D, texture->getTextureID());
 	}
 	mesh->Render();
-
+	vProjectile->Render();
 	/// Unbind the texture
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
@@ -94,10 +90,10 @@ void SnakeEnemy::AttackPlayer(Character* chtr) {
 
 	Vec3 targetPos = Vec3(chtr->getPos().x, chtr->getPos().y, 0);
 
-	if (VMath::distance(chtr->getPos(), pos) < 1) {
+	if (VMath::distance(chtr->getPos(), pos) < 3) {
 		attackDirection = chtr->getPos() - pos;
-		attackDirection.Normalize();
-		printf("attackdir %f    %f    \n", attackDirection.x, attackDirection.y);
+		//attackDirection.Normalize();
+		//printf("attackdir %f    %f    \n", attackDirection.x, attackDirection.y);
 	}
 
 }

@@ -2,6 +2,7 @@
 #include "MMath.h"
 #include "VMath.h"
 #include "Physics.h"
+#include "VMath.h"
 #include <SDL.h>
 #include <cstdlib>
 
@@ -41,43 +42,52 @@ void VenomProjectile::HandleEvents(const SDL_Event& event) {
 } /// Just a stub
 
 
-bool VenomProjectile::VProjectileUpdate(Vec3 direction) {
+void VenomProjectile::VProjectileUpdate(Vec3 direction) {
+
+	float speed = 0.09f;
+
+	Vec3 normalDir = direction;
+	normalDir.Normalize();
+	pos += (normalDir * speed);
+
+	//if (pos.x && pos.y == direction.x && direction.y)
+	
 	//desiredPos = direction;
-	if (pos != direction) { //if the desired pos is not reached continue to move
-		if (pos.x < direction.x) {
-			if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0)) { //Collision check
-				pos.x = pos.x + 0.05f;
-			}
-			else { //If moving in a wall, gen new move
-				moveOver = true;
-			}
-		}
-		else if (pos.x > direction.x) {
-			if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
-				pos.x = pos.x - 0.05f;
-			}
-			else {
-				moveOver = true;
-			}
-		}
-		else if (pos.y < direction.y) {
-			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1, pos.z), 0)) {
-				pos.y = pos.y + 0.05f;
-			}
-			else {
-				moveOver = true;
-			}
-		}
-		else if (pos.y > direction.y) {
-			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1, pos.z), 0)) {
-				pos.y = pos.y - 0.05f;
-			}
-			else {
-				moveOver = true;
-			}
-		}
-	}
-	return moveOver;
+	//if (pos != direction) { //if the desired pos is not reached continue to move
+	//	if (pos.x < direction.x) {
+	//		if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0)) { //Collision check
+	//			pos.x = pos.x + 0.05f;
+	//		}
+	//		else { //If moving in a wall, gen new move
+	//			moveOver = true;
+	//		}
+	//	}
+	//	else if (pos.x > direction.x) {
+	//		if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
+	//			pos.x = pos.x - 0.05f;
+	//		}
+	//		else {
+	//			moveOver = true;
+	//		}
+	//	}
+	//	else if (pos.y < direction.y) {
+	//		if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1, pos.z), 0)) {
+	//			pos.y = pos.y + 0.05f;
+	//		}
+	//		else {
+	//			moveOver = true;
+	//		}
+	//	}
+	//	else if (pos.y > direction.y) {
+	//		if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1, pos.z), 0)) {
+	//			pos.y = pos.y - 0.05f;
+	//		}
+	//		else {
+	//			moveOver = true;
+	//		}
+	//	}
+	//}
+	//return moveOver;
 }
 
 bool VenomProjectile::DamageCheck(Character* character) {
