@@ -1,4 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ComponentFramework.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   SnakeEnemy.cpp
-C:\Users\belic\Desktop\githubgamejam\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SnakeEnemy.cpp(86,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\belic\Desktop\githubgamejam\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SnakeEnemy.cpp(89,24): warning C4305: 'initializing': truncation from 'double' to 'float'
   ComponentFramework.vcxproj -> C:\Users\belic\Desktop\githubgamejam\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe

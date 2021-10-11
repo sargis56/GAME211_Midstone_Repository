@@ -27,17 +27,20 @@ bool SnakeEnemy::OnCreate() {
 }
 void SnakeEnemy::OnDestroy() {}				  /// Just a stub
 void SnakeEnemy::Update(float deltaTime_) {
-vProjectile->setPos(pos);
-
-	vProjectile->VProjectileUpdate(attackDirection);
 
 	
-	vProjectile->setModelMatrix(MMath::translate(vProjectile->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
+	if (vProjectile->VProjectileUpdate(attackDirection)) {
+		vProjectile->setPos(pos);
+		vProjectile->setOver(false);
+	}
+
+	
+	vProjectile->setModelMatrix(MMath::translate(vProjectile->getPos()) * MMath::scale(0.2f, 0.2f, 0.2f));
 
 }
 
 void SnakeEnemy::Render() const {
-	//vProjectile->Render();
+	vProjectile->Render();
 	Matrix3 normalMatrix = MMath::transpose(MMath::inverse(modelMatrix));
 	glUniformMatrix4fv(shader->getUniformID("modelMatrix"), 1, GL_FALSE, modelMatrix);
 	glUniformMatrix3fv(shader->getUniformID("normalMatrix"), 1, GL_FALSE, normalMatrix);
@@ -72,7 +75,7 @@ float SnakeEnemy::FollowPlayer(Character* character)
 															//* MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f))); // Adjust enemy to FACE player 
 		direction.Normalize();
 		MoveEnemy();
-
+		AttackPlayer(character);
 		return angle;
 	}
 	else
@@ -91,12 +94,10 @@ void SnakeEnemy::AttackPlayer(Character* chtr) {
 
 	Vec3 targetPos = Vec3(chtr->getPos().x, chtr->getPos().y, 0);
 
-	if (VMath::distance(chtr->getPos(), pos) < 3) {
+	if (VMath::distance(chtr->getPos(), pos) < 1) {
 		attackDirection = chtr->getPos() - pos;
 		attackDirection.Normalize();
-		
-		
-
+		printf("attackdir %f    %f    \n", attackDirection.x, attackDirection.y);
 	}
 
 }
