@@ -35,8 +35,8 @@ public:
 
 	void BuildButtons();
 
-	virtual float setSpeed() override;
-	virtual void getSpeed(const float speed_) override;
+	virtual CharacterVariables setCharacterVariables() override;
+	virtual void getCharacterVariables(const CharacterVariables stats_) override;
 };
 
 

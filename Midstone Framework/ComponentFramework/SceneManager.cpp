@@ -44,7 +44,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		return false;
 	}
 	/********************************   Default first scene   ***********************/
-	BuildScene(SCENE1);
+	BuildScene(SCENE0);
 	
 	return true;
 }
@@ -108,7 +108,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	bool status; 
 	if (currentScene != nullptr) {
 		//saving the speed of the player before the scene is destroyed
-		speed = currentScene->setSpeed();
+		mainStats = currentScene->setCharacterVariables();
 		delete currentScene;
 		currentScene = nullptr;
 	}
@@ -117,7 +117,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	case SCENE0:  
 		currentScene = new Scene0();
 		//sending the speed back to the new scene
-		currentScene->getSpeed(speed);
+		currentScene->getCharacterVariables(mainStats);
 		status = currentScene->OnCreate();
 		break;
 	case TITLESCREEN:

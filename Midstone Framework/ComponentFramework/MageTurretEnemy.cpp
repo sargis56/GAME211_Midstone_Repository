@@ -32,9 +32,9 @@ bool MageTurretEnemy::OnCreate() {
 }
 void MageTurretEnemy::OnDestroy() {}				  /// Just a stub
 void MageTurretEnemy::Update(float deltaTime_) {
-	if (projectile1->ProjectileUpdate(Vec3(0,100,0))){
-		projectile1->setPos(pos);
-		projectile1->setOver(false);
+	if (projectile1->ProjectileUpdate(Vec3(0,100,0))){ // so once it hits the wall
+		projectile1->setPos(pos); //the pos is reset to the pos of the enemy
+		projectile1->setOver(false); //and the moveOver is reset
 	}
 	if (projectile2->ProjectileUpdate(Vec3(0, -100, 0))) {
 		projectile2->setPos(pos);
@@ -44,16 +44,18 @@ void MageTurretEnemy::Update(float deltaTime_) {
 		projectile3->setPos(pos);
 		projectile3->setOver(false);
 	}
+	if (projectile4->ProjectileUpdate(Vec3(-100, 0, 0))) {
+		projectile4->setPos(pos);
+		projectile4->setOver(false);
+	}
 	
-	projectile1->setModelMatrix(MMath::translate(projectile1->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
+	projectile1->setModelMatrix(MMath::translate(projectile1->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f)); //setting modelmatrix of the projectile
 	projectile2->setModelMatrix(MMath::translate(projectile2->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
 	projectile3->setModelMatrix(MMath::translate(projectile3->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
 	projectile4->setModelMatrix(MMath::translate(projectile4->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
-	//printf("desired pos: %f %f %f\n", desiredPos.x, desiredPos.y, desiredPos.z);
 }
 
 void MageTurretEnemy::Render() const {
-	//projectile1->setModelMatrix(MMath::translate(projectile1->getPos()) * MMath::scale(0.2f, 0.2f, 0.2f));
 	projectile1->Render();
 	projectile2->Render();
 	projectile3->Render();

@@ -78,13 +78,12 @@ void Scene1::BuildFloor() {
 	floorTexture->LoadImage("textures/floor.jpg");
 }
 
-float Scene1::setSpeed()
-{
-	return speed;
+CharacterVariables Scene1::setCharacterVariables() {
+	return character->getCharacterVariables();
 }
 
-void Scene1::getSpeed(const float speed_) {
-	speed = speed_;
+void Scene1::getCharacterVariables(const CharacterVariables stats_) {
+	//character->setCharacterVariables(stats_);
 }
 
 void Scene1::Update(const float deltaTime) {

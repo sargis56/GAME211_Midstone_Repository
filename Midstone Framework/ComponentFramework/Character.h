@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "PhysicsObject.h"
 #include "Room.h"
+#include "CharacterVariables.h"
 
 using namespace MATH;
 
@@ -15,6 +16,7 @@ using namespace MATH;
 class Character : public PhysicsObject, public GameObject {
 
 private:
+	CharacterVariables stats;
 	Matrix4 modelMatrix;
 	Mesh* mesh;
 	Shader* shader;
@@ -32,7 +34,8 @@ public:
 
 	inline Mesh* getMesh() const { return mesh; }
 	inline Texture* getTexture() const { return texture; }
-
+	inline CharacterVariables getCharacterVariables() const { return stats; }
+	inline void setCharacterVariables(const CharacterVariables stats_) { stats = stats_; }
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }

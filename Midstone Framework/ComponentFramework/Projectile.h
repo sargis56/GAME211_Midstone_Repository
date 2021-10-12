@@ -20,10 +20,9 @@ private:
 	Mesh* mesh;
 	Shader* shader;
 	Texture* texture;
-	bool moveOver = false;
+	bool moveOver = true;
 	float direction;
 	Room room;
-
 public:
 	Projectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);

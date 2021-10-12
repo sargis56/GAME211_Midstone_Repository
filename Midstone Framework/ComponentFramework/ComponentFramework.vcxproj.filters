@@ -25,11 +25,23 @@
     <Filter Include="Source Files\Scenes">
       <UniqueIdentifier>{e8c82a08-d757-47ee-b6fe-eee59a99570f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Objects">
+    <Filter Include="Source Files\TitleScreenObjects">
+      <UniqueIdentifier>{2c28ba13-7683-48a0-a762-c7518ae9bdb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TitleScreenObjects">
+      <UniqueIdentifier>{fc0966e7-66de-47c7-8ed4-c297295af246}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameVariables">
+      <UniqueIdentifier>{c75db439-46db-4d7f-bf9a-91a98770e988}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{52191528-fd7e-48a8-90a6-8b182dbf44bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects">
       <UniqueIdentifier>{de11a1da-0811-4302-95c9-f4bcec66beaf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Objects">
-      <UniqueIdentifier>{52191528-fd7e-48a8-90a6-8b182dbf44bb}</UniqueIdentifier>
+    <Filter Include="Header Files\GameVariables">
+      <UniqueIdentifier>{aace3028-4f9b-40d6-8af5-454cb5a4ab59}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -103,16 +115,16 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="RatEnemy.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Room.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="StaticMesh.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="TitleScreen.cpp">
       <Filter>Source Files\Scenes</Filter>
@@ -121,19 +133,22 @@
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="SnakeEnemy.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="MageTurretEnemy.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Projectile.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="VenomProjectile.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\TitleScreenObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterVariables.cpp">
+      <Filter>Source Files\GameVariables</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -219,16 +234,16 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="RatEnemy.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Room.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="StaticMesh.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="TitleScreen.h">
       <Filter>Header Files\Scenes</Filter>
@@ -237,19 +252,22 @@
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="SnakeEnemy.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="MageTurretEnemy.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Projectile.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="VenomProjectile.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\TitleScreenObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterVariables.h">
+      <Filter>Header Files\GameVariables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

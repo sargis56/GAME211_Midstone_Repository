@@ -46,7 +46,7 @@ bool Projectile::ProjectileUpdate(Vec3 direction) {
 			if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0)) { //Collision check
 				pos.x = pos.x + 0.05f;
 			}
-			else { //If moving in a wall, gen new move
+			else { //If moving in a wall, reset the Projectile
 				moveOver = true;
 			}
 		}

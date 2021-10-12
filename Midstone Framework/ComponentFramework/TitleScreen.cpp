@@ -55,11 +55,11 @@ void TitleScreen::BuildButtons() {
 	button2->setModelMatrix(MMath::translate(Vec3(0.0, -0.9, 0.0)) * MMath::scale(3.0f, 0.75f, 0.5f));
 }
 
-float TitleScreen::setSpeed() {
-	return 0.0f;
+CharacterVariables TitleScreen::setCharacterVariables() {
+	return CharacterVariables();
 }
 
-void TitleScreen::getSpeed(const float speed_) {}
+void TitleScreen::getCharacterVariables(const CharacterVariables stats_){}
 
 void TitleScreen::Update(const float deltaTime) { }
 
