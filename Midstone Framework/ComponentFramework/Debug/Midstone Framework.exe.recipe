@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <ProjectOutputs>
-    <ProjectOutput>
-      <FullPath>D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe</FullPath>
-    </ProjectOutput>
-  </ProjectOutputs>
-  <ContentFiles />
-  <SatelliteDlls />
-  <NonRecipeFileRefs />
+  <ProjectOutputs>C:\Users\belic\Desktop\githubgamejam\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe</ProjectOutputs>
+  <ContentFiles></ContentFiles>
+  <SatelliteDlls></SatelliteDlls>
+  <NonRecipeFileRefs></NonRecipeFileRefs>
 </Project>

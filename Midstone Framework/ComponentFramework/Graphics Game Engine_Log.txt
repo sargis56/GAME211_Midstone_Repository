@@ -1,7 +1,6 @@
 [INFO]: Starting the GameSceneManager
-[INFO]: OpenGL version: 4.6.0 NVIDIA 472.12
-[INFO]: Graphics card vendor NVIDIA Corporation
-[INFO]: Graphics card name NVIDIA GeForce RTX 2070 SUPER/PCIe/SSE2
-[INFO]: GLSL Version 4.60 NVIDIA
+[INFO]: OpenGL version: 4.6.0 - Build 26.20.100.7325
+[INFO]: Graphics card vendor Intel
+[INFO]: Graphics card name Intel(R) HD Graphics 630
+[INFO]: GLSL Version 4.60 - Build 26.20.100.7325
 [INFO]: Created Scene0: 
-[INFO]: Deleting the GameSceneManager

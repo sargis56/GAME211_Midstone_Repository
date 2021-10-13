@@ -28,15 +28,18 @@ bool SnakeEnemy::OnCreate() {
 void SnakeEnemy::OnDestroy() {}				  /// Just a stub
 void SnakeEnemy::Update(float deltaTime_) {
 
-	
-	vProjectile->VProjectileUpdate(attackDirection);
-	vProjectile->setModelMatrix(MMath::translate(pos) * MMath::scale(0.1f, 0.1f, 0.1f));	
+	if (vProjectile->VProjectileUpdate(attackDirection)) { // so once it hits the wall
+		vProjectile->setPos(pos); //the pos is reset to the pos of the enemy
+		vProjectile->setOver(false); //and the moveOver is reset
+	}
+	//vProjectile->VProjectileUpdate(attackDirection);
+	vProjectile->setModelMatrix(MMath::translate(vProjectile->getPos()) * MMath::scale(0.2f, 0.2f, 0.2f));
 	printf(" %f    %f    \n", vProjectile->getPos().x, vProjectile->getPos().y);
 
 }
 
 void SnakeEnemy::Render() const {
-	
+	vProjectile->Render();
 	Matrix3 normalMatrix = MMath::transpose(MMath::inverse(modelMatrix));
 	glUniformMatrix4fv(shader->getUniformID("modelMatrix"), 1, GL_FALSE, modelMatrix);
 	glUniformMatrix3fv(shader->getUniformID("normalMatrix"), 1, GL_FALSE, normalMatrix);
@@ -44,7 +47,7 @@ void SnakeEnemy::Render() const {
 		glBindTexture(GL_TEXTURE_2D, texture->getTextureID());
 	}
 	mesh->Render();
-	vProjectile->Render();
+	
 	/// Unbind the texture
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
