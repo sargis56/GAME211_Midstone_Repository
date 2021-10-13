@@ -29,8 +29,13 @@ void SnakeEnemy::OnDestroy() {}				  /// Just a stub
 void SnakeEnemy::Update(float deltaTime_) {
 
 	
-	vProjectile->VProjectileUpdate(attackDirection);
-	vProjectile->setModelMatrix(MMath::translate(pos) * MMath::scale(0.1f, 0.1f, 0.1f));	
+	/*if (vProjectile->VProjectileUpdate(attackTarget));
+	{
+		vProjectile->setPos(pos);
+		vProjectile->setOver(false);
+	}*/
+
+	vProjectile->setModelMatrix(MMath::translate(vProjectile->getPos()) * MMath::scale(0.2f, 0.2f, 0.2f));
 	printf(" %f    %f    \n", vProjectile->getPos().x, vProjectile->getPos().y);
 
 }
@@ -88,12 +93,17 @@ void SnakeEnemy::MoveEnemy() {
 
 void SnakeEnemy::AttackPlayer(Character* chtr) {
 
+	Vec3 projectileSpawn = pos;
 	Vec3 targetPos = Vec3(chtr->getPos().x, chtr->getPos().y, 0);
 
-	if (VMath::distance(chtr->getPos(), pos) < 3) {
-		attackDirection = chtr->getPos() - pos;
-		//attackDirection.Normalize();
-		//printf("attackdir %f    %f    \n", attackDirection.x, attackDirection.y);
-	}
+	if (VMath::distance(chtr->getPos(), pos) < 4) {
+		attackTarget = chtr->getPos();
 
+		vProjectile->VProjectileUpdate(attackTarget);
+		
+
+		//attackDirection.Normalize();
+		//printf("attackdir %f    %f    \n", attackTarget.x, attackTarget.y);
+	}
+	
 }

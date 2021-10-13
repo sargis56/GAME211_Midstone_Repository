@@ -21,8 +21,8 @@ private:
 	Mesh* mesh, *meshVProjectile;
 	Shader* shader, *shaderVProjectile;
 	Texture* texture, *textureVProjectile;
-	Vec3 direction, attackDirection;
-	Vec3 desiredPos;
+	Vec3 attackTarget = Vec3(0.0f,0.0f,0.0f);
+	Vec3 direction,desiredPos;
 	Room room;
 	float moveSpeed;
 	VenomProjectile *vProjectile;

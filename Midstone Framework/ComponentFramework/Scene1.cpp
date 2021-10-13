@@ -37,7 +37,7 @@ bool Scene1::OnCreate() {
 	BuildSnake();
 	enemy1 = new SnakeEnemy(ratMeshPtr, shaderPtr, texturePtr, room);
 	enemy1->OnCreate();
-	enemy1->setPos(Vec3(4.0, 4.0, -15.0));
+	enemy1->setPos(Vec3(5.0, 4.0, -15.0));
 	BuildWall();
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
