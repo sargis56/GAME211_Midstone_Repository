@@ -20,7 +20,7 @@ private:
 	Mesh* mesh;
 	Shader* shader;
 	Texture* texture;
-	bool moveOver = true;
+//	bool moveOver = false;
 	float direction;
 	Room room;
 
@@ -36,9 +36,9 @@ public:
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event& event) override;
 
-	inline void setOver(const bool& over_) { moveOver = over_; }
+	//inline void setOver(const bool& over_) { moveOver = over_; }
 
-	bool VProjectileUpdate(Vec3 direction);
+	void VProjectileUpdate(Vec3 direction);
 	bool DamageCheck(Character* character);
 
 	inline Shader* getShader() const { return shader; }
