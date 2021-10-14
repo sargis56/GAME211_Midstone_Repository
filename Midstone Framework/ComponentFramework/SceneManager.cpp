@@ -8,7 +8,11 @@
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
-	fps(60), isRunning(false), fullScreen(false) {}
+	fps(60), isRunning(false), fullScreen(false) {
+	mainStats.setHealth(100.0f);
+	mainStats.setPosition(Vec3(0.0f,0.0f,0.0f));
+	mainStats.setSpeed(0.1f);
+}
 
 SceneManager::~SceneManager() {
 	if (currentScene) {
@@ -44,7 +48,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		return false;
 	}
 	/********************************   Default first scene   ***********************/
-	BuildScene(SCENE1);
+	BuildScene(SCENE0);
 	
 	return true;
 }

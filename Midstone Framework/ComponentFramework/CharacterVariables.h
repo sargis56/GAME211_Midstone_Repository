@@ -10,6 +10,7 @@ private:
 	float speed;
 public:
 	CharacterVariables();
+	CharacterVariables(Vec3 position_, float health_, float speed_);
 	~CharacterVariables();
 
 	inline Vec3 getPosition() const { return position; }
