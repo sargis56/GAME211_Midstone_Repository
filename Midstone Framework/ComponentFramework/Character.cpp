@@ -35,28 +35,28 @@ void Character::Render() const {
 }
 
 void Character::HandleEvents(const SDL_Event& event) {
-	switch (event.key.keysym.scancode) {
-	case SDL_SCANCODE_W:
-		if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1f, pos.z), 0)) { //collision check
-			pos.y = pos.y + 0.1f;
-		}
-		break;
-	case SDL_SCANCODE_D:
-		if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0)) {
-			pos.x = pos.x + 0.1f;
-		}
-		break;
-	case SDL_SCANCODE_A:
-		if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
-			pos.x = pos.x - 0.1f;
-		}
-		break;
-	case SDL_SCANCODE_S:
-		if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1f, pos.z), 0)) {
-			pos.y = pos.y - 0.1f;
-		}
-		break;
-	default:
-		break;
+		switch (event.key.keysym.scancode) {
+		case SDL_SCANCODE_W:
+			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1f, pos.z), 0)) { //collision check
+				pos.y = pos.y + 0.1f;
+			}
+			break;
+		case SDL_SCANCODE_D:
+			if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0)) {
+				pos.x = pos.x + 0.1f;
+			}
+			break;
+		case SDL_SCANCODE_A:
+			if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
+				pos.x = pos.x - 0.1f;
+			}
+			break;
+		case SDL_SCANCODE_S:
+			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1f, pos.z), 0)) {
+				pos.y = pos.y - 0.1f;
+			}
+			break;
+		default:
+			break;
 	}
 }
