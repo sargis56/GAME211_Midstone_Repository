@@ -38,7 +38,7 @@ void Character::HandleEvents(const SDL_Event& event) {
 		switch (event.key.keysym.scancode) {
 		case SDL_SCANCODE_W:
 			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1f, pos.z), 0)) { //collision check
-				pos.y = pos.y + 0.1f;
+				pos.y = pos.y + 0.1f; //adding position
 			}
 			break;
 		case SDL_SCANCODE_D:
