@@ -22,6 +22,7 @@ void SnakeEnemy::BuildVProjectile() {
 }
 
 bool SnakeEnemy::OnCreate() {
+
 	BuildVProjectile();
 	return true; 
 }
@@ -35,7 +36,7 @@ void SnakeEnemy::Update(float deltaTime_) {
 		vProjectile->setOver(false);
 	}*/
 
-	vProjectile->setModelMatrix(MMath::translate(vProjectile->getPos()) * MMath::scale(0.2f, 0.2f, 0.2f));
+	vProjectile->setModelMatrix(MMath::translate(vProjectile->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
 	printf(" %f    %f    \n", vProjectile->getPos().x, vProjectile->getPos().y);
 
 }
@@ -69,7 +70,7 @@ bool SnakeEnemy::DamageCheck(Character* character) {
 
 float SnakeEnemy::FollowPlayer(Character* character)
 {
-	if (VMath::distance(character->getPos(), pos) < 6) {
+	if (VMath::distance(character->getPos(), pos) < agroRange) {
 		direction = character->getPos() - pos;
 		float angle = atan2(direction.y, direction.x) * RADIANS_TO_DEGREES; //Calculate the angle (in DEGREES) between player and enemy
 		//this->setModelMatrix(this->getModelMatrix() * MMath::rotate(angle, Vec3(0.0f, 0.0f, 1.0f)) //Rotate the modelMatrix by the angle of rotation to face player
@@ -95,10 +96,13 @@ void SnakeEnemy::AttackPlayer(Character* chtr) {
 
 		attackTarget = Vec3(chtr->getPos().x, chtr->getPos().y, 0);
 
-		if (vProjectile->VProjectileUpdate(attackTarget)) {
-			vProjectile->setPos(getPos());
-			vProjectile->setOver(false);
+		vProjectile->VProjectileUpdate(attackTarget);
+		if (vProjectile->getPos().x && vProjectile->getPos().y == chtr->getPos().x && chtr->getPos().y)
+		{
+			vProjectile->setPos(pos);
+			
 		}
+
 
 		
 		//printf("attackdir %f    %f    \n", attackTarget.x, attackTarget.y);

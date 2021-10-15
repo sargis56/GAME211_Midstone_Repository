@@ -21,10 +21,11 @@ private:
 	Mesh* mesh, *meshVProjectile;
 	Shader* shader, *shaderVProjectile;
 	Texture* texture, *textureVProjectile;
-	Vec3 attackTarget = Vec3(0.0f,0.0f,0.0f);
+	Vec3 attackTarget;
 	Vec3 direction,desiredPos;
 	Room room;
 	float moveSpeed;
+	float agroRange = 6.0f;
 	VenomProjectile *vProjectile;
 
 public:
