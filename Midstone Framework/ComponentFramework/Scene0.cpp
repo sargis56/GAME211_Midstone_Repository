@@ -90,8 +90,9 @@ void Scene0::Update(const float deltaTime) {
 	character->Update(deltaTime);
 	enemy1->Update(deltaTime);
 	if (enemy1->DamageCheck(character)) {
-		printf("DMG\n");
+		//printf("DMG\n");
 	}
+	printf("EVENT::TINK\n");
 	//printf("%f\n", health);
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f,0.5f,0.5f));
