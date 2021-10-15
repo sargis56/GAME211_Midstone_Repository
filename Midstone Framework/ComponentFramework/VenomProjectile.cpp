@@ -44,22 +44,15 @@ void VenomProjectile::HandleEvents(const SDL_Event& event) {
 
 bool VenomProjectile::VProjectileUpdate(Vec3 target) {
 
-
-	float speed = 0.04f;
-
-	Vec3 normalDir = target;
-	normalDir.Normalize();
+	//float speed = 0.04f;
+	//Vec3 normalDir = target;
+	//normalDir.Normalize();
 	//pos += (normalDir * speed);
-
-	pos = VMath::lerp(pos, target, 0.05 * speed);
-
-
-
-	if (pos.x && pos.y == target.x && target.y)
-	{
-		moveOver = true;
-	}
-
+	////pos = VMath::lerp(pos, target, 0.05 * speed);
+	//if (pos.x && pos.y == target.x && target.y)
+	//{
+	//	moveOver = true;
+	//}
 	
 	//desiredPos = direction;
 	if (pos != target) { //if the desired pos is not reached continue to move

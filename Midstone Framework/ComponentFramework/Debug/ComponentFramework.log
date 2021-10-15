@@ -1,8 +1,6 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ComponentFramework.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  VenomProjectile.cpp
+  SnakeEnemy.cpp
 C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\VenomProjectile.cpp(54,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\VenomProjectile.cpp(83,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\VenomProjectile.cpp(91,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SnakeEnemy.cpp(90,24): warning C4305: 'initializing': truncation from 'double' to 'float'
   ComponentFramework.vcxproj -> C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe
