@@ -1,11 +1,10 @@
 #ifndef SCENE_H
 #define SCENE_H
 #include "SceneManager.h"
-#include "CharacterVariables.h"
 union SDL_Event;
 class Scene {
 public:
-	explicit Scene() {}
+	explicit Scene() { storedHealth = NULL; }
 	virtual ~Scene() {}
 
 	virtual bool OnCreate() = 0;
@@ -14,9 +13,9 @@ public:
 	virtual void Render() const  = 0 ;
 	virtual void HandleEvents(const SDL_Event &sdlEvent) = 0;
 	//Stat Functions
-	virtual CharacterVariables setCharacterVariables() = 0;
-	virtual void getCharacterVariables(const CharacterVariables stats_) = 0;
+	virtual float setCharacterVariables() = 0;
+	virtual void getCharacterVariables(const float storedHealth) = 0;
 protected:
-	CharacterVariables storedStats;
+	float storedHealth;
 };
 #endif

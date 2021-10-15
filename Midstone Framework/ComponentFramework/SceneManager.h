@@ -1,6 +1,5 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
-#include "CharacterVariables.h"
 #include <string>
 class SceneManager  {
 public:
@@ -37,7 +36,7 @@ private:
 	void BuildScene(SCENE_NUMBER scene_);
 
 	//characterStats
-	CharacterVariables mainStats;
+	float mainHealth;
 };
 
 

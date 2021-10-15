@@ -144,9 +144,6 @@
     <ClCompile Include="Button.cpp">
       <Filter>Source Files\TitleScreenObjects</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterVariables.cpp">
-      <Filter>Source Files\GameVariables</Filter>
-    </ClCompile>
     <ClCompile Include="VenomProjectile.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
@@ -265,9 +262,6 @@
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Header Files\TitleScreenObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterVariables.h">
-      <Filter>Header Files\GameVariables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -35,8 +35,8 @@ public:
 
 	void BuildButtons();
 
-	virtual CharacterVariables setCharacterVariables() override;
-	virtual void getCharacterVariables(const CharacterVariables stats_) override;
+	virtual float setCharacterVariables() override;
+	virtual void getCharacterVariables(const float stats_) override;
 };
 
 

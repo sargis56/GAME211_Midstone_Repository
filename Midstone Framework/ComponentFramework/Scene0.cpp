@@ -45,7 +45,7 @@ bool Scene0::OnCreate() {
 	wall4 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	BuildFloor();
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
-	speed = 50;
+	//health = 50;
 	return true;
 }
 
@@ -78,12 +78,12 @@ void Scene0::BuildFloor() {
 	floorTexture->LoadImage("textures/floor.jpg");
 }
 
-CharacterVariables Scene0::setCharacterVariables() {
-	return character->getCharacterVariables();
+float Scene0::setCharacterVariables() {
+	return health;
 }
 
-void Scene0::getCharacterVariables(const CharacterVariables stats_) {
-	//character->setCharacterVariables(stats_);
+void Scene0::getCharacterVariables(const float stats_) {
+	health = stats_;
 }
 
 void Scene0::Update(const float deltaTime) {
@@ -92,7 +92,7 @@ void Scene0::Update(const float deltaTime) {
 	if (enemy1->DamageCheck(character)) {
 		printf("DMG\n");
 	}
-	//printf("%f\n", speed);
+	//printf("%f\n", health);
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f,0.5f,0.5f));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));

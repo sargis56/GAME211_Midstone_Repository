@@ -23,7 +23,7 @@ private:
 	StaticMesh* wall1, *wall2, *wall3, *wall4, *floor;
 	//DemoObject* demoObject;
 	Vec3 light1;
-	float speed;
+	float health;
 
 	Mesh* meshPtr, *ratMeshPtr, *boxMesh;
 	Shader* shaderPtr;
@@ -46,8 +46,8 @@ public:
 	void BuildWall();
 	void BuildFloor();
 
-	virtual CharacterVariables setCharacterVariables() override;
-	virtual void getCharacterVariables(const CharacterVariables stats_) override;
+	virtual float setCharacterVariables() override;
+	virtual void getCharacterVariables(const float stats_) override;
 };
 
 

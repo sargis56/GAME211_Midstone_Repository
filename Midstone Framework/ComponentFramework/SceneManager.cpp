@@ -9,9 +9,6 @@
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
 	fps(60), isRunning(false), fullScreen(false) {
-	mainStats.setHealth(100.0f);
-	mainStats.setPosition(Vec3(0.0f,0.0f,0.0f));
-	mainStats.setSpeed(0.1f);
 }
 
 SceneManager::~SceneManager() {
@@ -112,7 +109,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	bool status; 
 	if (currentScene != nullptr) {
 		//saving the speed of the player before the scene is destroyed
-		mainStats = currentScene->setCharacterVariables();
+		mainHealth = currentScene->setCharacterVariables();
 		delete currentScene;
 		currentScene = nullptr;
 	}
@@ -121,7 +118,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	case SCENE0:  
 		currentScene = new Scene0();
 		//sending the speed back to the new scene
-		currentScene->getCharacterVariables(mainStats);
+		currentScene->getCharacterVariables(mainHealth);
 		status = currentScene->OnCreate();
 		break;
 	case TITLESCREEN:

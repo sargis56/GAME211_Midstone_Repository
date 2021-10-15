@@ -128,7 +128,6 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
-    <ClCompile Include="CharacterVariables.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="GameObject.h" />
     <ClCompile Include="DemoObject.cpp" />
@@ -165,7 +164,6 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
-    <ClInclude Include="CharacterVariables.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DemoObject.h" />
     <ClInclude Include="MageTurretEnemy.h" />
