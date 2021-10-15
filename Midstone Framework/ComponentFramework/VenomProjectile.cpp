@@ -42,26 +42,28 @@ void VenomProjectile::HandleEvents(const SDL_Event& event) {
 } /// Just a stub
 
 
-bool VenomProjectile::VProjectileUpdate(Vec3 targetDir) {
+bool VenomProjectile::VProjectileUpdate(Vec3 target) {
 
 
 	float speed = 0.04f;
 
-	Vec3 normalDir = targetDir;
+	Vec3 normalDir = target;
 	normalDir.Normalize();
-	pos += (normalDir * speed);
+	//pos += (normalDir * speed);
+
+	pos = VMath::lerp(pos, target, 0.05 * speed);
 
 
 
-	if (pos.x && pos.y == targetDir.x && targetDir.y)
+	if (pos.x && pos.y == target.x && target.y)
 	{
 		moveOver = true;
 	}
 
 	
 	//desiredPos = direction;
-	if (pos != targetDir) { //if the desired pos is not reached continue to move
-		if (pos.x < targetDir.x) {
+	if (pos != target) { //if the desired pos is not reached continue to move
+		if (pos.x < target.x) {
 			if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0)) { //Collision check
 				pos.x = pos.x + 0.05f;
 			}
@@ -69,7 +71,7 @@ bool VenomProjectile::VProjectileUpdate(Vec3 targetDir) {
 				moveOver = true;
 			}
 		}
-		else if (pos.x > targetDir.x) {
+		else if (pos.x > target.x) {
 			if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
 				pos.x = pos.x - 0.05f;
 			}
@@ -77,7 +79,7 @@ bool VenomProjectile::VProjectileUpdate(Vec3 targetDir) {
 				moveOver = true;
 			}
 		}
-		else if (pos.y < targetDir.y) {
+		else if (pos.y < target.y) {
 			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1, pos.z), 0)) {
 				pos.y = pos.y + 0.05f;
 			}
@@ -85,7 +87,7 @@ bool VenomProjectile::VProjectileUpdate(Vec3 targetDir) {
 				moveOver = true;
 			}
 		}
-		else if (pos.y > targetDir.y) {
+		else if (pos.y > target.y) {
 			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1, pos.z), 0)) {
 				pos.y = pos.y - 0.05f;
 			}

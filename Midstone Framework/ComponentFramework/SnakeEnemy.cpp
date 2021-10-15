@@ -93,16 +93,12 @@ void SnakeEnemy::MoveEnemy() {
 
 void SnakeEnemy::AttackPlayer(Character* chtr) {
 
-	Vec3 projectileSpawn = pos;
-	Vec3 targetPos = Vec3(chtr->getPos().x, chtr->getPos().y, 0);
 
 	if (VMath::distance(chtr->getPos(), pos) < 4) {
-		attackTarget = chtr->getPos();
+		attackTarget = Vec3(chtr->getPos().x, chtr->getPos().y, 0);
 
 		vProjectile->VProjectileUpdate(attackTarget);
 		
-
-		//attackDirection.Normalize();
 		//printf("attackdir %f    %f    \n", attackTarget.x, attackTarget.y);
 	}
 	
