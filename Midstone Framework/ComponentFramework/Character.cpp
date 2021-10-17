@@ -35,28 +35,98 @@ void Character::Render() const {
 }
 
 void Character::HandleEvents(const SDL_Event& event) {
-		switch (event.key.keysym.scancode) {
-		case SDL_SCANCODE_W:
-			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1f, pos.z), 0)) { //collision check
-				pos.y = pos.y + 0.1f; //adding position
+	//	switch (event.key.keysym.scancode) {
+	//	case SDL_SCANCODE_W:
+	//		if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1f, pos.z), 0)) { //collision check
+	//			pos.y = pos.y + 0.1f; //adding position
+	//		}
+	//		break;
+	//	case SDL_SCANCODE_D:
+	//		if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0)) {
+	//			pos.x = pos.x + 0.1f;
+	//		}
+	//		break;
+	//	case SDL_SCANCODE_A:
+	//		if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
+	//			pos.x = pos.x - 0.1f;
+	//		}
+	//		break;
+	//	case SDL_SCANCODE_S:
+	//		if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1f, pos.z), 0)) {
+	//			pos.y = pos.y - 0.1f;
+	//		}
+	//		break;
+	//	default:
+	//		break;
+	//}
+
+		if (event.type == SDL_KEYDOWN)
+		{
+			switch (event.key.keysym.scancode) {
+			case SDL_SCANCODE_W:
+				keyUp = true;
+				break;
+			case SDL_SCANCODE_D:
+				keyR = true;
+				break;
+			case SDL_SCANCODE_A:
+				keyL = true;
+				break;
+			case SDL_SCANCODE_S:
+				keyDown = true;
+				break;
+			default:
+				break;
 			}
-			break;
-		case SDL_SCANCODE_D:
-			if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0)) {
-				pos.x = pos.x + 0.1f;
+		}
+
+		if (event.type == SDL_KEYUP)
+		{
+			switch (event.key.keysym.scancode) {
+			case SDL_SCANCODE_W:
+				keyUp = false;
+				break;
+			case SDL_SCANCODE_D:
+				keyR = false;
+				break;
+
+			case SDL_SCANCODE_A:
+				keyL = false;
+				break;
+			case SDL_SCANCODE_S:
+				keyDown = false;
+				break;
+			default:
+				break;
 			}
-			break;
-		case SDL_SCANCODE_A:
-			if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
-				pos.x = pos.x - 0.1f;
+		}
+
+		if (keyUp == true)
+		{
+			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + speed, pos.z), 0)) { //collision check
+				pos.y = pos.y + speed; //adding position
 			}
-			break;
-		case SDL_SCANCODE_S:
-			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1f, pos.z), 0)) {
-				pos.y = pos.y - 0.1f;
+		}
+		
+
+		if (keyR == true)
+		{
+			if (room.InsideCollisionPosX(Vec3(pos.x + speed, pos.y, pos.z), 0)) {
+				pos.x = pos.x + speed;
 			}
-			break;
-		default:
-			break;
-	}
+		}
+
+		if (keyL == true)
+		{
+			if (room.InsideCollisionNegX(Vec3(pos.x - speed, pos.y, pos.z), 0)) {
+				pos.x = pos.x - speed;
+			}
+		}
+
+		if (keyDown == true)
+		{
+			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - speed, pos.z), 0)) {
+				pos.y = pos.y - speed;
+			}
+		}
 }

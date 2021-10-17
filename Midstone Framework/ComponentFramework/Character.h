@@ -20,6 +20,8 @@ private:
 	Shader* shader;
 	Texture* texture;
 	Room room;
+	bool keyR = false, keyL = false, keyUp = false, keyDown = false;
+	float speed = 0.1;
 public:
 	Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//Character(Character* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
