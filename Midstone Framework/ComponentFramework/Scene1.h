@@ -27,7 +27,7 @@ private:
 
 	Mesh* meshPtr, *ratMeshPtr, *boxMesh;
 	Shader* shaderPtr;
-	Texture* texturePtr, *wallTexture, *floorTexture;
+	Texture* texturePtr, * wallTexture, * floorTexture, * ratTexture;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
 	Room room;

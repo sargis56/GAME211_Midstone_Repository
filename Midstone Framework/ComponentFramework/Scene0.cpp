@@ -35,7 +35,7 @@ bool Scene0::OnCreate() {
 	}
 	character->setPos(Vec3(0.0, 0.0, -15.0));
 	BuildRat();
-	enemy1 = new MageTurretEnemy(ratMeshPtr, shaderPtr, texturePtr, room);
+	enemy1 = new MageTurretEnemy(ratMeshPtr, shaderPtr, turretTexture, room);
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(0.0, 0.5, -15.0));
 	BuildWall();
@@ -62,8 +62,10 @@ void Scene0::BuildCharacter() {
 }
 
 void Scene0::BuildRat() {
-	ObjLoader::loadOBJ("meshes/Skull.obj");
+	ObjLoader::loadOBJ("meshes/Enemies/MagicTurret.obj");
 	ratMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	turretTexture = new Texture();
+	turretTexture->LoadImage("textures/Enemies/Turret_Texture.jpg");
 }
 
 void Scene0::BuildWall() {

@@ -1,4 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ComponentFramework.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Character.cpp
+  Scene0.cpp
 C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(24,14): warning C4305: 'initializing': truncation from 'double' to 'float'
   ComponentFramework.vcxproj -> C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe

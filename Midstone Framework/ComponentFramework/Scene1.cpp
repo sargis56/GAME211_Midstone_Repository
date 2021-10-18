@@ -35,7 +35,7 @@ bool Scene1::OnCreate() {
 	}
 	character->setPos(Vec3(0.0, 0.0, -15.0));
 	BuildSnake();
-	enemy1 = new SnakeEnemy(ratMeshPtr, shaderPtr, texturePtr, room);
+	enemy1 = new SnakeEnemy(ratMeshPtr, shaderPtr, ratTexture, room);
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(5.0, 4.0, -15.0));
 	BuildWall();
@@ -62,8 +62,10 @@ void Scene1::BuildCharacter() {
 }
 
 void Scene1::BuildSnake() {
-	ObjLoader::loadOBJ("meshes/Skull.obj");
+	ObjLoader::loadOBJ("meshes/Enemies/Rat.obj");
 	ratMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	ratTexture = new Texture();
+	ratTexture->LoadImage("textures/Enemies/Rat_Texture.jpg");
 }
 
 void Scene1::BuildWall() {

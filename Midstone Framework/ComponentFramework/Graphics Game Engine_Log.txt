@@ -4,3 +4,5 @@
 [INFO]: Graphics card name NVIDIA GeForce GTX 1060 3GB/PCIe/SSE2
 [INFO]: GLSL Version 4.60 NVIDIA
 [INFO]: Created Scene0: 
+[INFO]: Created Scene0: 
+[INFO]: Deleting the GameSceneManager
