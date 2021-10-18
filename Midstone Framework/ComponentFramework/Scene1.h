@@ -5,6 +5,7 @@
 #include "Matrix.h"
 #include "Character.h"
 #include "SnakeEnemy.h"
+#include "DemonEnemy.h"
 #include "Room.h"
 #include "StaticMesh.h"
 using namespace MATH;
@@ -20,14 +21,15 @@ class Scene1 : public Scene {
 private:
 	Character* character;
 	SnakeEnemy* enemy1;
+	DemonEnemy* enemyDemon0;
 	StaticMesh* wall1, *wall2, *wall3, *wall4, *floor;
 	//DemoObject* demoObject;
 	Vec3 light1;
 	float health;
 
-	Mesh* meshPtr, *ratMeshPtr, *boxMesh;
+	Mesh* meshPtr, *ratMeshPtr, * demonMeshPtr, *boxMesh;
 	Shader* shaderPtr;
-	Texture* texturePtr, * wallTexture, * floorTexture, * ratTexture;
+	Texture* texturePtr, * wallTexture, * floorTexture, * ratTexture, * demonTexture;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
 	Room room;
@@ -43,6 +45,7 @@ public:
 
 	void BuildCharacter();
 	void BuildSnake();
+	void BuildDemon();
 	void BuildWall();
 	void BuildFloor();
 

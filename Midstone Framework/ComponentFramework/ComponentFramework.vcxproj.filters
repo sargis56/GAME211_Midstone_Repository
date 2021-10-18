@@ -150,6 +150,9 @@
     <ClCompile Include="ArcherEnemy.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="DemonEnemy.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -267,6 +270,9 @@
       <Filter>Header Files\TitleScreenObjects</Filter>
     </ClInclude>
     <ClInclude Include="ArcherEnemy.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DemonEnemy.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

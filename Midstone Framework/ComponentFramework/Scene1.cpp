@@ -38,6 +38,12 @@ bool Scene1::OnCreate() {
 	enemy1 = new SnakeEnemy(ratMeshPtr, shaderPtr, ratTexture, room);
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(5.0, 4.0, -15.0));
+
+	BuildDemon();
+	enemyDemon0 = new DemonEnemy(demonMeshPtr, shaderPtr, demonTexture, room);
+	enemyDemon0->OnCreate();
+	enemyDemon0->setPos(Vec3(5.0, -4.0, -15.0));
+
 	BuildWall();
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
@@ -61,11 +67,18 @@ void Scene1::BuildCharacter() {
 	texturePtr->LoadImage("textures/skull_texture.jpg");
 }
 
-void Scene1::BuildSnake() {
+void Scene1::BuildSnake() { 
 	ObjLoader::loadOBJ("meshes/Enemies/Rat.obj");
 	ratMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	ratTexture = new Texture();
 	ratTexture->LoadImage("textures/Enemies/Rat_Texture.jpg");
+}
+
+void Scene1::BuildDemon() {
+	ObjLoader::loadOBJ("meshes/Enemies/Demon.obj");
+	demonMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	demonTexture = new Texture();
+	demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
 }
 
 void Scene1::BuildWall() {
@@ -91,14 +104,24 @@ void Scene1::getCharacterVariables(const float stats_) {
 void Scene1::Update(const float deltaTime) {
 	character->Update(deltaTime);
 	enemy1->Update(deltaTime);
+	enemyDemon0->Update(deltaTime);
+
 	float enemyRot = enemy1->FollowPlayer(character);
+	float enemyRot1 = enemyDemon0->FollowPlayer(character);
+
 	if (enemy1->DamageCheck(character)) {
 		printf("DMG\n");
 	}
+	if (enemyDemon0->DamageCheck(character)) {
+		printf("DMG\n");
+	}
+
 	//printf("%f\n", health);
 	character->setModelMatrix(MMath::translate(character->getPos()));
 
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::rotate(enemyRot, Vec3(0.0f, 0.0f, 1.0f)) * MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f)) * MMath::scale(0.5f, 0.5f, 0.5f));
+	enemyDemon0->setModelMatrix(MMath::translate(enemyDemon0->getPos()) * MMath::rotate(enemyRot1, Vec3(0.0f, 0.0f, 1.0f)) * MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f)) * MMath::scale(0.5f, 0.5f, 0.5f));
+
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
@@ -129,6 +152,7 @@ void Scene1::Render() const {
 
 	character->Render();
 	enemy1->Render();
+	enemyDemon0->Render();
 	wall1->Render();
 	wall2->Render();
 	wall3->Render();
@@ -144,6 +168,7 @@ void Scene1::OnDestroy() {
 	if (shaderPtr) delete shaderPtr, shaderPtr = nullptr;
 	if (character) delete character, character = nullptr;
 	if (enemy1) delete enemy1, enemy1 = nullptr;
+	if (enemyDemon0) delete enemyDemon0, enemyDemon0 = nullptr;
 	if (wall1) delete wall1, wall1 = nullptr;
 	if (wall2) delete wall2, wall2 = nullptr;
 	if (wall3) delete wall3, wall3 = nullptr;

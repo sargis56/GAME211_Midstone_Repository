@@ -130,6 +130,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="DemonEnemy.cpp" />
     <ClCompile Include="GameObject.h" />
     <ClCompile Include="DemoObject.cpp" />
     <ClCompile Include="MageTurretEnemy.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="DemonEnemy.h" />
     <ClInclude Include="DemoObject.h" />
     <ClInclude Include="MageTurretEnemy.h" />
     <ClInclude Include="Matrix2.h" />
