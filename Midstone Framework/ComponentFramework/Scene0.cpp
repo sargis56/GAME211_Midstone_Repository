@@ -35,9 +35,13 @@ bool Scene0::OnCreate() {
 	}
 	character->setPos(Vec3(0.0, 0.0, -15.0));
 	BuildRat();
+<<<<<<< Updated upstream
 	enemy1 = new MageTurretEnemy(ratMeshPtr, shaderPtr, turretTexture, room);
+=======
+	enemy1 = new ArcherEnemy(ratMeshPtr, shaderPtr, texturePtr, room, character);
+>>>>>>> Stashed changes
 	enemy1->OnCreate();
-	enemy1->setPos(Vec3(0.0, 0.5, -15.0));
+	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
 	BuildWall();
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
@@ -94,7 +98,7 @@ void Scene0::Update(const float deltaTime) {
 	if (enemy1->DamageCheck(character)) {
 		//printf("DMG\n");
 	}
-	printf("EVENT::TINK\n");
+	//printf("EVENT::TINK\n");
 	//printf("%f\n", health);
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f,0.5f,0.5f));
