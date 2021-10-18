@@ -35,11 +35,7 @@ bool Scene0::OnCreate() {
 	}
 	character->setPos(Vec3(0.0, 0.0, -15.0));
 	BuildRat();
-<<<<<<< Updated upstream
 	enemy1 = new MageTurretEnemy(ratMeshPtr, shaderPtr, turretTexture, room);
-=======
-	enemy1 = new ArcherEnemy(ratMeshPtr, shaderPtr, texturePtr, room, character);
->>>>>>> Stashed changes
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
 	BuildWall();
