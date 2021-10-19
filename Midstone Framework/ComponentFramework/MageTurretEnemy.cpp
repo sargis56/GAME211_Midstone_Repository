@@ -18,7 +18,7 @@ void MageTurretEnemy::BuildProjectile() {
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
 	textureProjectile->LoadImage("textures/skull_texture.jpg");
-	projectile1 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos);
+	projectile1 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos);//setting up the projectile classes
 	projectile2 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos);
 	projectile3 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos);
 	projectile4 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos);
@@ -76,8 +76,12 @@ void MageTurretEnemy::HandleEvents(const SDL_Event& event) {
 	
 } /// Just a stub
 
-bool MageTurretEnemy::DamageCheck(Character* character) {
-	if (VMath::distance(character->getPos(), pos) < 1) {
+bool MageTurretEnemy::DamageCheck(Character* character) { //function to detect dmg
+	projectile1->DamageCheck(character);//check dmg of projectile
+	projectile2->DamageCheck(character);
+	projectile3->DamageCheck(character);
+	projectile4->DamageCheck(character);
+	if (VMath::distance(character->getPos(), pos) < 1) { //if the enemy is overlaping the player
 		return true;
 	}
 	else {

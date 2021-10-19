@@ -36,6 +36,7 @@ public:
 	inline Texture* getTexture() const { return texture; }
 	//inline CharacterVariables getCharacterVariables() const { return stats; }
 	//inline void setCharacterVariables(const CharacterVariables stats_) { stats = stats_; }
+	inline void setSpeed(const float setSpeed_) { speed = setSpeed_; }
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }

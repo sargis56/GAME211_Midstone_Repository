@@ -56,25 +56,26 @@ void TeslaTowerEnemy::HandleEvents(const SDL_Event& event) {
 	
 } /// Just a stub
 
-Vec3 TeslaTowerEnemy::GenerateProjectileDirection() {
-	if (character->getPos().x <= 0) {
-		projectileDestination.x = -100.0f;
+Vec3 TeslaTowerEnemy::GenerateProjectileDirection() { //generate a new direction for the projectile
+	if (character->getPos().x <= 0) { //if the pos is in the negative quadrant
+		projectileDestination.x = -100.0f; //set the destination on x to the negative edge
 	}
 	else {
-		projectileDestination.x = 100.0f;
+		projectileDestination.x = 100.0f; //else set the destination on x to the postive edge
 	}
 	if (character->getPos().y <= 0) {
-		projectileDestination.y = -100.0f;
+		projectileDestination.y = -100.0f;//set the destination on y to the negative edge
 	}
 	else {
-		projectileDestination.y = 100.0f;
+		projectileDestination.y = 100.0f;//else set the destination on y to the postive edge
 	}
-	projectileDestination.z = character->getPos().z;
+	projectileDestination.z = character->getPos().z; //default the z component
 	return projectileDestination;
 }
 
-bool TeslaTowerEnemy::DamageCheck(Character* character) {
-	if (VMath::distance(character->getPos(), pos) < 1) {
+bool TeslaTowerEnemy::DamageCheck(Character* character) { //function to detect dmg
+	projectile->DamageCheck(character);//check dmg of projectile
+	if (VMath::distance(character->getPos(), pos) < 1) { //if the enemy is overlaping the player
 		return true;
 	}
 	else {

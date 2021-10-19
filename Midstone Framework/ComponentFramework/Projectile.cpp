@@ -39,7 +39,7 @@ void Projectile::HandleEvents(const SDL_Event& event) {
 	
 } /// Just a stub
 
-bool Projectile::ProjectileUpdate4Axis(Vec3 direction) {
+bool Projectile::ProjectileUpdate4Axis(Vec3 direction) { //moves projectile towards the direction vector
 	//desiredPos = direction;
 	if (pos != direction) { //if the desired pos is not reached continue to move
 		if (pos.x < direction.x) {
@@ -51,26 +51,26 @@ bool Projectile::ProjectileUpdate4Axis(Vec3 direction) {
 			}
 		}
 		else if (pos.x > direction.x) {
-			if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
+			if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) { //Collision check
 				pos.x = pos.x - 0.05f;
 			}
-			else {
+			else { //If moving in a wall, reset the Projectile
 				moveOver = true;
 			}
 		}
 		else if (pos.y < direction.y) {
-			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1, pos.z), 0)) {
+			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1, pos.z), 0)) { //Collision check
 				pos.y = pos.y + 0.05f;
 			}
-			else {
+			else { //If moving in a wall, reset the Projectile
 				moveOver = true;
 			}
 		}
 		else if (pos.y > direction.y) {
-			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1, pos.z), 0)) {
+			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1, pos.z), 0)) { //Collision check
 				pos.y = pos.y - 0.05f;
 			}
-			else {
+			else { //If moving in a wall, reset the Projectile
 				moveOver = true;
 			}
 		}
@@ -78,7 +78,7 @@ bool Projectile::ProjectileUpdate4Axis(Vec3 direction) {
 	return moveOver;
 }
 
-bool Projectile::ProjectileUpdate8Axis(Vec3 direction) {
+bool Projectile::ProjectileUpdate8Axis(Vec3 direction) { // same function as above but with 8 axises of movement
 	//desiredPos = direction;
 	if (pos != direction) { //if the desired pos is not reached continue to move
 		if (pos.x < direction.x) {
@@ -90,26 +90,26 @@ bool Projectile::ProjectileUpdate8Axis(Vec3 direction) {
 			}
 		}
 		if (pos.x > direction.x) {
-			if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
+			if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) { //Collision check
 				pos.x = pos.x - 0.05f;
 			}
-			else {
+			else { //If moving in a wall, reset the Projectile
 				moveOver = true;
 			}
 		}
 		if (pos.y < direction.y) {
-			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1, pos.z), 0)) {
+			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1, pos.z), 0)) { //Collision check
 				pos.y = pos.y + 0.05f;
 			}
-			else {
+			else { //If moving in a wall, reset the Projectile
 				moveOver = true;
 			}
 		}
 		if (pos.y > direction.y) {
-			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1, pos.z), 0)) {
+			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1, pos.z), 0)) { //Collision check
 				pos.y = pos.y - 0.05f;
 			}
-			else {
+			else { //If moving in a wall, reset the Projectile
 				moveOver = true;
 			}
 		}
@@ -117,9 +117,9 @@ bool Projectile::ProjectileUpdate8Axis(Vec3 direction) {
 	return moveOver;
 }
 
-bool Projectile::DamageCheck(Character* character) {
-	if (VMath::distance(character->getPos(), pos) < 0.5) {
-		return true;
+bool Projectile::DamageCheck(Character* character) { //function to detect dmg
+	if (VMath::distance(character->getPos(), pos) < 0.5) { //if the projectile is overlapping player
+		return true; 
 	}
 	else {
 		return false;
