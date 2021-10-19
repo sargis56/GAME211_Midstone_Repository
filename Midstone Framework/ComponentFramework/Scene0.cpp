@@ -33,9 +33,9 @@ bool Scene0::OnCreate() {
 		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
 		return false;
 	}
-	character->setPos(Vec3(0.0, 0.0, -15.0));
+	character->setPos(Vec3(1.0, 0.0, -15.0));
 	BuildRat();
-	enemy1 = new MageTurretEnemy(ratMeshPtr, shaderPtr, turretTexture, room);
+	enemy1 = new TeslaTowerEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
 	BuildWall();

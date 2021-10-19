@@ -32,19 +32,19 @@ bool MageTurretEnemy::OnCreate() {
 }
 void MageTurretEnemy::OnDestroy() {}				  /// Just a stub
 void MageTurretEnemy::Update(float deltaTime_) {
-	if (projectile1->ProjectileUpdate(Vec3(projectile1->getPos().x,100,0))){ // so once it hits the wall
+	if (projectile1->ProjectileUpdate4Axis(Vec3(projectile1->getPos().x,100,0))){ // so once it hits the wall
 		projectile1->setPos(pos); //the pos is reset to the pos of the enemy
 		projectile1->setOver(false); //and the moveOver is reset
 	}
-	if (projectile2->ProjectileUpdate(Vec3(projectile1->getPos().x, -100, 0))) {
+	if (projectile2->ProjectileUpdate4Axis(Vec3(projectile1->getPos().x, -100, 0))) {
 		projectile2->setPos(pos);
 		projectile2->setOver(false);
 	}
-	if (projectile3->ProjectileUpdate(Vec3(100, projectile1->getPos().y, 0))) {
+	if (projectile3->ProjectileUpdate4Axis(Vec3(100, projectile1->getPos().y, 0))) {
 		projectile3->setPos(pos);
 		projectile3->setOver(false);
 	}
-	if (projectile4->ProjectileUpdate(Vec3(-100, projectile1->getPos().y, 0))) {
+	if (projectile4->ProjectileUpdate4Axis(Vec3(-100, projectile1->getPos().y, 0))) {
 		projectile4->setPos(pos);
 		projectile4->setOver(false);
 	}

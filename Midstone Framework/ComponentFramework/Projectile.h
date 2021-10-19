@@ -35,7 +35,8 @@ public:
 
 	inline void setOver(const bool& over_) { moveOver = over_; }
 
-	bool ProjectileUpdate(Vec3 direction);
+	bool ProjectileUpdate4Axis(Vec3 direction);
+	bool ProjectileUpdate8Axis(Vec3 direction);
 	bool DamageCheck(Character* character);
 
 	inline Shader* getShader() const { return shader; }

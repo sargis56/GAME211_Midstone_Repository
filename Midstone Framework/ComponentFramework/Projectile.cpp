@@ -39,7 +39,7 @@ void Projectile::HandleEvents(const SDL_Event& event) {
 	
 } /// Just a stub
 
-bool Projectile::ProjectileUpdate(Vec3 direction) {
+bool Projectile::ProjectileUpdate4Axis(Vec3 direction) {
 	//desiredPos = direction;
 	if (pos != direction) { //if the desired pos is not reached continue to move
 		if (pos.x < direction.x) {
@@ -67,6 +67,45 @@ bool Projectile::ProjectileUpdate(Vec3 direction) {
 			}
 		}
 		else if (pos.y > direction.y) {
+			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1, pos.z), 0)) {
+				pos.y = pos.y - 0.05f;
+			}
+			else {
+				moveOver = true;
+			}
+		}
+	}
+	return moveOver;
+}
+
+bool Projectile::ProjectileUpdate8Axis(Vec3 direction) {
+	//desiredPos = direction;
+	if (pos != direction) { //if the desired pos is not reached continue to move
+		if (pos.x < direction.x) {
+			if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0)) { //Collision check
+				pos.x = pos.x + 0.05f;
+			}
+			else { //If moving in a wall, reset the Projectile
+				moveOver = true;
+			}
+		}
+		if (pos.x > direction.x) {
+			if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
+				pos.x = pos.x - 0.05f;
+			}
+			else {
+				moveOver = true;
+			}
+		}
+		if (pos.y < direction.y) {
+			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1, pos.z), 0)) {
+				pos.y = pos.y + 0.05f;
+			}
+			else {
+				moveOver = true;
+			}
+		}
+		if (pos.y > direction.y) {
 			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1, pos.z), 0)) {
 				pos.y = pos.y - 0.05f;
 			}

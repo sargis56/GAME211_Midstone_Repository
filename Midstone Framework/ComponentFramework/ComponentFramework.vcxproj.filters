@@ -147,7 +147,7 @@
     <ClCompile Include="VenomProjectile.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="ArcherEnemy.cpp">
+    <ClCompile Include="TeslaTowerEnemy.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="DemonEnemy.cpp">
@@ -269,7 +269,7 @@
     <ClInclude Include="Button.h">
       <Filter>Header Files\TitleScreenObjects</Filter>
     </ClInclude>
-    <ClInclude Include="ArcherEnemy.h">
+    <ClInclude Include="TeslaTowerEnemy.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="DemonEnemy.h">
