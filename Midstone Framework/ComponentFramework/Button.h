@@ -22,6 +22,7 @@ private:
 	Texture* texture;
 	Vec3 pos1, pos2;
 	int function;
+	int sceneNumber = 0;
 public:
 	Button(Mesh* mesh_, Shader* shader_, Texture* texture_, int function_, Vec3 pos1_, Vec3 pos2_);
 	~Button();
@@ -31,7 +32,7 @@ public:
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event& event) override;
 
-
+	inline int getScene() const { return sceneNumber; }
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }

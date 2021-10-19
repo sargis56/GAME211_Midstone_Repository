@@ -9,6 +9,7 @@ public:
 	void Run();
 	bool Initialize(std::string name_, int width_, int height_);
 	void GetEvents();
+	void SwitchScene();
 	static void CurrentScene(std::string scene);
 	
 private:
@@ -31,6 +32,7 @@ private:
 	class Window* window;
 
 	unsigned int fps;
+	int currentNumber = 0; //currentScene Number
 	bool isRunning;
 	bool fullScreen;
 	void BuildScene(SCENE_NUMBER scene_);

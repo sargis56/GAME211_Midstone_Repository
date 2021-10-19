@@ -32,6 +32,7 @@ void Button::HandleEvents(const SDL_Event& event) {
 		if (event.type == SDL_MOUSEBUTTONDOWN || event.button.button == SDL_BUTTON_LEFT) {
 			if (function == 0) {
 				printf("start game\n");
+				sceneNumber = 1;
 			}
 			if (function == 1) {
 				printf("end game\n");

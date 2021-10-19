@@ -41,6 +41,11 @@ void TitleScreen::HandleEvents(const SDL_Event& sdlEvent) {
 	//camera->HandleEvents(sdlEvent);
 }
 
+int TitleScreen::SetScene() {
+	sceneNumber = button1->getScene();
+	return sceneNumber;
+}
+
 void TitleScreen::BuildButtons() {
 	ObjLoader::loadOBJ("meshes/Cube.obj");
 	boxMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);

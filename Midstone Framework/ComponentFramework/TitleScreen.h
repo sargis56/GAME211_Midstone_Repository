@@ -23,6 +23,8 @@ private:
 	Shader* shaderPtr;
 	Texture* startTexture, *endTexture;
 	Vec3 light1;
+
+	int sceneNumber = 0;
 public:
 	explicit TitleScreen();
 	virtual ~TitleScreen();
@@ -32,6 +34,7 @@ public:
 	virtual void Update(const float deltaTime) override;
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event &sdlEvent) override;
+	virtual int SetScene() override;
 
 	void BuildButtons();
 

@@ -59,6 +59,11 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
 	character->HandleEvents(sdlEvent);
 }
 
+int Scene1::SetScene()
+{
+	return 0;
+}
+
 void Scene1::BuildCharacter() {
 	ObjLoader::loadOBJ("meshes/Sphere.obj");
 	meshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);

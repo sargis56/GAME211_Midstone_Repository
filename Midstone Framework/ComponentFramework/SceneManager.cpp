@@ -45,7 +45,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		return false;
 	}
 	/********************************   Default first scene   ***********************/
-	BuildScene(SCENE0);
+	BuildScene(TITLESCREEN);
 	
 	return true;
 }
@@ -59,6 +59,7 @@ void SceneManager::Run() {
 		currentScene->Update(timer->GetDeltaTime());
 		currentScene->Render();
 		GetEvents();
+		SwitchScene();
 		SDL_GL_SwapWindow(window->getWindow());
 		SDL_Delay(timer->GetSleepTime(fps));
 	}
@@ -73,10 +74,6 @@ void SceneManager::GetEvents() {
 		}
 		else if (sdlEvent.type == SDL_KEYDOWN) {
 			switch (sdlEvent.key.keysym.scancode) {
-			case SDL_SCANCODE_ESCAPE:
-			case SDL_SCANCODE_Q:
-				isRunning = false;
-				return;
 			case SDL_SCANCODE_F1:
 				BuildScene(SCENE1);
 				break;
@@ -98,6 +95,17 @@ void SceneManager::GetEvents() {
 		}
 		
 		currentScene->HandleEvents(sdlEvent);
+	}
+}
+
+void SceneManager::SwitchScene() {
+	
+	int testSceneNumber = currentScene->SetScene(); //set variable to test
+	if (currentNumber != testSceneNumber) {//test to see if the scene should switch
+		currentNumber = testSceneNumber;
+		if (currentNumber == 1) {
+			BuildScene(SCENE0);
+		}
 	}
 }
 
