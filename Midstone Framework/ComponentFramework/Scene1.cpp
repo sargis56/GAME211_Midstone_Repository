@@ -59,9 +59,8 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
 	character->HandleEvents(sdlEvent);
 }
 
-int Scene1::SetScene()
-{
-	return 0;
+int Scene1::SetScene() {
+	return sceneNumber;
 }
 
 void Scene1::BuildCharacter() {

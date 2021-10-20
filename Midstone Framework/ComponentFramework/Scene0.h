@@ -9,6 +9,8 @@
 #include "StaticMesh.h"
 #include "MageTurretEnemy.h"
 #include "TeslaTowerEnemy.h"
+#include "Door.h"
+
 using namespace MATH;
 
 /// Forward declarations 
@@ -21,6 +23,7 @@ class Texture;
 class Scene0 : public Scene {
 private:
 	Character* character;
+	Door* doorLeft;
 	TeslaTowerEnemy* enemy1;
 	StaticMesh* wall1, *wall2, *wall3, *wall4, *floor;
 	//DemoObject* demoObject;
@@ -29,10 +32,12 @@ private:
 
 	Mesh* meshPtr, *ratMeshPtr, *boxMesh;
 	Shader* shaderPtr;
-	Texture* texturePtr, *wallTexture, *floorTexture, * turretTexture;
+	Texture* texturePtr, *wallTexture, *floorTexture, *turretTexture, *doorTexture;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
 	Room room;
+
+	int sceneNumber = 1;
 public:
 	explicit Scene0();
 	virtual ~Scene0();
@@ -48,6 +53,7 @@ public:
 	void BuildRat();
 	void BuildWall();
 	void BuildFloor();
+	void BuildDoor();
 
 	virtual float setCharacterVariables() override;
 	virtual void getCharacterVariables(const float stats_) override;

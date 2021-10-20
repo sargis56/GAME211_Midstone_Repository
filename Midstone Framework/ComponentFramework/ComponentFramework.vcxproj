@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="SpeedItem.cpp" />
     <ClCompile Include="TeslaTowerEnemy.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Door.h" />
     <ClInclude Include="SpeedItem.h" />
     <ClInclude Include="TeslaTowerEnemy.h" />
     <ClInclude Include="Button.h" />

@@ -7,6 +7,7 @@
 #include "SnakeEnemy.h"
 #include "DemonEnemy.h"
 #include "Room.h"
+#include "Door.h"
 #include "StaticMesh.h"
 using namespace MATH;
 
@@ -33,6 +34,8 @@ private:
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
 	Room room;
+
+	int sceneNumber = 2;
 public:
 	explicit Scene1();
 	virtual ~Scene1();

@@ -106,6 +106,9 @@ void SceneManager::SwitchScene() {
 		if (currentNumber == 1) {
 			BuildScene(SCENE0);
 		}
+		if (currentNumber == 2) {
+			BuildScene(SCENE1);
+		}
 	}
 }
 

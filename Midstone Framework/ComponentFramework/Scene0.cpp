@@ -45,7 +45,17 @@ bool Scene0::OnCreate() {
 	wall4 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	BuildFloor();
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
+	BuildDoor();
+	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-7.0, 0.0, -15));
 	//health = 50;
+
+	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
+	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
+	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
+	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
+	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
+	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
+
 	return true;
 }
 
@@ -53,9 +63,8 @@ void Scene0::HandleEvents(const SDL_Event& sdlEvent) {
 	character->HandleEvents(sdlEvent);
 }
 
-int Scene0::SetScene()
-{
-	return 0;
+int Scene0::SetScene() {
+	return sceneNumber;
 }
 
 void Scene0::BuildCharacter() {
@@ -85,6 +94,11 @@ void Scene0::BuildFloor() {
 	floorTexture->LoadImage("textures/floor.jpg");
 }
 
+void Scene0::BuildDoor() {
+	doorTexture = new Texture();
+	doorTexture->LoadImage("textures/green.jpg");
+}
+
 float Scene0::setCharacterVariables() {
 	return health;
 }
@@ -99,16 +113,13 @@ void Scene0::Update(const float deltaTime) {
 	if (enemy1->DamageCheck(character)) {
 		//printf("DMG\n");
 	}
+	if (doorLeft->CollisionCheck(character)) {
+		sceneNumber = 2;
+	}
 	//printf("EVENT::TINK\n");
 	//printf("%f\n", health);
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f,0.5f,0.5f));
-	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
-	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
-	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
-	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
-	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
-
 
 	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
 
@@ -138,6 +149,7 @@ void Scene0::Render() const {
 	wall3->Render();
 	wall4->Render();
 	floor->Render();
+	doorLeft->Render();
 	glUseProgram(0);
 }
 
