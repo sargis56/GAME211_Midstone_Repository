@@ -22,6 +22,9 @@ private:
 	Room room;
 	bool keyR = false, keyL = false, keyUp = false, keyDown = false;
 	float speed = 0.1;
+	int health;
+	int maxHealth;
+
 public:
 	Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//Character(Character* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -37,6 +40,8 @@ public:
 	//inline CharacterVariables getCharacterVariables() const { return stats; }
 	//inline void setCharacterVariables(const CharacterVariables stats_) { stats = stats_; }
 	inline void setSpeed(const float setSpeed_) { speed = setSpeed_; }
+	inline void setHealth(float health_) { health = health_; }
+	inline int getHealth() { return health; }
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }

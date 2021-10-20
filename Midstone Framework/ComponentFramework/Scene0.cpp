@@ -34,6 +34,7 @@ bool Scene0::OnCreate() {
 		return false;
 	}
 	character->setPos(Vec3(1.0, 0.0, -15.0));
+	character->setHealth(50);
 	BuildRat();
 	enemy1 = new TeslaTowerEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
 	enemy1->OnCreate();
@@ -111,7 +112,7 @@ void Scene0::Update(const float deltaTime) {
 	character->Update(deltaTime);
 	enemy1->Update(deltaTime);
 	if (enemy1->DamageCheck(character)) {
-		//printf("DMG\n");
+		
 	}
 	if (doorLeft->CollisionCheck(character)) {
 		sceneNumber = 2;

@@ -11,7 +11,7 @@ Character::Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_
 Character::~Character() {}
 
 bool Character::OnCreate() { 
-
+	health = 50;
 	return true;
 }
 void Character::OnDestroy() {}				  /// Just a stub

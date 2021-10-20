@@ -10,6 +10,8 @@
 #include "Room.h"
 #include "Character.h"
 
+#define LOG(x) std::cout << x << std::endl;
+
 using namespace MATH;
 
 
@@ -22,9 +24,11 @@ private:
 	Texture* texture;
 	bool moveOver = true;
 	float direction;
+	float damage;
+	float timeBtwnShots;
 	Room room;
 public:
-	Projectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos);
+	Projectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos, int damage);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~Projectile();
 	virtual bool OnCreate() override;

@@ -18,10 +18,10 @@ void MageTurretEnemy::BuildProjectile() {
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
 	textureProjectile->LoadImage("textures/skull_texture.jpg");
-	projectile1 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos);//setting up the projectile classes
-	projectile2 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos);
-	projectile3 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos);
-	projectile4 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos);
+	projectile1 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);//setting up the projectile classes
+	projectile2 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
+	projectile3 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
+	projectile4 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
 
 
 }

@@ -5,15 +5,16 @@
 #include <SDL.h>
 #include <cstdlib>
 
-Projectile::Projectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos_) :
+Projectile::Projectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos_, int damage_) :
 	mesh(mesh_), shader(shader_), texture(texture_), room(room_) {
 	pos = pos_;
+	damage = damage_;
 }
 
 Projectile::~Projectile() {}
 
 bool Projectile::OnCreate() {
-
+	//damage = 5;
 
 	return true; 
 }
@@ -119,7 +120,14 @@ bool Projectile::ProjectileUpdate8Axis(Vec3 direction) { // same function as abo
 
 bool Projectile::DamageCheck(Character* character) { //function to detect dmg
 	if (VMath::distance(character->getPos(), pos) < 0.5) { //if the projectile is overlapping player
+		int charHealth = character->getHealth();
+		LOG(charHealth);
+		charHealth -= damage;
+		character->setHealth(charHealth);
+		LOG(charHealth);
+
 		return true; 
+
 	}
 	else {
 		return false;

@@ -18,7 +18,7 @@ void TeslaTowerEnemy::BuildProjectile() {
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
 	textureProjectile->LoadImage("textures/skull_texture.jpg");
-	projectile = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos);
+	projectile = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 10);
 }
 
 bool TeslaTowerEnemy::OnCreate() {
