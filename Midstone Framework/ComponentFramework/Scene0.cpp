@@ -111,6 +111,7 @@ void Scene0::getCharacterVariables(const float stats_) {
 void Scene0::Update(const float deltaTime) {
 	character->Update(deltaTime);
 	enemy1->Update(deltaTime);
+
 	if (enemy1->DamageCheck(character)) {
 		
 	}

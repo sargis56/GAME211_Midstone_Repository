@@ -119,13 +119,13 @@ bool Projectile::ProjectileUpdate8Axis(Vec3 direction) { // same function as abo
 }
 
 bool Projectile::DamageCheck(Character* character) { //function to detect dmg
-	if (VMath::distance(character->getPos(), pos) < 1) { //if the projectile is overlapping player
+	if (VMath::distance(character->getPos(), pos) < 0.5) { //if the projectile is overlapping player
 		int charHealth = character->getHealth();	
 		LOG(charHealth);
 		charHealth -= damage;			
 		character->setHealth(charHealth);  //set characters new health after taking damage
 		LOG(charHealth);
-
+		moveOver = true;
 		return true; 
 
 	}

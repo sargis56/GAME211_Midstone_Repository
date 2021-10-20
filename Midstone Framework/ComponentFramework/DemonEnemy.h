@@ -10,7 +10,6 @@
 #include "Room.h"
 #include "Character.h"
 #include "VenomProjectile.h"
-
 using namespace MATH;
 
 
@@ -26,10 +25,11 @@ private:
 	Room room;
 	float moveSpeed = 0.09;
 	float agroRange = 6.0f;
+	int damage;
 	//Determines if the enemy has armor or not
 	bool armored = true;
 public:
-	DemonEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
+	DemonEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, int damage);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~DemonEnemy();
 

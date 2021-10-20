@@ -40,7 +40,7 @@ bool Scene1::OnCreate() {
 	enemy1->setPos(Vec3(5.0, 4.0, -15.0));
 
 	BuildDemon();
-	enemyDemon0 = new DemonEnemy(demonMeshPtr, shaderPtr, demonTexture, room);
+	enemyDemon0 = new DemonEnemy(demonMeshPtr, shaderPtr, demonTexture, room, 5);
 	enemyDemon0->OnCreate();
 	enemyDemon0->setPos(Vec3(5.0, -4.0, -15.0));
 

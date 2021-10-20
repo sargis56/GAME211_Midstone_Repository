@@ -126,6 +126,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Door.cpp" />
+    <ClCompile Include="HealthUI.cpp" />
     <ClCompile Include="SpeedItem.cpp" />
     <ClCompile Include="TeslaTowerEnemy.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -166,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Door.h" />
+    <ClInclude Include="HealthUI.h" />
     <ClInclude Include="SpeedItem.h" />
     <ClInclude Include="TeslaTowerEnemy.h" />
     <ClInclude Include="Button.h" />

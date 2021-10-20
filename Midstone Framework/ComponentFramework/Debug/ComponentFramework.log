@@ -1,16 +1,9 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ComponentFramework.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  GameObject.h
-  Projectile.cpp
+  DemonEnemy.cpp
 C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(24,14): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(43,50): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(11,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(63,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(71,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(102,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(110,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(125,23): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(126,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
+C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\DemonEnemy.h(26,18): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\DemonEnemy.cpp(48,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   ComponentFramework.vcxproj -> C:\Users\gamer\Desktop\211 - Midstone\Engines159Project\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe

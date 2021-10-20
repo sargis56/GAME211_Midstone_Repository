@@ -6,8 +6,11 @@
 #include <cstdlib>
 #include "ObjLoader.h"
 
-DemonEnemy::DemonEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_) :
+#define LOG(x) std::cout << x << std::endl; //debugging function
+
+DemonEnemy::DemonEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, int damage_) :
 	mesh(mesh_), shader(shader_), texture(texture_), room(room_) {
+	damage = damage_;
 }
 
 DemonEnemy::~DemonEnemy() {}
@@ -39,6 +42,12 @@ void DemonEnemy::HandleEvents(const SDL_Event& event) {
 
 bool DemonEnemy::DamageCheck(Character* character) {
 	if (VMath::distance(character->getPos(), pos) < 1) {
+	int charHealth = character->getHealth();
+	LOG(charHealth);
+	charHealth -= damage;
+	character->setHealth(charHealth);  //set characters new health after taking damage
+	LOG(charHealth);
+	return true;
 		return true;
 	}
 	else {
