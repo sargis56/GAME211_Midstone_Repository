@@ -179,4 +179,5 @@ void Scene0::OnDestroy() {
 	if (wall3) delete wall3, wall3 = nullptr;
 	if (wall4) delete wall4, wall4 = nullptr;
 	if (floor) delete floor, floor = nullptr;
+	if (healthBar) delete healthBar, healthBar = nullptr;
 }
