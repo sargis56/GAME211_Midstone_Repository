@@ -10,6 +10,7 @@
 #include "MageTurretEnemy.h"
 #include "TeslaTowerEnemy.h"
 #include "Door.h"
+#include "HealthUI.h"
 
 using namespace MATH;
 
@@ -26,13 +27,14 @@ private:
 	Door* doorLeft;
 	TeslaTowerEnemy* enemy1;
 	StaticMesh* wall1, *wall2, *wall3, *wall4, *floor;
+	HealthUI* healthBar;
 	//DemoObject* demoObject;
 	Vec3 light1;
 	float health;
 
 	Mesh* meshPtr, *ratMeshPtr, *boxMesh;
 	Shader* shaderPtr;
-	Texture* texturePtr, *wallTexture, *floorTexture, *turretTexture, *doorTexture;
+	Texture* texturePtr, *wallTexture, *floorTexture, *turretTexture, *doorTexture, *healthUITexture;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
 	Room room;
@@ -54,6 +56,8 @@ public:
 	void BuildWall();
 	void BuildFloor();
 	void BuildDoor();
+
+	void BuildHealthUI();
 
 	virtual float setCharacterVariables() override;
 	virtual void getCharacterVariables(const float stats_) override;
