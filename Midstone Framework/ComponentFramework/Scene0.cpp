@@ -50,9 +50,9 @@ bool Scene0::OnCreate() {
 	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-7.0, 0.0, -15));
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
-	//health = 50;
+	health = 50;
 
-	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f,-3.5f,-5.0f)) * MMath::scale(2.0f, 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
+	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.1f * (health + 0.1), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
@@ -120,7 +120,10 @@ void Scene0::Update(const float deltaTime) {
 	enemy1->Update(deltaTime);
 
 	if (enemy1->DamageCheck(character)) {
-		healthBar->setModelMatrix(MMath::scale(0.9f, 0.9f, 0.9f)); //Should make the healthbar smaller when character is damaged by enemy
+		//LOG(charHealth);
+		health -= 10; //set characters new health after taking damage
+		//LOG(charHealth);
+		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.1f * (health + 0.1), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 	}
 	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;

@@ -77,11 +77,23 @@ void MageTurretEnemy::HandleEvents(const SDL_Event& event) {
 } /// Just a stub
 
 bool MageTurretEnemy::DamageCheck(Character* character) { //function to detect dmg
-	projectile1->DamageCheck(character);//check dmg of projectile
-	projectile2->DamageCheck(character);
-	projectile3->DamageCheck(character);
-	projectile4->DamageCheck(character);
+	bool damageTrue = false;
+	if (projectile1->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
+	if (projectile2->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
+	if (projectile3->DamageCheck(character)) {//check dmg of projectile
+		damageTrue == true;
+	}
+	if (projectile4->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
 	if (VMath::distance(character->getPos(), pos) < 1) { //if the enemy is overlaping the player
+		damageTrue = true;
+	}
+	if (damageTrue == true) {
 		return true;
 	}
 	else {

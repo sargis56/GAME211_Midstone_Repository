@@ -43,6 +43,12 @@
     <Filter Include="Header Files\GameVariables">
       <UniqueIdentifier>{aace3028-4f9b-40d6-8af5-454cb5a4ab59}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\HUDObjects">
+      <UniqueIdentifier>{4277eeb9-8900-446d-b68d-f7b8fa818415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HUDObjects">
+      <UniqueIdentifier>{31e51c78-6741-4d5a-9aab-1a47b113793a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -160,7 +166,7 @@
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="HealthUI.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\HUDObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -291,7 +297,7 @@
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="HealthUI.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\HUDObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -74,9 +74,19 @@ Vec3 TeslaTowerEnemy::GenerateProjectileDirection() { //generate a new direction
 }
 
 bool TeslaTowerEnemy::DamageCheck(Character* character) { //function to detect dmg
-	projectile->DamageCheck(character);//check dmg of projectile
+	bool damageTrue = false;
+	if (projectile->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
 	if (VMath::distance(character->getPos(), pos) < 1) { //if the enemy is overlaping the player
-		return true;
+		damageTrue = true;
+	}
+	if (damageTrue == true) {
+		int charHealth = character->getHealth();
+		LOG(charHealth);
+		charHealth -= 10;
+		character->setHealth(charHealth);  //set characters new health after taking damage
+		LOG(charHealth);
 	}
 	else {
 		return false;
