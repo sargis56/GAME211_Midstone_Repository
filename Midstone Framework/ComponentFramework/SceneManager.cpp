@@ -141,7 +141,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	case SCENE1:
 		currentScene = new Scene1();
 		//sending the speed back to the new scene
-		//currentScene->getSpeed(speed);
+		currentScene->getCharacterVariables(mainHealth);
 		status = currentScene->OnCreate();
 		break;
 	default:

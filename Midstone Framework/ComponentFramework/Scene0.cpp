@@ -14,7 +14,8 @@
 #include "SceneManager.h"
 using namespace std;
 
-Scene0::Scene0() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr) {
+Scene0::Scene0() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), /*doorleft(nullptr),*/ doorTexture(nullptr), enemy1(nullptr), floor(nullptr), floorTexture(nullptr),
+health(NULL), healthBar(nullptr), healthUITexture(nullptr), ratMeshPtr(nullptr), turretTexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr) {
 	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
 }
 
@@ -52,7 +53,7 @@ bool Scene0::OnCreate() {
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
 	health = 50;
 
-	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.1f * (health + 0.1), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
+	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
@@ -123,7 +124,7 @@ void Scene0::Update(const float deltaTime) {
 		//LOG(charHealth);
 		health -= 10; //set characters new health after taking damage
 		//LOG(charHealth);
-		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.1f * (health + 0.1), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
+		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 	}
 	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;
@@ -179,5 +180,5 @@ void Scene0::OnDestroy() {
 	if (wall3) delete wall3, wall3 = nullptr;
 	if (wall4) delete wall4, wall4 = nullptr;
 	if (floor) delete floor, floor = nullptr;
-	if (healthBar) delete healthBar, healthBar = nullptr;
+	if (doorLeft) delete doorLeft, doorLeft = nullptr;
 }
