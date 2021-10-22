@@ -77,6 +77,9 @@ void SceneManager::GetEvents() {
 			case SDL_SCANCODE_F1:
 				BuildScene(SCENE1);
 				break;
+			case SDL_SCANCODE_F2:
+				BuildScene(SCENE0);
+				break;
 			case SDL_SCANCODE_RETURN:
 				if (fullScreen == false) {
 					fullScreen = true;

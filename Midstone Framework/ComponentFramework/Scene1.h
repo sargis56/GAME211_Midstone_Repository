@@ -9,6 +9,7 @@
 #include "Room.h"
 #include "Door.h"
 #include "StaticMesh.h"
+#include "HealthUI.h"
 using namespace MATH;
 
 /// Forward declarations 
@@ -21,16 +22,18 @@ class Texture;
 class Scene1 : public Scene {
 private:
 	Character* character;
+	Door* doorRight;
 	SnakeEnemy* enemy1;
 	DemonEnemy* enemyDemon0;
 	StaticMesh* wall1, *wall2, *wall3, *wall4, *floor;
+	//HealthUI* healthBar;
 	//DemoObject* demoObject;
 	Vec3 light1;
 	float health;
 
 	Mesh* meshPtr, *ratMeshPtr, * demonMeshPtr, *boxMesh;
 	Shader* shaderPtr;
-	Texture* texturePtr, * wallTexture, * floorTexture, * ratTexture, * demonTexture;
+	Texture* texturePtr, * wallTexture, * floorTexture, * ratTexture, * demonTexture, * doorTexture, * healthUITexture;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
 	Room room;
@@ -52,6 +55,9 @@ public:
 	void BuildDemon();
 	void BuildWall();
 	void BuildFloor();
+	void BuildDoor();
+
+	void BuildHealthUI();
 
 	virtual float setCharacterVariables() override;
 	virtual void getCharacterVariables(const float stats_) override;

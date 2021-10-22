@@ -14,7 +14,9 @@
 #include "SceneManager.h"
 using namespace std;
 
-Scene1::Scene1() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr) {
+Scene1::Scene1() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorRight(nullptr), doorTexture(nullptr), enemy1(nullptr), floor(nullptr), floorTexture(nullptr),
+health(NULL), /*healthBar(nullptr),*/ healthUITexture(nullptr), ratMeshPtr(nullptr), enemyDemon0(nullptr), demonMeshPtr(nullptr), demonTexture(nullptr), ratTexture(nullptr), wall1(nullptr), wall2(nullptr), 
+wall3(nullptr), wall4(nullptr), wallTexture(nullptr) {
 	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
 }
 
@@ -51,6 +53,18 @@ bool Scene1::OnCreate() {
 	wall4 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	BuildFloor();
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
+	BuildDoor();
+	doorRight = new Door(boxMesh, shaderPtr, doorTexture, Vec3(9.5, 0.0, -15));
+	BuildHealthUI();
+	//healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
+
+	//healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
+	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
+	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
+	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
+	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
+	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
+	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
 	health = 50;
 	return true;
 }
@@ -96,6 +110,15 @@ void Scene1::BuildFloor() {
 	floorTexture = new Texture();
 	floorTexture->LoadImage("textures/floor.jpg");
 }
+void Scene1::BuildDoor() {
+	doorTexture = new Texture();
+	doorTexture->LoadImage("textures/green.jpg");
+}
+
+void Scene1::BuildHealthUI() {
+	healthUITexture = new Texture();
+	healthUITexture->LoadImage("textures/red.jpg");
+}
 
 float Scene1::setCharacterVariables() {
 	return health;
@@ -113,11 +136,20 @@ void Scene1::Update(const float deltaTime) {
 	float enemyRot = enemy1->FollowPlayer(character);
 	float enemyRot1 = enemyDemon0->FollowPlayer(character);
 
-	if (enemy1->DamageCheck(character)) {
-		printf("DMG\n");
+	//if (enemy1->DamageCheck(character)) {
+	//	printf("DMG\n");
+	//}
+	//if (enemyDemon0->DamageCheck(character)) {
+	//	printf("DMG\n");
+	//}
+	if (enemy1->DamageCheck(character) && enemyDemon0->DamageCheck(character)) {
+		//LOG(charHealth);
+		health -= 10; //set characters new health after taking damage
+		//LOG(charHealth);
+		//healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 	}
-	if (enemyDemon0->DamageCheck(character)) {
-		printf("DMG\n");
+	if (doorRight->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+		sceneNumber = 1;
 	}
 
 	//printf("%f\n", health);
@@ -125,13 +157,6 @@ void Scene1::Update(const float deltaTime) {
 
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::rotate(enemyRot, Vec3(0.0f, 0.0f, 1.0f)) * MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f)) * MMath::scale(0.5f, 0.5f, 0.5f));
 	enemyDemon0->setModelMatrix(MMath::translate(enemyDemon0->getPos()) * MMath::rotate(enemyRot1, Vec3(0.0f, 0.0f, 1.0f)) * MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f)) * MMath::scale(0.5f, 0.5f, 0.5f));
-
-	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
-	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
-	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
-	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
-	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
-
 
 	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
 
@@ -162,6 +187,8 @@ void Scene1::Render() const {
 	wall3->Render();
 	wall4->Render();
 	floor->Render();
+	//healthBar->Render();
+	doorRight->Render();
 	glUseProgram(0);
 }
 
@@ -178,4 +205,6 @@ void Scene1::OnDestroy() {
 	if (wall3) delete wall3, wall3 = nullptr;
 	if (wall4) delete wall4, wall4 = nullptr;
 	if (floor) delete floor, floor = nullptr;
+	if (doorRight) delete doorRight, doorRight = nullptr;
+	//if (healthBar) delete healthBar, healthBar = nullptr;
 }

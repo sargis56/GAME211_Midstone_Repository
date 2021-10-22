@@ -14,7 +14,7 @@
 #include "SceneManager.h"
 using namespace std;
 
-Scene0::Scene0() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), /*doorleft(nullptr),*/ doorTexture(nullptr), enemy1(nullptr), floor(nullptr), floorTexture(nullptr),
+Scene0::Scene0() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorLeft(nullptr), doorTexture(nullptr), enemy1(nullptr), floor(nullptr), floorTexture(nullptr),
 health(NULL), healthBar(nullptr), healthUITexture(nullptr), ratMeshPtr(nullptr), turretTexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr) {
 	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
 }
@@ -48,7 +48,7 @@ bool Scene0::OnCreate() {
 	BuildFloor();
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
 	BuildDoor();
-	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-7.0, 0.0, -15));
+	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15));
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
 	health = 50;
