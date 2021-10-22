@@ -45,7 +45,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		return false;
 	}
 	/********************************   Default first scene   ***********************/
-	BuildScene(SCENE0);
+	BuildScene(TITLESCREEN);
 	
 	return true;
 }

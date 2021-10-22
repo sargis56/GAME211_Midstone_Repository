@@ -62,7 +62,7 @@ void TitleScreen::BuildButtons() {
 
 float TitleScreen::setCharacterVariables()
 {
-	return 0.0f;
+	return 50.0f;
 }
 
 void TitleScreen::getCharacterVariables(const float stats_)

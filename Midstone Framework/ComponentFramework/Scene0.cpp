@@ -35,7 +35,7 @@ bool Scene0::OnCreate() {
 		return false;
 	}
 	character->setPos(Vec3(1.0, 0.0, -15.0));
-	character->setHealth(50);
+	//character->setHealth(50);
 	BuildRat();
 	enemy1 = new TeslaTowerEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
 	enemy1->OnCreate();
@@ -51,7 +51,7 @@ bool Scene0::OnCreate() {
 	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15));
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
-	health = 50;
+	//health = 50;
 
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
