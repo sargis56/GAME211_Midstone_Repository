@@ -120,8 +120,9 @@ void Scene0::Update(const float deltaTime) {
 	character->Update(deltaTime);
 	enemy1->Update(deltaTime);
 
-	if (enemy1->DamageCheck(character)) {
+	if (enemy1->DamageCheck(character) && character->getInvincibility() == false) {
 		//LOG(charHealth);
+		character->setinvincibilityTimer(100);
 		health -= 10; //set characters new health after taking damage
 		//LOG(charHealth);
 		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
@@ -129,6 +130,7 @@ void Scene0::Update(const float deltaTime) {
 	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;
 	}
+	character->checkInvincibility();
 	//printf("EVENT::TINK\n");
 	//printf("%f\n", health);
 	character->setModelMatrix(MMath::translate(character->getPos()));
@@ -154,8 +156,9 @@ void Scene0::Render() const {
 	glUniformMatrix4fv(character->getShader()->getUniformID("viewMatrix"), 1, GL_FALSE, viewMatrix);
 
 	glUniform3fv(character->getShader()->getUniformID("lightPos"), 1, light1);
-
-	character->Render();
+	if (character->getVisibility()) {
+		character->Render();
+	}
 	healthBar->Render();
 	enemy1->Render();
 	wall1->Render();

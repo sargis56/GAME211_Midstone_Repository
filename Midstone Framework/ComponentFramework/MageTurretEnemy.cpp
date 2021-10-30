@@ -93,11 +93,6 @@ bool MageTurretEnemy::DamageCheck(Character* character) { //function to detect d
 	if (VMath::distance(character->getPos(), pos) < 1) { //if the enemy is overlaping the player
 		damageTrue = true;
 	}
-	if (damageTrue == true) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return damageTrue;
 }
 

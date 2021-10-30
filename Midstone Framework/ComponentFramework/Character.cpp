@@ -11,7 +11,7 @@ Character::Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_
 Character::~Character() {}
 
 bool Character::OnCreate() { 
-	health = 50;
+	//health = 50;
 	return true;
 }
 void Character::OnDestroy() {}				  /// Just a stub
@@ -129,4 +129,24 @@ void Character::HandleEvents(const SDL_Event& event) {
 				pos.y = pos.y - speed;
 			}
 		}
+}
+
+void Character::checkInvincibility() {
+	if (invincibilityTimer >= 0) {
+		invincibilityTimer--; //timer varaible function
+		//visiablity shit
+		if ((invincibilityTimer & 1) == 0) {
+			visibility = false;
+		}
+		else {
+			visibility = true;
+		}
+		invincibility = true;
+	}
+	else {
+		invincibility = false;
+	}
+	//if ((timer & 1) == 0) {
+	//	printf("wTF\n");
+	//}
 }

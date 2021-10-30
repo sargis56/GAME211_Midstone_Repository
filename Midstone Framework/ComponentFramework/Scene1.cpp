@@ -38,8 +38,9 @@ bool Scene1::OnCreate() {
 	character->setPos(Vec3(0.0, 0.0, -15.0));
 	BuildSnake();
 	enemy1 = new SnakeEnemy(ratMeshPtr, shaderPtr, ratTexture, room);
-	enemy1->OnCreate();
 	enemy1->setPos(Vec3(5.0, 4.0, -15.0));
+	enemy1->OnCreate();
+	//enemy1->setPos(Vec3(5.0, 4.0, -15.0));
 
 	BuildDemon();
 	enemyDemon0 = new DemonEnemy(demonMeshPtr, shaderPtr, demonTexture, room, 5);

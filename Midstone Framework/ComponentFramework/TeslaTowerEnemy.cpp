@@ -81,14 +81,5 @@ bool TeslaTowerEnemy::DamageCheck(Character* character) { //function to detect d
 	if (VMath::distance(character->getPos(), pos) < 1) { //if the enemy is overlaping the player
 		damageTrue = true;
 	}
-	if (damageTrue == true) {
-		int charHealth = character->getHealth();
-		LOG(charHealth);
-		charHealth -= 10;
-		character->setHealth(charHealth);  //set characters new health after taking damage
-		LOG(charHealth);
-	}
-	else {
-		return false;
-	}
+	return damageTrue;
 }

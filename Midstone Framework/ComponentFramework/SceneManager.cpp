@@ -102,7 +102,6 @@ void SceneManager::GetEvents() {
 }
 
 void SceneManager::SwitchScene() {
-	
 	int testSceneNumber = currentScene->SetScene(); //set variable to test
 	if (currentNumber != testSceneNumber) {//test to see if the scene should switch
 		currentNumber = testSceneNumber;

@@ -6,7 +6,7 @@
 #include "Debug.h"
 
   
-int main(int argc, char* args[]) {
+int main() {
 	static_assert(sizeof(void*) == 4, "This program is not ready for 64-bit build");
 	std::string name = { "Graphics Game Engine" };
 	Debug::DebugInit(name + "_Log");

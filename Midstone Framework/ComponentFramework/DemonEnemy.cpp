@@ -42,12 +42,6 @@ void DemonEnemy::HandleEvents(const SDL_Event& event) {
 
 bool DemonEnemy::DamageCheck(Character* character) {
 	if (VMath::distance(character->getPos(), pos) < 1) {
-	int charHealth = character->getHealth();
-	LOG(charHealth);
-	charHealth -= damage;
-	character->setHealth(charHealth);  //set characters new health after taking damage
-	LOG(charHealth);
-	return true;
 		return true;
 	}
 	else {
