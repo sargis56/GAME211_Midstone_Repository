@@ -34,7 +34,7 @@ bool Scene0::OnCreate() {
 		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
 		return false;
 	}
-	character->setPos(Vec3(1.0, 0.0, -15.0));
+	character->setPos(returnedPos);
 	//character->setHealth(50);
 	BuildRat();
 	enemy1 = new TeslaTowerEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
@@ -108,12 +108,25 @@ void Scene0::BuildHealthUI() {
 	healthUITexture->LoadImage("textures/red.jpg");
 }
 
-float Scene0::setCharacterVariables() {
+float Scene0::setCharacterHealth() {
 	return health;
 }
 
-void Scene0::getCharacterVariables(const float stats_) {
-	health = stats_;
+void Scene0::getCharacterHealth(const float storedHealth_) {
+	health = storedHealth_;
+}
+
+Vec3 Scene0::setCharacterPos() {
+	return character->getPos();
+}
+
+void Scene0::getCharacterPos(const Vec3 storedPos_) {
+	if (storedPos_.x >= 0) {
+		returnedPos = Vec3((storedPos_.x * -1 + 1), storedPos_.y, storedPos_.z);
+	}
+	else {
+		returnedPos = Vec3((storedPos_.x * -1 - 1), storedPos_.y, storedPos_.z);
+	}
 }
 
 void Scene0::Update(const float deltaTime) {

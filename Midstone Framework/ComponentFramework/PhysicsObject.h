@@ -20,7 +20,7 @@ public:
 	void ObjectSetUp(Vec3 pos_, Vec3 vel_, Vec3 accel_, float mass_, float rotationalI_);
 public:
 	/// Untility functions so small they cane be inlined;
-	inline void setPos(const Vec3 &pos_) { pos = pos_; }
+	inline void setPos(const Vec3 pos_) { pos = pos_; }
 	inline Vec3 getPos() { return pos; }
 	inline const void setVel(const Vec3 &vel_) { vel = vel_; }
 	inline Vec3 getVel() { return vel; }

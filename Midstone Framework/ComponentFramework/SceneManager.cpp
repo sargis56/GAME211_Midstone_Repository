@@ -122,7 +122,8 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	bool status; 
 	if (currentScene != nullptr) {
 		//saving the speed of the player before the scene is destroyed
-		mainHealth = currentScene->setCharacterVariables();
+		mainHealth = currentScene->setCharacterHealth();
+		mainPos = currentScene->setCharacterPos();
 		delete currentScene;
 		currentScene = nullptr;
 	}
@@ -131,7 +132,8 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	case SCENE0:  
 		currentScene = new Scene0();
 		//sending the speed back to the new scene
-		currentScene->getCharacterVariables(mainHealth);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
 		status = currentScene->OnCreate();
 		break;
 	case TITLESCREEN:
@@ -143,7 +145,8 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	case SCENE1:
 		currentScene = new Scene1();
 		//sending the speed back to the new scene
-		currentScene->getCharacterVariables(mainHealth);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(mainPos);
 		status = currentScene->OnCreate();
 		break;
 	default:

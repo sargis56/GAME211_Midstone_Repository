@@ -35,7 +35,7 @@ bool Scene1::OnCreate() {
 		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
 		return false;
 	}
-	character->setPos(Vec3(0.0, 0.0, -15.0));
+	character->setPos(returnedPos);
 	BuildSnake();
 	enemy1 = new SnakeEnemy(ratMeshPtr, shaderPtr, ratTexture, room);
 	enemy1->setPos(Vec3(5.0, 4.0, -15.0));
@@ -121,14 +121,6 @@ void Scene1::BuildHealthUI() {
 	healthUITexture->LoadImage("textures/red.jpg");
 }
 
-float Scene1::setCharacterVariables() {
-	return health;
-}
-
-void Scene1::getCharacterVariables(const float stats_) {
-	health = stats_;
-}
-
 void Scene1::Update(const float deltaTime) {
 	character->Update(deltaTime);
 	enemy1->Update(deltaTime);
@@ -191,6 +183,27 @@ void Scene1::Render() const {
 	//healthBar->Render();
 	doorRight->Render();
 	glUseProgram(0);
+}
+
+float Scene1::setCharacterHealth() {
+	return health;
+}
+
+void Scene1::getCharacterHealth(const float stats_) {
+	health = stats_;
+}
+
+Vec3 Scene1::setCharacterPos() {
+	return character->getPos();
+}
+
+void Scene1::getCharacterPos(const Vec3 storedPos_) {
+	if (storedPos_.x >= 0) {
+		returnedPos = Vec3((storedPos_.x * -1 + 1), storedPos_.y, storedPos_.z);
+	}
+	else {
+		returnedPos = Vec3((storedPos_.x * -1 - 1), storedPos_.y, storedPos_.z);
+	}
 }
 
 

@@ -1,6 +1,8 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 #include <string>
+#include "Vector.h"
+using namespace MATH;
 class SceneManager  {
 public:
 	
@@ -39,6 +41,7 @@ private:
 
 	//characterStats
 	float mainHealth;
+	Vec3 mainPos;
 };
 
 

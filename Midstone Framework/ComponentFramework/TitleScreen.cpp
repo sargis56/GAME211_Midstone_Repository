@@ -60,14 +60,20 @@ void TitleScreen::BuildButtons() {
 	button2->setModelMatrix(MMath::translate(Vec3(0.0, -0.9, 0.0)) * MMath::scale(3.0f, 0.75f, 0.5f));
 }
 
-float TitleScreen::setCharacterVariables()
+float TitleScreen::setCharacterHealth()
 {
 	return 50.0f;
 }
 
-void TitleScreen::getCharacterVariables(const float stats_)
+void TitleScreen::getCharacterHealth(const float stats_)
 {
 }
+
+Vec3 TitleScreen::setCharacterPos() {
+	return Vec3(-1.0f,0.0f,-15.0f);
+}
+
+void TitleScreen::getCharacterPos(const Vec3 storedPos_) {}
 
 void TitleScreen::Update(const float deltaTime) { }
 

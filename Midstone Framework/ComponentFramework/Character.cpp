@@ -134,7 +134,7 @@ void Character::HandleEvents(const SDL_Event& event) {
 void Character::checkInvincibility() {
 	if (invincibilityTimer >= 0) {
 		invincibilityTimer--; //timer varaible function
-		//visiablity shit
+		//visiablity stuff
 		if ((invincibilityTimer & 1) == 0) {
 			visibility = false;
 		}
@@ -146,7 +146,4 @@ void Character::checkInvincibility() {
 	else {
 		invincibility = false;
 	}
-	//if ((timer & 1) == 0) {
-	//	printf("wTF\n");
-	//}
 }

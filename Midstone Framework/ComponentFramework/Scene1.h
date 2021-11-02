@@ -30,6 +30,7 @@ private:
 	//DemoObject* demoObject;
 	Vec3 light1;
 	float health;
+	Vec3 returnedPos;
 
 	Mesh* meshPtr, *ratMeshPtr, * demonMeshPtr, *boxMesh;
 	Shader* shaderPtr;
@@ -59,8 +60,11 @@ public:
 
 	void BuildHealthUI();
 
-	virtual float setCharacterVariables() override;
-	virtual void getCharacterVariables(const float stats_) override;
+	virtual float setCharacterHealth() override;
+	virtual void getCharacterHealth(const float stats_) override;
+
+	virtual Vec3 setCharacterPos() override;
+	virtual void getCharacterPos(const Vec3 storedPos_) override;
 };
 
 
