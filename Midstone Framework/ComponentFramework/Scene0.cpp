@@ -48,7 +48,8 @@ bool Scene0::OnCreate() {
 	BuildFloor();
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
 	BuildDoor();
-	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15));
+	//doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
+	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0f, 4.5f, -15.0f));
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
 	//health = 50;
@@ -121,11 +122,17 @@ Vec3 Scene0::setCharacterPos() {
 }
 
 void Scene0::getCharacterPos(const Vec3 storedPos_) {
-	if (storedPos_.x >= 0) {
+	if (storedPos_.x >= 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) {
 		returnedPos = Vec3((storedPos_.x * -1 + 1), storedPos_.y, storedPos_.z);
 	}
-	else {
+	else if (storedPos_.x < 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) {
 		returnedPos = Vec3((storedPos_.x * -1 - 1), storedPos_.y, storedPos_.z);
+	}
+	else if (storedPos_.y >= 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
+		returnedPos = Vec3(storedPos_.x, (storedPos_.y - 1), storedPos_.z);
+	}
+	else if (storedPos_.y < 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
+		returnedPos = Vec3(storedPos_.x, (storedPos_.y + 1), storedPos_.z);
 	}
 }
 
@@ -149,7 +156,7 @@ void Scene0::Update(const float deltaTime) {
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f,0.5f,0.5f));
 
-	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
+	printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
 
 
 }

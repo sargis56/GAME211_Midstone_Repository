@@ -198,11 +198,17 @@ Vec3 Scene1::setCharacterPos() {
 }
 
 void Scene1::getCharacterPos(const Vec3 storedPos_) {
-	if (storedPos_.x >= 0) {
+	if (storedPos_.x >= 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) {
 		returnedPos = Vec3((storedPos_.x * -1 + 1), storedPos_.y, storedPos_.z);
 	}
-	else {
+	else if (storedPos_.x < 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) {
 		returnedPos = Vec3((storedPos_.x * -1 - 1), storedPos_.y, storedPos_.z);
+	}
+	else if (storedPos_.y >= 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
+		returnedPos = Vec3(storedPos_.x, (storedPos_.y - 1), storedPos_.z);
+	}
+	else if (storedPos_.y < 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
+		returnedPos = Vec3(storedPos_.x, (storedPos_.y + 1), storedPos_.z);
 	}
 }
 
