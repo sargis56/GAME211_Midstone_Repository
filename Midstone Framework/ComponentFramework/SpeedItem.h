@@ -23,7 +23,7 @@ private:
 	Room room;
 	float speedIncrease;
 public:
-	SpeedItem(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, float speedIncrease_);
+	SpeedItem(Mesh* mesh_, Shader* shader_, Texture* texture_, float speedIncrease_, Vec3 pos_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~SpeedItem();
 	virtual bool OnCreate() override;
@@ -32,7 +32,7 @@ public:
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event& event) override;
 
-	bool collisionCheck(Character* character);
+	void collisionCheck(Character* character);
 
 	inline float getSpeedIncrease() const { return speedIncrease; }
 	inline Shader* getShader() const { return shader; }

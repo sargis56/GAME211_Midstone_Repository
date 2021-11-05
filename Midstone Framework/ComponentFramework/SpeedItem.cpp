@@ -5,8 +5,9 @@
 #include <SDL.h>
 #include <cstdlib>
 
-SpeedItem::SpeedItem(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, float speedIncrease_) :
-	mesh(mesh_), shader(shader_), texture(texture_), room(room_), speedIncrease(speedIncrease_) {
+SpeedItem::SpeedItem(Mesh* mesh_, Shader* shader_, Texture* texture_, float speedIncrease_, Vec3 pos_):
+	mesh(mesh_), shader(shader_), texture(texture_), speedIncrease(speedIncrease_) {
+	pos = pos_;
 }
 
 SpeedItem::~SpeedItem() {}
@@ -37,12 +38,9 @@ void SpeedItem::HandleEvents(const SDL_Event& event) {
 	
 } /// Just a stub
 
-bool SpeedItem::collisionCheck(Character* character) {
+void SpeedItem::collisionCheck(Character* character) {
 	if (VMath::distance(character->getPos(), pos) < 1) {
-		return true;
-	}
-	else {
-		return false;
+		character->setSpeed(speedIncrease);
 	}
 }
 

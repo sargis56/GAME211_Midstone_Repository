@@ -9,6 +9,7 @@
 #include "StaticMesh.h"
 #include "MageTurretEnemy.h"
 #include "TeslaTowerEnemy.h"
+#include "SpeedItem.h"
 #include "Door.h"
 #include "HealthUI.h"
 
@@ -26,6 +27,7 @@ private:
 	Character* character;
 	Door* doorLeft;
 	TeslaTowerEnemy* enemy1;
+	SpeedItem* speedItem;
 	StaticMesh* wall1, *wall2, *wall3, *wall4, *floor;
 	HealthUI* healthBar;
 	//DemoObject* demoObject;

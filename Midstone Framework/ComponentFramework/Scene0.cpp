@@ -53,6 +53,7 @@ bool Scene0::OnCreate() {
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
 	//health = 50;
+	speedItem = new SpeedItem(meshPtr, shaderPtr, doorTexture, 0.2f, Vec3(3.0f, 3.0f, -15.0f));
 
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
@@ -61,7 +62,7 @@ bool Scene0::OnCreate() {
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
 	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
-
+	speedItem->setModelMatrix(MMath::translate(speedItem->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
 	return true;
 }
 
@@ -109,33 +110,6 @@ void Scene0::BuildHealthUI() {
 	healthUITexture->LoadImage("textures/red.jpg");
 }
 
-float Scene0::setCharacterHealth() {
-	return health;
-}
-
-void Scene0::getCharacterHealth(const float storedHealth_) {
-	health = storedHealth_;
-}
-
-Vec3 Scene0::setCharacterPos() {
-	return character->getPos();
-}
-
-void Scene0::getCharacterPos(const Vec3 storedPos_) {
-	if (storedPos_.x >= 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) {
-		returnedPos = Vec3((storedPos_.x * -1 + 1), storedPos_.y, storedPos_.z);
-	}
-	else if (storedPos_.x < 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) {
-		returnedPos = Vec3((storedPos_.x * -1 - 1), storedPos_.y, storedPos_.z);
-	}
-	else if (storedPos_.y >= 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
-		returnedPos = Vec3(storedPos_.x, (storedPos_.y - 1), storedPos_.z);
-	}
-	else if (storedPos_.y < 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
-		returnedPos = Vec3(storedPos_.x, (storedPos_.y + 1), storedPos_.z);
-	}
-}
-
 void Scene0::Update(const float deltaTime) {
 	character->Update(deltaTime);
 	enemy1->Update(deltaTime);
@@ -150,13 +124,14 @@ void Scene0::Update(const float deltaTime) {
 	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;
 	}
+	speedItem->collisionCheck(character);
 	character->checkInvincibility();
 	//printf("EVENT::TINK\n");
 	//printf("%f\n", health);
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f,0.5f,0.5f));
 
-	printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
+	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
 
 
 }
@@ -187,9 +162,36 @@ void Scene0::Render() const {
 	wall4->Render();
 	floor->Render();
 	doorLeft->Render();
+	speedItem->Render();
 	glUseProgram(0);
 }
 
+float Scene0::setCharacterHealth() {
+	return health;
+}
+
+void Scene0::getCharacterHealth(const float storedHealth_) {
+	health = storedHealth_;
+}
+
+Vec3 Scene0::setCharacterPos() {
+	return character->getPos();
+}
+
+void Scene0::getCharacterPos(const Vec3 storedPos_) {
+	if (storedPos_.x >= 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) {
+		returnedPos = Vec3((storedPos_.x * -1 + 1), storedPos_.y, storedPos_.z);
+	}
+	else if (storedPos_.x < 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) {
+		returnedPos = Vec3((storedPos_.x * -1 - 1), storedPos_.y, storedPos_.z);
+	}
+	else if (storedPos_.y >= 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
+		returnedPos = Vec3(storedPos_.x, (storedPos_.y - 1), storedPos_.z);
+	}
+	else if (storedPos_.y < 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
+		returnedPos = Vec3(storedPos_.x, (storedPos_.y + 1), storedPos_.z);
+	}
+}
 
 void Scene0::OnDestroy() {
 	if (meshPtr) delete meshPtr, meshPtr = nullptr;
