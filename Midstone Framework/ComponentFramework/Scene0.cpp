@@ -115,19 +115,17 @@ void Scene0::Update(const float deltaTime) {
 	enemy1->Update(deltaTime);
 
 	if (enemy1->DamageCheck(character) && character->getInvincibility() == false) {
-		//LOG(charHealth);
 		character->setinvincibilityTimer(100);
 		health -= 10; //set characters new health after taking damage
-		//LOG(charHealth);
 		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 	}
 	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;
 	}
-	speedItem->collisionCheck(character);
+	if (speedItem->getActive()) {
+		speedItem->collisionCheck(character);
+	}
 	character->checkInvincibility();
-	//printf("EVENT::TINK\n");
-	//printf("%f\n", health);
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f,0.5f,0.5f));
 
@@ -162,7 +160,9 @@ void Scene0::Render() const {
 	wall4->Render();
 	floor->Render();
 	doorLeft->Render();
-	speedItem->Render();
+	if (speedItem->getActive()) {
+		speedItem->Render();
+	}
 	glUseProgram(0);
 }
 
@@ -179,16 +179,16 @@ Vec3 Scene0::setCharacterPos() {
 }
 
 void Scene0::getCharacterPos(const Vec3 storedPos_) {
-	if (storedPos_.x >= 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) {
+	if (storedPos_.x >= 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) { //entering from left door
 		returnedPos = Vec3((storedPos_.x * -1 + 1), storedPos_.y, storedPos_.z);
 	}
-	else if (storedPos_.x < 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) {
+	else if (storedPos_.x < 0 && storedPos_.y >= -1.0 && storedPos_.y <= 1.0) { //entering from right door
 		returnedPos = Vec3((storedPos_.x * -1 - 1), storedPos_.y, storedPos_.z);
 	}
-	else if (storedPos_.y >= 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
+	else if (storedPos_.y >= 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) { //entering from top door
 		returnedPos = Vec3(storedPos_.x, (storedPos_.y - 1), storedPos_.z);
 	}
-	else if (storedPos_.y < 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
+	else if (storedPos_.y < 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) { //entering from bottom door
 		returnedPos = Vec3(storedPos_.x, (storedPos_.y + 1), storedPos_.z);
 	}
 }

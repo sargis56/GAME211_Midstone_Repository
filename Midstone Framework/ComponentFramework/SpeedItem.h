@@ -22,6 +22,7 @@ private:
 	Texture* texture;
 	Room room;
 	float speedIncrease;
+	bool itemActive;
 public:
 	SpeedItem(Mesh* mesh_, Shader* shader_, Texture* texture_, float speedIncrease_, Vec3 pos_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -34,6 +35,7 @@ public:
 
 	void collisionCheck(Character* character);
 
+	inline bool getActive() const { return itemActive; }
 	inline float getSpeedIncrease() const { return speedIncrease; }
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }

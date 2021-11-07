@@ -8,6 +8,7 @@
 SpeedItem::SpeedItem(Mesh* mesh_, Shader* shader_, Texture* texture_, float speedIncrease_, Vec3 pos_):
 	mesh(mesh_), shader(shader_), texture(texture_), speedIncrease(speedIncrease_) {
 	pos = pos_;
+	itemActive = true;
 }
 
 SpeedItem::~SpeedItem() {}
@@ -41,6 +42,7 @@ void SpeedItem::HandleEvents(const SDL_Event& event) {
 void SpeedItem::collisionCheck(Character* character) {
 	if (VMath::distance(character->getPos(), pos) < 1) {
 		character->setSpeed(speedIncrease);
+		itemActive = false;
 	}
 }
 
