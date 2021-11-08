@@ -12,14 +12,7 @@ SnakeEnemy::SnakeEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room roo
 
 SnakeEnemy::~SnakeEnemy() {}
 
-void SnakeEnemy::BuildVProjectile() {
-	ObjLoader::loadOBJ("meshes/CoronaVirus.obj");
-	meshVProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
-	shaderVProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
-	textureVProjectile = new Texture();
-	textureVProjectile->LoadImage("textures/skull_texture.jpg");
-	vProjectile = new VenomProjectile(meshVProjectile, shaderVProjectile, textureVProjectile, room, pos);
-}
+
 
 bool SnakeEnemy::OnCreate() {
 
@@ -85,6 +78,17 @@ float SnakeEnemy::FollowPlayer(Character* character)
 		return 0;
 	}
 
+}
+
+void SnakeEnemy::BuildVProjectile() {
+	ObjLoader::loadOBJ("meshes/CoronaVirus.obj");
+	meshVProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	shaderVProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
+	textureVProjectile = new Texture();
+	textureVProjectile->LoadImage("textures/skull_texture.jpg");
+	vProjectile = new VenomProjectile(meshVProjectile, shaderVProjectile, textureVProjectile, room, pos);
+	Vec3 snakePos = this->getPos();
+	vProjectile->setPos(snakePos);
 }
 
 void SnakeEnemy::MoveEnemy() {

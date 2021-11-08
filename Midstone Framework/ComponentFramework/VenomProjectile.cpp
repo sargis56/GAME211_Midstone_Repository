@@ -8,7 +8,7 @@
 
 VenomProjectile::VenomProjectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos_) :
 	mesh(mesh_), shader(shader_), texture(texture_), room(room_) {
-	pos = pos_;
+	//pos = pos_;
 }
 
 VenomProjectile::~VenomProjectile() {}
