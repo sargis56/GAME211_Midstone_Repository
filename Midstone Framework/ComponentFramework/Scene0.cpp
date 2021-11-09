@@ -15,31 +15,27 @@
 using namespace std;
 
 Scene0::Scene0() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorLeft(nullptr), doorTexture(nullptr), enemy1(nullptr), floor(nullptr), floorTexture(nullptr),
-health(NULL), healthBar(nullptr), healthUITexture(nullptr), ratMeshPtr(nullptr), turretTexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr) {
+health(NULL), healthBar(nullptr), healthUITexture(nullptr), ratMeshPtr(nullptr), turretTexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr), speedItem(nullptr) {
 	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
 }
 
 Scene0::~Scene0() {}
 
 bool Scene0::OnCreate() {
+	//room set up
 	room.setRoomBorders(Vec3(-9.0, -4.0, 0.0), Vec3(9.0, 4.0, 0.0));
 	light1 = Vec3(0.0f, 40.0f, 0.0f);
-
+	roomUpdate = roomCleared; //setting local clear
 	projectionMatrix = MMath::perspective(30.0f, (16.0f / 9.0f), 0.5f, 100.0f);
 	viewMatrix = MMath::lookAt(Vec3(0.0f, 0.0f, 10.0f), Vec3(0.0f, 0.0f, 0.0f), Vec3(0.0f, 1.0f, 0.0f));
-
+	//character onCreate
 	BuildCharacter();
 	character = new Character(meshPtr, shaderPtr, texturePtr, room);
 	if (character == nullptr) {
 		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
 		return false;
 	}
-	character->setPos(returnedPos);
-	//character->setHealth(50);
-	BuildRat();
-	enemy1 = new TeslaTowerEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
-	enemy1->OnCreate();
-	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
+	//room onCreate
 	BuildWall();
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
@@ -51,9 +47,14 @@ bool Scene0::OnCreate() {
 	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
-	//health = 50;
-	speedItem = new SpeedItem(meshPtr, shaderPtr, doorTexture, 0.2f, Vec3(3.0f, 3.0f, -15.0f));
-
+	speedItem = new SpeedItem(boxMesh, shaderPtr, doorTexture, 0.2f, Vec3(3.0f, 3.0f, -15.0f));
+	character->setPos(returnedPos); //using for setting the position 
+	//enemy onCreate
+	BuildRat();
+	enemy1 = new TeslaTowerEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
+	enemy1->OnCreate();
+	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
+	//modelMatrix Setting for static obj
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
@@ -110,12 +111,11 @@ void Scene0::BuildHealthUI() {
 }
 
 void Scene0::Update(const float deltaTime) {
-	//printf("roomcleared = %i\n", roomCleared);
 	if (speedItem->getActive() == false) { //test for right now - if all enemy dead = roomCleared = true;
 		roomCleared = true;
 	}
 	//enemy and item updates
-	if (roomCleared == false) {
+	if (roomUpdate == false) {
 		enemy1->Update(deltaTime);
 		if (enemy1->DamageCheck(character) && character->getInvincibility() == false) {
 			character->setinvincibilityTimer(100);
@@ -136,10 +136,7 @@ void Scene0::Update(const float deltaTime) {
 	}
 	character->checkInvincibility();
 	character->setModelMatrix(MMath::translate(character->getPos()));
-
 	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
-
-
 }
 
 void Scene0::Render() const {
@@ -158,7 +155,7 @@ void Scene0::Render() const {
 	glUniform3fv(character->getShader()->getUniformID("lightPos"), 1, light1);
 
 	//enemy and item renders
-	if (roomCleared == false) {
+	if (roomUpdate == false) {
 		enemy1->Render();
 		if (speedItem->getActive()) {
 			speedItem->Render();
@@ -168,6 +165,7 @@ void Scene0::Render() const {
 	if (character->getVisibility()) {
 		character->Render();
 	}
+	//Room and UI renders
 	healthBar->Render();
 	wall1->Render();
 	wall2->Render();

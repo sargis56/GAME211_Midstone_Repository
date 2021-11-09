@@ -30,7 +30,6 @@ private:
 	SpeedItem* speedItem;
 	StaticMesh* wall1, *wall2, *wall3, *wall4, *floor;
 	HealthUI* healthBar;
-	//DemoObject* demoObject;
 	Vec3 light1;
 	float health;
 	Vec3 returnedPos;
@@ -44,6 +43,7 @@ private:
 
 	int sceneNumber = 1;
 	bool roomCleared = false;
+	bool roomUpdate = false;
 public:
 	explicit Scene0();
 	virtual ~Scene0();
