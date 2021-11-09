@@ -111,23 +111,32 @@ void Scene0::BuildHealthUI() {
 }
 
 void Scene0::Update(const float deltaTime) {
-	character->Update(deltaTime);
-	enemy1->Update(deltaTime);
-
-	if (enemy1->DamageCheck(character) && character->getInvincibility() == false) {
-		character->setinvincibilityTimer(100);
-		health -= 10; //set characters new health after taking damage
-		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
+	//printf("roomcleared = %i\n", roomCleared);
+	if (speedItem->getActive() == false) { //test for right now - if all enemy dead = roomCleared = true;
+		roomCleared = true;
 	}
+	//enemy and item updates
+	if (roomCleared == false) {
+		enemy1->Update(deltaTime);
+		if (enemy1->DamageCheck(character) && character->getInvincibility() == false) {
+			character->setinvincibilityTimer(100);
+			health -= 10; //set characters new health after taking damage
+			healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
+		}
+		if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 2;
+		}
+		if (speedItem->getActive()) {
+			speedItem->collisionCheck(character);
+		}
+		enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+	}
+	//door and character updates
 	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;
 	}
-	if (speedItem->getActive()) {
-		speedItem->collisionCheck(character);
-	}
 	character->checkInvincibility();
 	character->setModelMatrix(MMath::translate(character->getPos()));
-	enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f,0.5f,0.5f));
 
 	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
 
@@ -147,23 +156,35 @@ void Scene0::Render() const {
 	/// These pass the matricies and the light position to the GPU
 	glUniformMatrix4fv(character->getShader()->getUniformID("projectionMatrix"), 1, GL_FALSE, projectionMatrix);
 	glUniformMatrix4fv(character->getShader()->getUniformID("viewMatrix"), 1, GL_FALSE, viewMatrix);
-
 	glUniform3fv(character->getShader()->getUniformID("lightPos"), 1, light1);
+
+	//enemy and item renders
+	if (roomCleared == false) {
+		enemy1->Render();
+		if (speedItem->getActive()) {
+			speedItem->Render();
+		}
+	}
+	//door and character renders
 	if (character->getVisibility()) {
 		character->Render();
 	}
 	healthBar->Render();
-	enemy1->Render();
 	wall1->Render();
 	wall2->Render();
 	wall3->Render();
 	wall4->Render();
 	floor->Render();
 	doorLeft->Render();
-	if (speedItem->getActive()) {
-		speedItem->Render();
-	}
 	glUseProgram(0);
+}
+
+bool Scene0::setSceneCleared() {
+	return roomCleared;
+}
+
+void Scene0::getSceneCleared(const bool storedRoom_) {
+	roomCleared = storedRoom_;
 }
 
 float Scene0::setCharacterHealth() {

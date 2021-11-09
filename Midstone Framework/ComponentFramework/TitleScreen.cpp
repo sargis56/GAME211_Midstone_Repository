@@ -65,9 +65,13 @@ float TitleScreen::setCharacterHealth()
 	return 50.0f;
 }
 
-void TitleScreen::getCharacterHealth(const float stats_)
-{
+void TitleScreen::getCharacterHealth(const float stats_) {}
+
+bool TitleScreen::setSceneCleared() {
+	return false;
 }
+
+void TitleScreen::getSceneCleared(const bool storedRoom_) {}
 
 Vec3 TitleScreen::setCharacterPos() {
 	return Vec3(-1.0f,0.0f,-15.0f);

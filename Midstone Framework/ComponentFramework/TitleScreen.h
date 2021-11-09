@@ -38,6 +38,9 @@ public:
 
 	void BuildButtons();
 
+	virtual bool setSceneCleared() override;
+	virtual void getSceneCleared(const bool storedScene_) override;
+
 	virtual float setCharacterHealth() override;
 	virtual void getCharacterHealth(const float stats_) override;
 

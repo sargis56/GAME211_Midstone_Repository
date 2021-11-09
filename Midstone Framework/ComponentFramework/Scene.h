@@ -15,6 +15,9 @@ public:
 	virtual void Render() const  = 0 ;
 	virtual void HandleEvents(const SDL_Event &sdlEvent) = 0;
 	virtual int SetScene() = 0; //function to switch scenes
+	//Scene Variables Functions
+	virtual bool setSceneCleared() = 0;
+	virtual void getSceneCleared(const bool storedBool_) = 0;
 	//Stat Functions
 	virtual float setCharacterHealth() = 0;
 	virtual void getCharacterHealth(const float storedHealth_) = 0;

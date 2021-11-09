@@ -185,6 +185,14 @@ void Scene1::Render() const {
 	glUseProgram(0);
 }
 
+bool Scene1::setSceneCleared() {
+	return roomCleared;
+}
+
+void Scene1::getSceneCleared(const bool storedRoom_) {
+	roomCleared = storedRoom_;
+}
+
 float Scene1::setCharacterHealth() {
 	return health;
 }

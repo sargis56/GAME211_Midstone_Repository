@@ -43,6 +43,7 @@ private:
 	Room room;
 
 	int sceneNumber = 1;
+	bool roomCleared = false;
 public:
 	explicit Scene0();
 	virtual ~Scene0();
@@ -61,6 +62,9 @@ public:
 	void BuildDoor();
 
 	void BuildHealthUI();
+
+	virtual bool setSceneCleared() override;
+	virtual void getSceneCleared(const bool storedScene_) override;
 
 	virtual float setCharacterHealth() override;
 	virtual void getCharacterHealth(const float storedHealth_) override;
