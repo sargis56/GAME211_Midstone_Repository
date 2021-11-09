@@ -48,8 +48,7 @@ bool Scene0::OnCreate() {
 	BuildFloor();
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
 	BuildDoor();
-	//doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
-	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0f, 4.5f, -15.0f));
+	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
 	//health = 50;
