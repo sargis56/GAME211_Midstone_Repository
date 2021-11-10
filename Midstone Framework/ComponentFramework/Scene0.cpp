@@ -22,7 +22,7 @@ health(NULL), healthBar(nullptr), healthUITexture(nullptr), ratMeshPtr(nullptr),
 Scene0::~Scene0() {}
 
 bool Scene0::OnCreate() {
-	//room set up
+	//Room setup
 	room.setRoomBorders(Vec3(-9.0, -4.0, 0.0), Vec3(9.0, 4.0, 0.0));
 	light1 = Vec3(0.0f, 40.0f, 0.0f);
 	roomUpdate = roomCleared; //setting local clear
