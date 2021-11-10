@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include <cstdlib>
 #include "ObjLoader.h"
+#include "Randomizer.h"
 
 SnakeEnemy::SnakeEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_) :
 	mesh(mesh_), shader(shader_), texture(texture_), room(room_) {
@@ -30,7 +31,7 @@ void SnakeEnemy::Update(float deltaTime_) {
 	}*/
 
 	vProjectile->setModelMatrix(MMath::translate(vProjectile->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
-	printf(" %f    %f    \n", vProjectile->getPos().x, vProjectile->getPos().y);
+	//printf(" %f    %f    \n", vProjectile->getPos().x, vProjectile->getPos().y);
 
 }
 
@@ -63,6 +64,8 @@ bool SnakeEnemy::DamageCheck(Character* character) {
 
 float SnakeEnemy::FollowPlayer(Character* character)
 {
+	PatrolArea();
+
 	if (VMath::distance(character->getPos(), pos) < agroRange) {
 		direction = character->getPos() - pos;
 		float angle = atan2(direction.y, direction.x) * RADIANS_TO_DEGREES; //Calculate the angle (in DEGREES) between player and enemy
@@ -70,7 +73,7 @@ float SnakeEnemy::FollowPlayer(Character* character)
 															//* MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f))); // Adjust enemy to FACE player 
 		direction.Normalize();
 		MoveEnemy();
-		AttackPlayer(character);
+		//AttackPlayer(character);
 		return angle;
 	}
 	else
@@ -80,15 +83,48 @@ float SnakeEnemy::FollowPlayer(Character* character)
 
 }
 
+void SnakeEnemy::PatrolArea()
+{
+	srand((unsigned)time(0));
+	int randomNum;
+
+	Vec3 base1 = Vec3(-4.0, -4.0, -15.0f);
+	Vec3 base2 = Vec3(-4.0, 4.0, -15.0f);
+	Vec3 base3 = Vec3(4.0, 4.0, -15.0f);
+	Vec3 base4 = Vec3(4.0, -4.0, -15.0f);
+	Vec3 base5 = Vec3(0.0, 0.0, -15.0f);
+
+	randomNum = (rand() % 5) + 1;
+	if (randomNum == 1)
+	{
+		this->setPos(base1);
+	}
+	if (randomNum == 2)
+	{
+		this->setPos(base2);
+	}
+	if (randomNum == 3)
+	{
+		this->setPos(base3);
+	}
+	if (randomNum == 4)
+	{
+		this->setPos(base4);
+	}
+	if (randomNum == 5)
+	{
+		this->setPos(base5);
+	}
+}
+
 void SnakeEnemy::BuildVProjectile() {
 	ObjLoader::loadOBJ("meshes/CoronaVirus.obj");
 	meshVProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderVProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureVProjectile = new Texture();
 	textureVProjectile->LoadImage("textures/skull_texture.jpg");
-	vProjectile = new VenomProjectile(meshVProjectile, shaderVProjectile, textureVProjectile, room, pos);
-	Vec3 snakePos = this->getPos();
-	vProjectile->setPos(snakePos);
+	vProjectile = new VenomProjectile(meshVProjectile, shaderVProjectile, textureVProjectile, room);
+	
 }
 
 void SnakeEnemy::MoveEnemy() {
@@ -98,18 +134,11 @@ void SnakeEnemy::MoveEnemy() {
 
 void SnakeEnemy::AttackPlayer(Character* chtr) {
 
-		attackTarget = Vec3(chtr->getPos().x, chtr->getPos().y, 0);
+// 	if (DamageCheck(chtr))
+// 	{
+// 		
+// 	}
 
-		vProjectile->VProjectileUpdate(attackTarget);
-		if (vProjectile->getPos().x && vProjectile->getPos().y == chtr->getPos().x && chtr->getPos().y)
-		{
-			vProjectile->setPos(pos);
-			
-		}
-
-
-		
-		//printf("attackdir %f    %f    \n", attackTarget.x, attackTarget.y);
 	
 	
 }

@@ -6,7 +6,7 @@
 #include <SDL.h>
 #include <cstdlib>
 
-VenomProjectile::VenomProjectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos_) :
+VenomProjectile::VenomProjectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_) :
 	mesh(mesh_), shader(shader_), texture(texture_), room(room_) {
 	//pos = pos_;
 }
@@ -45,13 +45,13 @@ void VenomProjectile::HandleEvents(const SDL_Event& event) {
 void VenomProjectile::VProjectileUpdate(Vec3 target) {
 
 	float speed = 0.04f;
-	/*Vec3 normalDir = target;
+	Vec3 normalDir = target;
 	normalDir.Normalize();
-	pos += (normalDir * speed);*/
+	pos += (normalDir * speed);
 
 
 
-	pos = VMath::lerp(pos, target, (0.5 * speed));
+//	pos = VMath::lerp(pos, target, (0.5 * speed));
 	
 	
 	//desiredPos = direction;

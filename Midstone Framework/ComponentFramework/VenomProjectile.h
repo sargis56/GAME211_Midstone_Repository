@@ -25,7 +25,7 @@ private:
 	Room room;
 
 public:
-	VenomProjectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos);
+	VenomProjectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~VenomProjectile();
 

@@ -26,6 +26,7 @@ private:
 	Room room;
 	float moveSpeed;
 	float agroRange = 6.0f;
+	int damage = 1;
 	VenomProjectile *vProjectile;
 
 public:
@@ -42,6 +43,7 @@ public:
 
 	bool DamageCheck(Character* character);
 	float FollowPlayer(Character* character);
+	void PatrolArea();
 	void MoveEnemy();
 
 	void AttackPlayer(Character* chtr);
