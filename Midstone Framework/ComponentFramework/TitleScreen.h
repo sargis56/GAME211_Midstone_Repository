@@ -46,6 +46,9 @@ public:
 
 	virtual Vec3 setCharacterPos() override;
 	virtual void getCharacterPos(const Vec3 storedPos_) override;
+
+	virtual float setCharacterSpeed() override;
+	virtual void getCharacterSpeed(const float storedSpeed_) override;
 };
 
 

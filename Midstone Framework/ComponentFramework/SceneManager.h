@@ -34,6 +34,7 @@ private:
 	//characterStats
 	float mainHealth;
 	Vec3 mainPos;
+	float mainSpeed;
 };
 
 

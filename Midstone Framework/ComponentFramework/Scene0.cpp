@@ -31,6 +31,7 @@ bool Scene0::OnCreate() {
 	//character onCreate
 	BuildCharacter();
 	character = new Character(meshPtr, shaderPtr, texturePtr, room);
+	character->setSpeed(speed);
 	if (character == nullptr) {
 		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
 		return false;
@@ -118,7 +119,7 @@ void Scene0::Update(const float deltaTime) {
 	if (roomUpdate == false) {
 		enemy1->Update(deltaTime);
 		if (enemy1->DamageCheck(character) && character->getInvincibility() == false) {
-			character->setinvincibilityTimer(100);
+			character->setinvincibilityTimer(100); //setting the timer for the invinciblity
 			health -= 10; //set characters new health after taking damage
 			healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		}
@@ -134,7 +135,7 @@ void Scene0::Update(const float deltaTime) {
 	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;
 	}
-	character->checkInvincibility();
+	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
 }
@@ -209,6 +210,14 @@ void Scene0::getCharacterPos(const Vec3 storedPos_) {
 	else if (storedPos_.y < 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) { //entering from bottom door
 		returnedPos = Vec3(storedPos_.x, (storedPos_.y + 1), storedPos_.z);
 	}
+}
+
+float Scene0::setCharacterSpeed() {
+	return character->getSpeed();
+}
+
+void Scene0::getCharacterSpeed(const float storedSpeed_) {
+	speed = storedSpeed_;
 }
 
 void Scene0::OnDestroy() {

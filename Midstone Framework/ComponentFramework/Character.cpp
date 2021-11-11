@@ -132,16 +132,15 @@ void Character::HandleEvents(const SDL_Event& event) {
 }
 
 void Character::checkInvincibility() {
-	if (invincibilityTimer >= 0) {
+	if (invincibilityTimer >= 0) { //checking if the timer is up
 		invincibilityTimer--; //timer varaible function
-		//visiablity stuff
-		if ((invincibilityTimer & 1) == 0) {
+		if ((invincibilityTimer & 1) == 0) { //makes the visibility flicker
 			visibility = false;
 		}
 		else {
 			visibility = true;
 		}
-		invincibility = true;
+		invincibility = true; //invinciblity variable
 	}
 	else {
 		invincibility = false;

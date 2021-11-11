@@ -31,6 +31,7 @@ bool Scene1::OnCreate() {
 
 	BuildCharacter();
 	character = new Character(meshPtr, shaderPtr, texturePtr, room);
+	character->setSpeed(speed);
 	if (character == nullptr) {
 		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
 		return false;
@@ -218,6 +219,14 @@ void Scene1::getCharacterPos(const Vec3 storedPos_) {
 	else if (storedPos_.y < 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) {
 		returnedPos = Vec3(storedPos_.x, (storedPos_.y + 1), storedPos_.z);
 	}
+}
+
+float Scene1::setCharacterSpeed() {
+	return character->getSpeed();
+}
+
+void Scene1::getCharacterSpeed(const float storedSpeed_) {
+	speed = storedSpeed_;
 }
 
 

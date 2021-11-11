@@ -22,8 +22,6 @@ private:
 	Room room;
 	bool keyR = false, keyL = false, keyUp = false, keyDown = false;
 	float speed = 0.1;
-	//int health;
-	//int maxHealth;
 	bool invincibility = false;
 	bool visibility = true;
 	int invincibilityTimer;
@@ -49,6 +47,7 @@ public:
 	//inline CharacterVariables getCharacterVariables() const { return stats; }
 	//inline void setCharacterVariables(const CharacterVariables stats_) { stats = stats_; }
 	inline void setSpeed(const float setSpeed_) { speed = setSpeed_; }
+	inline float getSpeed() { return speed; }
 	//inline void setHealth(float health_) { health = health_; }
 	//inline int getHealth() { return health; }
 	inline Shader* getShader() const { return shader; }

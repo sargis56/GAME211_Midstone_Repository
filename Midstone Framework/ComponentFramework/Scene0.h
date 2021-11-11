@@ -27,7 +27,7 @@ private:
 	//character pointers and variables
 	Character* character;
 	Mesh* meshPtr, * ratMeshPtr, * boxMesh;
-	float health;
+	float health, speed;
 	Vec3 returnedPos;
 	//room setup pointers
 	Room room;
@@ -66,6 +66,8 @@ public:
 	virtual void getCharacterHealth(const float storedHealth_) override;
 	virtual Vec3 setCharacterPos() override;
 	virtual void getCharacterPos(const Vec3 storedPos_) override;
+	virtual float setCharacterSpeed() override;
+	virtual void getCharacterSpeed(const float storedSpeed_) override;
 	//Gameobjects creation functions
 	void BuildCharacter();
 	void BuildRat();

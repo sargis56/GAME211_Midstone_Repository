@@ -29,7 +29,7 @@ private:
 	//HealthUI* healthBar;
 	//DemoObject* demoObject;
 	Vec3 light1;
-	float health;
+	float health, speed;
 	Vec3 returnedPos;
 
 	Mesh* meshPtr, *ratMeshPtr, * demonMeshPtr, *boxMesh;
@@ -69,6 +69,9 @@ public:
 
 	virtual Vec3 setCharacterPos() override;
 	virtual void getCharacterPos(const Vec3 storedPos_) override;
+
+	virtual float setCharacterSpeed() override;
+	virtual void getCharacterSpeed(const float storedSpeed_) override;
 };
 
 

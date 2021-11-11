@@ -3,7 +3,26 @@
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(24,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(45,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene0.cpp(58,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene0.cpp(123,94): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(43,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene0.cpp(59,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene0.cpp(124,94): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+  Scene1.cpp
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(24,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(43,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\DemonEnemy.h(26,18): warning C4305: 'initializing': truncation from 'double' to 'float'
+  SceneManager.cpp
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(24,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(43,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\DemonEnemy.h(26,18): warning C4305: 'initializing': truncation from 'double' to 'float'
+  TitleScreen.cpp
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\TitleScreen.cpp(59,62): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\TitleScreen.cpp(60,63): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\TitleScreen.cpp(83,12): warning C4305: 'return': truncation from 'double' to 'float'
+  Generating Code...
   ComponentFramework.vcxproj -> D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe

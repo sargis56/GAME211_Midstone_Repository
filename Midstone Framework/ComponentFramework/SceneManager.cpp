@@ -122,6 +122,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		//get character variables to be stored
 		mainHealth = currentScene->setCharacterHealth();
 		mainPos = currentScene->setCharacterPos();
+		mainSpeed = currentScene->setCharacterSpeed();
 		delete currentScene;
 		currentScene = nullptr;
 	}
@@ -133,19 +134,19 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		currentScene->getSceneCleared(roomCleared[currentNumber]);
 		currentScene->getCharacterHealth(mainHealth);
 		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
 		status = currentScene->OnCreate();
 		break;
 	case TITLESCREEN:
 		currentScene = new TitleScreen();
-		//sending the speed back to the new scene
-		//currentScene->getSpeed(speed);
 		status = currentScene->OnCreate();
 		break;
 	case SCENE1:
 		currentScene = new Scene1();
 		//sending the speed back to the new scene
 		currentScene->getCharacterHealth(mainHealth);
-		currentScene->getCharacterPos(mainPos);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
 		status = currentScene->OnCreate();
 		break;
 	default:

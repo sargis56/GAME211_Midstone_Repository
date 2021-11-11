@@ -79,6 +79,12 @@ Vec3 TitleScreen::setCharacterPos() {
 
 void TitleScreen::getCharacterPos(const Vec3 storedPos_) {}
 
+float TitleScreen::setCharacterSpeed() {
+	return 0.1;
+}
+
+void TitleScreen::getCharacterSpeed(const float storedSpeed_) {}
+
 void TitleScreen::Update(const float deltaTime) { }
 
 void TitleScreen::Render() const {
