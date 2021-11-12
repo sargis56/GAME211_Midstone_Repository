@@ -35,6 +35,7 @@ private:
 	float mainHealth;
 	Vec3 mainPos;
 	float mainSpeed;
+	int mainWeapon;
 };
 
 

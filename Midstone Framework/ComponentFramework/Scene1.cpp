@@ -229,6 +229,13 @@ void Scene1::getCharacterSpeed(const float storedSpeed_) {
 	speed = storedSpeed_;
 }
 
+int Scene1::setWeapon() {
+	return weapon;
+}
+
+void Scene1::getWeapon(const int storedWeapon_) {
+	weapon = storedWeapon_;
+}
 
 void Scene1::OnDestroy() {
 	if (meshPtr) delete meshPtr, meshPtr = nullptr;

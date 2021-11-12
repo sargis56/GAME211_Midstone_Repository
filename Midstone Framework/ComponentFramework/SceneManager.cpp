@@ -123,6 +123,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		mainHealth = currentScene->setCharacterHealth();
 		mainPos = currentScene->setCharacterPos();
 		mainSpeed = currentScene->setCharacterSpeed();
+		mainWeapon = currentScene->setWeapon();
 		delete currentScene;
 		currentScene = nullptr;
 	}
@@ -135,6 +136,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		currentScene->getCharacterHealth(mainHealth);
 		currentScene->getCharacterPos(Vec3(mainPos));
 		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
 		status = currentScene->OnCreate();
 		break;
 	case TITLESCREEN:
@@ -147,6 +149,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		currentScene->getCharacterHealth(mainHealth);
 		currentScene->getCharacterPos(Vec3(mainPos));
 		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
 		status = currentScene->OnCreate();
 		break;
 	default:

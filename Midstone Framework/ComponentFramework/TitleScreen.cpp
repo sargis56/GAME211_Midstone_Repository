@@ -85,6 +85,12 @@ float TitleScreen::setCharacterSpeed() {
 
 void TitleScreen::getCharacterSpeed(const float storedSpeed_) {}
 
+int TitleScreen::setWeapon() {
+	return 0;
+}
+
+void TitleScreen::getWeapon(const int storedWeapon_) {}
+
 void TitleScreen::Update(const float deltaTime) { }
 
 void TitleScreen::Render() const {

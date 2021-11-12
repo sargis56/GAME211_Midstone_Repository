@@ -30,6 +30,7 @@ private:
 	//DemoObject* demoObject;
 	Vec3 light1;
 	float health, speed;
+	int weapon;
 	Vec3 returnedPos;
 
 	Mesh* meshPtr, *ratMeshPtr, * demonMeshPtr, *boxMesh;
@@ -72,6 +73,9 @@ public:
 
 	virtual float setCharacterSpeed() override;
 	virtual void getCharacterSpeed(const float storedSpeed_) override;
+
+	virtual int setWeapon() override;
+	virtual void getWeapon(const int storedWeapon_) override;
 };
 
 

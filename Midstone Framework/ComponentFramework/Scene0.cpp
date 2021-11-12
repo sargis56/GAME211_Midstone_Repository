@@ -220,6 +220,14 @@ void Scene0::getCharacterSpeed(const float storedSpeed_) {
 	speed = storedSpeed_;
 }
 
+int Scene0::setWeapon() {
+	return weapon;
+}
+
+void Scene0::getWeapon(const int storedWeapon_) {
+	weapon = storedWeapon_;
+}
+
 void Scene0::OnDestroy() {
 	if (meshPtr) delete meshPtr, meshPtr = nullptr;
 	if (texturePtr) delete texturePtr, texturePtr = nullptr;

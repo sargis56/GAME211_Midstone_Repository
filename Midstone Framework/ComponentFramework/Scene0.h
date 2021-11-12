@@ -28,6 +28,7 @@ private:
 	Character* character;
 	Mesh* meshPtr, * ratMeshPtr, * boxMesh;
 	float health, speed;
+	int weapon;
 	Vec3 returnedPos;
 	//room setup pointers
 	Room room;
@@ -68,6 +69,8 @@ public:
 	virtual void getCharacterPos(const Vec3 storedPos_) override;
 	virtual float setCharacterSpeed() override;
 	virtual void getCharacterSpeed(const float storedSpeed_) override;
+	virtual int setWeapon() override;
+	virtual void getWeapon(const int storedWeapon_) override;
 	//Gameobjects creation functions
 	void BuildCharacter();
 	void BuildRat();

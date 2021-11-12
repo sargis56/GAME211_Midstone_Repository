@@ -25,9 +25,12 @@ public:
 	virtual void getCharacterPos(const Vec3 storedPos_) = 0;
 	virtual float setCharacterSpeed() = 0;
 	virtual void getCharacterSpeed(const float storedSpeed_) = 0;
+	virtual int setWeapon() = 0;
+	virtual void getWeapon(const int storedWeapon_) = 0;
 protected:
 	float storedHealth;
 	Vec3 storedPos;
 	float storedSpeed;
+	int storedWeapon;
 };
 #endif

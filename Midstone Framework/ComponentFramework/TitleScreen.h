@@ -49,6 +49,9 @@ public:
 
 	virtual float setCharacterSpeed() override;
 	virtual void getCharacterSpeed(const float storedSpeed_) override;
+
+	virtual int setWeapon() override;
+	virtual void getWeapon(const int storedWeapon_) override;
 };
 
 
