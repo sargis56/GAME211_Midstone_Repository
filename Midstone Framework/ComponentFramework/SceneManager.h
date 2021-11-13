@@ -15,10 +15,10 @@ public:
 	
 private:
 	enum SCENE_NUMBER {
-		SCENE0 = 0,
+		SCENETEST = 0,
 		TITLESCREEN,
 		SCENEDEV,
-		SCENE1
+		SCENE00
 	};
 
 	class Scene* currentScene;

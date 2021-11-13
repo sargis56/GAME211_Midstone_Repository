@@ -3,9 +3,9 @@
 #include "Timer.h"
 #include "Window.h"
 #include "SceneDev.h"
-#include "Scene0.h"
-#include "Scene1.h"
+#include "SceneTest.h"
 #include "TitleScreen.h"
+#include "Scene00.h"
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
@@ -46,7 +46,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		return false;
 	}
 	/********************************   Default first scene   ***********************/
-	BuildScene(SCENEDEV);
+	BuildScene(TITLESCREEN);
 	
 	return true;
 }
@@ -75,11 +75,8 @@ void SceneManager::GetEvents() {
 		}
 		else if (sdlEvent.type == SDL_KEYDOWN) {
 			switch (sdlEvent.key.keysym.scancode) {
-			case SDL_SCANCODE_F1:
-				BuildScene(SCENE1);
-				break;
 			case SDL_SCANCODE_F2:
-				BuildScene(SCENE0);
+				BuildScene(SCENETEST);
 				break;
 			case SDL_SCANCODE_RETURN:
 				if (fullScreen == false) {
@@ -108,10 +105,7 @@ void SceneManager::SwitchScene() {
 		roomCleared[currentNumber] = currentScene->setSceneCleared();
 		currentNumber = testSceneNumber;
 		if (currentNumber == 1) {
-			BuildScene(SCENE0);
-		}
-		if (currentNumber == 2) {
-			BuildScene(SCENE1);
+			BuildScene(SCENE00);
 		}
 	}
 }
@@ -143,19 +137,19 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		currentScene->getWeapon(0);
 		status = currentScene->OnCreate();
 		break;
-	case SCENE0:  
-		currentScene = new Scene0();
-		//sending the speed back to the new scene
-		currentScene->getSceneCleared(roomCleared[currentNumber]);
-		currentScene->getCharacterHealth(mainHealth);
-		currentScene->getCharacterPos(Vec3(mainPos));
-		currentScene->getCharacterSpeed(mainSpeed);
-		currentScene->getWeapon(mainWeapon);
+	case SCENETEST:
+		currentScene = new SceneDev();
+		currentScene->getSceneCleared(false);
+		currentScene->getCharacterHealth(50);
+		currentScene->getCharacterPos(Vec3(1, 0, -15));
+		currentScene->getCharacterSpeed(0.1);
+		currentScene->getWeapon(0);
 		status = currentScene->OnCreate();
 		break;
-	case SCENE1:
-		currentScene = new Scene1();
+	case SCENE00:
+		currentScene = new Scene00();
 		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
 		currentScene->getCharacterHealth(mainHealth);
 		currentScene->getCharacterPos(Vec3(mainPos));
 		currentScene->getCharacterSpeed(mainSpeed);

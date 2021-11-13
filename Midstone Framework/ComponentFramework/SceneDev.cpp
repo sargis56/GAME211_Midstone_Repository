@@ -30,26 +30,9 @@ bool SceneDev::OnCreate() {
 	viewMatrix = MMath::lookAt(Vec3(0.0f, 0.0f, 10.0f), Vec3(0.0f, 0.0f, 0.0f), Vec3(0.0f, 1.0f, 0.0f));
 	//character onCreate
 	BuildCharacter();
-	character = new Character(meshPtr, shaderPtr, texturePtr, room);
-	character->setSpeed(speed);
-	if (character == nullptr) {
-		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
-		return false;
-	}
 	//room onCreate
 	BuildRoom();
-	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
-	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
-	wall3 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
-	wall4 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
-	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
-	doorRight = new Door(boxMesh, shaderPtr, doorTexture, Vec3(9.5, 0.0, -15.0f));
-	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
-	doorTop = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0, 4.5, -15.0f));
-	doorBottom = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0, -4.5, -15.0f));
 	BuildHealthUI();
-	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
-	character->setPos(returnedPos); //using for setting the position 
 	//enemy onCreate
 	BuildAllEnemies();
 
@@ -81,6 +64,9 @@ void SceneDev::BuildCharacter() {
 	shaderPtr = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	texturePtr = new Texture();
 	texturePtr->LoadImage("textures/white.png");
+	character = new Character(meshPtr, shaderPtr, texturePtr, room);
+	character->setSpeed(speed);
+	character->setPos(returnedPos); //using for setting the position 
 }
 
 void SceneDev::BuildAllEnemies() {
@@ -96,18 +82,27 @@ void SceneDev::BuildRoom() {
 	floorTexture->LoadImage("textures/floor.jpg");
 	doorTexture = new Texture();
 	doorTexture->LoadImage("textures/green.jpg");
+
+	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
+	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
+	wall3 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
+	wall4 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
+	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
+	doorRight = new Door(boxMesh, shaderPtr, doorTexture, Vec3(9.5, 0.0, -15.0f));
+	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
+	doorTop = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0, 4.5, -15.0f));
+	doorBottom = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0, -4.5, -15.0f));
 }
 void SceneDev::BuildHealthUI() {
 	healthUITexture = new Texture();
 	healthUITexture->LoadImage("textures/red.jpg");
+	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
 }
 
 void SceneDev::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
-		if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-			sceneNumber = 2;
-		}
+		
 	}
 	//door and character updates
 	if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level

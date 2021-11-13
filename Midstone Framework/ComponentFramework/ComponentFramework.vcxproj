@@ -127,6 +127,7 @@
   <ItemGroup>
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="HealthUI.cpp" />
+    <ClCompile Include="Scene00.cpp" />
     <ClCompile Include="SceneDev.cpp" />
     <ClCompile Include="SpeedItem.cpp" />
     <ClCompile Include="TeslaTowerEnemy.cpp" />
@@ -147,13 +148,12 @@
     <ClCompile Include="Randomizer.cpp" />
     <ClCompile Include="RatEnemy.cpp" />
     <ClCompile Include="Room.cpp" />
-    <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MMath.cpp" />
     <ClCompile Include="ObjLoader.cpp" />
-    <ClCompile Include="Scene0.cpp" />
+    <ClCompile Include="SceneTest.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="SnakeEnemy.cpp" />
@@ -169,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="Door.h" />
     <ClInclude Include="HealthUI.h" />
+    <ClInclude Include="Scene00.h" />
     <ClInclude Include="SceneDev.h" />
     <ClInclude Include="SpeedItem.h" />
     <ClInclude Include="TeslaTowerEnemy.h" />
@@ -189,7 +190,6 @@
     <ClInclude Include="Randomizer.h" />
     <ClInclude Include="RatEnemy.h" />
     <ClInclude Include="Room.h" />
-    <ClInclude Include="Scene1.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Mesh.h" />
@@ -197,7 +197,7 @@
     <ClInclude Include="ObjLoader.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="Scene0.h" />
+    <ClInclude Include="SceneTest.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="SnakeEnemy.h" />
