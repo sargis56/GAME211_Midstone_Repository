@@ -37,25 +37,23 @@ bool Scene0::OnCreate() {
 		return false;
 	}
 	//room onCreate
-	BuildWall();
+	BuildRoom();
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall3 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall4 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
-	BuildFloor();
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
-	BuildDoor();
 	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
 	speedItem = new SpeedItem(boxMesh, shaderPtr, doorTexture, 0.2f, Vec3(3.0f, 3.0f, -15.0f));
 	character->setPos(returnedPos); //using for setting the position 
 	//enemy onCreate
-	BuildRat();
+	BuildAllEnemies();
 	enemy1 = new TeslaTowerEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
-	//modelMatrix Setting for static obj
+	//setting modelMatrix for static objs
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
 	wall2->setModelMatrix(MMath::translate(Vec3(11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
@@ -83,26 +81,20 @@ void Scene0::BuildCharacter() {
 	texturePtr->LoadImage("textures/skull_texture.jpg");
 }
 
-void Scene0::BuildRat() {
+void Scene0::BuildAllEnemies() {
 	ObjLoader::loadOBJ("meshes/Enemies/MagicTurret.obj");
 	ratMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	turretTexture = new Texture();
 	turretTexture->LoadImage("textures/Enemies/Turret_Texture.jpg");
 }
 
-void Scene0::BuildWall() {
+void Scene0::BuildRoom() {
 	ObjLoader::loadOBJ("meshes/Cube.obj");
 	boxMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	wallTexture = new Texture();
 	wallTexture->LoadImage("textures/cobblestone.jpg");
-}
-
-void Scene0::BuildFloor() {
 	floorTexture = new Texture();
 	floorTexture->LoadImage("textures/floor.jpg");
-}
-
-void Scene0::BuildDoor() {
 	doorTexture = new Texture();
 	doorTexture->LoadImage("textures/green.jpg");
 }

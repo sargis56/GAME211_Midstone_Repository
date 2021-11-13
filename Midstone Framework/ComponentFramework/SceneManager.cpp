@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "Timer.h"
 #include "Window.h"
+#include "SceneDev.h"
 #include "Scene0.h"
 #include "Scene1.h"
 #include "TitleScreen.h"
@@ -45,7 +46,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		return false;
 	}
 	/********************************   Default first scene   ***********************/
-	BuildScene(TITLESCREEN);
+	BuildScene(SCENEDEV);
 	
 	return true;
 }
@@ -129,6 +130,19 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	}
 
 	switch (scene) {
+	case TITLESCREEN:
+		currentScene = new TitleScreen();
+		status = currentScene->OnCreate();
+		break;
+	case SCENEDEV:
+		currentScene = new SceneDev();
+		currentScene->getSceneCleared(false);
+		currentScene->getCharacterHealth(50);
+		currentScene->getCharacterPos(Vec3(1,0,-15));
+		currentScene->getCharacterSpeed(0.1);
+		currentScene->getWeapon(0);
+		status = currentScene->OnCreate();
+		break;
 	case SCENE0:  
 		currentScene = new Scene0();
 		//sending the speed back to the new scene
@@ -137,10 +151,6 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		currentScene->getCharacterPos(Vec3(mainPos));
 		currentScene->getCharacterSpeed(mainSpeed);
 		currentScene->getWeapon(mainWeapon);
-		status = currentScene->OnCreate();
-		break;
-	case TITLESCREEN:
-		currentScene = new TitleScreen();
 		status = currentScene->OnCreate();
 		break;
 	case SCENE1:

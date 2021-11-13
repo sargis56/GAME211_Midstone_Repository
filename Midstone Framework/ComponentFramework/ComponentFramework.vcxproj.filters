@@ -31,23 +31,41 @@
     <Filter Include="Header Files\TitleScreenObjects">
       <UniqueIdentifier>{fc0966e7-66de-47c7-8ed4-c297295af246}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameVariables">
-      <UniqueIdentifier>{c75db439-46db-4d7f-bf9a-91a98770e988}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameObjects">
       <UniqueIdentifier>{52191528-fd7e-48a8-90a6-8b182dbf44bb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\GameObjects">
       <UniqueIdentifier>{de11a1da-0811-4302-95c9-f4bcec66beaf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GameVariables">
-      <UniqueIdentifier>{aace3028-4f9b-40d6-8af5-454cb5a4ab59}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\HUDObjects">
       <UniqueIdentifier>{4277eeb9-8900-446d-b68d-f7b8fa818415}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\HUDObjects">
       <UniqueIdentifier>{31e51c78-6741-4d5a-9aab-1a47b113793a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\Character">
+      <UniqueIdentifier>{8050fe4c-23de-44a2-8665-9d30eb33ccf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\Enemies">
+      <UniqueIdentifier>{65bd0b60-5edd-41e3-ad1e-690ce3011f95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\Items">
+      <UniqueIdentifier>{b655067f-e23a-4858-8916-87ec45c39eb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\Room Objs">
+      <UniqueIdentifier>{c98d8c3f-ed96-4478-82c8-89fbbb1f56e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Character">
+      <UniqueIdentifier>{e9183396-cb37-4b30-a19f-a388e00e82f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Enemies">
+      <UniqueIdentifier>{609ecbb7-7827-4d66-a10d-dc7c9802a341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Items">
+      <UniqueIdentifier>{895a2c55-66ca-49dc-8134-0e946bc154bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Room Objs">
+      <UniqueIdentifier>{f0c081a9-0cc5-4d3d-bb97-1a5b423fff23}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -120,53 +138,56 @@
     <ClCompile Include="Particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="RatEnemy.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Room.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="StaticMesh.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="TitleScreen.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Scene1.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="SnakeEnemy.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="MageTurretEnemy.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Projectile.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Source Files\TitleScreenObjects</Filter>
     </ClCompile>
-    <ClCompile Include="VenomProjectile.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="TeslaTowerEnemy.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="DemonEnemy.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="SpeedItem.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Door.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="HealthUI.cpp">
       <Filter>Source Files\HUDObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\GameObjects\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="DemonEnemy.cpp">
+      <Filter>Source Files\GameObjects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="MageTurretEnemy.cpp">
+      <Filter>Source Files\GameObjects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files\GameObjects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="RatEnemy.cpp">
+      <Filter>Source Files\GameObjects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="SnakeEnemy.cpp">
+      <Filter>Source Files\GameObjects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="TeslaTowerEnemy.cpp">
+      <Filter>Source Files\GameObjects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="VenomProjectile.cpp">
+      <Filter>Source Files\GameObjects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeedItem.cpp">
+      <Filter>Source Files\GameObjects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>Source Files\GameObjects\Room Objs</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Source Files\GameObjects\Room Objs</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticMesh.cpp">
+      <Filter>Source Files\GameObjects\Room Objs</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneDev.cpp">
+      <Filter>Source Files\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -251,53 +272,56 @@
     <ClInclude Include="Particle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="RatEnemy.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Room.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="StaticMesh.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="TitleScreen.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Scene1.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="SnakeEnemy.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="MageTurretEnemy.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Projectile.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="VenomProjectile.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Header Files\TitleScreenObjects</Filter>
     </ClInclude>
-    <ClInclude Include="TeslaTowerEnemy.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="DemonEnemy.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="SpeedItem.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Door.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="HealthUI.h">
       <Filter>Header Files\HUDObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\GameObjects\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="DemonEnemy.h">
+      <Filter>Header Files\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="MageTurretEnemy.h">
+      <Filter>Header Files\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="RatEnemy.h">
+      <Filter>Header Files\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeEnemy.h">
+      <Filter>Header Files\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="TeslaTowerEnemy.h">
+      <Filter>Header Files\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="VenomProjectile.h">
+      <Filter>Header Files\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Header Files\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="SpeedItem.h">
+      <Filter>Header Files\GameObjects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>Header Files\GameObjects\Room Objs</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Header Files\GameObjects\Room Objs</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticMesh.h">
+      <Filter>Header Files\GameObjects\Room Objs</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneDev.h">
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

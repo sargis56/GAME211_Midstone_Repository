@@ -73,10 +73,8 @@ public:
 	virtual void getWeapon(const int storedWeapon_) override;
 	//Gameobjects creation functions
 	void BuildCharacter();
-	void BuildRat();
-	void BuildWall();
-	void BuildFloor();
-	void BuildDoor();
+	void BuildAllEnemies();
+	void BuildRoom();
 	//UI creation functions
 	void BuildHealthUI();
 };
