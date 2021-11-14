@@ -187,10 +187,10 @@ void SceneDev::getCharacterPos(const Vec3 storedPos_) {
 		returnedPos = Vec3((storedPos_.x * -1 - 1), storedPos_.y, storedPos_.z);
 	}
 	else if (storedPos_.y >= 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) { //entering from top door
-		returnedPos = Vec3(storedPos_.x, (storedPos_.y - 1), storedPos_.z);
+		returnedPos = Vec3(storedPos_.x, (storedPos_.y * -1 + 1), storedPos_.z);
 	}
 	else if (storedPos_.y < 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) { //entering from bottom door
-		returnedPos = Vec3(storedPos_.x, (storedPos_.y + 1), storedPos_.z);
+		returnedPos = Vec3(storedPos_.x, (storedPos_.y * -1 + -1), storedPos_.z);
 	}
 }
 

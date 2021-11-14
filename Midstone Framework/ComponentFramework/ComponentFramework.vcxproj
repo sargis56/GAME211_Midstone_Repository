@@ -128,6 +128,7 @@
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="HealthUI.cpp" />
     <ClCompile Include="Scene00.cpp" />
+    <ClCompile Include="Scene10.cpp" />
     <ClCompile Include="SceneDev.cpp" />
     <ClCompile Include="SpeedItem.cpp" />
     <ClCompile Include="TeslaTowerEnemy.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Door.h" />
     <ClInclude Include="HealthUI.h" />
     <ClInclude Include="Scene00.h" />
+    <ClInclude Include="Scene10.h" />
     <ClInclude Include="SceneDev.h" />
     <ClInclude Include="SpeedItem.h" />
     <ClInclude Include="TeslaTowerEnemy.h" />

@@ -18,7 +18,8 @@ private:
 		SCENETEST = 0,
 		TITLESCREEN,
 		SCENEDEV,
-		SCENE00
+		SCENE00,
+		SCENE10
 	};
 
 	class Scene* currentScene;

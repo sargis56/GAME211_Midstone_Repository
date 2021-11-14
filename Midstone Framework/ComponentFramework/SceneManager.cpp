@@ -6,6 +6,7 @@
 #include "SceneTest.h"
 #include "TitleScreen.h"
 #include "Scene00.h"
+#include "Scene10.h"
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
@@ -107,6 +108,9 @@ void SceneManager::SwitchScene() {
 		if (currentNumber == 1) {
 			BuildScene(SCENE00);
 		}
+		if (currentNumber == 2) {
+			BuildScene(SCENE10);
+		}
 	}
 }
 
@@ -148,6 +152,16 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		break;
 	case SCENE00:
 		currentScene = new Scene00();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE10:
+		currentScene = new Scene10();
 		//sending the speed back to the new scene
 		currentScene->getSceneCleared(roomCleared[currentNumber]);
 		currentScene->getCharacterHealth(mainHealth);

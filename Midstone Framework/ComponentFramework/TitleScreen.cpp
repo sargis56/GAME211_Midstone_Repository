@@ -74,7 +74,7 @@ bool TitleScreen::setSceneCleared() {
 void TitleScreen::getSceneCleared(const bool storedRoom_) {}
 
 Vec3 TitleScreen::setCharacterPos() {
-	return Vec3(0.0f,-5.0f,-15.0f);
+	return Vec3(0.0f,5.0f,-15.0f);
 }
 
 void TitleScreen::getCharacterPos(const Vec3 storedPos_) {}
