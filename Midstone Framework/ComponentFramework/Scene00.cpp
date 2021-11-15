@@ -14,8 +14,8 @@
 #include "SceneManager.h"
 using namespace std;
 
-Scene00::Scene00() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorLeft(nullptr), doorRight(nullptr), doorTop(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
-health(NULL), healthBar(nullptr), healthUITexture(nullptr), ratMeshPtr(nullptr), wall1(nullptr), wall2(nullptr), wall4(nullptr), wallTexture(nullptr) {
+Scene00::Scene00() : character(nullptr), characterMesh(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorLeft(nullptr), doorRight(nullptr), doorTop(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
+health(NULL), healthBar(nullptr), healthUITexture(nullptr), wall1(nullptr), wall2(nullptr), wall4(nullptr), wallTexture(nullptr), speed(NULL), weapon(NULL) {
 	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
 }
 
@@ -58,11 +58,11 @@ int Scene00::SetScene() {
 
 void Scene00::BuildCharacter() {
 	ObjLoader::loadOBJ("meshes/Sphere.obj");
-	meshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	characterMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderPtr = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	texturePtr = new Texture();
 	texturePtr->LoadImage("textures/white.png");
-	character = new Character(meshPtr, shaderPtr, texturePtr, room);
+	character = new Character(characterMesh, shaderPtr, texturePtr, room);
 	character->setSpeed(speed);
 	character->setPos(returnedPos); //using for setting the position 
 }
@@ -202,7 +202,7 @@ void Scene00::getWeapon(const int storedWeapon_) {
 }
 
 void Scene00::OnDestroy() {
-	if (meshPtr) delete meshPtr, meshPtr = nullptr;
+	if (characterMesh) delete characterMesh, characterMesh = nullptr;
 	if (texturePtr) delete texturePtr, texturePtr = nullptr;
 	if (shaderPtr) delete shaderPtr, shaderPtr = nullptr;
 	if (character) delete character, character = nullptr;

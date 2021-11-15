@@ -47,13 +47,13 @@ bool SceneTest::OnCreate() {
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
 	speedItem = new SpeedItem(boxMesh, shaderPtr, doorTexture, 0.2f, Vec3(3.0f, 3.0f, -15.0f));
-	healingItem = new HealingItem(boxMesh, shaderPtr, doorTexture, Vec3(3.0f, -3.0f, -15.0f));
 	character->setPos(returnedPos); //using for setting the position 
 	//enemy onCreate
 	BuildAllEnemies();
 	enemy1 = new TeslaTowerEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
+	healingItem = new HealingItem(itemMesh, shaderPtr, doorTexture, Vec3(3.0f, -3.0f, -15.0f));
 	//setting modelMatrix for static objs
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
@@ -62,7 +62,7 @@ bool SceneTest::OnCreate() {
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
 	speedItem->setModelMatrix(MMath::translate(speedItem->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
-	healingItem->setModelMatrix(MMath::translate(healingItem->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+	healingItem->setModelMatrix(MMath::translate(healingItem->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
 	return true;
 }
 
@@ -79,7 +79,7 @@ void SceneTest::BuildCharacter() {
 	meshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderPtr = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	texturePtr = new Texture();
-	texturePtr->LoadImage("textures/skull_texture.jpg");
+	texturePtr->LoadImage("textures/white.png");
 }
 
 void SceneTest::BuildAllEnemies() {
@@ -87,6 +87,8 @@ void SceneTest::BuildAllEnemies() {
 	ratMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	turretTexture = new Texture();
 	turretTexture->LoadImage("textures/Enemies/Turret_Texture.jpg");
+	ObjLoader::loadOBJ("meshes/Items/Potion.obj");
+	itemMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 }
 
 void SceneTest::BuildRoom() {
@@ -152,7 +154,7 @@ void SceneTest::Render() const {
 	if (roomUpdate == false) {
 		enemy1->Render();
 		if (speedItem->getActive()) {
-			speedItem->Render();
+			//speedItem->Render();
 		}
 		if (healingItem->getActive()) {
 			healingItem->Render();

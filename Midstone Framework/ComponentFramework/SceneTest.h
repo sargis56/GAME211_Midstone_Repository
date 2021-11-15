@@ -27,7 +27,7 @@ class SceneTest : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* meshPtr, * ratMeshPtr, * boxMesh;
+	Mesh* meshPtr, * ratMeshPtr, * boxMesh, *itemMesh;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
