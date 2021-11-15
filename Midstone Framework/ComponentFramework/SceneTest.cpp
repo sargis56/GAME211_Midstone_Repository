@@ -22,6 +22,7 @@ health(NULL), healthBar(nullptr), healthUITexture(nullptr), ratMeshPtr(nullptr),
 SceneTest::~SceneTest() {}
 
 bool SceneTest::OnCreate() {
+	health = 50;
 	//Room setup
 	room.setRoomBorders(Vec3(-9.0, -4.0, 0.0), Vec3(9.0, 4.0, 0.0));
 	light1 = Vec3(0.0f, 40.0f, 0.0f);
@@ -46,6 +47,7 @@ bool SceneTest::OnCreate() {
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
 	speedItem = new SpeedItem(boxMesh, shaderPtr, doorTexture, 0.2f, Vec3(3.0f, 3.0f, -15.0f));
+	healingItem = new HealingItem(boxMesh, shaderPtr, doorTexture, 20, Vec3(3.0f, -3.0f, -15.0f));
 	character->setPos(returnedPos); //using for setting the position 
 	//enemy onCreate
 	BuildAllEnemies();
@@ -60,6 +62,7 @@ bool SceneTest::OnCreate() {
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
 	speedItem->setModelMatrix(MMath::translate(speedItem->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+	healingItem->setModelMatrix(MMath::translate(healingItem->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
 	return true;
 }
 
@@ -111,11 +114,14 @@ void SceneTest::Update(const float deltaTime) {
 		if (enemy1->DamageCheck(character) && character->getInvincibility() == false) {
 			character->setinvincibilityTimer(100); //setting the timer for the invinciblity
 			health -= 10; //set characters new health after taking damage
-			healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		}
 		if (speedItem->getActive()) {
 			speedItem->collisionCheck(character);
 		}
+		if (healingItem->getActive()) {
+			health = healingItem->collisionCheck(character, 20);
+		}
+		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
 	}
 	//door and character updates
@@ -144,6 +150,9 @@ void SceneTest::Render() const {
 		enemy1->Render();
 		if (speedItem->getActive()) {
 			speedItem->Render();
+		}
+		if (healingItem->getActive()) {
+			healingItem->Render();
 		}
 	}
 	//door and character renders

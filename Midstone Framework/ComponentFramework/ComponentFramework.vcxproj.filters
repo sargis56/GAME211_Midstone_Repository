@@ -192,6 +192,9 @@
     <ClCompile Include="Scene10.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="HealingItem.cpp">
+      <Filter>Source Files\GameObjects\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -328,6 +331,9 @@
     </ClInclude>
     <ClInclude Include="Scene10.h">
       <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="HealingItem.h">
+      <Filter>Header Files\GameObjects\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

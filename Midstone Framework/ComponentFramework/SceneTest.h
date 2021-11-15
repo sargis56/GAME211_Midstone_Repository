@@ -12,6 +12,7 @@
 #include "SpeedItem.h"
 #include "Door.h"
 #include "HealthUI.h"
+#include "HealingItem.h"
 
 using namespace MATH;
 
@@ -40,6 +41,7 @@ private:
 	//Enemies and Items
 	TeslaTowerEnemy* enemy1;
 	SpeedItem* speedItem;
+	HealingItem* healingItem;
 	//Shader Pointer
 	Shader* shaderPtr;
 	//Texture Pointer
