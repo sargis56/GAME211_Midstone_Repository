@@ -5,8 +5,8 @@
 #include <SDL.h>
 #include <cstdlib>
 
-HealingItem::HealingItem(Mesh* mesh_, Shader* shader_, Texture* texture_, float healthIncrease_, Vec3 pos_):
-	mesh(mesh_), shader(shader_), texture(texture_), healthIncrease(healthIncrease_) {
+HealingItem::HealingItem(Mesh* mesh_, Shader* shader_, Texture* texture_, Vec3 pos_):
+	mesh(mesh_), shader(shader_), texture(texture_) {
 	pos = pos_;
 	itemActive = true;
 }
@@ -39,14 +39,11 @@ void HealingItem::HandleEvents(const SDL_Event& event) {
 	
 } /// Just a stub
 
-float HealingItem::collisionCheck(Character* character, float playerHealth) {
+bool HealingItem::collisionCheck(Character* character) {
 	if (VMath::distance(character->getPos(), pos) < 1) {
 		itemActive = false;
-		playerHealth = playerHealth + healthIncrease;
-		if (playerHealth > 50) {
-			playerHealth = 50;
-		}
+		return true;
 	}
-	return playerHealth;
+	return false;
 }
 

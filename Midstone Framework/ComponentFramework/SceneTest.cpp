@@ -47,7 +47,7 @@ bool SceneTest::OnCreate() {
 	BuildHealthUI();
 	healthBar = new HealthUI(boxMesh, shaderPtr, healthUITexture);
 	speedItem = new SpeedItem(boxMesh, shaderPtr, doorTexture, 0.2f, Vec3(3.0f, 3.0f, -15.0f));
-	healingItem = new HealingItem(boxMesh, shaderPtr, doorTexture, 20, Vec3(3.0f, -3.0f, -15.0f));
+	healingItem = new HealingItem(boxMesh, shaderPtr, doorTexture, Vec3(3.0f, -3.0f, -15.0f));
 	character->setPos(returnedPos); //using for setting the position 
 	//enemy onCreate
 	BuildAllEnemies();
@@ -118,8 +118,11 @@ void SceneTest::Update(const float deltaTime) {
 		if (speedItem->getActive()) {
 			speedItem->collisionCheck(character);
 		}
-		if (healingItem->getActive()) {
-			health = healingItem->collisionCheck(character, 20);
+		if (healingItem->getActive() && healingItem->collisionCheck(character)) {
+			health = health + 20;
+			if (health > 50) {
+				health = 50;
+			}
 		}
 		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));

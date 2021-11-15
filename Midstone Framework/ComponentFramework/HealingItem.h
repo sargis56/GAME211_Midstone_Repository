@@ -24,7 +24,7 @@ private:
 	float healthIncrease;
 	bool itemActive;
 public:
-	HealingItem(Mesh* mesh_, Shader* shader_, Texture* texture_, float health_, Vec3 pos_);
+	HealingItem(Mesh* mesh_, Shader* shader_, Texture* texture_, Vec3 pos_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~HealingItem();
 	virtual bool OnCreate() override;
@@ -33,7 +33,7 @@ public:
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event& event) override;
 
-	float collisionCheck(Character* character, float playerHealth);
+	bool collisionCheck(Character* character);
 
 	inline bool getActive() const { return itemActive; }
 	//inline float getSpeedIncrease() const { return speedIncrease; }

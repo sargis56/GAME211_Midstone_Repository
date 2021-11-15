@@ -5,5 +5,5 @@ D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vect
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(24,14): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(43,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneTest.cpp(58,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneTest.cpp(124,93): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneTest.cpp(127,93): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
   ComponentFramework.vcxproj -> D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe
