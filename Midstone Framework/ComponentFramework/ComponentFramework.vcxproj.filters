@@ -67,6 +67,12 @@
     <Filter Include="Source Files\GameObjects\Room Objs">
       <UniqueIdentifier>{f0c081a9-0cc5-4d3d-bb97-1a5b423fff23}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjects\Enemies\Projectile">
+      <UniqueIdentifier>{c2a853f7-361c-4789-8a04-30b3499b0b8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Enemies\Projectile">
+      <UniqueIdentifier>{239cd088-c94a-42c1-a17e-3aca4c805823}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -156,9 +162,6 @@
     <ClCompile Include="MageTurretEnemy.cpp">
       <Filter>Source Files\GameObjects\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Projectile.cpp">
-      <Filter>Source Files\GameObjects\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="RatEnemy.cpp">
       <Filter>Source Files\GameObjects\Enemies</Filter>
     </ClCompile>
@@ -166,9 +169,6 @@
       <Filter>Source Files\GameObjects\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="TeslaTowerEnemy.cpp">
-      <Filter>Source Files\GameObjects\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="VenomProjectile.cpp">
       <Filter>Source Files\GameObjects\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="SpeedItem.cpp">
@@ -194,6 +194,15 @@
     </ClCompile>
     <ClCompile Include="HealingItem.cpp">
       <Filter>Source Files\GameObjects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="VenomProjectile.cpp">
+      <Filter>Source Files\GameObjects\Enemies\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files\GameObjects\Enemies\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="ArcherEnemy.cpp">
+      <Filter>Source Files\GameObjects\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -305,12 +314,6 @@
     <ClInclude Include="TeslaTowerEnemy.h">
       <Filter>Header Files\GameObjects\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="VenomProjectile.h">
-      <Filter>Header Files\GameObjects\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Projectile.h">
-      <Filter>Header Files\GameObjects\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="SpeedItem.h">
       <Filter>Header Files\GameObjects\Items</Filter>
     </ClInclude>
@@ -334,6 +337,15 @@
     </ClInclude>
     <ClInclude Include="HealingItem.h">
       <Filter>Header Files\GameObjects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="VenomProjectile.h">
+      <Filter>Header Files\GameObjects\Enemies\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Header Files\GameObjects\Enemies\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcherEnemy.h">
+      <Filter>Header Files\GameObjects\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
