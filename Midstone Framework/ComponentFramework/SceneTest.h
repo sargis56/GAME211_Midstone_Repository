@@ -5,6 +5,7 @@
 #include "Matrix.h"
 #include "Character.h"
 #include "RatEnemy.h"
+#include "SnakeEnemy.h"
 #include "Room.h"
 #include "StaticMesh.h"
 #include "MageTurretEnemy.h"
@@ -27,7 +28,7 @@ class SceneTest : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* meshPtr, * ratMeshPtr, * boxMesh, *itemMesh;
+	Mesh* meshPtr, * ratMeshPtr, * boxMesh, *itemMesh, *snakeMeshPtr;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
@@ -38,14 +39,19 @@ private:
 	Vec3 light1;
 	bool roomCleared = false;
 	bool roomUpdate = false;
+
 	//Enemies and Items
 	TeslaTowerEnemy* enemy1;
 	SpeedItem* speedItem;
 	HealingItem* healingItem;
+	SnakeEnemy* snakeEnemy;
+
 	//Shader Pointer
 	Shader* shaderPtr;
+
 	//Texture Pointer
-	Texture* texturePtr, *wallTexture, *floorTexture, *turretTexture, *doorTexture, *healthUITexture;
+	Texture* texturePtr, *wallTexture, *floorTexture, *turretTexture, *doorTexture, *healthUITexture, *snakeTexture;
+
 	//Engine Variables
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;

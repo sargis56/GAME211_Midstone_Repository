@@ -14,7 +14,7 @@
 #include "SceneManager.h"
 using namespace std;
 
-SceneTest::SceneTest() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorTexture(nullptr), enemy1(nullptr), floor(nullptr), floorTexture(nullptr),
+SceneTest::SceneTest() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), snakeMeshPtr(nullptr), snakeTexture(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorTexture(nullptr), enemy1(nullptr), floor(nullptr), floorTexture(nullptr),
 health(NULL), healthBar(nullptr), healthUITexture(nullptr), ratMeshPtr(nullptr), turretTexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr), speedItem(nullptr) {
 	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
 }
@@ -54,6 +54,8 @@ bool SceneTest::OnCreate() {
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
 	healingItem = new HealingItem(itemMesh, shaderPtr, doorTexture, Vec3(3.0f, -3.0f, -15.0f));
+
+	snakeEnemy = new SnakeEnemy(snakeMeshPtr, shaderPtr, snakeTexture, room);
 	//setting modelMatrix for static objs
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
@@ -87,8 +89,16 @@ void SceneTest::BuildAllEnemies() {
 	ratMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	turretTexture = new Texture();
 	turretTexture->LoadImage("textures/Enemies/Turret_Texture.jpg");
+
 	ObjLoader::loadOBJ("meshes/Items/Potion.obj");
 	itemMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+
+	ObjLoader::loadOBJ("meshes/Enemies/Rat.obj");
+	snakeMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	snakeTexture = new Texture();
+	snakeTexture->LoadImage("textures/Enemies/Rat_Texture.jpg");
+	
+	
 }
 
 void SceneTest::BuildRoom() {
@@ -128,6 +138,7 @@ void SceneTest::Update(const float deltaTime) {
 		}
 		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+		snakeEnemy->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
 	}
 	//door and character updates
 	character->checkInvincibility(); //checking if the character is invincible
@@ -153,6 +164,7 @@ void SceneTest::Render() const {
 	//enemy and item renders
 	if (roomUpdate == false) {
 		enemy1->Render();
+		snakeEnemy->Render();
 		if (speedItem->getActive()) {
 			//speedItem->Render();
 		}
@@ -227,6 +239,8 @@ void SceneTest::getWeapon(const int storedWeapon_) {
 
 void SceneTest::OnDestroy() {
 	if (meshPtr) delete meshPtr, meshPtr = nullptr;
+	if (snakeMeshPtr) delete snakeMeshPtr, snakeMeshPtr = nullptr;
+	if (snakeTexture) delete snakeTexture, snakeTexture = nullptr;
 	if (texturePtr) delete texturePtr, texturePtr = nullptr;
 	if (shaderPtr) delete shaderPtr, shaderPtr = nullptr;
 	if (character) delete character, character = nullptr;

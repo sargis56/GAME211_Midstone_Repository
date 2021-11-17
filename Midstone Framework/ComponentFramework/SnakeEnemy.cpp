@@ -44,7 +44,7 @@ void SnakeEnemy::Render() const {
 		glBindTexture(GL_TEXTURE_2D, texture->getTextureID());
 	}
 	mesh->Render();
-	vProjectile->Render();
+	//vProjectile->Render();
 	/// Unbind the texture
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
@@ -69,8 +69,8 @@ float SnakeEnemy::FollowPlayer(Character* character)
 	if (VMath::distance(character->getPos(), pos) < agroRange) {
 		direction = character->getPos() - pos;
 		float angle = atan2(direction.y, direction.x) * RADIANS_TO_DEGREES; //Calculate the angle (in DEGREES) between player and enemy
-		//this->setModelMatrix(this->getModelMatrix() * MMath::rotate(angle, Vec3(0.0f, 0.0f, 1.0f)) //Rotate the modelMatrix by the angle of rotation to face player
-															//* MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f))); // Adjust enemy to FACE player 
+		this->setModelMatrix(this->getModelMatrix() * MMath::rotate(angle, Vec3(0.0f, 0.0f, 1.0f)) //Rotate the modelMatrix by the angle of rotation to face player
+															* MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f))); // Adjust enemy to FACE player 
 		direction.Normalize();
 		MoveEnemy();
 		//AttackPlayer(character);
