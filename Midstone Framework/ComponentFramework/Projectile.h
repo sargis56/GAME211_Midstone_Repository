@@ -10,7 +10,7 @@
 #include "Room.h"
 #include "Character.h"
 
-#define LOG(x) std::cout << x << std::endl; //debugging function
+//#define LOG(x) std::cout << x << std::endl; //debugging function
 
 using namespace MATH;
 

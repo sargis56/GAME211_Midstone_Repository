@@ -18,17 +18,17 @@ void ArcherEnemy::BuildProjectile() {
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
 	textureProjectile->LoadImage("textures/skull_texture.jpg");
-	projectile = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 10);
+	projectile = new ProjectileDynamic(meshProjectile, shaderProjectile, textureProjectile, room, pos, 10);
 }
 
 bool ArcherEnemy::OnCreate() {
 	BuildProjectile();
-	GenerateProjectileDirection();
+	//GenerateProjectileDirection();
 	return true; 
 }
 void ArcherEnemy::OnDestroy() {}				  /// Just a stub
 void ArcherEnemy::Update(float deltaTime_) {
-	if (projectile->ProjectileUpdate8Axis(Vec3(projectileDestination))){ // so once it hits the wall
+	if (projectile->ProjectileDynamicUpdate(character->getPos())){ // so once it hits the wall
 		projectile->setPos(pos); //the pos is reset to the pos of the enemy
 		projectile->setOver(false); //and the moveOver is reset
 		GenerateProjectileDirection();

@@ -9,7 +9,7 @@
 #include "PhysicsObject.h"
 #include "Room.h"
 #include "Character.h"
-#include "Projectile.h"
+#include "ProjectileDynamic.h"
 
 using namespace MATH;
 
@@ -22,7 +22,7 @@ private:
 	Shader* shader, * shaderProjectile;
 	Texture* texture, *textureProjectile;
 	Room room;
-	Projectile* projectile;
+	ProjectileDynamic* projectile;
 	Character* character;
 	Vec3 projectileDestination;
 public:
