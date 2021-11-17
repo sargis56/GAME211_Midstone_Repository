@@ -9,7 +9,7 @@
 #include "Room.h"
 #include "StaticMesh.h"
 #include "MageTurretEnemy.h"
-#include "ArcherEnemy.h"
+#include "MageEnemy.h"
 #include "SpeedItem.h"
 #include "Door.h"
 #include "HealthUI.h"
@@ -41,7 +41,7 @@ private:
 	bool roomUpdate = false;
 
 	//Enemies and Items
-	ArcherEnemy* enemy1;
+	MageEnemy* enemy1;
 	SpeedItem* speedItem;
 	HealingItem* healingItem;
 	SnakeEnemy* snakeEnemy;

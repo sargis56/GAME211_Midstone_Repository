@@ -1,5 +1,5 @@
-#ifndef ArcherEnemy_H
-#define ArcherEnemy_H
+#ifndef MageEnemy_H
+#define MageEnemy_H
 #include <glew.h>
 #include "Matrix.h"
 #include "Mesh.h"
@@ -14,7 +14,7 @@
 using namespace MATH;
 
 
-class ArcherEnemy : public PhysicsObject, public GameObject {
+class MageEnemy : public PhysicsObject, public GameObject {
 
 private:
 	Matrix4 modelMatrix;
@@ -26,17 +26,15 @@ private:
 	Character* character;
 	Vec3 projectileDestination;
 public:
-	ArcherEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
+	MageEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
-	~ArcherEnemy();
+	~MageEnemy();
 	void BuildProjectile();
 	virtual bool OnCreate() override;
 	virtual void OnDestroy() override;
 	virtual void Update(const float deltaTime_) override;
 	virtual void Render() const override;
 	virtual void HandleEvents(const SDL_Event& event) override;
-
-	Vec3 GenerateProjectileDirection();
 
 	bool DamageCheck(Character* character);
 

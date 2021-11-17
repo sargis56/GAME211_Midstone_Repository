@@ -201,7 +201,7 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Source Files\GameObjects\Enemies\Projectile</Filter>
     </ClCompile>
-    <ClCompile Include="ArcherEnemy.cpp">
+    <ClCompile Include="MageEnemy.cpp">
       <Filter>Source Files\GameObjects\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ProjectileDynamic.cpp">
@@ -347,7 +347,7 @@
     <ClInclude Include="Projectile.h">
       <Filter>Header Files\GameObjects\Enemies\Projectile</Filter>
     </ClInclude>
-    <ClInclude Include="ArcherEnemy.h">
+    <ClInclude Include="MageEnemy.h">
       <Filter>Header Files\GameObjects\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="ProjectileDynamic.h">
