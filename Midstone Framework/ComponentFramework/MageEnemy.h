@@ -24,7 +24,6 @@ private:
 	Room room;
 	ProjectileDynamic* projectile;
 	Character* character;
-	Vec3 projectileDestination;
 public:
 	MageEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);

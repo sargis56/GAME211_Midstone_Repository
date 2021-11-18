@@ -7,13 +7,5 @@ D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Char
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\MageEnemy.cpp(40,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\MageEnemy.cpp(43,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\MageEnemy.cpp(46,41): warning C4305: 'argument': truncation from 'double' to 'const float'
-  GameObject.h
-  SceneTest.cpp
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(24,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(43,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneTest.cpp(60,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneTest.cpp(139,93): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Generating Code...
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\MageEnemy.cpp(47,5): warning C4305: 'argument': truncation from 'double' to 'float'
   ComponentFramework.vcxproj -> D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe

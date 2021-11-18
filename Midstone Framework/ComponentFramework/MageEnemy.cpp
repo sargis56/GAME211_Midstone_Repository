@@ -32,7 +32,7 @@ void MageEnemy::Update(float deltaTime_) {
 	normalTowardsPlayer = VMath::normalize(Vec3(normalTowardsPlayer.x, normalTowardsPlayer.y, 1));
 	vel = Vec3(-normalTowardsPlayer.x, -normalTowardsPlayer.y, 0);
 	if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0) == false) { //Collision check
-		vel = Vec3(0, -normalTowardsPlayer.y , 0);
+		vel = Vec3(0, 0, 0);
 	}
 	else if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0) == false) { //Collision check
 		vel = Vec3(0, -normalTowardsPlayer.y, 0);
@@ -44,7 +44,7 @@ void MageEnemy::Update(float deltaTime_) {
 		vel = Vec3(-normalTowardsPlayer.x, 0, 0);
 	}
 	Physics::SimpleNewtonMotion(*this, 0.01);
-	if (projectile->ProjectileDynamicUpdate(normalTowardsPlayer)){ // so once it hits the wall
+	if (projectile->ProjectileDynamicUpdate(normalTowardsPlayer, 0.05)){ // so once it hits the wall
 		projectile->setPos(pos); //the pos is reset to the pos of the enemy
 		projectile->setOver(false); //and the moveOver is reset
 		//projectileDestination = Vec3(character->getPos().x, character->getPos().y, character->getPos().z);

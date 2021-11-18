@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArcherEnemy.cpp" />
     <ClCompile Include="MageEnemy.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="HealingItem.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArcherEnemy.h" />
     <ClInclude Include="MageEnemy.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="HealingItem.h" />

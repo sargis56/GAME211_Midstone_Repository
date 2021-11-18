@@ -39,11 +39,11 @@ void ProjectileDynamic::HandleEvents(const SDL_Event& event) {
 	
 } /// Just a stub
 
-bool ProjectileDynamic::ProjectileDynamicUpdate(Vec3 direction) { //moves projectile towards the direction vector
+bool ProjectileDynamic::ProjectileDynamicUpdate(Vec3 direction, float deltaTime) { //moves projectile towards the direction vector
 	vel.x = direction.x;
 	vel.y = direction.y;
 	//desiredPos = direction;
-	Physics::SimpleNewtonMotion(*this, 0.15);
+	Physics::SimpleNewtonMotion(*this, deltaTime);
 			if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0) == false) { //Collision check
 				moveOver = true;
 			}

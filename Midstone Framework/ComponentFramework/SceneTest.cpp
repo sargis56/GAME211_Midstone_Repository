@@ -50,7 +50,7 @@ bool SceneTest::OnCreate() {
 	character->setPos(returnedPos); //using for setting the position 
 	//enemy onCreate
 	BuildAllEnemies();
-	enemy1 = new MageEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
+	enemy1 = new ArcherEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
 	healingItem = new HealingItem(itemMesh, shaderPtr, doorTexture, Vec3(3.0f, -3.0f, -15.0f));
