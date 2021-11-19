@@ -15,6 +15,8 @@
 #include "Door.h"
 #include "HealthUI.h"
 #include "HealingItem.h"
+#include "Weapon.h"
+#include "Shovel.h"
 
 using namespace MATH;
 
@@ -29,7 +31,7 @@ class SceneTest : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* meshPtr, * ratMeshPtr, * boxMesh, *itemMesh, *snakeMeshPtr;
+	Mesh* meshPtr, * ratMeshPtr, * boxMesh, *itemMesh, *snakeMeshPtr, *weaponMesh;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
@@ -46,6 +48,7 @@ private:
 	SpeedItem* speedItem;
 	HealingItem* healingItem;
 	SnakeEnemy* snakeEnemy;
+	Shovel* shovel;
 
 	//Shader Pointer
 	Shader* shaderPtr;

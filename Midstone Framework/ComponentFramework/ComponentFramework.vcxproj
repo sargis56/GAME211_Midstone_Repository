@@ -134,6 +134,7 @@
     <ClCompile Include="Scene00.cpp" />
     <ClCompile Include="Scene10.cpp" />
     <ClCompile Include="SceneDev.cpp" />
+    <ClCompile Include="Shovel.cpp" />
     <ClCompile Include="SpeedItem.cpp" />
     <ClCompile Include="TeslaTowerEnemy.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Trackball.cpp" />
     <ClCompile Include="VenomProjectile.cpp" />
     <ClCompile Include="VMath.cpp" />
+    <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +183,7 @@
     <ClInclude Include="Scene00.h" />
     <ClInclude Include="Scene10.h" />
     <ClInclude Include="SceneDev.h" />
+    <ClInclude Include="Shovel.h" />
     <ClInclude Include="SpeedItem.h" />
     <ClInclude Include="TeslaTowerEnemy.h" />
     <ClInclude Include="Button.h" />
@@ -220,6 +223,7 @@
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VenomProjectile.h" />
     <ClInclude Include="VMath.h" />
+    <ClInclude Include="Weapon.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

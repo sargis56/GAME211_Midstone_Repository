@@ -73,6 +73,12 @@
     <Filter Include="Source Files\GameObjects\Enemies\Projectile">
       <UniqueIdentifier>{239cd088-c94a-42c1-a17e-3aca4c805823}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjects\Weapons">
+      <UniqueIdentifier>{eefa7013-1b3a-4c2d-8c52-ea886d24b912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Weapons">
+      <UniqueIdentifier>{60d6754b-0684-49c0-8e67-faeaeb68f724}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -209,6 +215,12 @@
     </ClCompile>
     <ClCompile Include="ArcherEnemy.cpp">
       <Filter>Source Files\GameObjects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files\GameObjects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Shovel.cpp">
+      <Filter>Source Files\GameObjects\Weapons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -358,6 +370,12 @@
     </ClInclude>
     <ClInclude Include="ArcherEnemy.h">
       <Filter>Header Files\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files\GameObjects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Shovel.h">
+      <Filter>Header Files\GameObjects\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -26,6 +26,28 @@ private:
 	bool visibility = true;
 	int invincibilityTimer;
 
+	//Player's weapon stats
+	int currentWeaponID = 0;
+	float currentSwingDamage;
+	float currentStabDamage;
+	float currentWeaponReach;
+	float currentWeaponDelay;
+	
+	float swingDamage;
+	float stabDamage;
+	float weaponReach;
+	float weaponDelay;
+
+	bool altWeaponMode;
+	float altSwingDamage;
+	float altStabDamage;
+	float altWeaponReach;
+	float altWeaponDelay;
+	// 1 = Chop | 2 = Cut | 3 = Blunt
+	int weaponDamageType;
+	int altWeaponDamageType;
+	int currentDamageType;
+
 public:
 	Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//Character(Character* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -49,6 +71,39 @@ public:
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
+
+	//Player's weapon getters
+	inline int getCurrentWeaponID() const { return currentWeaponID; }
+	inline int getCurrentDamageType() const { return currentDamageType; }
+	inline float getCurrentSwingDamage() const { return currentSwingDamage; }
+	inline float getCurrentStabDamage() const { return currentStabDamage; }
+	inline float getCurrentWeaponDelay() const { return currentWeaponDelay; }
+	inline float getCurrentWeaponReach() const { return currentWeaponReach; }
+
+	//Player's weapon setters
+	inline void setCurrentWeaponID(const int setCurrentWeaponID_) { currentWeaponID = setCurrentWeaponID_; }
+
+	inline void setWeaponDamageType(const int setWeaponDamageType_) { weaponDamageType = setWeaponDamageType_; }
+	inline void setAltWeaponDamageType(const int setAltWeaponDamageType_) { altWeaponDamageType = setAltWeaponDamageType_; }
+	inline void setCurrentDamageType(const int setCurrentDamageType_) { currentDamageType = setCurrentDamageType_; }
+
+	inline void setAltWeaponMode(const bool setAltWeaponMode_) { altWeaponMode = setAltWeaponMode_; }
+	
+	inline void setSwingDamage(const float setSwingDamage_) { swingDamage = setSwingDamage_; }
+	inline void setAltSwingDamage(const float setAltSwingDamage_) { altSwingDamage = setAltSwingDamage_; }
+	inline void setCurrentSwingDamage(const float setCurrentSwingDamage_) { currentSwingDamage = setCurrentSwingDamage_; }
+
+	inline void setStabDamage(const float setStabDamage_) { stabDamage = setStabDamage_; }
+	inline void setAltStabDamage(const float setAltStabDamage_) { altStabDamage = setAltStabDamage_; }
+	inline void setCurrentStabDamage(const float setCurrentStabDamage_) { currentStabDamage = setCurrentStabDamage_; }
+
+	inline void setWeaponReach(const float setWeaponReach_) { weaponReach = setWeaponReach_; }
+	inline void setAltWeaponReach(const float setAltWeaponReach_) { altWeaponReach = setAltWeaponReach_; }
+	inline void setCurrentWeaponReach(const float setCurrentWeaponReach_) { currentWeaponReach = setCurrentWeaponReach_; }
+
+	inline void setWeaponDelay(const float setWeaponDelay_) { weaponDelay = setWeaponDelay_; }
+	inline void setAltWeaponDelay(const float setAltWeaponDelay_) { altWeaponDelay = setAltWeaponDelay_; }
+	inline void setCurrentWeaponDelay(const float setCurrentWeaponDelay_) { currentWeaponDelay = setCurrentWeaponDelay_; }
 };
 
 #endif

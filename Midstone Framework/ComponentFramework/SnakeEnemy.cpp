@@ -85,7 +85,7 @@ float SnakeEnemy::FollowPlayer(Character* character)
 
 void SnakeEnemy::PatrolArea()
 {
-	srand((unsigned)time(0));
+	//srand((unsigned)time(0));
 	int randomNum;
 
 	Vec3 base1 = Vec3(-4.0, -4.0, -15.0f);

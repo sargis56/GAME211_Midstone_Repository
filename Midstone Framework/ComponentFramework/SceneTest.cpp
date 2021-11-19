@@ -16,7 +16,7 @@ using namespace std;
 
 SceneTest::SceneTest() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), snakeMeshPtr(nullptr), snakeTexture(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorTexture(nullptr), enemy1(nullptr), floor(nullptr), floorTexture(nullptr),
 health(NULL), healthBar(nullptr), healthUITexture(nullptr), ratMeshPtr(nullptr), turretTexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr), speedItem(nullptr) {
-	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
+	Debug::Info("Created SceneTest: ", __FILE__, __LINE__);
 }
 
 SceneTest::~SceneTest() {}
@@ -54,6 +54,7 @@ bool SceneTest::OnCreate() {
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
 	healingItem = new HealingItem(itemMesh, shaderPtr, doorTexture, Vec3(3.0f, -3.0f, -15.0f));
+	shovel = new Shovel(weaponMesh, shaderPtr, doorTexture, Vec3(5.0f, -3.0f, -15.0f));
 
 	snakeEnemy = new SnakeEnemy(snakeMeshPtr, shaderPtr, snakeTexture, room);
 	//setting modelMatrix for static objs
@@ -65,6 +66,8 @@ bool SceneTest::OnCreate() {
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
 	speedItem->setModelMatrix(MMath::translate(speedItem->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
 	healingItem->setModelMatrix(MMath::translate(healingItem->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
+	shovel->setModelMatrix(MMath::translate(shovel->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
+
 	return true;
 }
 
@@ -92,6 +95,9 @@ void SceneTest::BuildAllEnemies() {
 
 	ObjLoader::loadOBJ("meshes/Items/Potion.obj");
 	itemMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+
+	ObjLoader::loadOBJ("meshes/Weapons/Sword.obj");
+	weaponMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 
 	ObjLoader::loadOBJ("meshes/Enemies/Rat.obj");
 	snakeMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
@@ -136,6 +142,11 @@ void SceneTest::Update(const float deltaTime) {
 				health = 50;
 			}
 		}
+		if (shovel->getActive()) {
+			shovel->collisionCheck(character);
+		}
+
+
 		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
 		snakeEnemy->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
@@ -170,6 +181,9 @@ void SceneTest::Render() const {
 		}
 		if (healingItem->getActive()) {
 			healingItem->Render();
+		}
+		if (shovel->getActive()) {
+			shovel->Render();
 		}
 	}
 	//door and character renders
