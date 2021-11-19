@@ -138,7 +138,8 @@ void SceneTest::Update(const float deltaTime) {
 		}
 		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
-		snakeEnemy->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+		snakeEnemy->setModelMatrix(MMath::translate(snakeEnemy->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+		snakeEnemy->PatrolArea();
 	}
 	//door and character updates
 	character->checkInvincibility(); //checking if the character is invincible

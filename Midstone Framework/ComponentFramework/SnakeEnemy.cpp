@@ -23,15 +23,6 @@ bool SnakeEnemy::OnCreate() {
 void SnakeEnemy::OnDestroy() {}				  /// Just a stub
 void SnakeEnemy::Update(float deltaTime_) {
 
-	
-	/*if (vProjectile->VProjectileUpdate(attackTarget));
-	{
-		vProjectile->setPos(pos);
-		vProjectile->setOver(false);
-	}*/
-
-	vProjectile->setModelMatrix(MMath::translate(vProjectile->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
-	//printf(" %f    %f    \n", vProjectile->getPos().x, vProjectile->getPos().y);
 
 }
 
@@ -73,7 +64,6 @@ float SnakeEnemy::FollowPlayer(Character* character)
 															* MMath::rotate(90.0f, Vec3(0.0f, 0.0f, 1.0f))); // Adjust enemy to FACE player 
 		direction.Normalize();
 		MoveEnemy();
-		//AttackPlayer(character);
 		return angle;
 	}
 	else
@@ -117,15 +107,6 @@ void SnakeEnemy::PatrolArea()
 	}
 }
 
-void SnakeEnemy::BuildVProjectile() {
-	ObjLoader::loadOBJ("meshes/CoronaVirus.obj");
-	meshVProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
-	shaderVProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
-	textureVProjectile = new Texture();
-	textureVProjectile->LoadImage("textures/skull_texture.jpg");
-	vProjectile = new VenomProjectile(meshVProjectile, shaderVProjectile, textureVProjectile, room);
-	
-}
 
 void SnakeEnemy::MoveEnemy() {
 	float moveSpeed = 0.06;

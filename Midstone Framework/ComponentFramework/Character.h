@@ -25,6 +25,7 @@ private:
 	bool invincibility = false;
 	bool visibility = true;
 	int invincibilityTimer;
+	bool isDead = false;
 
 public:
 	Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
@@ -42,6 +43,8 @@ public:
 	inline bool getVisibility() const { return visibility; }
 	inline void setinvincibilityTimer(const float setinvincibilityTimer_) { invincibilityTimer = setinvincibilityTimer_; }
 
+	bool onDeath();
+
 	inline Mesh* getMesh() const { return mesh; }
 	inline Texture* getTexture() const { return texture; }
 	inline void setSpeed(const float setSpeed_) { speed = setSpeed_; }
@@ -49,6 +52,8 @@ public:
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
+
+
 };
 
 #endif
