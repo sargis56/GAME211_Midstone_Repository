@@ -33,7 +33,7 @@ public:
 	SnakeEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~SnakeEnemy();
-	void BuildVProjectile();
+	//void BuildVProjectile();
 
 	virtual bool OnCreate() override;
 	virtual void OnDestroy() override;
