@@ -198,7 +198,7 @@ void SceneTest::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
-		enemy1->Render();
+		//enemy1->Render();
 		snakeEnemy->Render();
 		if (speedItem->getActive()) {
 			//speedItem->Render();
