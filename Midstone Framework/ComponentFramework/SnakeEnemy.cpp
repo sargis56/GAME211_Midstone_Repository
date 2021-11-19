@@ -17,7 +17,7 @@ SnakeEnemy::~SnakeEnemy() {}
 
 bool SnakeEnemy::OnCreate() {
 
-	BuildVProjectile();
+	//BuildVProjectile();
 	return true; 
 }
 void SnakeEnemy::OnDestroy() {}				  /// Just a stub

@@ -25,6 +25,7 @@ private:
 	bool invincibility = false;
 	bool visibility = true;
 	int invincibilityTimer;
+	bool isDead = false;
 
 	//Player's weapon stats
 	int currentWeaponID = 0;
@@ -63,6 +64,8 @@ public:
 	inline bool getInvincibility() const { return invincibility; }
 	inline bool getVisibility() const { return visibility; }
 	inline void setinvincibilityTimer(const float setinvincibilityTimer_) { invincibilityTimer = setinvincibilityTimer_; }
+
+	bool onDeath();
 
 	inline Mesh* getMesh() const { return mesh; }
 	inline Texture* getTexture() const { return texture; }
