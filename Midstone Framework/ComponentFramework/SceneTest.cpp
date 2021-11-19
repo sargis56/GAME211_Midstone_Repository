@@ -54,7 +54,10 @@ bool SceneTest::OnCreate() {
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
 	healingItem = new HealingItem(itemMesh, shaderPtr, doorTexture, Vec3(3.0f, -3.0f, -15.0f));
-	shovel = new Shovel(weaponMesh, shaderPtr, doorTexture, Vec3(5.0f, -3.0f, -15.0f));
+	shovel = new Shovel(shovelMesh, shaderPtr, doorTexture, Vec3(0.0f, -3.0f, -15.0f));
+	sword = new Sword(swordMesh, shaderPtr, doorTexture, Vec3(-2.5f, -3.0f, -15.0f));
+	axe = new Axe(axeMesh, shaderPtr, doorTexture, Vec3(-5.0f, -3.0f, -15.0f));
+	zwei = new Zweihander(zweiMesh, shaderPtr, doorTexture, Vec3(-7.5f, -3.0f, -15.0f));
 
 	snakeEnemy = new SnakeEnemy(snakeMeshPtr, shaderPtr, snakeTexture, room);
 	//setting modelMatrix for static objs
@@ -67,6 +70,9 @@ bool SceneTest::OnCreate() {
 	speedItem->setModelMatrix(MMath::translate(speedItem->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
 	healingItem->setModelMatrix(MMath::translate(healingItem->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
 	shovel->setModelMatrix(MMath::translate(shovel->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
+	sword->setModelMatrix(MMath::translate(sword->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
+	axe->setModelMatrix(MMath::translate(axe->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
+	zwei->setModelMatrix(MMath::translate(zwei->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 
 	return true;
 }
@@ -97,7 +103,16 @@ void SceneTest::BuildAllEnemies() {
 	itemMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 
 	ObjLoader::loadOBJ("meshes/Weapons/Sword.obj");
-	weaponMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	swordMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+
+	ObjLoader::loadOBJ("meshes/Weapons/Shovel.obj");
+	shovelMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+
+	ObjLoader::loadOBJ("meshes/Weapons/Axe.obj");
+	axeMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+
+	ObjLoader::loadOBJ("meshes/Weapons/Zwei.obj");
+	zweiMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 
 	ObjLoader::loadOBJ("meshes/Enemies/Rat.obj");
 	snakeMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
@@ -145,7 +160,15 @@ void SceneTest::Update(const float deltaTime) {
 		if (shovel->getActive()) {
 			shovel->collisionCheck(character);
 		}
-
+		if (axe->getActive()) {
+			axe->collisionCheck(character);
+		}
+		if (sword->getActive()) {
+			sword->collisionCheck(character);
+		}
+		if (zwei->getActive()) {
+			zwei->collisionCheck(character);
+		}
 
 		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
@@ -185,6 +208,15 @@ void SceneTest::Render() const {
 		}
 		if (shovel->getActive()) {
 			shovel->Render();
+		}
+		if (axe->getActive()) {
+			axe->Render();
+		}
+		if (sword->getActive()) {
+			sword->Render();
+		}
+		if (zwei->getActive()) {
+			zwei->Render();
 		}
 	}
 	//door and character renders

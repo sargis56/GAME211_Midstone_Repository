@@ -17,6 +17,9 @@
 #include "HealingItem.h"
 #include "Weapon.h"
 #include "Shovel.h"
+#include "Axe.h"
+#include "Sword.h"
+#include "Zweihander.h"
 
 using namespace MATH;
 
@@ -31,7 +34,7 @@ class SceneTest : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* meshPtr, * ratMeshPtr, * boxMesh, *itemMesh, *snakeMeshPtr, *weaponMesh;
+	Mesh* meshPtr, * ratMeshPtr, * boxMesh, *itemMesh, *snakeMeshPtr, *swordMesh, *shovelMesh, *axeMesh, *zweiMesh;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
@@ -49,6 +52,9 @@ private:
 	HealingItem* healingItem;
 	SnakeEnemy* snakeEnemy;
 	Shovel* shovel;
+	Axe* axe;
+	Sword* sword;
+	Zweihander* zwei;
 
 	//Shader Pointer
 	Shader* shaderPtr;

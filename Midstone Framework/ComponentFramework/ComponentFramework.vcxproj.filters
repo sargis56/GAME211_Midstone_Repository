@@ -222,6 +222,15 @@
     <ClCompile Include="Shovel.cpp">
       <Filter>Source Files\GameObjects\Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="Axe.cpp">
+      <Filter>Source Files\GameObjects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword.cpp">
+      <Filter>Source Files\GameObjects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Zweihander.cpp">
+      <Filter>Source Files\GameObjects\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -375,6 +384,15 @@
       <Filter>Header Files\GameObjects\Weapons</Filter>
     </ClInclude>
     <ClInclude Include="Shovel.h">
+      <Filter>Header Files\GameObjects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe.h">
+      <Filter>Header Files\GameObjects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword.h">
+      <Filter>Header Files\GameObjects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Zweihander.h">
       <Filter>Header Files\GameObjects\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
