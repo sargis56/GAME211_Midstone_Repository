@@ -192,6 +192,9 @@ void SceneDev::getCharacterPos(const Vec3 storedPos_) {
 	else if (storedPos_.y < 0 && storedPos_.x >= -1.0 && storedPos_.x <= 1.0) { //entering from bottom door
 		returnedPos = Vec3(storedPos_.x, (storedPos_.y * -1 + -1), storedPos_.z);
 	}
+	else {
+		returnedPos = storedPos_ * -1;
+	}
 }
 
 float SceneDev::setCharacterSpeed() {

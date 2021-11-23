@@ -19,7 +19,10 @@ private:
 		TITLESCREEN,
 		SCENEDEV,
 		SCENE00,
-		SCENE10
+		SCENE00UNDER,
+		SCENE10,
+		SCENE10UNDER,
+		SCENE0NEG1
 	};
 
 	class Scene* currentScene;
@@ -38,6 +41,7 @@ private:
 	Vec3 mainPos;
 	float mainSpeed;
 	int mainWeapon;
+	bool playerDimension = false;
 };
 
 

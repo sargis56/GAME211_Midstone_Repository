@@ -79,6 +79,18 @@
     <Filter Include="Source Files\GameObjects\Weapons">
       <UniqueIdentifier>{60d6754b-0684-49c0-8e67-faeaeb68f724}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Scenes\Overworld">
+      <UniqueIdentifier>{e864b427-e293-4c67-9db1-97c780f4a3e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scenes\Underworld">
+      <UniqueIdentifier>{3e748744-811f-44e3-a50d-b50b0db3e966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes\Overworld">
+      <UniqueIdentifier>{15b1330b-2441-4ee8-9aac-a883f4a9c381}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes\Underworld">
+      <UniqueIdentifier>{387cc166-7f01-4066-9cbf-406de8941335}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -192,12 +204,6 @@
     <ClCompile Include="SceneDev.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Scene00.cpp">
-      <Filter>Source Files\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene10.cpp">
-      <Filter>Source Files\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="HealingItem.cpp">
       <Filter>Source Files\GameObjects\Items</Filter>
     </ClCompile>
@@ -230,6 +236,18 @@
     </ClCompile>
     <ClCompile Include="Zweihander.cpp">
       <Filter>Source Files\GameObjects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene00.cpp">
+      <Filter>Source Files\Scenes\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene10.cpp">
+      <Filter>Source Files\Scenes\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene0NEG1.cpp">
+      <Filter>Source Files\Scenes\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene10Under.cpp">
+      <Filter>Source Files\Scenes\Underworld</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -356,12 +374,6 @@
     <ClInclude Include="SceneDev.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Scene00.h">
-      <Filter>Header Files\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene10.h">
-      <Filter>Header Files\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="HealingItem.h">
       <Filter>Header Files\GameObjects\Items</Filter>
     </ClInclude>
@@ -394,6 +406,18 @@
     </ClInclude>
     <ClInclude Include="Zweihander.h">
       <Filter>Header Files\GameObjects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene00.h">
+      <Filter>Header Files\Scenes\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene10.h">
+      <Filter>Header Files\Scenes\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene0NEG1.h">
+      <Filter>Header Files\Scenes\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene10Under.h">
+      <Filter>Header Files\Scenes\Underworld</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
