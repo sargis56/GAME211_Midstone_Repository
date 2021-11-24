@@ -42,7 +42,12 @@ void TitleScreen::HandleEvents(const SDL_Event& sdlEvent) {
 }
 
 int TitleScreen::SetScene() {
-	sceneNumber = button1->getScene();
+	if (button1->getScene() != NULL) {
+		sceneNumber = button1->getScene();
+	}
+	else if (button2->getScene() != NULL) {
+		sceneNumber = button2->getScene();
+	}
 	return sceneNumber;
 }
 
@@ -50,9 +55,9 @@ void TitleScreen::BuildButtons() {
 	ObjLoader::loadOBJ("meshes/Cube.obj");
 	boxMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	startTexture = new Texture();
-	startTexture->LoadImage("textures/green.jpg");
+	startTexture->LoadImage("textures/playButton.jpg");
 	endTexture = new Texture();
-	endTexture->LoadImage("textures/red.jpg");
+	endTexture->LoadImage("textures/exitButton.jpg");
 	shaderPtr = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	button1 = new Button(boxMesh, shaderPtr, startTexture, 0, Vec3(410.0f, 430.0f, 0.0f), Vec3(1190.0f, 235.0f, 0.0f));
 	button2 = new Button(boxMesh, shaderPtr, endTexture, 1, Vec3(410.0f, 660.0f, 0.0f), Vec3(1190.0f, 470.0f, 0.0f));

@@ -134,6 +134,10 @@ void SceneManager::SwitchScene() {
 		if (currentNumber == 3) {
 			BuildScene(SCENE0NEG1);
 		}
+
+		if (currentNumber == 1000) {
+			isRunning = false;
+		}
 	}
 }
 
