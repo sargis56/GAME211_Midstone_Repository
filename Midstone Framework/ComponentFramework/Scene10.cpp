@@ -70,7 +70,12 @@ void Scene10::BuildCharacter() {
 }
 
 void Scene10::BuildAllEnemies() {
-
+	ObjLoader::loadOBJ("meshes/Enemies/Rat.obj");
+	ratMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	ratTexture = new Texture();
+	ratTexture->LoadImage("textures/Enemies/Rat_Texture.jpg");
+	ratEnemy = new RatEnemy(ratMesh, shaderPtr, ratTexture, room);
+	ratEnemy->setPos(Vec3(0.0f,2.0f,-15.0f));
 }
 
 void Scene10::BuildRoom() {
@@ -102,8 +107,13 @@ void Scene10::BuildHealthUI() {
 void Scene10::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
-		
+		ratEnemy->Update(deltaTime);
+		if (ratEnemy->DamageCheck(character) && character->getInvincibility() == false) {
+			character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+			health -= 10; //set characters new health after taking damage
+		}
 	}
+	ratEnemy->setModelMatrix(MMath::translate(ratEnemy->getPos()));
 	//door and character updates
 	if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;
@@ -119,6 +129,7 @@ void Scene10::Update(const float deltaTime) {
 	}
 	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()));
+	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
 }
 
@@ -139,7 +150,7 @@ void Scene10::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
-		
+		ratEnemy->Render();
 	}
 	//door and character renders
 	if (character->getVisibility()) {
@@ -228,4 +239,5 @@ void Scene10::OnDestroy() {
 	if (doorBottom) delete doorBottom, doorBottom = nullptr;
 	if (doorRight) delete doorLeft, doorLeft = nullptr;
 	if (doorTop) delete doorBottom, doorBottom = nullptr;
+	if (ratEnemy) delete ratEnemy, ratEnemy = nullptr;
 }

@@ -100,7 +100,7 @@ void RatEnemy::HandleEvents(const SDL_Event& event) {
 } /// Just a stub
 
 bool RatEnemy::DamageCheck(Character* character) {
-	if (VMath::distance(character->getPos(), pos) < 1) {
+	if (VMath::distance(character->getPos(), pos) < 2) {
 		return true;
 	}
 	else {

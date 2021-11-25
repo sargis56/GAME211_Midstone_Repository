@@ -4,3 +4,6 @@
 [INFO]: Graphics card name NVIDIA GeForce RTX 2070 SUPER/PCIe/SSE2
 [INFO]: GLSL Version 4.60 NVIDIA
 [INFO]: Created Scene4: 
+[INFO]: Created Scene00: 
+[INFO]: Created Scene0: 
+[INFO]: Deleting the GameSceneManager
