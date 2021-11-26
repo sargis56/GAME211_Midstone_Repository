@@ -14,7 +14,7 @@
 #include "SceneManager.h"
 using namespace std;
 
-Scene0NEG1::Scene0NEG1() : character(nullptr), characterMesh(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorLeft(nullptr), doorBottom(nullptr), doorRight(nullptr), doorTop(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
+Scene0NEG1::Scene0NEG1() : character(nullptr), characterMesh(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorLeft(nullptr), doorRight(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
 health(NULL), healthBar(nullptr), healthUITexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr), speed(NULL), weapon(NULL) {
 	Debug::Info("Created SceneDev: ", __FILE__, __LINE__);
 }
@@ -43,9 +43,7 @@ bool Scene0NEG1::OnCreate() {
 	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
-	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
 	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
-	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
 	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
 	return true;
 }
@@ -90,8 +88,6 @@ void Scene0NEG1::BuildRoom() {
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
 	doorRight = new Door(boxMesh, shaderPtr, doorTexture, Vec3(9.5, 0.0, -15.0f));
 	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
-	doorTop = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0, 4.5, -15.0f));
-	doorBottom = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0, -4.5, -15.0f));
 }
 void Scene0NEG1::BuildHealthUI() {
 	healthUITexture = new Texture();
@@ -105,12 +101,6 @@ void Scene0NEG1::Update(const float deltaTime) {
 		
 	}
 	//door and character updates
-	if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 3;
-	}
-	if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 3;
-	}
 	if (doorRight->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 1;
 	}
@@ -153,9 +143,7 @@ void Scene0NEG1::Render() const {
 	wall3->Render();
 	wall4->Render();
 	floor->Render();
-	doorBottom->Render();
 	doorLeft->Render();
-	doorTop->Render();
 	doorRight->Render();
 	glUseProgram(0);
 }
@@ -226,7 +214,5 @@ void Scene0NEG1::OnDestroy() {
 	if (wall4) delete wall4, wall4 = nullptr;
 	if (floor) delete floor, floor = nullptr;
 	if (doorLeft) delete doorLeft, doorLeft = nullptr;
-	if (doorBottom) delete doorBottom, doorBottom = nullptr;
 	if (doorRight) delete doorLeft, doorLeft = nullptr;
-	if (doorTop) delete doorBottom, doorBottom = nullptr;
 }

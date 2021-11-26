@@ -6,6 +6,7 @@
 #include "Trackball.h"
 #include "Camera.h"
 #include "Button.h"
+#include "StaticMesh.h"
 using namespace MATH;
 
 /// Forward declarations 
@@ -21,9 +22,9 @@ private:
 	Button* button1, *button2, *button3;
 	Mesh* boxMesh;
 	Shader* shaderPtr;
-	Texture* startTexture, *endTexture;
+	Texture* startTexture, *endTexture, *titleTexture;
 	Vec3 light1;
-
+	StaticMesh* titleBox;
 	int sceneNumber = 0;
 public:
 	explicit TitleScreen();
