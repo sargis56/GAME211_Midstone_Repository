@@ -5,6 +5,7 @@
 #include "SceneDev.h"
 #include "SceneTest.h"
 #include "TitleScreen.h"
+#include "DeathScreen.h"
 #include "Scene00.h"
 #include "Scene10.h"
 #include "Scene10Under.h"
@@ -122,6 +123,9 @@ void SceneManager::SwitchScene() {
 	if (currentNumber != testSceneNumber) {//test to see if the scene should switch
 		roomCleared[currentNumber] = currentScene->setSceneCleared();
 		currentNumber = testSceneNumber;
+		if (currentNumber == 0) {
+			BuildScene(TITLESCREEN);
+		}
 		if (currentNumber == 1) {
 			BuildScene(SCENE00);
 		}
@@ -135,6 +139,9 @@ void SceneManager::SwitchScene() {
 			BuildScene(SCENE0NEG1);
 		}
 
+		if (currentNumber == 999) {
+			BuildScene(DEATHSCREEN);
+		}
 		if (currentNumber == 1000) {
 			isRunning = false;
 		}
@@ -157,6 +164,10 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	switch (scene) {
 	case TITLESCREEN:
 		currentScene = new TitleScreen();
+		status = currentScene->OnCreate();
+		break;
+	case DEATHSCREEN:
+		currentScene = new DeathScreen();
 		status = currentScene->OnCreate();
 		break;
 	case SCENEDEV:

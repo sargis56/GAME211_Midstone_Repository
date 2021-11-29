@@ -127,6 +127,7 @@
   <ItemGroup>
     <ClCompile Include="ArcherEnemy.cpp" />
     <ClCompile Include="Axe.cpp" />
+    <ClCompile Include="DeathScreen.cpp" />
     <ClCompile Include="MageEnemy.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="HealingItem.cpp" />
@@ -181,6 +182,7 @@
   <ItemGroup>
     <ClInclude Include="ArcherEnemy.h" />
     <ClInclude Include="Axe.h" />
+    <ClInclude Include="DeathScreen.h" />
     <ClInclude Include="MageEnemy.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="HealingItem.h" />

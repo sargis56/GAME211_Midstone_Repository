@@ -22,7 +22,7 @@ private:
 	Texture* texture;
 	Vec3 pos1, pos2;
 	int function;
-	int sceneNumber = 0;
+	int sceneNumber = -1;
 public:
 	Button(Mesh* mesh_, Shader* shader_, Texture* texture_, int function_, Vec3 pos1_, Vec3 pos2_);
 	~Button();

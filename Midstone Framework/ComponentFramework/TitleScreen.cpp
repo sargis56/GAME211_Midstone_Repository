@@ -129,6 +129,7 @@ void TitleScreen::OnDestroy() {
 	if (button2) delete button2, button2 = nullptr;
 	if (button3) delete button3, button3 = nullptr;
 	if (startTexture) delete startTexture, startTexture = nullptr;
+	if (titleTexture) delete titleTexture, titleTexture = nullptr;
 	if (shaderPtr) delete shaderPtr, shaderPtr = nullptr;
 	if (endTexture) delete endTexture, endTexture = nullptr;
 	if (boxMesh) delete boxMesh, boxMesh = nullptr;

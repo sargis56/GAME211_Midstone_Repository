@@ -117,6 +117,9 @@ void Scene10Under::Update(const float deltaTime) {
 	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;
 	}
+	if (health <= 0) { //check if the player is dead
+		sceneNumber = 999;
+	}
 	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()));
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));

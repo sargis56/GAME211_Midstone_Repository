@@ -5,15 +5,9 @@
 [INFO]: GLSL Version 4.60 NVIDIA
 [INFO]: Created Scene4: 
 [INFO]: Created Scene00: 
-[INFO]: Created SceneDev: 
+[INFO]: Created Scene0: 
+[INFO]: Created Scene4: 
+[INFO]: Created Scene4: 
 [INFO]: Created Scene00: 
-[INFO]: Created SceneDev: 
-[INFO]: Created Scene00: 
-[INFO]: Created Scene0: 
-[INFO]: Created Scene0: 
-[INFO]: Created Scene0: 
-[INFO]: Created Scene0: 
-[INFO]: Created Scene0: 
-[INFO]: Created Scene0: 
 [INFO]: Created Scene0: 
 [INFO]: Deleting the GameSceneManager
