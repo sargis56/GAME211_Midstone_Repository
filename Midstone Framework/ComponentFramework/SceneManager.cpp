@@ -6,6 +6,7 @@
 #include "SceneTest.h"
 #include "TitleScreen.h"
 #include "DeathScreen.h"
+#include "WinScreen.h"
 #include "Scene00.h"
 #include "Scene10.h"
 #include "Scene10Under.h"
@@ -139,6 +140,9 @@ void SceneManager::SwitchScene() {
 			BuildScene(SCENE0NEG1);
 		}
 
+		if (currentNumber == 998) {
+			BuildScene(WINSCREEN);
+		}
 		if (currentNumber == 999) {
 			BuildScene(DEATHSCREEN);
 		}
@@ -168,6 +172,10 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		break;
 	case DEATHSCREEN:
 		currentScene = new DeathScreen();
+		status = currentScene->OnCreate();
+		break;
+	case WINSCREEN:
+		currentScene = new WinScreen();
 		status = currentScene->OnCreate();
 		break;
 	case SCENEDEV:

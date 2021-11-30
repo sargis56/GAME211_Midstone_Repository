@@ -252,6 +252,9 @@
     <ClCompile Include="DeathScreen.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="WinScreen.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -423,6 +426,9 @@
       <Filter>Header Files\Scenes\Underworld</Filter>
     </ClInclude>
     <ClInclude Include="DeathScreen.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="WinScreen.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>

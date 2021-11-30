@@ -50,7 +50,7 @@ int TitleScreen::SetScene() {
 	if (button1->getScene() != NULL) {
 		sceneNumber = button1->getScene();
 	}
-	else if (button2->getScene() != NULL) {
+	if (button2->getScene() != NULL) {
 		sceneNumber = button2->getScene();
 	}
 	return sceneNumber;

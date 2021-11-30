@@ -56,8 +56,8 @@ void DeathScreen::BuildButtons() {
 	endTexture = new Texture();
 	endTexture->LoadImage("textures/returnText.jpg");
 	shaderPtr = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
-	button1 = new Button(boxMesh, shaderPtr, endTexture, 2, Vec3(410.0f, 875.0f, 0.0f), Vec3(1190.0f, 680.0f, 0.0f));
-	button1->setModelMatrix(MMath::translate(Vec3(0.0, -2.5, 0.0)) * MMath::scale(2.5f, 0.75f, 0.5f));
+	button1 = new Button(boxMesh, shaderPtr, endTexture, 2, Vec3(455.0f, 744.0f, 0.0f), Vec3(1123.0f, 548.0f, 0.0f));
+	button1->setModelMatrix(MMath::translate(Vec3(0.0, -1.5, 0.0)) * MMath::scale(2.5f, 0.75f, 0.5f));
 }
 
 float DeathScreen::setCharacterHealth()

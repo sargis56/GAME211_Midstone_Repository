@@ -177,6 +177,7 @@
     <ClCompile Include="VMath.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WinScreen.cpp" />
     <ClCompile Include="Zweihander.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -236,6 +237,7 @@
     <ClInclude Include="VMath.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WinScreen.h" />
     <ClInclude Include="Zweihander.h" />
   </ItemGroup>
   <ItemGroup>
