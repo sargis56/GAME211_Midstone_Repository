@@ -255,6 +255,9 @@
     <ClCompile Include="WinScreen.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="FinalEnemy.cpp">
+      <Filter>Source Files\GameObjects\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -430,6 +433,9 @@
     </ClInclude>
     <ClInclude Include="WinScreen.h">
       <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="FinalEnemy.h">
+      <Filter>Header Files\GameObjects\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

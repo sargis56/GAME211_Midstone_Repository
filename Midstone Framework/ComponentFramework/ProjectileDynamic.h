@@ -25,10 +25,10 @@ private:
 	bool moveOver = true;
 	float direction;
 	float damage;
-	float timeBtwnShots;
+	float radius;
 	Room room;
 public:
-	ProjectileDynamic(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos, int damage);
+	ProjectileDynamic(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos, int damage, float radius);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~ProjectileDynamic();
 	virtual bool OnCreate() override;

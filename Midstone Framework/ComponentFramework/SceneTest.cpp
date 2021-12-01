@@ -50,7 +50,7 @@ bool SceneTest::OnCreate() {
 	character->setPos(returnedPos); //using for setting the position 
 	//enemy onCreate
 	BuildAllEnemies();
-	enemy1 = new ArcherEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
+	enemy1 = new FinalEnemy(ratMeshPtr, shaderPtr, turretTexture, room, character);
 	enemy1->OnCreate();
 	enemy1->setPos(Vec3(2.0, 2.0, -15.0));
 	healingItem = new HealingItem(itemMesh, shaderPtr, doorTexture, Vec3(3.0f, -3.0f, -15.0f));
@@ -59,7 +59,7 @@ bool SceneTest::OnCreate() {
 	axe = new Axe(axeMesh, shaderPtr, doorTexture, Vec3(-5.0f, -3.0f, -15.0f));
 	zwei = new Zweihander(zweiMesh, shaderPtr, doorTexture, Vec3(-7.5f, -3.0f, -15.0f));
 
-	snakeEnemy = new SnakeEnemy(snakeMeshPtr, shaderPtr, snakeTexture, room);
+	//snakeEnemy = new SnakeEnemy(snakeMeshPtr, shaderPtr, snakeTexture, room);
 	//setting modelMatrix for static objs
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	wall1->setModelMatrix(MMath::translate(Vec3(-11.0, 0.0, -15.0)) * MMath::scale(0.75f, 5.0f, 1.0f));
@@ -172,8 +172,8 @@ void SceneTest::Update(const float deltaTime) {
 
 		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
-		snakeEnemy->setModelMatrix(MMath::translate(snakeEnemy->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
-		snakeEnemy->PatrolArea();
+		//snakeEnemy->setModelMatrix(MMath::translate(snakeEnemy->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+		//snakeEnemy->PatrolArea();
 	}
 	//door and character updates
 	character->checkInvincibility(); //checking if the character is invincible
@@ -198,8 +198,8 @@ void SceneTest::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
-		//enemy1->Render();
-		snakeEnemy->Render();
+		enemy1->Render();
+		//snakeEnemy->Render();
 		if (speedItem->getActive()) {
 			//speedItem->Render();
 		}

@@ -18,7 +18,7 @@ void ArcherEnemy::BuildProjectile() {
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
 	textureProjectile->LoadImage("textures/skull_texture.jpg");
-	projectile = new ProjectileDynamic(meshProjectile, shaderProjectile, textureProjectile, room, pos, 10);
+	projectile = new ProjectileDynamic(meshProjectile, shaderProjectile, textureProjectile, room, pos, 10, 0.5f);
 	projectileDestination = character->getPos() - pos;
 	projectileDestination = VMath::normalize(Vec3(projectileDestination.x, projectileDestination.y, 1));
 }

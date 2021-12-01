@@ -18,7 +18,7 @@ void MageEnemy::BuildProjectile() {
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
 	textureProjectile->LoadImage("textures/skull_texture.jpg");
-	projectile = new ProjectileDynamic(meshProjectile, shaderProjectile, textureProjectile, room, pos, 10);
+	projectile = new ProjectileDynamic(meshProjectile, shaderProjectile, textureProjectile, room, pos, 10, 0.5f);
 }
 
 bool MageEnemy::OnCreate() {

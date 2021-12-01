@@ -11,6 +11,7 @@
 #include "MageTurretEnemy.h"
 #include "MageEnemy.h"
 #include "ArcherEnemy.h"
+#include "FinalEnemy.h"
 #include "SpeedItem.h"
 #include "Door.h"
 #include "HealthUI.h"
@@ -47,7 +48,8 @@ private:
 	bool roomUpdate = false;
 
 	//Enemies and Items
-	ArcherEnemy* enemy1;
+	FinalEnemy* enemy1;
+	//ArcherEnemy* enemy1;
 	SpeedItem* speedItem;
 	HealingItem* healingItem;
 	SnakeEnemy* snakeEnemy;

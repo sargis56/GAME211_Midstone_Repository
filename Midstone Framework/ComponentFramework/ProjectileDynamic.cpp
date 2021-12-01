@@ -5,10 +5,11 @@
 #include <SDL.h>
 #include <cstdlib>
 
-ProjectileDynamic::ProjectileDynamic(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos_, int damage_) :
+ProjectileDynamic::ProjectileDynamic(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos_, int damage_, float radius_) :
 	mesh(mesh_), shader(shader_), texture(texture_), room(room_) {
 	pos = pos_;
 	damage = damage_;
+	radius = radius_;
 }
 
 ProjectileDynamic::~ProjectileDynamic() {}
@@ -60,7 +61,7 @@ bool ProjectileDynamic::ProjectileDynamicUpdate(Vec3 direction, float deltaTime)
 }
 
 bool ProjectileDynamic::DamageCheck(Character* character) { //function to detect dmg
-	if (VMath::distance(character->getPos(), pos) < 0.5) { //if the projectile is overlapping player
+	if (VMath::distance(character->getPos(), pos) <= radius) { //if the projectile is overlapping player
 		moveOver = true;
 		return true; 
 	}

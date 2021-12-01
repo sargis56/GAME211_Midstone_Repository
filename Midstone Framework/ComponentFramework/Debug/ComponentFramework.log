@@ -1,12 +1,13 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ComponentFramework.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  SceneManager.cpp
+  FinalEnemy.cpp
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(24,14): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(66,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(58,44): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(59,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(60,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneManager.cpp(183,38): warning C4305: 'argument': truncation from 'double' to 'const float'
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneManager.cpp(192,38): warning C4305: 'argument': truncation from 'double' to 'const float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(55,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(59,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(63,6): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(100,41): warning C4305: 'argument': truncation from 'double' to 'const float'
+  GameObject.h
+  Generating Code...
   ComponentFramework.vcxproj -> D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe
