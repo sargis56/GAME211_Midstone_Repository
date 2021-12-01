@@ -4,10 +4,8 @@ D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vect
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(24,14): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(66,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(55,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(59,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(63,6): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(100,41): warning C4305: 'argument': truncation from 'double' to 'const float'
-  GameObject.h
-  Generating Code...
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(77,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(81,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(85,6): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(147,41): warning C4305: 'argument': truncation from 'double' to 'const float'
   ComponentFramework.vcxproj -> D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe

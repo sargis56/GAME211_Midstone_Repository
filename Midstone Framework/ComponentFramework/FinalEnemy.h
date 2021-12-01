@@ -24,12 +24,13 @@ private:
 	Texture* texture, *textureProjectile;
 	Room room;
 	ProjectileDynamic* projectile1;
-	Projectile* projectile2, * projectile3, * projectile4, * projectile5;
+	Projectile* projectile2, * projectile3, * projectile4, * projectile5, *projectile6, * projectile7, * projectile8, * projectile9;
 	Character* character;
 	Vec3 projectileDestination;
-	int attackPattern = 1;
+	int attackPattern;
+	int attackTimer;
 public:
-	FinalEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
+	FinalEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character, int timer_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~FinalEnemy();
 	void BuildProjectile();

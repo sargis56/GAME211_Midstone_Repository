@@ -6,8 +6,9 @@
 #include <cstdlib>
 #include "ObjLoader.h"
 
-FinalEnemy::FinalEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character_) :
+FinalEnemy::FinalEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character_, int timer_) :
 	mesh(mesh_), shader(shader_), texture(texture_), room(room_), character(character_) {
+	attackTimer = timer_;
 }
 
 FinalEnemy::~FinalEnemy() {}
@@ -23,17 +24,38 @@ void FinalEnemy::BuildProjectile() {
 	projectile3 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
 	projectile4 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
 	projectile5 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
+	projectile6 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
+	projectile7 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
+	projectile8 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
+	projectile9 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
 	projectileDestination = character->getPos() - pos;
 	projectileDestination = VMath::normalize(Vec3(projectileDestination.x, projectileDestination.y, 1));
 }
 
 bool FinalEnemy::OnCreate() {
 	BuildProjectile();
+	attackPattern = 0;
+	//attackTimer = 0;
 	//GenerateProjectileDirection();
 	return true; 
 }
 void FinalEnemy::OnDestroy() {}				  /// Just a stub
 void FinalEnemy::Update(float deltaTime_) {
+	attackTimer++;
+	if (attackTimer == 300) {
+		vel = Vec3(0, 0, 0);
+		projectile1->setPos(pos);
+		projectile2->setPos(pos);
+		projectile3->setPos(pos);
+		projectile4->setPos(pos);
+		projectile5->setPos(pos);
+		projectile6->setPos(pos);
+		projectile7->setPos(pos);
+		projectile8->setPos(pos);
+		projectile9->setPos(pos);
+		attackPattern = (rand() % 3);
+		attackTimer = 0;
+	}
 	if (attackPattern == 0) {
 		Vec3 normalTowardsPlayer = pos - character->getPos();
 		normalTowardsPlayer = VMath::normalize(Vec3(normalTowardsPlayer.x, normalTowardsPlayer.y, 1));
@@ -70,6 +92,10 @@ void FinalEnemy::Update(float deltaTime_) {
 		projectile3->setPos(Vec3(0.0f, 0.0f, -50));
 		projectile4->setPos(Vec3(0.0f, 0.0f, -50));
 		projectile5->setPos(Vec3(0.0f, 0.0f, -50));
+		projectile6->setPos(Vec3(0.0f, 0.0f, -50));
+		projectile7->setPos(Vec3(0.0f, 0.0f, -50));
+		projectile8->setPos(Vec3(0.0f, 0.0f, -50));
+		projectile9->setPos(Vec3(0.0f, 0.0f, -50));
 	}
 	if (attackPattern == 2) {
 		if (projectile2->ProjectileUpdate4Axis(Vec3(projectile2->getPos().x, 100, 0))) { // so once it hits the wall
@@ -88,6 +114,23 @@ void FinalEnemy::Update(float deltaTime_) {
 			projectile5->setPos(pos);
 			projectile5->setOver(false);
 		}
+		if (projectile6->ProjectileUpdate8Axis(Vec3(100, 100, 0))) {
+			projectile6->setPos(pos);
+			projectile6->setOver(false);
+		}
+		if (projectile7->ProjectileUpdate8Axis(Vec3(-100, 100, 0))) {
+			projectile7->setPos(pos);
+			projectile7->setOver(false);
+		}
+		if (projectile8->ProjectileUpdate8Axis(Vec3(100, -100, 0))) {
+			projectile8->setPos(pos);
+			projectile8->setOver(false);
+		}
+		if (projectile9->ProjectileUpdate8Axis(Vec3(-100, -100, 0))) {
+			projectile9->setPos(pos);
+			projectile9->setOver(false);
+
+		}
 		projectile1->setPos(Vec3(0.0f, 0.0f, -50)); //the pos is reset to the pos of the enemy
 	}
 	if (attackPattern != 1 && attackPattern != 2) {
@@ -96,6 +139,10 @@ void FinalEnemy::Update(float deltaTime_) {
 		projectile3->setPos(Vec3(0.0f, 0.0f, -50));
 		projectile4->setPos(Vec3(0.0f, 0.0f, -50));
 		projectile5->setPos(Vec3(0.0f, 0.0f, -50));
+		projectile6->setPos(Vec3(0.0f, 0.0f, -50));
+		projectile7->setPos(Vec3(0.0f, 0.0f, -50));
+		projectile8->setPos(Vec3(0.0f, 0.0f, -50));
+		projectile9->setPos(Vec3(0.0f, 0.0f, -50));
 	}
 	Physics::SimpleNewtonMotion(*this, 0.01);
 	projectile1->setModelMatrix(MMath::translate(projectile1->getPos()) * MMath::scale(1.7f, 1.7f, 1.7f)); //setting modelmatrix of the projectile
@@ -103,6 +150,10 @@ void FinalEnemy::Update(float deltaTime_) {
 	projectile3->setModelMatrix(MMath::translate(projectile3->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
 	projectile4->setModelMatrix(MMath::translate(projectile4->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
 	projectile5->setModelMatrix(MMath::translate(projectile5->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
+	projectile6->setModelMatrix(MMath::translate(projectile6->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
+	projectile7->setModelMatrix(MMath::translate(projectile7->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
+	projectile8->setModelMatrix(MMath::translate(projectile8->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
+	projectile9->setModelMatrix(MMath::translate(projectile9->getPos()) * MMath::scale(0.4f, 0.4f, 0.4f));
 }
 
 void FinalEnemy::Render() const {
@@ -111,6 +162,10 @@ void FinalEnemy::Render() const {
 	projectile3->Render();
 	projectile4->Render();
 	projectile5->Render();
+	projectile6->Render();
+	projectile7->Render();
+	projectile8->Render();
+	projectile9->Render();
 	Matrix3 normalMatrix = MMath::transpose(MMath::inverse(modelMatrix));
 	glUniformMatrix4fv(shader->getUniformID("modelMatrix"), 1, GL_FALSE, modelMatrix);
 	glUniformMatrix3fv(shader->getUniformID("normalMatrix"), 1, GL_FALSE, normalMatrix);
@@ -130,6 +185,30 @@ void FinalEnemy::HandleEvents(const SDL_Event& event) {
 bool FinalEnemy::DamageCheck(Character* character) { //function to detect dmg
 	bool damageTrue = false;
 	if (projectile1->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
+	if (projectile2->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
+	if (projectile3->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
+	if (projectile4->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
+	if (projectile5->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
+	if (projectile6->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
+	if (projectile7->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
+	if (projectile8->DamageCheck(character)) {//check dmg of projectile
+		damageTrue = true;
+	}
+	if (projectile9->DamageCheck(character)) {//check dmg of projectile
 		damageTrue = true;
 	}
 	if (VMath::distance(character->getPos(), pos) < 1) { //if the enemy is overlaping the player
