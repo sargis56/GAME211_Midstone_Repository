@@ -182,6 +182,15 @@ void FinalEnemy::HandleEvents(const SDL_Event& event) {
 	
 } /// Just a stub
 
+bool FinalEnemy::WeaponColCheck(Character* character) {
+	if (VMath::distance(character->getPos(), pos) < (2 + character->getCurrentWeaponReach())) { //
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 bool FinalEnemy::DamageCheck(Character* character) { //function to detect dmg
 	bool damageTrue = false;
 	if (projectile1->DamageCheck(character)) {//check dmg of projectile

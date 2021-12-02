@@ -107,4 +107,3 @@ bool RatEnemy::DamageCheck(Character* character) {
 		return false;
 	}
 }
-

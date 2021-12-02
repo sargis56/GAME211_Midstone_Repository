@@ -26,6 +26,12 @@ private:
 	bool visibility = true;
 	int invincibilityTimer;
 	bool isDead = false;
+	//float mx, my;
+	//float twoPointAngle;
+	float rotation;
+	bool swing = true;
+	bool stab = false;
+	bool attacking = false;
 
 	//Player's weapon stats
 	int currentWeaponID = 0;
@@ -74,6 +80,12 @@ public:
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
+
+	//inline float getTwoPointAngle() const { return twoPointAngle; }
+	//inline float getPlayerMouseY() const { return my; }
+	//inline float getPlayerMouseX() const { return mx; }
+	inline float getRotation() const { return rotation; }
+	inline bool getAttacking() const { return attacking; }
 
 	//Player's weapon getters
 	inline int getCurrentWeaponID() const { return currentWeaponID; }

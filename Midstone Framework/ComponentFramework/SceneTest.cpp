@@ -86,11 +86,11 @@ int SceneTest::SetScene() {
 }
 
 void SceneTest::BuildCharacter() {
-	ObjLoader::loadOBJ("meshes/Sphere.obj");
+	ObjLoader::loadOBJ("meshes/Characters/Pl_LordWill.obj");
 	meshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderPtr = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	texturePtr = new Texture();
-	texturePtr->LoadImage("textures/white.png");
+	texturePtr->LoadImage("textures/Characters/Pl_LordW.png");
 }
 
 void SceneTest::BuildAllEnemies() {
@@ -144,9 +144,14 @@ void SceneTest::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
 		enemy1->Update(deltaTime);
-		if (enemy1->DamageCheck(character) && character->getInvincibility() == false) {
+		if (enemy1->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
 			character->setinvincibilityTimer(100); //setting the timer for the invinciblity
 			health -= 10; //set characters new health after taking damage
+		}
+
+		if (enemy1->WeaponColCheck(character) && character->getAttacking() == true) {
+			//Enemy takes damage
+			printf("\nEnemy has taken damage");
 		}
 		if (speedItem->getActive()) {
 			speedItem->collisionCheck(character);
@@ -178,6 +183,9 @@ void SceneTest::Update(const float deltaTime) {
 	//door and character updates
 	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()));
+	
+	character->setModelMatrix(MMath::translate(character->getPos()) * MMath::rotate(character->getRotation(), Vec3(0.0f, 0.0f, 1.0f)));
+
 	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
 }
 
