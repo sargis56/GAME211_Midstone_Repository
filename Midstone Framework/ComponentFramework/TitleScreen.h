@@ -19,7 +19,7 @@ class Texture;
 class TitleScreen : public Scene {
 private:
 	Camera *camera;
-	Button* button1, *button2, *button3;
+	Button* button1, * button2;
 	Mesh* boxMesh;
 	Shader* shaderPtr;
 	Texture* startTexture, *endTexture, *titleTexture;

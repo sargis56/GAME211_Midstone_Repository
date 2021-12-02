@@ -47,10 +47,10 @@ void TitleScreen::HandleEvents(const SDL_Event& sdlEvent) {
 }
 
 int TitleScreen::SetScene() {
-	if (button1->getScene() != NULL) {
+	if (button1->getScene() == 1) {
 		sceneNumber = button1->getScene();
 	}
-	if (button2->getScene() != NULL) {
+	else {
 		sceneNumber = button2->getScene();
 	}
 	return sceneNumber;
@@ -127,7 +127,6 @@ void TitleScreen::Render() const {
 void TitleScreen::OnDestroy() {
 	if (button1) delete button1, button1 = nullptr;
 	if (button2) delete button2, button2 = nullptr;
-	if (button3) delete button3, button3 = nullptr;
 	if (startTexture) delete startTexture, startTexture = nullptr;
 	if (titleTexture) delete titleTexture, titleTexture = nullptr;
 	if (shaderPtr) delete shaderPtr, shaderPtr = nullptr;
