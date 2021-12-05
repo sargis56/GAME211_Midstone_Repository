@@ -49,6 +49,8 @@ public:
 
 	bool collisionCheck(Character* character);
 
+	void setWeapon(Character* character);
+
 	inline bool getActive() const { return weaponDropActive; }
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }

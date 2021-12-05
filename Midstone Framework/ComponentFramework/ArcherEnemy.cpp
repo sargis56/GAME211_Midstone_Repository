@@ -97,3 +97,10 @@ bool ArcherEnemy::WeaponColCheck(Character* character) {
 		return false;
 	}
 }
+void ArcherEnemy::TakeDamage(float damage) {
+	health = health - damage;
+	//printf("%f", health);
+	if (health <= 0) {
+		isDead = false;
+	}
+}

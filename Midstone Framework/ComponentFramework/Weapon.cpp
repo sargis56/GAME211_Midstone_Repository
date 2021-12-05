@@ -88,3 +88,43 @@ bool Weapon::collisionCheck(Character* character) {
 	return false;
 }
 
+void Weapon::setWeapon(Character* character) {
+	printf("\nWeapon with ID: %i has been picked up with stats:\n", weaponID);
+	printf("Swing Damage: %f | Stab Damage: %f | Reach %f | Delay: %f\n", swingDamage, stabDamage, reach, delay);
+
+	character->setCurrentWeaponID(weaponID);
+	character->setAltWeaponMode(altMode);
+
+	character->setCurrentDamageType(damageType);
+	character->setCurrentSwingDamage(swingDamage);
+	character->setCurrentStabDamage(stabDamage);
+	character->setCurrentWeaponDelay(delay);
+	character->setCurrentWeaponReach(reach);
+
+	character->setWeaponDamageType(damageType);
+	character->setSwingDamage(swingDamage);
+	character->setStabDamage(stabDamage);
+	character->setWeaponDelay(delay);
+	character->setWeaponReach(reach);
+
+	if (altMode == true)
+	{
+		character->setAltWeaponDamageType(altDamageType);
+		character->setAltSwingDamage(altSwingDamage);
+		character->setAltStabDamage(altStabDamage);
+		character->setAltWeaponDelay(altDelay);
+		character->setAltWeaponReach(altReach);
+	}
+	else
+	{
+		character->setAltWeaponDamageType(0);
+		character->setAltSwingDamage(0);
+		character->setAltStabDamage(0);
+		character->setAltWeaponDelay(0);
+		character->setAltWeaponReach(0);
+	}
+
+	printf("\nPlayer wepaon stats have been changed: Swing Damage: %f | Stab Damage: %f | Reach %f | Delay: %f\n", character->getCurrentSwingDamage(), character->getCurrentStabDamage(), character->getCurrentWeaponReach(), character->getCurrentWeaponDelay());
+
+	weaponDropActive = false;
+}

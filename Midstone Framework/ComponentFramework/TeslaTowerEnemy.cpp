@@ -92,3 +92,10 @@ bool TeslaTowerEnemy::WeaponColCheck(Character* character) {
 		return false;
 	}
 }
+void TeslaTowerEnemy::TakeDamage(float damage) {
+	health = health - damage;
+	//printf("%f", health);
+	if (health <= 0) {
+		isDead = false;
+	}
+}

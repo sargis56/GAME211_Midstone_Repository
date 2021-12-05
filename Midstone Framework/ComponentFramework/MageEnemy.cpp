@@ -75,6 +75,13 @@ bool MageEnemy::WeaponColCheck(Character* character) {
 		return false;
 	}
 }
+void MageEnemy::TakeDamage(float damage) {
+	health = health - damage;
+	//printf("%f", health);
+	if (health <= 0) {
+		isDead = false;
+	}
+}
 
 void MageEnemy::HandleEvents(const SDL_Event& event) {
 	

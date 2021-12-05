@@ -26,7 +26,7 @@ private:
 	Character* character;
 	Vec3 projectileDestination;
 	float health = 100;
-	bool isDead = false;
+	bool isDead = true;
 public:
 	ArcherEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -41,6 +41,8 @@ public:
 	bool DamageCheck(Character* character);
 
 	bool WeaponColCheck(Character* character);
+	inline bool isAlive() const { return isDead; }
+	void TakeDamage(float damage);
 
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }

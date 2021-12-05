@@ -29,7 +29,7 @@ private:
 	//Determines if the enemy has armor or not
 	bool armored = true;
 	float health = 100;
-	bool isDead = false;
+	bool isDead = true;
 public:
 	DemonEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, int damage);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -43,9 +43,10 @@ public:
 
 	bool DamageCheck(Character* character);
 	bool WeaponColCheck(Character* character);
+	void TakeDamage(float damage);
 	float FollowPlayer(Character* character);
 	void MoveEnemy();
-
+	inline bool isAlive() const { return isDead; }
 	void AttackPlayer(Character* chtr);
 
 

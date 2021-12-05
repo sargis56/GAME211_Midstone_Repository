@@ -57,6 +57,13 @@ bool DemonEnemy::WeaponColCheck(Character* character) {
 		return false;
 	}
 }
+void DemonEnemy::TakeDamage(float damage) {
+	health = health - damage;
+	//printf("%f", health);
+	if (health <= 0) {
+		isDead = false;
+	}
+}
 
 float DemonEnemy::FollowPlayer(Character* character)
 {

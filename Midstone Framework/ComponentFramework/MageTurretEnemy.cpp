@@ -104,3 +104,10 @@ bool MageTurretEnemy::WeaponColCheck(Character* character) {
 		return false;
 	}
 }
+void MageTurretEnemy::TakeDamage(float damage) {
+	health = health - damage;
+	//printf("%f", health);
+	if (health <= 0) {
+		isDead = false;
+	}
+}

@@ -107,10 +107,17 @@ void Scene10::BuildHealthUI() {
 void Scene10::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
-		ratEnemy->Update(deltaTime);
-		if (ratEnemy->DamageCheck(character) && character->getInvincibility() == false) {
-			character->setinvincibilityTimer(100); //setting the timer for the invinciblity
-			health -= 10; //set characters new health after taking damage
+		if (ratEnemy->isAlive()) {
+			ratEnemy->Update(deltaTime);
+			if (ratEnemy->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 5; //set characters new health after taking damage
+			}
+			if (ratEnemy->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				//printf("\nEnemy has taken damage");
+			}
 		}
 	}
 	ratEnemy->setModelMatrix(MMath::translate(ratEnemy->getPos()));
@@ -153,7 +160,9 @@ void Scene10::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
-		ratEnemy->Render();
+		if (ratEnemy->isAlive()) {
+			ratEnemy->Render();
+		}
 	}
 	//door and character renders
 	if (character->getVisibility()) {

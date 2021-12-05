@@ -26,7 +26,7 @@ private:
 	Character* character;
 	Vec3 projectileDestination;
 	float health = 100;
-	bool isDead = false;
+	bool isDead = true;
 public:
 	TeslaTowerEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -44,6 +44,8 @@ public:
 
 	bool WeaponColCheck(Character* character);
 
+	void TakeDamage(float damage);
+	inline bool isAlive() const { return isDead; }
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }

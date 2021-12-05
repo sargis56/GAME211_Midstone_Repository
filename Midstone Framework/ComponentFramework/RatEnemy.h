@@ -25,8 +25,8 @@ private:
 	Vec3 desiredPos;
 	Room room;
 	float moveSpeed;
-	float health = 100;
-	bool isDead = false;
+	float health = 10;
+	bool isDead = true;
 public:
 	RatEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -39,8 +39,9 @@ public:
 
 	bool DamageCheck(Character* character);
 	bool WeaponColCheck(Character* character);
+	void TakeDamage(float damage);
 	//bool WeaponColCheck(Character* character);
-
+	inline bool isAlive() const { return isDead; }
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
