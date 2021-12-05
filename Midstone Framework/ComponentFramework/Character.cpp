@@ -67,12 +67,14 @@ void Character::HandleEvents(const SDL_Event& event) {
 		{
 			swing = true;
 			attacking = true;
+			damageFromPlayer = getCurrentSwingDamage();
 			printf("\n-SWING-\n");
 		}
 		if (event.button.button == SDL_BUTTON_RIGHT)
 		{
 			stab = true;
 			attacking = true;
+			damageFromPlayer = getCurrentStabDamage();
 			printf("\n-STAB-\n");
 		}
 		if (event.button.button == SDL_BUTTON_MIDDLE)

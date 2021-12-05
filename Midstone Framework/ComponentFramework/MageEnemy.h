@@ -24,6 +24,8 @@ private:
 	Room room;
 	ProjectileDynamic* projectile;
 	Character* character;
+	float health = 100;
+	bool isDead = false;
 public:
 	MageEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -33,6 +35,7 @@ public:
 	virtual void OnDestroy() override;
 	virtual void Update(const float deltaTime_) override;
 	virtual void Render() const override;
+	bool WeaponColCheck(Character* character);
 	virtual void HandleEvents(const SDL_Event& event) override;
 
 	bool DamageCheck(Character* character);

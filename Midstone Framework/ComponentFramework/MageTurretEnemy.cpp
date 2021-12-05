@@ -96,3 +96,11 @@ bool MageTurretEnemy::DamageCheck(Character* character) { //function to detect d
 	return damageTrue;
 }
 
+bool MageTurretEnemy::WeaponColCheck(Character* character) {
+	if (VMath::distance(character->getPos(), pos) < (2 + character->getCurrentWeaponReach())) { //
+		return true;
+	}
+	else {
+		return false;
+	}
+}

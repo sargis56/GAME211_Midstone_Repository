@@ -143,15 +143,17 @@ void SceneTest::Update(const float deltaTime) {
 	}
 	//enemy and item updates
 	if (roomUpdate == false) {
-		enemy1->Update(deltaTime);
-		if (enemy1->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
-			character->setinvincibilityTimer(100); //setting the timer for the invinciblity
-			health -= 10; //set characters new health after taking damage
-		}
-
-		if (enemy1->WeaponColCheck(character) && character->getAttacking() == true) {
-			//Enemy takes damage
-			printf("\nEnemy has taken damage");
+		if (enemy1->isAlive()) {
+			enemy1->Update(deltaTime);
+			if (enemy1->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 10; //set characters new health after taking damage
+			}
+			if (enemy1->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				enemy1->TakeDamage(character->getDamageFromPlayer());
+				printf("\nEnemy has taken damage");
+			}
 		}
 		if (speedItem->getActive()) {
 			speedItem->collisionCheck(character);
@@ -182,7 +184,7 @@ void SceneTest::Update(const float deltaTime) {
 	}
 	//door and character updates
 	character->checkInvincibility(); //checking if the character is invincible
-	character->setModelMatrix(MMath::translate(character->getPos()));
+	//character->setModelMatrix(MMath::translate(character->getPos()));
 	
 	character->setModelMatrix(MMath::translate(character->getPos()) * MMath::rotate(character->getRotation(), Vec3(0.0f, 0.0f, 1.0f)));
 
@@ -206,7 +208,9 @@ void SceneTest::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
-		enemy1->Render();
+		if (enemy1->isAlive()) {
+			enemy1->Render();
+		}
 		//snakeEnemy->Render();
 		if (speedItem->getActive()) {
 			//speedItem->Render();

@@ -25,6 +25,8 @@ private:
 	ProjectileDynamic* projectile;
 	Character* character;
 	Vec3 projectileDestination;
+	float health = 100;
+	bool isDead = false;
 public:
 	ArcherEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -37,6 +39,8 @@ public:
 	virtual void HandleEvents(const SDL_Event& event) override;
 
 	bool DamageCheck(Character* character);
+
+	bool WeaponColCheck(Character* character);
 
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }

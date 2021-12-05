@@ -28,6 +28,8 @@ private:
 	int damage;
 	//Determines if the enemy has armor or not
 	bool armored = true;
+	float health = 100;
+	bool isDead = false;
 public:
 	DemonEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, int damage);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -40,6 +42,7 @@ public:
 	virtual void HandleEvents(const SDL_Event& event) override;
 
 	bool DamageCheck(Character* character);
+	bool WeaponColCheck(Character* character);
 	float FollowPlayer(Character* character);
 	void MoveEnemy();
 

@@ -28,7 +28,8 @@ private:
 	float agroRange = 6.0f;
 	int damage = 1;
 	VenomProjectile *vProjectile;
-
+	float health = 100;
+	bool isDead = false;
 public:
 	SnakeEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -47,6 +48,8 @@ public:
 	void MoveEnemy();
 
 	void AttackPlayer(Character* chtr);
+
+	bool WeaponColCheck(Character* character);
 
 
 	inline Shader* getShader() const { return shader; }

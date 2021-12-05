@@ -8,37 +8,32 @@
 Projectile::Projectile(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Vec3 pos_, int damage_) :
 	mesh(mesh_), shader(shader_), texture(texture_), room(room_) {
 	pos = pos_;
-	damage = damage_;
+	damage = damage_; //constructor
 }
 
 Projectile::~Projectile() {}
 
 bool Projectile::OnCreate() {
-	//damage = 5;
-
+	//damage = 5; //test int for damage value
 	return true; 
 }
-void Projectile::OnDestroy() {}				  /// Just a stub
-void Projectile::Update(float deltaTime_) {
-	
-}
+void Projectile::OnDestroy() {}				  //inherited function
+void Projectile::Update(float deltaTime_) {} //inherited function
 
 void Projectile::Render() const {
-	Matrix3 normalMatrix = MMath::transpose(MMath::inverse(modelMatrix));
-	glUniformMatrix4fv(shader->getUniformID("modelMatrix"), 1, GL_FALSE, modelMatrix);
-	glUniformMatrix3fv(shader->getUniformID("normalMatrix"), 1, GL_FALSE, normalMatrix);
+	Matrix3 normalMatrix = MMath::transpose(MMath::inverse(modelMatrix)); //set normalmatrix
+	glUniformMatrix4fv(shader->getUniformID("modelMatrix"), 1, GL_FALSE, modelMatrix); //GLSL uniform pass
+	glUniformMatrix3fv(shader->getUniformID("normalMatrix"), 1, GL_FALSE, normalMatrix); //GLSL uniform pass
 	if (texture) {
 		glBindTexture(GL_TEXTURE_2D, texture->getTextureID());
 	}
-	mesh->Render();
+	mesh->Render(); //call the mesh render
 
 	/// Unbind the texture
-	glBindTexture(GL_TEXTURE_2D, 0);
+	glBindTexture(GL_TEXTURE_2D, 0); //discard texture
 }
 
-void Projectile::HandleEvents(const SDL_Event& event) {
-	
-} /// Just a stub
+void Projectile::HandleEvents(const SDL_Event& event) {} //inherited function
 
 bool Projectile::ProjectileUpdate4Axis(Vec3 direction) { //moves projectile towards the direction vector
 	//desiredPos = direction;
@@ -122,7 +117,6 @@ bool Projectile::DamageCheck(Character* character) { //function to detect dmg
 	if (VMath::distance(character->getPos(), pos) < 0.5) { //if the projectile is overlapping player
 		moveOver = true;
 		return true; 
-
 	}
 	else {
 		return false;

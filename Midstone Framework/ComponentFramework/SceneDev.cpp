@@ -59,11 +59,11 @@ int SceneDev::SetScene() {
 }
 
 void SceneDev::BuildCharacter() {
-	ObjLoader::loadOBJ("meshes/Sphere.obj");
+	ObjLoader::loadOBJ("meshes/Characters/Pl_LordWill.obj");
 	characterMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderPtr = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	texturePtr = new Texture();
-	texturePtr->LoadImage("textures/white.png");
+	texturePtr->LoadImage("textures/Characters/Pl_LordW.png");
 	character = new Character(characterMesh, shaderPtr, texturePtr, room);
 	character->setSpeed(speed);
 	character->setPos(returnedPos); //using for setting the position 
@@ -121,7 +121,7 @@ void SceneDev::Update(const float deltaTime) {
 		sceneNumber = 999;
 	}
 	character->checkInvincibility(); //checking if the character is invincible
-	character->setModelMatrix(MMath::translate(character->getPos()));
+	character->setModelMatrix(MMath::translate(character->getPos()) * MMath::rotate(character->getRotation(), Vec3(0.0f, 0.0f, 1.0f)));
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
 	//printf("current pos: %f %f %f\n", character->getPos().x, character->getPos().y, character->getPos().z);
 }

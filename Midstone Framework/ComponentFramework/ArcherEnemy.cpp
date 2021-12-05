@@ -88,3 +88,12 @@ bool ArcherEnemy::DamageCheck(Character* character) { //function to detect dmg
 	}
 	return damageTrue;
 }
+
+bool ArcherEnemy::WeaponColCheck(Character* character) {
+	if (VMath::distance(character->getPos(), pos) < (2 + character->getCurrentWeaponReach())) { //
+		return true;
+	}
+	else {
+		return false;
+	}
+}

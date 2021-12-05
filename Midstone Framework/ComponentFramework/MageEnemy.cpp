@@ -67,6 +67,15 @@ void MageEnemy::Render() const {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
+bool MageEnemy::WeaponColCheck(Character* character) {
+	if (VMath::distance(character->getPos(), pos) < (2 + character->getCurrentWeaponReach())) { //
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 void MageEnemy::HandleEvents(const SDL_Event& event) {
 	
 } /// Just a stub

@@ -49,6 +49,15 @@ bool DemonEnemy::DamageCheck(Character* character) {
 	}
 }
 
+bool DemonEnemy::WeaponColCheck(Character* character) {
+	if (VMath::distance(character->getPos(), pos) < (2 + character->getCurrentWeaponReach())) { //
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 float DemonEnemy::FollowPlayer(Character* character)
 {
 	if (VMath::distance(character->getPos(), pos) < agroRange) {

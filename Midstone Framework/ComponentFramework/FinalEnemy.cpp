@@ -190,6 +190,13 @@ bool FinalEnemy::WeaponColCheck(Character* character) {
 		return false;
 	}
 }
+void FinalEnemy::TakeDamage(float damage) {
+	health = health - damage;
+	//printf("%f", health);
+	if (health <= 0) {
+		isDead = false;
+	}
+}
 
 bool FinalEnemy::DamageCheck(Character* character) { //function to detect dmg
 	bool damageTrue = false;

@@ -26,6 +26,7 @@ private:
 	bool visibility = true;
 	int invincibilityTimer;
 	bool isDead = false;
+	int damage = 0;
 	//float mx, my;
 	//float twoPointAngle;
 	float rotation;
@@ -55,6 +56,8 @@ private:
 	int altWeaponDamageType;
 	int currentDamageType;
 
+	float damageFromPlayer;
+
 public:
 	Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//Character(Character* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -71,7 +74,7 @@ public:
 	inline bool getVisibility() const { return visibility; }
 	inline void setinvincibilityTimer(const float setinvincibilityTimer_) { invincibilityTimer = setinvincibilityTimer_; }
 
-	bool onDeath();
+	//bool onDeath();
 
 	inline Mesh* getMesh() const { return mesh; }
 	inline Texture* getTexture() const { return texture; }
@@ -94,6 +97,8 @@ public:
 	inline float getCurrentStabDamage() const { return currentStabDamage; }
 	inline float getCurrentWeaponDelay() const { return currentWeaponDelay; }
 	inline float getCurrentWeaponReach() const { return currentWeaponReach; }
+
+	inline float getDamageFromPlayer() const { return currentWeaponReach; }
 
 	//Player's weapon setters
 	inline void setCurrentWeaponID(const int setCurrentWeaponID_) { currentWeaponID = setCurrentWeaponID_; }
