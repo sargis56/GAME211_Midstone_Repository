@@ -104,3 +104,8 @@ void ArcherEnemy::TakeDamage(float damage) {
 		isDead = false;
 	}
 }
+
+void ArcherEnemy::ResetTimer() {
+	textureChangeTimer = 0;
+	textureChange = false;
+}

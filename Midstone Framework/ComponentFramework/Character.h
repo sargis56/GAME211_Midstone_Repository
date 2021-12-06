@@ -98,7 +98,7 @@ public:
 	inline float getCurrentWeaponDelay() const { return currentWeaponDelay; }
 	inline float getCurrentWeaponReach() const { return currentWeaponReach; }
 
-	inline float getDamageFromPlayer() const { return currentWeaponReach; }
+	inline float getDamageFromPlayer() const { return damageFromPlayer; }
 
 	//Player's weapon setters
 	inline void setCurrentWeaponID(const int setCurrentWeaponID_) { currentWeaponID = setCurrentWeaponID_; }
@@ -124,6 +124,8 @@ public:
 	inline void setWeaponDelay(const float setWeaponDelay_) { weaponDelay = setWeaponDelay_; }
 	inline void setAltWeaponDelay(const float setAltWeaponDelay_) { altWeaponDelay = setAltWeaponDelay_; }
 	inline void setCurrentWeaponDelay(const float setCurrentWeaponDelay_) { currentWeaponDelay = setCurrentWeaponDelay_; }
+
+	void setWeapon(int weapon_);
 };
 
 #endif

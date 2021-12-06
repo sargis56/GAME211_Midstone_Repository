@@ -67,6 +67,8 @@ void Scene10::BuildCharacter() {
 	character = new Character(characterMesh, shaderPtr, texturePtr, room);
 	character->setSpeed(speed);
 	character->setPos(returnedPos); //using for setting the position 
+	character->setWeapon(weapon);
+
 }
 
 void Scene10::BuildAllEnemies() {
@@ -109,6 +111,10 @@ void Scene10::Update(const float deltaTime) {
 	if (roomUpdate == false) {
 		if (ratEnemy->isAlive()) {
 			ratEnemy->Update(deltaTime);
+			if (ratEnemy->getTimer() >= 20) {
+				ratTexture->LoadImage("textures/Enemies/Rat_Texture.jpg");
+				ratEnemy->ResetTimer();
+			}
 			if (ratEnemy->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
 				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
 				health -= 5; //set characters new health after taking damage
@@ -116,11 +122,12 @@ void Scene10::Update(const float deltaTime) {
 			if (ratEnemy->WeaponColCheck(character) && character->getAttacking() == true) {
 				//Enemy takes damage
 				ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				ratTexture->LoadImage("textures/red.jpg");
 				//printf("\nEnemy has taken damage");
 			}
 		}
 	}
-	ratEnemy->setModelMatrix(MMath::translate(ratEnemy->getPos()));
+	ratEnemy->setModelMatrix(MMath::translate(ratEnemy->getPos()) * MMath::rotate(ratEnemy->getRotation(), Vec3(0,0,1)));
 	//door and character updates
 	if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;

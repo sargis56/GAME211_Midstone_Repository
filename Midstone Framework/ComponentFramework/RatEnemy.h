@@ -25,8 +25,11 @@ private:
 	Vec3 desiredPos;
 	Room room;
 	float moveSpeed;
-	float health = 10;
+	float health = 50;
 	bool isDead = true;
+	float angle;
+	int textureChangeTimer = 0;
+	bool textureChange = false;
 public:
 	RatEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -42,9 +45,12 @@ public:
 	void TakeDamage(float damage);
 	//bool WeaponColCheck(Character* character);
 	inline bool isAlive() const { return isDead; }
+	inline int getTimer() const { return textureChangeTimer; }
+	void ResetTimer();
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
+	inline float getRotation() const { return angle; }
 };
 
 #endif

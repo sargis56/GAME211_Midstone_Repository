@@ -136,3 +136,8 @@ void SnakeEnemy::TakeDamage(float damage) {
 		isDead = false;
 	}
 }
+
+void SnakeEnemy::ResetTimer() {
+	textureChangeTimer = 0;
+	textureChange = false;
+}

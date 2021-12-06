@@ -29,8 +29,10 @@ private:
 	Vec3 projectileDestination;
 	int attackPattern;
 	int attackTimer;
-	float health = 100;
+	float health = 5000;
 	bool isDead = true;
+	int textureChangeTimer = 0;
+	bool textureChange = false;
 public:
 	FinalEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character, int timer_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -48,6 +50,8 @@ public:
 	void TakeDamage(float damage);
 
 	inline bool isAlive() const { return isDead; }
+	inline int getTimer() const { return textureChangeTimer; }
+	void ResetTimer();
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }

@@ -30,6 +30,8 @@ private:
 	bool armored = true;
 	float health = 100;
 	bool isDead = true;
+	int textureChangeTimer = 0;
+	bool textureChange = false;
 public:
 	DemonEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, int damage);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -47,6 +49,8 @@ public:
 	float FollowPlayer(Character* character);
 	void MoveEnemy();
 	inline bool isAlive() const { return isDead; }
+	inline int getTimer() const { return textureChangeTimer; }
+	void ResetTimer();
 	void AttackPlayer(Character* chtr);
 
 

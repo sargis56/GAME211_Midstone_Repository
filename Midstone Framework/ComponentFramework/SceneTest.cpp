@@ -145,6 +145,10 @@ void SceneTest::Update(const float deltaTime) {
 	if (roomUpdate == false) {
 		if (enemy1->isAlive()) {
 			enemy1->Update(deltaTime);
+			if (enemy1->getTimer() >= 20) {
+				turretTexture->LoadImage("textures/Enemies/Turret_Texture.jpg");
+				enemy1->ResetTimer();
+			}
 			if (enemy1->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
 				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
 				health -= 10; //set characters new health after taking damage
@@ -152,7 +156,8 @@ void SceneTest::Update(const float deltaTime) {
 			if (enemy1->WeaponColCheck(character) && character->getAttacking() == true) {
 				//Enemy takes damage
 				enemy1->TakeDamage(character->getDamageFromPlayer());
-				printf("\nEnemy has taken damage");
+				turretTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
 			}
 		}
 		if (speedItem->getActive()) {

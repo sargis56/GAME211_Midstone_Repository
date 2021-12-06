@@ -41,6 +41,10 @@ bool FinalEnemy::OnCreate() {
 }
 void FinalEnemy::OnDestroy() {}				  /// Just a stub
 void FinalEnemy::Update(float deltaTime_) {
+	if (textureChange == true) {
+		textureChangeTimer++;
+		//printf("%i\n", textureChangeTimer);
+	}
 	attackTimer++;
 	if (attackTimer == 300) {
 		vel = Vec3(0, 0, 0);
@@ -193,9 +197,15 @@ bool FinalEnemy::WeaponColCheck(Character* character) {
 void FinalEnemy::TakeDamage(float damage) {
 	health = health - damage;
 	//printf("%f", health);
+	textureChange = true;
 	if (health <= 0) {
 		isDead = false;
 	}
+}
+
+void FinalEnemy::ResetTimer() {
+	textureChangeTimer = 0;
+	textureChange = false;
 }
 
 bool FinalEnemy::DamageCheck(Character* character) { //function to detect dmg

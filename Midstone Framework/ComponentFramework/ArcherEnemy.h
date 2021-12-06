@@ -27,6 +27,8 @@ private:
 	Vec3 projectileDestination;
 	float health = 100;
 	bool isDead = true;
+	int textureChangeTimer = 0;
+	bool textureChange = false;
 public:
 	ArcherEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -42,6 +44,8 @@ public:
 
 	bool WeaponColCheck(Character* character);
 	inline bool isAlive() const { return isDead; }
+	inline int getTimer() const { return textureChangeTimer; }
+	void ResetTimer();
 	void TakeDamage(float damage);
 
 	inline Shader* getShader() const { return shader; }

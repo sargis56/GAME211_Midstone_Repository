@@ -97,3 +97,8 @@ void DemonEnemy::AttackPlayer(Character* chtr) {
 
 
 }
+
+void DemonEnemy::ResetTimer() {
+	textureChangeTimer = 0;
+	textureChange = false;
+}

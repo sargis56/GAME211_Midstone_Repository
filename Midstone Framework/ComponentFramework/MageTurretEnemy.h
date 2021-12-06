@@ -25,6 +25,8 @@ private:
 	Projectile *projectile1, *projectile2, *projectile3, *projectile4;
 	float health = 100;
 	bool isDead = true;
+	int textureChangeTimer = 0;
+	bool textureChange = false;
 public:
 	MageTurretEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -42,6 +44,8 @@ public:
 
 	void TakeDamage(float damage);
 	inline bool isAlive() const { return isDead; }
+	inline int getTimer() const { return textureChangeTimer; }
+	void ResetTimer();
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }

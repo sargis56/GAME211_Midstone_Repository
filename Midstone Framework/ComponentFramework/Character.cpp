@@ -265,4 +265,8 @@ void Character::checkInvincibility() {
 	}
 }
 
+void Character::setWeapon(int weapon_) {
+
+}
+
 

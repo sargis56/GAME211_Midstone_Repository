@@ -24,8 +24,10 @@ private:
 	Room room;
 	ProjectileDynamic* projectile;
 	Character* character;
-	float health = 100;
+	float health = 200;
 	bool isDead = true;
+	int textureChangeTimer = 0;
+	bool textureChange = false;
 public:
 	MageEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -41,6 +43,8 @@ public:
 
 	bool DamageCheck(Character* character);
 	inline bool isAlive() const { return isDead; }
+	inline int getTimer() const { return textureChangeTimer; }
+	void ResetTimer();
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }

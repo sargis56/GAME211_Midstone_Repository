@@ -65,6 +65,7 @@ void Scene00::BuildCharacter() {
 	character = new Character(characterMesh, shaderPtr, texturePtr, room);
 	character->setSpeed(speed);
 	character->setPos(returnedPos); //using for setting the position 
+	character->setWeapon(weapon);
 }
 
 void Scene00::BuildAllEnemies() {

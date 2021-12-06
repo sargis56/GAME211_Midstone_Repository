@@ -111,3 +111,7 @@ void MageTurretEnemy::TakeDamage(float damage) {
 		isDead = false;
 	}
 }
+void MageTurretEnemy::ResetTimer() {
+	textureChangeTimer = 0;
+	textureChange = false;
+}

@@ -48,6 +48,7 @@ void RatEnemy::Update(float deltaTime_) {
 	if (pos != desiredPos) { //if the desired pos is not reached continue to move
 		if (pos.x < desiredPos.x) {
 			if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0)) { //Collision check
+				angle = 90;
 				pos.x = pos.x + 0.05f;
 			}
 			else { //If moving in a wall, gen new move
@@ -56,6 +57,7 @@ void RatEnemy::Update(float deltaTime_) {
 		}
 		else if (pos.x > desiredPos.x) {
 			if (room.InsideCollisionNegX(Vec3(pos.x - 0.1f, pos.y, pos.z), 0)) {
+				angle = 270;
 				pos.x = pos.x - 0.05f;
 			}
 			else {
@@ -64,6 +66,7 @@ void RatEnemy::Update(float deltaTime_) {
 		}
 		else if (pos.y < desiredPos.y) {
 			if (room.InsideCollisionPosY(Vec3(pos.x, pos.y + 0.1, pos.z), 0)) {
+				angle = 180;
 				pos.y = pos.y + 0.05f;
 			}
 			else {
@@ -72,6 +75,7 @@ void RatEnemy::Update(float deltaTime_) {
 		}
 		else if (pos.y > desiredPos.y) {
 			if (room.InsideCollisionNegY(Vec3(pos.x, pos.y - 0.1, pos.z), 0)) {
+				angle = 0;
 				pos.y = pos.y - 0.05f;
 			}
 			else {
@@ -122,4 +126,9 @@ void RatEnemy::TakeDamage(float damage) {
 	if (health <= 0) {
 		isDead = false;
 	}
+}
+
+void RatEnemy::ResetTimer() {
+	textureChangeTimer = 0;
+	textureChange = false;
 }

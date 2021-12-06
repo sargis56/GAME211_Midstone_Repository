@@ -97,3 +97,7 @@ bool MageEnemy::DamageCheck(Character* character) { //function to detect dmg
 	}
 	return damageTrue;
 }
+void MageEnemy::ResetTimer() {
+	textureChangeTimer = 0;
+	textureChange = false;
+}
