@@ -25,7 +25,7 @@ private:
 	Texture *endTexture, *titleTexture;
 	Vec3 light1;
 	StaticMesh* titleBox;
-	int sceneNumber = 0;
+	int sceneNumber = 31;
 public:
 	explicit DeathScreen();
 	virtual ~DeathScreen();

@@ -130,20 +130,20 @@ void Scene10::Update(const float deltaTime) {
 			}
 		}
 		if (health <= 0) { //check if the player is dead
-			sceneNumber = 999;
+			sceneNumber = 31;
 		}
 	}
 	if (ratEnemy->isAlive() == false || roomCleared == true) { //enemies are dead - unlock room
 		roomCleared = true;
 		//door updates
 		if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-			sceneNumber = 2;
+			sceneNumber = 9;
 		}
 		if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 			sceneNumber = 1;
 		}
 		if (doorRight->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-			sceneNumber = 2;
+			sceneNumber = 7;
 		}
 		if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 			sceneNumber = 4;

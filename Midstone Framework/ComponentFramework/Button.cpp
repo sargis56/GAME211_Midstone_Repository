@@ -36,7 +36,7 @@ void Button::HandleEvents(const SDL_Event& event) {
 			}
 			if (function == 1) {
 				//printf("end game\n");
-				sceneNumber = 1000;
+				sceneNumber = 32;
 			}
 			if (function == 2) {
 				//printf("end game\n");

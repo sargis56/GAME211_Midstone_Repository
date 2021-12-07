@@ -261,6 +261,24 @@
     <ClCompile Include="Scene1NEG1.cpp">
       <Filter>Source Files\Scenes\Overworld</Filter>
     </ClCompile>
+    <ClCompile Include="Scene0NEG2.cpp">
+      <Filter>Source Files\Scenes\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene01.cpp">
+      <Filter>Source Files\Scenes\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene11.cpp">
+      <Filter>Source Files\Scenes\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene12.cpp">
+      <Filter>Source Files\Scenes\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene20.cpp">
+      <Filter>Source Files\Scenes\Overworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene30.cpp">
+      <Filter>Source Files\Scenes\Overworld</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -441,6 +459,24 @@
       <Filter>Header Files\GameObjects\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Scene1NEG1.h">
+      <Filter>Header Files\Scenes\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene0NEG2.h">
+      <Filter>Header Files\Scenes\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene01.h">
+      <Filter>Header Files\Scenes\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene11.h">
+      <Filter>Header Files\Scenes\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene12.h">
+      <Filter>Header Files\Scenes\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene20.h">
+      <Filter>Header Files\Scenes\Overworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene30.h">
       <Filter>Header Files\Scenes\Overworld</Filter>
     </ClInclude>
   </ItemGroup>

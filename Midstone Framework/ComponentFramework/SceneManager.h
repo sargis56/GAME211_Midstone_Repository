@@ -25,7 +25,13 @@ private:
 		SCENE10,
 		SCENE10UNDER,
 		SCENE0NEG1,
-		SCENE1NEG1
+		SCENE1NEG1,
+		SCENE0NEG2,
+		SCENE01,
+		SCENE11,
+		SCENE12,
+		SCENE20,
+		SCENE30
 	};
 
 	class Scene* currentScene;
@@ -38,7 +44,8 @@ private:
 	bool fullScreen;
 	void BuildScene(SCENE_NUMBER scene_);
 	//scene variables
-	bool roomCleared[10] = { false, false, false, false, false, false, false, false, false, false }; //array should have # of rooms in the game
+	bool roomCleared[40] = { false, false, false, false, false, false, false, false, false, false, false, false, false, 
+		false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false }; //array should have # of rooms in the game
 	//characterStats
 	float mainHealth;
 	Vec3 mainPos;

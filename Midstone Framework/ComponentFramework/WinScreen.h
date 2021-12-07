@@ -25,7 +25,7 @@ private:
 	Texture *endTexture, *titleTexture;
 	Vec3 light1;
 	StaticMesh* titleBox;
-	int sceneNumber = 0;
+	int sceneNumber = 30;
 public:
 	explicit WinScreen();
 	virtual ~WinScreen();

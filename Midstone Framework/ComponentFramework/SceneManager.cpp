@@ -11,7 +11,13 @@
 #include "Scene10.h"
 #include "Scene10Under.h"
 #include "Scene0NEG1.h"
+#include "Scene0NEG2.h"
 #include "Scene1NEG1.h"
+#include "Scene01.h"
+#include "Scene11.h"
+#include "Scene12.h"
+#include "Scene20.h"
+#include "Scene30.h"
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
@@ -86,14 +92,14 @@ void SceneManager::GetEvents() {
 				if (playerDimension == false) {
 					if (currentNumber == 2) {
 						roomCleared[currentNumber] = currentScene->setSceneCleared();
-						currentNumber = 100;
+						currentNumber = 12;
 						BuildScene(SCENE10UNDER);
 						playerDimension = true;
 						//break;
 					}
 				}
 				else if (playerDimension == true) {
-					if (currentNumber == 100) {
+					if (currentNumber == 12) {
 						roomCleared[currentNumber] = currentScene->setSceneCleared();
 						currentNumber = 2;
 						BuildScene(SCENE10);
@@ -137,23 +143,42 @@ void SceneManager::SwitchScene() {
 		if (currentNumber == 2) {
 			BuildScene(SCENE10);
 		}
-		if (currentNumber == 100) {
-			BuildScene(SCENE10UNDER);
-		}
 		if (currentNumber == 3) {
 			BuildScene(SCENE0NEG1);
 		}
 		if (currentNumber == 4) {
 			BuildScene(SCENE1NEG1);
 		}
+		if (currentNumber == 5) {
+			BuildScene(SCENE0NEG2);
+		}
+		if (currentNumber == 6) {
+			BuildScene(SCENE01);
+		}
+		if (currentNumber == 7) {
+			BuildScene(SCENE11);
+		}
+		if (currentNumber == 8) {
+			BuildScene(SCENE12);
+		}
+		if (currentNumber == 9) {
+			BuildScene(SCENE20);
+		}
+		if (currentNumber == 10) {
+			BuildScene(SCENE30);
+		}
 
-		if (currentNumber == 998) {
+		if (currentNumber == 12) {
+			BuildScene(SCENE10UNDER);
+		}
+
+		if (currentNumber == 30) {
 			BuildScene(WINSCREEN);
 		}
-		if (currentNumber == 999) {
+		if (currentNumber == 31) {
 			BuildScene(DEATHSCREEN);
 		}
-		if (currentNumber == 1000) {
+		if (currentNumber == 32) {
 			isRunning = false;
 		}
 	}
@@ -244,8 +269,68 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		currentScene->getWeapon(mainWeapon);
 		status = currentScene->OnCreate();
 		break;
+	case SCENE0NEG2:
+		currentScene = new Scene0NEG2();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
 	case SCENE1NEG1:
 		currentScene = new Scene1NEG1();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE01:
+		currentScene = new Scene01();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE11:
+		currentScene = new Scene11();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE12:
+		currentScene = new Scene12();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE20:
+		currentScene = new Scene20();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE30:
+		currentScene = new Scene30();
 		//sending the speed back to the new scene
 		currentScene->getSceneCleared(roomCleared[currentNumber]);
 		currentScene->getCharacterHealth(mainHealth);

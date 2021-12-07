@@ -124,7 +124,7 @@ void Scene1NEG1::Update(const float deltaTime) {
 			}
 		}
 		if (health <= 0) { //check if the player is dead
-			sceneNumber = 999;
+			sceneNumber = 31;
 		}
 	}
 	if (archerEnemy->isAlive() == false || roomCleared == true) { //enemies are dead - unlock room

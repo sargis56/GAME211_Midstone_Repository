@@ -108,10 +108,10 @@ void Scene0NEG1::Update(const float deltaTime) {
 		sceneNumber = 1;
 	}
 	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 3;
+		sceneNumber = 5;
 	}
 	if (health <= 0) { //check if the player is dead
-		sceneNumber = 999;
+		sceneNumber = 31;
 	}
 	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()) * MMath::rotate(character->getRotation(), Vec3(0.0f, 0.0f, 1.0f)));
