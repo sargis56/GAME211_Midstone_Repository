@@ -80,7 +80,7 @@ void Scene00::BuildRoom() {
 	wallTexture = new Texture();
 	wallTexture->LoadImage("textures/cobblestone.jpg");
 	floorTexture = new Texture();
-	floorTexture->LoadImage("textures/introFloor.jpg");
+	floorTexture->LoadImage("textures/introFloor2.png");
 	doorTexture = new Texture();
 	doorTexture->LoadImage("textures/Scenery/DoorModel_D.png");
 

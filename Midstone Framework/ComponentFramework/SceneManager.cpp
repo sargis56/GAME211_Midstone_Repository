@@ -85,6 +85,7 @@ void SceneManager::GetEvents() {
 			case SDL_SCANCODE_SPACE:
 				if (playerDimension == false) {
 					if (currentNumber == 2) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
 						currentNumber = 100;
 						BuildScene(SCENE10UNDER);
 						playerDimension = true;
@@ -93,6 +94,7 @@ void SceneManager::GetEvents() {
 				}
 				else if (playerDimension == true) {
 					if (currentNumber == 100) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
 						currentNumber = 2;
 						BuildScene(SCENE10);
 						playerDimension = false;
@@ -162,7 +164,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	if (currentScene != nullptr) {
 		//get scene variables to be stored
 		//get character variables to be stored
-		roomCleared[currentNumber] = currentScene->setSceneCleared();
+		//roomCleared[currentNumber] = currentScene->setSceneCleared();
 		mainHealth = currentScene->setCharacterHealth();
 		mainPos = currentScene->setCharacterPos();
 		mainSpeed = currentScene->setCharacterSpeed();
