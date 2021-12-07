@@ -73,7 +73,7 @@ bool SceneTest::OnCreate() {
 	sword->setModelMatrix(MMath::translate(sword->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	axe->setModelMatrix(MMath::translate(axe->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	zwei->setModelMatrix(MMath::translate(zwei->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
-
+	character->setWeapon(3);
 	return true;
 }
 

@@ -8,6 +8,7 @@ class Axe : public Weapon {
 
 public:
 	Axe(Mesh* mesh_, Shader* shader_, Texture* texture_, Vec3 pos_);
+	Axe(int weaponID_);
 };
 
 #endif

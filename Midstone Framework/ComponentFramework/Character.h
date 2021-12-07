@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "PhysicsObject.h"
 #include "Room.h"
+//#include "Weapon.h"
 
 using namespace MATH;
 
@@ -57,7 +58,6 @@ private:
 	int currentDamageType;
 
 	float damageFromPlayer = 0;
-
 public:
 	Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);
 	//Character(Character* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);

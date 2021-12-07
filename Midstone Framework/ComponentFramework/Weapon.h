@@ -21,7 +21,7 @@ protected:
 	Shader* shader;
 	Texture* texture;
 	Room room;
-//protected:
+public:
 	//Used for scene transferring
 	int weaponID = 0;
 	bool weaponDropActive = false;
@@ -38,6 +38,8 @@ protected:
 	int damageType = 0;
 	int altDamageType = 2;
 public:
+	int numOfWeapons = 4;
+
 	Weapon();
 	Weapon(Mesh* mesh_, Shader* shader_, Texture* texture_, Vec3 pos_);
 	~Weapon();
@@ -57,7 +59,7 @@ public:
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
 
 	//Weapon getters
-	inline float getWeaponID() const { return weaponID; }
+	inline int getWeaponID() const { return weaponID; }
 	inline float getDamageType() const { return damageType; }
 	inline float getAltDamageType() const { return altDamageType; }
 	inline float getSwingDamage() const { return swingDamage; }

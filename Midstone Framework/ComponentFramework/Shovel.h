@@ -8,6 +8,8 @@ class Shovel : public Weapon {
 
 public:
 	Shovel(Mesh* mesh_, Shader* shader_, Texture* texture_, Vec3 pos_);
+	Shovel(int weaponID_);
+	Shovel();
 };
 
 #endif

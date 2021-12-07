@@ -1,8 +1,13 @@
 #include "Character.h"
 #include "ObjLoader.h"
-
+#include "Weapon.h"
 #include "MMath.h"
 #include <SDL.h>
+
+#include "Shovel.h"
+#include "Axe.h"
+#include "Sword.h"
+#include "Zweihander.h"
 
 Character::Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_) :
 	room(room_), mesh(mesh_), shader(shader_), texture(texture_) {
@@ -247,6 +252,8 @@ void Character::HandleEvents(const SDL_Event& event) {
 			currentWeaponReach = weaponReach;
 			currentWeaponDelay = weaponDelay;
 		}
+		//printf("\nWeapon New ID: %i\n", currentWeaponID);
+		//printf("\nWeapon New Swing Damage: %f\n", currentSwingDamage);
 }
 
 void Character::checkInvincibility() {
@@ -266,7 +273,13 @@ void Character::checkInvincibility() {
 }
 
 void Character::setWeapon(int weapon_) {
+	Shovel* shovel_ = new Shovel(0);
+	Sword* sword_ = new Sword(1);
+	Axe* axe_ = new Axe(2);
+	Zweihander* zweihander_ = new Zweihander(3);
+	Weapon *weapons[]{ shovel_, sword_, axe_, zweihander_ };
 
+	weapons[weapon_]->setWeapon(this);
 }
 
 

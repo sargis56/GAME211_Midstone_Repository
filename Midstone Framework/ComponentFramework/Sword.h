@@ -7,7 +7,11 @@ using namespace MATH;
 class Sword : public Weapon {
 
 public:
+
+	Sword();
+	Sword(int weaponID_);
 	Sword(Mesh* mesh_, Shader* shader_, Texture* texture_, Vec3 pos_);
+
 };
 
 #endif
