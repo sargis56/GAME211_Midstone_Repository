@@ -129,24 +129,24 @@ void Scene10::Update(const float deltaTime) {
 				//printf("\nEnemy has taken damage");
 			}
 		}
-		if (ratEnemy->isAlive() == false) { //enemies are dead - unlock room
-			roomCleared = true;
-			//door updates
-			if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-				sceneNumber = 2;
-			}
-			if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-				sceneNumber = 1;
-			}
-			if (doorRight->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-				sceneNumber = 2;
-			}
-			if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-				sceneNumber = 2;
-			}
-		}
 		if (health <= 0) { //check if the player is dead
 			sceneNumber = 999;
+		}
+	}
+	if (ratEnemy->isAlive() == false || roomCleared == true) { //enemies are dead - unlock room
+		roomCleared = true;
+		//door updates
+		if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 2;
+		}
+		if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 1;
+		}
+		if (doorRight->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 2;
+		}
+		if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 4;
 		}
 	}
 	ratEnemy->setModelMatrix(MMath::translate(ratEnemy->getPos()) * MMath::rotate(ratEnemy->getRotation(), Vec3(0,0,1)));
@@ -263,7 +263,7 @@ void Scene10::OnDestroy() {
 	if (floor) delete floor, floor = nullptr;
 	if (doorLeft) delete doorLeft, doorLeft = nullptr;
 	if (doorBottom) delete doorBottom, doorBottom = nullptr;
-	if (doorRight) delete doorLeft, doorLeft = nullptr;
+	if (doorRight) delete doorRight, doorRight = nullptr;
 	if (doorTop) delete doorBottom, doorBottom = nullptr;
 	if (ratEnemy) delete ratEnemy, ratEnemy = nullptr;
 }

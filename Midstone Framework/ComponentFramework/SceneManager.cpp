@@ -11,6 +11,7 @@
 #include "Scene10.h"
 #include "Scene10Under.h"
 #include "Scene0NEG1.h"
+#include "Scene1NEG1.h"
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
@@ -140,6 +141,9 @@ void SceneManager::SwitchScene() {
 		if (currentNumber == 3) {
 			BuildScene(SCENE0NEG1);
 		}
+		if (currentNumber == 4) {
+			BuildScene(SCENE1NEG1);
+		}
 
 		if (currentNumber == 998) {
 			BuildScene(WINSCREEN);
@@ -229,6 +233,16 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		break;
 	case SCENE0NEG1:
 		currentScene = new Scene0NEG1();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE1NEG1:
+		currentScene = new Scene1NEG1();
 		//sending the speed back to the new scene
 		currentScene->getSceneCleared(roomCleared[currentNumber]);
 		currentScene->getCharacterHealth(mainHealth);

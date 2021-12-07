@@ -25,10 +25,11 @@ private:
 	ProjectileDynamic* projectile;
 	Character* character;
 	Vec3 projectileDestination;
-	float health = 100;
+	float health = 80;
 	bool isDead = true;
 	int textureChangeTimer = 0;
 	bool textureChange = false;
+	float angle;
 public:
 	ArcherEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -51,6 +52,7 @@ public:
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
+	inline float getRotation() const { return angle * 80; }
 };
 
 #endif

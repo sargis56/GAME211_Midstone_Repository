@@ -258,6 +258,9 @@
     <ClCompile Include="FinalEnemy.cpp">
       <Filter>Source Files\GameObjects\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Scene1NEG1.cpp">
+      <Filter>Source Files\Scenes\Overworld</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -436,6 +439,9 @@
     </ClInclude>
     <ClInclude Include="FinalEnemy.h">
       <Filter>Header Files\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene1NEG1.h">
+      <Filter>Header Files\Scenes\Overworld</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

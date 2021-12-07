@@ -233,6 +233,6 @@ void Scene10Under::OnDestroy() {
 	if (floor) delete floor, floor = nullptr;
 	if (doorLeft) delete doorLeft, doorLeft = nullptr;
 	if (doorBottom) delete doorBottom, doorBottom = nullptr;
-	if (doorRight) delete doorLeft, doorLeft = nullptr;
-	if (doorTop) delete doorBottom, doorBottom = nullptr;
+	if (doorRight) delete doorRight, doorRight = nullptr;
+	if (doorTop) delete doorTop, doorTop = nullptr;
 }

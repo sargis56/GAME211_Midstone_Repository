@@ -220,5 +220,5 @@ void Scene0NEG1::OnDestroy() {
 	if (wall4) delete wall4, wall4 = nullptr;
 	if (floor) delete floor, floor = nullptr;
 	if (doorLeft) delete doorLeft, doorLeft = nullptr;
-	if (doorRight) delete doorLeft, doorLeft = nullptr;
+	if (doorRight) delete doorRight, doorRight = nullptr;
 }
