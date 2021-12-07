@@ -129,10 +129,12 @@
     <ClCompile Include="Axe.cpp" />
     <ClCompile Include="DeathScreen.cpp" />
     <ClCompile Include="FinalEnemy.cpp" />
+    <ClCompile Include="Hammer.cpp" />
     <ClCompile Include="MageEnemy.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="HealingItem.cpp" />
     <ClCompile Include="HealthUI.cpp" />
+    <ClCompile Include="Maul.cpp" />
     <ClCompile Include="ProjectileDynamic.cpp" />
     <ClCompile Include="Scene01.cpp" />
     <ClCompile Include="Scene0NEG1.cpp" />
@@ -183,6 +185,7 @@
     <ClCompile Include="Trackball.cpp" />
     <ClCompile Include="VenomProjectile.cpp" />
     <ClCompile Include="VMath.cpp" />
+    <ClCompile Include="WarAxe.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WinScreen.cpp" />
@@ -193,10 +196,12 @@
     <ClInclude Include="Axe.h" />
     <ClInclude Include="DeathScreen.h" />
     <ClInclude Include="FinalEnemy.h" />
+    <ClInclude Include="Hammer.h" />
     <ClInclude Include="MageEnemy.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="HealingItem.h" />
     <ClInclude Include="HealthUI.h" />
+    <ClInclude Include="Maul.h" />
     <ClInclude Include="ProjectileDynamic.h" />
     <ClInclude Include="Scene01.h" />
     <ClInclude Include="Scene0NEG1.h" />
@@ -251,6 +256,7 @@
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VenomProjectile.h" />
     <ClInclude Include="VMath.h" />
+    <ClInclude Include="WarAxe.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WinScreen.h" />

@@ -58,6 +58,9 @@ bool SceneTest::OnCreate() {
 	sword = new Sword(swordMesh, shaderPtr, doorTexture, Vec3(-2.5f, -3.0f, -15.0f));
 	axe = new Axe(axeMesh, shaderPtr, doorTexture, Vec3(-5.0f, -3.0f, -15.0f));
 	zwei = new Zweihander(zweiMesh, shaderPtr, doorTexture, Vec3(-7.5f, -3.0f, -15.0f));
+	maul = new Maul(maulMesh, shaderPtr, doorTexture, Vec3(-7.5f, 0.0f, -15.0f));
+	hammer = new Hammer(hammerMesh, shaderPtr, doorTexture, Vec3(-5.0f, 0.0f, -15.0f));
+	warAxe = new WarAxe(warAxeMesh, shaderPtr, doorTexture, Vec3(-2.5f, 0.0f, -15.0f));
 
 	//snakeEnemy = new SnakeEnemy(snakeMeshPtr, shaderPtr, snakeTexture, room);
 	//setting modelMatrix for static objs
@@ -73,6 +76,10 @@ bool SceneTest::OnCreate() {
 	sword->setModelMatrix(MMath::translate(sword->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	axe->setModelMatrix(MMath::translate(axe->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	zwei->setModelMatrix(MMath::translate(zwei->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
+	maul->setModelMatrix(MMath::translate(maul->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
+	hammer->setModelMatrix(MMath::translate(hammer->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
+	warAxe->setModelMatrix(MMath::translate(warAxe->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
+
 	character->setWeapon(3);
 	return true;
 }
@@ -113,6 +120,15 @@ void SceneTest::BuildAllEnemies() {
 
 	ObjLoader::loadOBJ("meshes/Weapons/Zwei.obj");
 	zweiMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+
+	ObjLoader::loadOBJ("meshes/Weapons/Maul.obj");
+	maulMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+
+	ObjLoader::loadOBJ("meshes/Weapons/Hammer.obj");
+	hammerMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+
+	ObjLoader::loadOBJ("meshes/Weapons/BigAxe.obj");
+	warAxeMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 
 	ObjLoader::loadOBJ("meshes/Enemies/Rat.obj");
 	snakeMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
@@ -181,6 +197,15 @@ void SceneTest::Update(const float deltaTime) {
 		if (zwei->getActive()) {
 			zwei->collisionCheck(character);
 		}
+		if (maul->getActive()) {
+			maul->collisionCheck(character);
+		}
+		if (hammer->getActive()) {
+			hammer->collisionCheck(character);
+		}
+		if (warAxe->getActive()) {
+			warAxe->collisionCheck(character);
+		}
 
 		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
@@ -234,6 +259,15 @@ void SceneTest::Render() const {
 		}
 		if (zwei->getActive()) {
 			zwei->Render();
+		}
+		if (maul->getActive()) {
+			maul->Render();
+		}
+		if (hammer->getActive()) {
+			hammer->Render();
+		}
+		if (warAxe->getActive()) {
+			warAxe->Render();
 		}
 	}
 	//door and character renders
