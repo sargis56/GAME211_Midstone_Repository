@@ -124,7 +124,7 @@ void Scene10::Update(const float deltaTime) {
 			if (ratEnemy->WeaponColCheck(character) && character->getAttacking() == true) {
 				//Enemy takes damage
 				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
-				ratEnemy->TakeDamage(100);
+				ratEnemy->TakeDamage(character->getDamageFromPlayer());
 				ratTexture->LoadImage("textures/red.jpg");
 				//printf("\nEnemy has taken damage");
 			}

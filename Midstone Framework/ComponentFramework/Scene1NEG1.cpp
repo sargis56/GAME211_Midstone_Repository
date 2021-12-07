@@ -118,7 +118,7 @@ void Scene1NEG1::Update(const float deltaTime) {
 			if (archerEnemy->WeaponColCheck(character) && character->getAttacking() == true) {
 				//Enemy takes damage
 				//archerEnemy->TakeDamage(character->getDamageFromPlayer());
-				archerEnemy->TakeDamage(100);
+				archerEnemy->TakeDamage(character->getDamageFromPlayer());
 				archerTexture->LoadImage("textures/red.jpg");
 				//printf("\nEnemy has taken damage");
 			}

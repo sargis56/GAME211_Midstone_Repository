@@ -52,8 +52,8 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		return false;
 	}
 	/********************************   Default first scene   ***********************/
-	//BuildScene(TITLESCREEN);
-	BuildScene(SCENETEST);
+	BuildScene(TITLESCREEN);
+	//BuildScene(SCENETEST);
 
 	return true;
 }
@@ -85,16 +85,16 @@ void SceneManager::GetEvents() {
 			case SDL_SCANCODE_SPACE:
 				if (playerDimension == false) {
 					if (currentNumber == 2) {
-						BuildScene(SCENE10UNDER);
 						currentNumber = 100;
+						BuildScene(SCENE10UNDER);
 						playerDimension = true;
 						//break;
 					}
 				}
 				else if (playerDimension == true) {
 					if (currentNumber == 100) {
-						BuildScene(SCENE10);
 						currentNumber = 2;
+						BuildScene(SCENE10);
 						playerDimension = false;
 						//break;
 					}
@@ -162,6 +162,7 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 	if (currentScene != nullptr) {
 		//get scene variables to be stored
 		//get character variables to be stored
+		roomCleared[currentNumber] = currentScene->setSceneCleared();
 		mainHealth = currentScene->setCharacterHealth();
 		mainPos = currentScene->setCharacterPos();
 		mainSpeed = currentScene->setCharacterSpeed();
