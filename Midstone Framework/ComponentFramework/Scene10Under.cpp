@@ -43,10 +43,10 @@ bool Scene10Under::OnCreate() {
 	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
-	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
-	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
-	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
-	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
+	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(90, Vec3(0, 0, 1)));
+	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(-90, Vec3(0, 0, 1)));
+	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(180, Vec3(0, 0, 1)));
 	return true;
 }
 
@@ -77,22 +77,24 @@ void Scene10Under::BuildAllEnemies() {
 void Scene10Under::BuildRoom() {
 	ObjLoader::loadOBJ("meshes/Cube.obj");
 	boxMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	ObjLoader::loadOBJ("meshes/Scenery/DoorModel.obj");
+	doorMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	wallTexture = new Texture();
 	wallTexture->LoadImage("textures/underworldWall.jpg");
 	floorTexture = new Texture();
 	floorTexture->LoadImage("textures/underworldGround.jpg");
 	doorTexture = new Texture();
-	doorTexture->LoadImage("textures/green.jpg");
+	doorTexture->LoadImage("textures/Scenery/DoorModel_D.png");
 
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall3 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall4 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
-	doorRight = new Door(boxMesh, shaderPtr, doorTexture, Vec3(9.5, 0.0, -15.0f));
-	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
-	doorTop = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0, 4.5, -15.0f));
-	doorBottom = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0, -4.5, -15.0f));
+	doorRight = new Door(doorMesh, shaderPtr, doorTexture, Vec3(9.5, 0.0, -15.0f));
+	doorLeft = new Door(doorMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
+	doorTop = new Door(doorMesh, shaderPtr, doorTexture, Vec3(0.0, 4.5, -15.0f));
+	doorBottom = new Door(doorMesh, shaderPtr, doorTexture, Vec3(0.0, -4.5, -15.0f));
 }
 void Scene10Under::BuildHealthUI() {
 	healthUITexture = new Texture();

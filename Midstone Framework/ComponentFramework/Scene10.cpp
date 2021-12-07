@@ -43,10 +43,10 @@ bool Scene10::OnCreate() {
 	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
-	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
-	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
-	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
-	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f));
+	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(90, Vec3(0, 0, 1)));
+	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(-90, Vec3(0, 0, 1)));
+	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(180, Vec3(0, 0, 1)));
 	return true;
 }
 
@@ -83,22 +83,24 @@ void Scene10::BuildAllEnemies() {
 void Scene10::BuildRoom() {
 	ObjLoader::loadOBJ("meshes/Cube.obj");
 	boxMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	ObjLoader::loadOBJ("meshes/Scenery/DoorModel.obj");
+	doorMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	wallTexture = new Texture();
 	wallTexture->LoadImage("textures/cobblestone.jpg");
 	floorTexture = new Texture();
 	floorTexture->LoadImage("textures/floor.jpg");
 	doorTexture = new Texture();
-	doorTexture->LoadImage("textures/green.jpg");
+	doorTexture->LoadImage("textures/Scenery/DoorModel_D.png");
 
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall3 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall4 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
-	doorRight = new Door(boxMesh, shaderPtr, doorTexture, Vec3(9.5, 0.0, -15.0f));
-	doorLeft = new Door(boxMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
-	doorTop = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0, 4.5, -15.0f));
-	doorBottom = new Door(boxMesh, shaderPtr, doorTexture, Vec3(0.0, -4.5, -15.0f));
+	doorRight = new Door(doorMesh, shaderPtr, doorTexture, Vec3(9.5, 0.0, -15.0f));
+	doorLeft = new Door(doorMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
+	doorTop = new Door(doorMesh, shaderPtr, doorTexture, Vec3(0.0, 4.5, -15.0f));
+	doorBottom = new Door(doorMesh, shaderPtr, doorTexture, Vec3(0.0, -4.5, -15.0f));
 }
 void Scene10::BuildHealthUI() {
 	healthUITexture = new Texture();
@@ -121,29 +123,34 @@ void Scene10::Update(const float deltaTime) {
 			}
 			if (ratEnemy->WeaponColCheck(character) && character->getAttacking() == true) {
 				//Enemy takes damage
-				ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				ratEnemy->TakeDamage(100);
 				ratTexture->LoadImage("textures/red.jpg");
 				//printf("\nEnemy has taken damage");
 			}
 		}
+		if (ratEnemy->isAlive() == false) { //enemies are dead - unlock room
+			roomCleared = true;
+			//door updates
+			if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+				sceneNumber = 2;
+			}
+			if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+				sceneNumber = 1;
+			}
+			if (doorRight->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+				sceneNumber = 2;
+			}
+			if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+				sceneNumber = 2;
+			}
+		}
+		if (health <= 0) { //check if the player is dead
+			sceneNumber = 999;
+		}
 	}
 	ratEnemy->setModelMatrix(MMath::translate(ratEnemy->getPos()) * MMath::rotate(ratEnemy->getRotation(), Vec3(0,0,1)));
-	//door and character updates
-	if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 2;
-	}
-	if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 1;
-	}
-	if (doorRight->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 2;
-	}
-	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 2;
-	}
-	if (health <= 0) { //check if the player is dead
-		sceneNumber = 999;
-	}
+	//character updates
 	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()) * MMath::rotate(character->getRotation(), Vec3(0.0f, 0.0f, 1.0f)));
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));

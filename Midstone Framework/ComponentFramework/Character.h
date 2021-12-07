@@ -56,7 +56,7 @@ private:
 	int altWeaponDamageType;
 	int currentDamageType;
 
-	float damageFromPlayer;
+	float damageFromPlayer = 0;
 
 public:
 	Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_);

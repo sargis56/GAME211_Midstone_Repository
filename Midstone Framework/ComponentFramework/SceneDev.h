@@ -22,7 +22,7 @@ class SceneDev : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* characterMesh, *boxMesh;
+	Mesh* characterMesh, * boxMesh, * doorMesh, * doorClosedMesh;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
