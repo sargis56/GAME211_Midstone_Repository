@@ -56,7 +56,7 @@ public:
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
-	inline float getRotation() const { return angle * 80; }
+	inline float getRotation() const { return angle + 270; }
 };
 
 #endif

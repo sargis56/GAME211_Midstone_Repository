@@ -17,7 +17,7 @@ void ArcherEnemy::BuildProjectile() {
 	meshProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
-	textureProjectile->LoadImage("textures/red.jpg");
+	textureProjectile->LoadImage("textures/black.jpg");
 	projectile = new ProjectileDynamic(meshProjectile, shaderProjectile, textureProjectile, room, pos, 10, 0.5f);
 	projectileDestination = character->getPos() - pos;
 	projectileDestination = VMath::normalize(Vec3(projectileDestination.x, projectileDestination.y, 1));
@@ -30,9 +30,13 @@ bool ArcherEnemy::OnCreate() {
 }
 void ArcherEnemy::OnDestroy() {}				  /// Just a stub
 void ArcherEnemy::Update(float deltaTime_) {
+	if (textureChange == true) {
+		textureChangeTimer++;
+		//printf("%i\n", textureChangeTimer);
+	}
 	Vec3 normalTowardsPlayer = character->getPos() - pos;
 	normalTowardsPlayer = VMath::normalize(Vec3(normalTowardsPlayer.x, normalTowardsPlayer.y, 1));
-	angle = normalTowardsPlayer.x * 80;
+	angle = atan2(normalTowardsPlayer.y, normalTowardsPlayer.x) * RADIANS_TO_DEGREES;
 	vel = Vec3(-normalTowardsPlayer.x, -normalTowardsPlayer.y, 0);
 	if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0) == false) { //Collision check
 		//vel = Vec3(0, -normalTowardsPlayer.y , 0);
@@ -100,6 +104,7 @@ bool ArcherEnemy::WeaponColCheck(Character* character) {
 }
 void ArcherEnemy::TakeDamage(float damage) {
 	health = health - damage;
+	textureChange = true;
 	//printf("%f", health);
 	if (health <= 0) {
 		isDead = false;

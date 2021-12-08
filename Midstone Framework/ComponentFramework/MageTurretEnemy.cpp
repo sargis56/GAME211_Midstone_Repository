@@ -17,7 +17,7 @@ void MageTurretEnemy::BuildProjectile() {
 	meshProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
-	textureProjectile->LoadImage("textures/skull_texture.jpg");
+	textureProjectile->LoadImage("textures/blue.jpg");
 	projectile1 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);//setting up the projectile classes
 	projectile2 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
 	projectile3 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
@@ -32,6 +32,10 @@ bool MageTurretEnemy::OnCreate() {
 }
 void MageTurretEnemy::OnDestroy() {}				  /// Just a stub
 void MageTurretEnemy::Update(float deltaTime_) {
+	if (textureChange == true) {
+		textureChangeTimer++;
+		//printf("%i\n", textureChangeTimer);
+	}
 	if (projectile1->ProjectileUpdate4Axis(Vec3(projectile1->getPos().x,100,0))){ // so once it hits the wall
 		projectile1->setPos(pos); //the pos is reset to the pos of the enemy
 		projectile1->setOver(false); //and the moveOver is reset
@@ -106,6 +110,7 @@ bool MageTurretEnemy::WeaponColCheck(Character* character) {
 }
 void MageTurretEnemy::TakeDamage(float damage) {
 	health = health - damage;
+	textureChange = true;
 	//printf("%f", health);
 	if (health <= 0) {
 		isDead = false;

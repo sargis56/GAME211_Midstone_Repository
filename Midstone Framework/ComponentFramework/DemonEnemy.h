@@ -28,7 +28,7 @@ private:
 	int damage;
 	//Determines if the enemy has armor or not
 	bool armored = true;
-	float health = 100;
+	float health = 1000;
 	bool isDead = true;
 	int textureChangeTimer = 0;
 	bool textureChange = false;

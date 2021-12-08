@@ -18,6 +18,10 @@ bool RatEnemy::OnCreate() {
 }
 void RatEnemy::OnDestroy() {}				  /// Just a stub
 void RatEnemy::Update(float deltaTime_) {
+	if (textureChange == true) {
+		textureChangeTimer++;
+		//printf("%i\n", textureChangeTimer);
+	}
 	if (pos.x > desiredPos.x - 0.01 && pos.x < desiredPos.x + 0.01) { //fix floating point precision errors
 		pos.x = desiredPos.x;
 	}
@@ -122,7 +126,8 @@ bool RatEnemy::WeaponColCheck(Character* character) {
 }
 void RatEnemy::TakeDamage(float damage) {
 	health = health - damage;
-	printf("%f", health);
+	textureChange = true;
+	//printf("%f", health);
 	if (health <= 0) {
 		isDead = false;
 	}

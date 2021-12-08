@@ -17,7 +17,7 @@ void MageEnemy::BuildProjectile() {
 	meshProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
-	textureProjectile->LoadImage("textures/skull_texture.jpg");
+	textureProjectile->LoadImage("textures/blue.jpg");
 	projectile = new ProjectileDynamic(meshProjectile, shaderProjectile, textureProjectile, room, pos, 10, 0.5f);
 }
 
@@ -28,8 +28,13 @@ bool MageEnemy::OnCreate() {
 }
 void MageEnemy::OnDestroy() {}				  /// Just a stub
 void MageEnemy::Update(float deltaTime_) {
+	if (textureChange == true) {
+		textureChangeTimer++;
+		//printf("%i\n", textureChangeTimer);
+	}
 	Vec3 normalTowardsPlayer = character->getPos() - pos;
 	normalTowardsPlayer = VMath::normalize(Vec3(normalTowardsPlayer.x, normalTowardsPlayer.y, 1));
+	angle = atan2(normalTowardsPlayer.y, normalTowardsPlayer.x) * RADIANS_TO_DEGREES;
 	vel = Vec3(-normalTowardsPlayer.x, -normalTowardsPlayer.y, 0);
 	if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0) == false) { //Collision check
 		vel = Vec3(0, 0, 0);
@@ -77,6 +82,7 @@ bool MageEnemy::WeaponColCheck(Character* character) {
 }
 void MageEnemy::TakeDamage(float damage) {
 	health = health - damage;
+	textureChange = true;
 	//printf("%f", health);
 	if (health <= 0) {
 		isDead = false;

@@ -17,7 +17,7 @@ void TeslaTowerEnemy::BuildProjectile() {
 	meshProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
-	textureProjectile->LoadImage("textures/skull_texture.jpg");
+	textureProjectile->LoadImage("textures/blue.jpg");
 	projectile = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 10);
 }
 
@@ -28,6 +28,10 @@ bool TeslaTowerEnemy::OnCreate() {
 }
 void TeslaTowerEnemy::OnDestroy() {}				  /// Just a stub
 void TeslaTowerEnemy::Update(float deltaTime_) {
+	if (textureChange == true) {
+		textureChangeTimer++;
+		//printf("%i\n", textureChangeTimer);
+	}
 	if (projectile->ProjectileUpdate8Axis(Vec3(projectileDestination))){ // so once it hits the wall
 		projectile->setPos(pos); //the pos is reset to the pos of the enemy
 		projectile->setOver(false); //and the moveOver is reset
@@ -94,6 +98,7 @@ bool TeslaTowerEnemy::WeaponColCheck(Character* character) {
 }
 void TeslaTowerEnemy::TakeDamage(float damage) {
 	health = health - damage;
+	textureChange = true;
 	//printf("%f", health);
 	if (health <= 0) {
 		isDead = false;

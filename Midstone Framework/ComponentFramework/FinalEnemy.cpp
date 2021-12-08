@@ -43,7 +43,7 @@ void FinalEnemy::OnDestroy() {}				  /// Just a stub
 void FinalEnemy::Update(float deltaTime_) {
 	Vec3 normalTowardsPlayer = pos - character->getPos();
 	normalTowardsPlayer = VMath::normalize(Vec3(normalTowardsPlayer.x, normalTowardsPlayer.y, 1));
-	angle = -normalTowardsPlayer.x;
+	angle = angle = atan2(normalTowardsPlayer.y, normalTowardsPlayer.x) * RADIANS_TO_DEGREES;
 	if (textureChange == true) {
 		textureChangeTimer++;
 		//printf("%i\n", textureChangeTimer);

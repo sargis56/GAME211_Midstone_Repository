@@ -60,6 +60,7 @@ bool DemonEnemy::WeaponColCheck(Character* character) {
 void DemonEnemy::TakeDamage(float damage) {
 	health = health - damage;
 	//printf("%f", health);
+	textureChange = true;
 	if (health <= 0) {
 		isDead = false;
 	}
@@ -67,6 +68,10 @@ void DemonEnemy::TakeDamage(float damage) {
 
 float DemonEnemy::FollowPlayer(Character* character)
 {
+	if (textureChange == true) {
+		textureChangeTimer++;
+		//printf("%i\n", textureChangeTimer);
+	}
 	if (VMath::distance(character->getPos(), pos) < agroRange) {
 		direction = character->getPos() - pos;
 		float angle = atan2(direction.y, direction.x) * RADIANS_TO_DEGREES; //Calculate the angle (in DEGREES) between player and enemy
