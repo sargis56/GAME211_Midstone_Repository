@@ -9,6 +9,8 @@
 #include "Door.h"
 #include "HealthUI.h"
 #include "ArcherEnemy.h"
+#include "DemonEnemy.h"
+#include "RatEnemy.h"
 
 using namespace MATH;
 
@@ -23,7 +25,7 @@ class Scene1NEG1 : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* characterMesh, * boxMesh, * doorMesh, *archerMesh;
+	Mesh* characterMesh, * boxMesh, * doorMesh, *archerMesh, *ratMesh, *demonMesh;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
@@ -37,10 +39,12 @@ private:
 	bool roomUpdate = false;
 	//Enemies and Items
 	ArcherEnemy* archerEnemy;
+	RatEnemy* ratEnemy;
+	DemonEnemy* demon;
 	//Shader Pointer
 	Shader* shaderPtr;
 	//Texture Pointer
-	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *archerTexture;
+	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *archerTexture, *ratTexture, *demonTexture;
 	//Engine Variables
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;

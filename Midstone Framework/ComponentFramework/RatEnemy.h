@@ -25,7 +25,7 @@ private:
 	Vec3 desiredPos;
 	Room room;
 	float moveSpeed;
-	float health = 50;
+	float health = 800;
 	bool isDead = true;
 	float angle;
 	int textureChangeTimer = 0;
