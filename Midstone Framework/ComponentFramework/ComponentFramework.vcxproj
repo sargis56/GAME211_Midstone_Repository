@@ -129,6 +129,7 @@
     <ClCompile Include="Axe.cpp" />
     <ClCompile Include="DeathScreen.cpp" />
     <ClCompile Include="FinalEnemy.cpp" />
+    <ClCompile Include="Halbred.cpp" />
     <ClCompile Include="Hammer.cpp" />
     <ClCompile Include="MageEnemy.cpp" />
     <ClCompile Include="Door.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="Scene30.cpp" />
     <ClCompile Include="SceneDev.cpp" />
     <ClCompile Include="Shovel.cpp" />
+    <ClCompile Include="Spear.cpp" />
     <ClCompile Include="SpeedItem.cpp" />
     <ClCompile Include="Sword.cpp" />
     <ClCompile Include="TeslaTowerEnemy.cpp" />
@@ -196,6 +198,7 @@
     <ClInclude Include="Axe.h" />
     <ClInclude Include="DeathScreen.h" />
     <ClInclude Include="FinalEnemy.h" />
+    <ClInclude Include="Halbred.h" />
     <ClInclude Include="Hammer.h" />
     <ClInclude Include="MageEnemy.h" />
     <ClInclude Include="Door.h" />
@@ -216,6 +219,7 @@
     <ClInclude Include="Scene30.h" />
     <ClInclude Include="SceneDev.h" />
     <ClInclude Include="Shovel.h" />
+    <ClInclude Include="Spear.h" />
     <ClInclude Include="SpeedItem.h" />
     <ClInclude Include="Sword.h" />
     <ClInclude Include="TeslaTowerEnemy.h" />

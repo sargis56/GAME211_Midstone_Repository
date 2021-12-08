@@ -11,6 +11,8 @@
 #include "Maul.h"
 #include "Hammer.h"
 #include "WarAxe.h"
+#include "Halbred.h"
+#include "Spear.h"
 
 Character::Character(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_) :
 	room(room_), mesh(mesh_), shader(shader_), texture(texture_) {
@@ -283,7 +285,9 @@ void Character::setWeapon(int weapon_) {
 	Maul* maul_ = new Maul(4);
 	Hammer* hammer_ = new Hammer(5);
 	WarAxe* warAxe_ = new WarAxe(6);
-	Weapon *weapons[]{ shovel_, sword_, axe_, zweihander_, maul_, hammer_, warAxe_ };
+	Halbred* halbred_ = new Halbred(7);
+	Spear* spear_ = new Spear(8);
+	Weapon *weapons[]{ shovel_, sword_, axe_, zweihander_, maul_, hammer_, warAxe_, halbred_, spear_ };
 
 	weapons[weapon_]->setWeapon(this);
 }

@@ -1,6 +1,5 @@
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\vc142.pdb
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\vc142.idb
-c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\scene20.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\scene1neg1.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\scene12.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\scene11.obj
@@ -16,11 +15,11 @@ c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midston
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\healingitem.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\door.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\mageenemy.obj
+c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\hammer.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\finalenemy.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\deathscreen.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\axe.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\archerenemy.obj
-c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\projectile.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\physicsobject.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\physics.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\perlin.obj
@@ -40,7 +39,7 @@ c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midston
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\shovel.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\scenedev.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\scene30.obj
-c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\weapon.obj
+c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\scene20.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\vmath.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\venomprojectile.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\trackball.obj
@@ -60,11 +59,14 @@ c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midston
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\room.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\ratenemy.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\randomizer.obj
+c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\projectile.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\zweihander.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\winscreen.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\window.obj
-c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\hammer.obj
+c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\weapon.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\waraxe.obj
+c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\halbred.obj
+c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\spear.obj
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\debug\midstone framework.exe
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\debug\midstone framework.ilk
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\debug\midstone framework.pdb
@@ -72,6 +74,5 @@ c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midston
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\midstone.614c2865.tlog\cl.read.1.tlog
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\midstone.614c2865.tlog\cl.write.1.tlog
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\midstone.614c2865.tlog\link.command.1.tlog
-c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\midstone.614c2865.tlog\link.delete.1.tlog
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\midstone.614c2865.tlog\link.read.1.tlog
 c:\users\sargi\desktop\school\sem 3\midstone\game211_midstone_repository\midstone framework\componentframework\debug\midstone.614c2865.tlog\link.write.1.tlog

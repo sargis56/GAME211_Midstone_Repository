@@ -288,6 +288,12 @@
     <ClCompile Include="WarAxe.cpp">
       <Filter>Source Files\GameObjects\Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="Halbred.cpp">
+      <Filter>Source Files\GameObjects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Spear.cpp">
+      <Filter>Source Files\GameObjects\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -495,6 +501,12 @@
       <Filter>Header Files\GameObjects\Weapons</Filter>
     </ClInclude>
     <ClInclude Include="WarAxe.h">
+      <Filter>Header Files\GameObjects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Halbred.h">
+      <Filter>Header Files\GameObjects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Spear.h">
       <Filter>Header Files\GameObjects\Weapons</Filter>
     </ClInclude>
   </ItemGroup>

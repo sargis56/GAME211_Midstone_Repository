@@ -10,7 +10,7 @@ WarAxe::WarAxe(Mesh* mesh_, Shader* shader_, Texture* texture_, Vec3 pos_) : Wea
 	damageType = 1;
 	swingDamage = 80;
 	stabDamage = 15;
-	delay = 3;
+	delay = 2;
 	reach = 5;
 }
 
@@ -19,6 +19,6 @@ WarAxe::WarAxe(int weaponID_) {
 	damageType = 1;
 	swingDamage = 80;
 	stabDamage = 15;
-	delay = 3;
+	delay = 2;
 	reach = 5;
 }

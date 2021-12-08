@@ -61,6 +61,8 @@ bool SceneTest::OnCreate() {
 	maul = new Maul(maulMesh, shaderPtr, doorTexture, Vec3(-7.5f, 0.0f, -15.0f));
 	hammer = new Hammer(hammerMesh, shaderPtr, doorTexture, Vec3(-5.0f, 0.0f, -15.0f));
 	warAxe = new WarAxe(warAxeMesh, shaderPtr, doorTexture, Vec3(-2.5f, 0.0f, -15.0f));
+	halbred = new Halbred(halbredMesh, shaderPtr, doorTexture, Vec3(-7.5f, 2.5f, -15.0f));
+	spear = new Spear(spearMesh, shaderPtr, doorTexture, Vec3(-5.0f, 2.5f, -15.0f));
 
 	//snakeEnemy = new SnakeEnemy(snakeMeshPtr, shaderPtr, snakeTexture, room);
 	//setting modelMatrix for static objs
@@ -79,6 +81,8 @@ bool SceneTest::OnCreate() {
 	maul->setModelMatrix(MMath::translate(maul->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	hammer->setModelMatrix(MMath::translate(hammer->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	warAxe->setModelMatrix(MMath::translate(warAxe->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
+	halbred->setModelMatrix(MMath::translate(halbred->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
+	spear->setModelMatrix(MMath::translate(spear->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 
 	character->setWeapon(3);
 	return true;
@@ -129,6 +133,12 @@ void SceneTest::BuildAllEnemies() {
 
 	ObjLoader::loadOBJ("meshes/Weapons/BigAxe.obj");
 	warAxeMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+
+	ObjLoader::loadOBJ("meshes/Weapons/Halbred.obj");
+	halbredMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+
+	ObjLoader::loadOBJ("meshes/Weapons/Spear.obj");
+	spearMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 
 	ObjLoader::loadOBJ("meshes/Enemies/Rat.obj");
 	snakeMeshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
@@ -206,6 +216,12 @@ void SceneTest::Update(const float deltaTime) {
 		if (warAxe->getActive()) {
 			warAxe->collisionCheck(character);
 		}
+		if (halbred->getActive()) {
+			halbred->collisionCheck(character);
+		}
+		if (spear->getActive()) {
+			spear->collisionCheck(character);
+		}
 
 		healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0)); //Should make the healthbar smaller when character is damaged by enemy
 		enemy1->setModelMatrix(MMath::translate(enemy1->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
@@ -268,6 +284,12 @@ void SceneTest::Render() const {
 		}
 		if (warAxe->getActive()) {
 			warAxe->Render();
+		}
+		if (halbred->getActive()) {
+			halbred->Render();
+		}
+		if (spear->getActive()) {
+			spear->Render();
 		}
 	}
 	//door and character renders

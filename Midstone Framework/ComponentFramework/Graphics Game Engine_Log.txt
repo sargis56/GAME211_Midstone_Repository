@@ -4,3 +4,4 @@
 [INFO]: Graphics card name NVIDIA GeForce RTX 3070/PCIe/SSE2
 [INFO]: GLSL Version 4.60 NVIDIA
 [INFO]: Created SceneTest: 
+[INFO]: Deleting the GameSceneManager
