@@ -23,7 +23,7 @@ private:
 	Texture* texture, *textureProjectile;
 	Room room;
 	Projectile *projectile1, *projectile2, *projectile3, *projectile4;
-	float health = 100;
+	float health = 1000;
 	bool isDead = true;
 	int textureChangeTimer = 0;
 	bool textureChange = false;

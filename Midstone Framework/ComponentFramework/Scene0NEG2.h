@@ -8,6 +8,9 @@
 #include "StaticMesh.h"
 #include "Door.h"
 #include "HealthUI.h"
+#include "ArcherEnemy.h"
+#include "MageTurretEnemy.h"
+#include "SpeedItem.h"
 
 using namespace MATH;
 
@@ -22,7 +25,7 @@ class Scene0NEG2 : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* characterMesh, * boxMesh, * doorMesh;
+	Mesh* characterMesh, * boxMesh, * doorMesh, *archerMesh, *turretMesh, *speedMesh;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
@@ -35,11 +38,13 @@ private:
 	bool roomCleared = false;
 	bool roomUpdate = false;
 	//Enemies and Items
-
+	ArcherEnemy* archer1, *archer2;
+	MageTurretEnemy* turret;
+	SpeedItem* speedItem;
 	//Shader Pointer
 	Shader* shaderPtr;
 	//Texture Pointer
-	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture;
+	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *archerTexture, *turretTexture, *speedTexture;
 	//Engine Variables
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
