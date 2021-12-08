@@ -47,6 +47,7 @@ bool Scene10::OnCreate() {
 	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
 	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(-90, Vec3(0, 0, 1)));
 	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(180, Vec3(0, 0, 1)));
+	healthpot->setModelMatrix(MMath::translate(healthpot->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
 	return true;
 }
 
@@ -78,6 +79,12 @@ void Scene10::BuildAllEnemies() {
 	ratTexture->LoadImage("textures/Enemies/Rat_Texture.jpg");
 	ratEnemy = new RatEnemy(ratMesh, shaderPtr, ratTexture, room);
 	ratEnemy->setPos(Vec3(0.0f,2.0f,-15.0f));
+
+	ObjLoader::loadOBJ("meshes/Items/Potion.obj");
+	healthPotMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	healthPotTexture = new Texture();
+	healthPotTexture->LoadImage("textures/green.jpg");
+	healthpot = new HealingItem(healthPotMesh, shaderPtr, healthPotTexture, Vec3(5.0,3.0,-15.0));
 }
 
 void Scene10::BuildRoom() {
@@ -132,6 +139,12 @@ void Scene10::Update(const float deltaTime) {
 		if (health <= 0) { //check if the player is dead
 			sceneNumber = 31;
 		}
+		if (healthpot->getActive() && healthpot->collisionCheck(character)) {
+			health = health + 20;
+			if (health > 50) {
+				health = 50;
+			}
+		}
 	}
 	if (ratEnemy->isAlive() == false || roomCleared == true) { //enemies are dead - unlock room
 		roomCleared = true;
@@ -176,6 +189,9 @@ void Scene10::Render() const {
 	if (roomUpdate == false) {
 		if (ratEnemy->isAlive()) {
 			ratEnemy->Render();
+		}
+		if (healthpot->getActive()) {
+			healthpot->Render();
 		}
 	}
 	//door and character renders

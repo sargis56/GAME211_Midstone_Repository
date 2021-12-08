@@ -32,7 +32,7 @@ void ArcherEnemy::OnDestroy() {}				  /// Just a stub
 void ArcherEnemy::Update(float deltaTime_) {
 	Vec3 normalTowardsPlayer = character->getPos() - pos;
 	normalTowardsPlayer = VMath::normalize(Vec3(normalTowardsPlayer.x, normalTowardsPlayer.y, 1));
-	angle = normalTowardsPlayer.x;
+	angle = normalTowardsPlayer.x * 80;
 	vel = Vec3(-normalTowardsPlayer.x, -normalTowardsPlayer.y, 0);
 	if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0) == false) { //Collision check
 		//vel = Vec3(0, -normalTowardsPlayer.y , 0);

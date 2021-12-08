@@ -134,6 +134,7 @@ void Scene1NEG1Under::Update(const float deltaTime) {
 			sceneNumber = 12;
 		}
 	}
+	float archerRotation = archerEnemy->getRotation() * 80;
 	archerEnemy->setModelMatrix(MMath::translate(archerEnemy->getPos()) * MMath::scale(Vec3(0.5,0.5,0.5)) * MMath::rotate(archerEnemy->getRotation(), Vec3(0, 0, 1)));
 	//character updates
 	character->checkInvincibility(); //checking if the character is invincible
