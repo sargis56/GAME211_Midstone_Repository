@@ -68,7 +68,13 @@ void Scene30::BuildCharacter() {
 }
 
 void Scene30::BuildAllEnemies() {
-
+	ObjLoader::loadOBJ("meshes/Enemies/LordAsquith.obj");
+	bossMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	bossTexture = new Texture();
+	bossTexture->LoadImage("textures/Enemies/LordAsquith_D.png");
+	boss = new FinalEnemy(bossMesh, shaderPtr, bossTexture, room, character, 0);
+	boss->OnCreate();
+	boss->setPos(Vec3(0.0, 3.0, -15.0));
 }
 
 void Scene30::BuildRoom() {
@@ -81,7 +87,7 @@ void Scene30::BuildRoom() {
 	floorTexture = new Texture();
 	floorTexture->LoadImage("textures/floor.jpg");
 	doorTexture = new Texture();
-	doorTexture->LoadImage("textures/Scenery/DoorModel_D.png");
+	doorTexture->LoadImage("textures/Scenery/DoorModel_D_Gold.png");
 
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
@@ -99,7 +105,23 @@ void Scene30::BuildHealthUI() {
 void Scene30::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
-		
+		if (boss->isAlive()) {
+			boss->Update(deltaTime);
+			if (boss->getTimer() >= 20) {
+				bossTexture->LoadImage("textures/Enemies/LordAsquith_D.png");
+				boss->ResetTimer();
+			}
+			if (boss->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (boss->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				boss->TakeDamage(character->getDamageFromPlayer());
+				bossTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
 	}
 	//door and character updates
 	//if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
@@ -108,6 +130,7 @@ void Scene30::Update(const float deltaTime) {
 	if (health <= 0) { //check if the player is dead
 		sceneNumber = 31;
 	}
+	boss->setModelMatrix(MMath::translate(boss->getPos()) * MMath::scale(1.0f, 1.0f, 1.0f) * MMath::rotate(boss->getRotation(), Vec3(0, 0, 1)));
 	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()) * MMath::rotate(character->getRotation(), Vec3(0.0f, 0.0f, 1.0f)));
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
@@ -131,7 +154,9 @@ void Scene30::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
-		
+		if (boss->isAlive()) {
+			boss->Render();
+		}
 	}
 	//door and character renders
 	if (character->getVisibility()) {
@@ -182,7 +207,7 @@ void Scene30::getCharacterPos(const Vec3 storedPos_) {
 		returnedPos = Vec3(storedPos_.x, (storedPos_.y * -1 + -1), storedPos_.z);
 	}
 	else {
-		returnedPos = storedPos_ * -1;
+		returnedPos = Vec3((storedPos_.x * -1), (storedPos_.y * -1), storedPos_.z);
 	}
 }
 

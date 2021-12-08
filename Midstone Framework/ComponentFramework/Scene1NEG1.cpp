@@ -211,7 +211,7 @@ void Scene1NEG1::getCharacterPos(const Vec3 storedPos_) {
 		returnedPos = Vec3(storedPos_.x, (storedPos_.y * -1 + -1), storedPos_.z);
 	}
 	else {
-		returnedPos = storedPos_ * -1;
+		returnedPos = Vec3((storedPos_.x * -1), (storedPos_.y * -1), storedPos_.z);
 	}
 }
 

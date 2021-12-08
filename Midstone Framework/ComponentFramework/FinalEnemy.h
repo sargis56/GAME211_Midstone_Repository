@@ -33,6 +33,7 @@ private:
 	bool isDead = true;
 	int textureChangeTimer = 0;
 	bool textureChange = false;
+	float angle;
 public:
 	FinalEnemy(Mesh* mesh_, Shader* shader_, Texture* texture_, Room room_, Character* character, int timer_);
 	//RatEnemy(RatEnemy* parent_, Mesh* mesh_, Shader* shader_, Texture* texture_);
@@ -55,6 +56,7 @@ public:
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
+	inline float getRotation() const { return angle * 80; }
 };
 
 #endif

@@ -18,7 +18,7 @@ void FinalEnemy::BuildProjectile() {
 	meshProjectile = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
 	shaderProjectile = new Shader("shaders/texturePhongVert.glsl", "shaders/texturePhongFrag.glsl");
 	textureProjectile = new Texture();
-	textureProjectile->LoadImage("textures/skull_texture.jpg");
+	textureProjectile->LoadImage("textures/red.jpg");
 	projectile1 = new ProjectileDynamic(meshProjectile, shaderProjectile, textureProjectile, room, pos, 3, 2.0f);
 	projectile2 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
 	projectile3 = new Projectile(meshProjectile, shaderProjectile, textureProjectile, room, pos, 5);
@@ -41,6 +41,9 @@ bool FinalEnemy::OnCreate() {
 }
 void FinalEnemy::OnDestroy() {}				  /// Just a stub
 void FinalEnemy::Update(float deltaTime_) {
+	Vec3 normalTowardsPlayer = pos - character->getPos();
+	normalTowardsPlayer = VMath::normalize(Vec3(normalTowardsPlayer.x, normalTowardsPlayer.y, 1));
+	angle = -normalTowardsPlayer.x;
 	if (textureChange == true) {
 		textureChangeTimer++;
 		//printf("%i\n", textureChangeTimer);
@@ -61,14 +64,10 @@ void FinalEnemy::Update(float deltaTime_) {
 		attackTimer = 0;
 	}
 	if (attackPattern == 0) {
-		Vec3 normalTowardsPlayer = pos - character->getPos();
-		normalTowardsPlayer = VMath::normalize(Vec3(normalTowardsPlayer.x, normalTowardsPlayer.y, 1));
 		normalTowardsPlayer = normalTowardsPlayer * 10;
 		vel = Vec3(-normalTowardsPlayer.x, -normalTowardsPlayer.y, 0);
 	}
 	if (attackPattern == 1) {
-		Vec3 normalTowardsPlayer = character->getPos() - pos;
-		normalTowardsPlayer = VMath::normalize(Vec3(normalTowardsPlayer.x, normalTowardsPlayer.y, 1));
 		//vel = Vec3(-normalTowardsPlayer.x, -normalTowardsPlayer.y, 0);
 		if (room.InsideCollisionPosX(Vec3(pos.x + 0.1f, pos.y, pos.z), 0) == false) { //Collision check
 			//vel = Vec3(0, -normalTowardsPlayer.y , 0);
@@ -86,7 +85,7 @@ void FinalEnemy::Update(float deltaTime_) {
 			//vel = Vec3(-normalTowardsPlayer.x, 0, 0);
 			vel = Vec3(0, 0, 0);
 		}
-		if (projectile1->ProjectileDynamicUpdate(projectileDestination, 0.1)) { // so once it hits the wall
+		if (projectile1->ProjectileDynamicUpdate(-projectileDestination, 0.1)) { // so once it hits the wall
 			projectile1->setPos(pos); //the pos is reset to the pos of the enemy
 			projectile1->setOver(false); //and the moveOver is reset
 			projectileDestination = normalTowardsPlayer;

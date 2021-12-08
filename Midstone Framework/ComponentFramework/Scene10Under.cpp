@@ -109,16 +109,16 @@ void Scene10Under::Update(const float deltaTime) {
 	}
 	//door and character updates
 	if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 2;
+		sceneNumber = 19;
 	}
 	if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 1;
+		sceneNumber = 11;
 	}
 	if (doorRight->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 2;
+		sceneNumber = 17;
 	}
 	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 2;
+		sceneNumber = 14;
 	}
 	if (health <= 0) { //check if the player is dead
 		sceneNumber = 31;

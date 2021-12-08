@@ -1,7 +1,11 @@
 [INFO]: Starting the GameSceneManager
-[INFO]: OpenGL version: 4.6.0 NVIDIA 496.76
+[INFO]: OpenGL version: 4.6.0 NVIDIA 472.12
 [INFO]: Graphics card vendor NVIDIA Corporation
-[INFO]: Graphics card name NVIDIA GeForce RTX 3070/PCIe/SSE2
+[INFO]: Graphics card name NVIDIA GeForce RTX 2070 SUPER/PCIe/SSE2
 [INFO]: GLSL Version 4.60 NVIDIA
-[INFO]: Created SceneTest: 
+[INFO]: Created Scene4: 
+[INFO]: Created Scene00: 
+[INFO]: Created Scene0: 
+[INFO]: Created SceneDev: 
+[INFO]: Created SceneDev: 
 [INFO]: Deleting the GameSceneManager

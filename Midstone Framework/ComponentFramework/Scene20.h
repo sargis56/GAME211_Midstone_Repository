@@ -39,7 +39,8 @@ private:
 	//Shader Pointer
 	Shader* shaderPtr;
 	//Texture Pointer
-	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture;
+	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *doorGoldTexture;
+	//Texture* doorGold;
 	//Engine Variables
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;

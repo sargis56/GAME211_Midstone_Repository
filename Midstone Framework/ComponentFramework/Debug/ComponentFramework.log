@@ -1,242 +1,37 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ComponentFramework.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  ArcherEnemy.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\ArcherEnemy.cpp(45,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\ArcherEnemy.cpp(49,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\ArcherEnemy.cpp(53,41): warning C4305: 'argument': truncation from 'double' to 'const float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\ArcherEnemy.cpp(54,5): warning C4305: 'argument': truncation from 'double' to 'float'
-  Axe.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  DeathScreen.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\DeathScreen.cpp(83,12): warning C4305: 'return': truncation from 'double' to 'float'
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ComponentFramework.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   FinalEnemy.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(81,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(85,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(89,6): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(151,41): warning C4305: 'argument': truncation from 'double' to 'const float'
-  Halbred.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  Hammer.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  MageEnemy.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\MageEnemy.cpp(40,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\MageEnemy.cpp(43,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\MageEnemy.cpp(46,41): warning C4305: 'argument': truncation from 'double' to 'const float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\MageEnemy.cpp(47,5): warning C4305: 'argument': truncation from 'double' to 'float'
-  Door.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-  HealingItem.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-  HealthUI.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-  Maul.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  ProjectileDynamic.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\ProjectileDynamic.cpp(11,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\ProjectileDynamic.cpp(54,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\ProjectileDynamic.cpp(57,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Scene01.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene01.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene01.cpp(118,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Scene0NEG1.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene0NEG1.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene0NEG1.cpp(118,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Scene00.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene00.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene00.cpp(121,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Scene0NEG2.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene0NEG2.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene0NEG2.cpp(113,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Scene10.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene10.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene10.cpp(156,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Scene10Under.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene10Under.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene10Under.cpp(128,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Scene11.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene11.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene11.cpp(123,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Scene12.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene12.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene12.cpp(113,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Generating Code...
-  Compiling...
-  Scene1NEG1.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene1NEG1.cpp(42,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene1NEG1.cpp(141,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Scene20.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene20.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene20.cpp(118,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(80,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(84,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(88,6): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\FinalEnemy.cpp(150,41): warning C4305: 'argument': truncation from 'double' to 'const float'
   Scene30.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene30.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene30.cpp(113,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  SceneDev.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneDev.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneDev.cpp(128,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Shovel.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  Spear.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  SpeedItem.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-  Sword.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  TeslaTowerEnemy.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-  Button.cpp
-  Camera.cpp
-  Character.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  Debug.cpp
-  DemonEnemy.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\DemonEnemy.h(26,18): warning C4305: 'initializing': truncation from 'double' to 'float'
-  GameObject.h
-  DemoObject.cpp
-  MageTurretEnemy.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\MageTurretEnemy.cpp(88,14): warning C4553: '==': result of expression not used; did you intend '='?
-  Matrix2.cpp
-  Particle.cpp
-  Perlin.cpp
-  Generating Code...
-  Compiling...
-  Physics.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Physics.cpp(115,75): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Physics.cpp(121,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  PhysicsObject.cpp
-  Projectile.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(11,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(58,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(66,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(97,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Projectile.cpp(105,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Randomizer.cpp
-  RatEnemy.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\RatEnemy.cpp(33,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\RatEnemy.cpp(68,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\RatEnemy.cpp(77,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Room.cpp
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene30.cpp(40,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Scene30.cpp(136,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
   SceneManager.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneManager.cpp(219,38): warning C4305: 'argument': truncation from 'double' to 'const float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneManager.cpp(228,38): warning C4305: 'argument': truncation from 'double' to 'const float'
-  Main.cpp
-  Mesh.cpp
-  MMath.cpp
-  ObjLoader.cpp
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneManager.cpp(366,38): warning C4305: 'argument': truncation from 'double' to 'const float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneManager.cpp(375,38): warning C4305: 'argument': truncation from 'double' to 'const float'
   SceneTest.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneTest.cpp(69,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneTest.cpp(226,93): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Shader.cpp
-  SkyBox.cpp
-  SnakeEnemy.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SnakeEnemy.cpp(112,24): warning C4305: 'initializing': truncation from 'double' to 'float'
-  StaticMesh.cpp
-  Texture.cpp
-  Timer.cpp
-  TitleScreen.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\TitleScreen.cpp(93,12): warning C4305: 'return': truncation from 'double' to 'float'
-  Trackball.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Trackball.cpp(51,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(67,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Vector.h(71,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneTest.cpp(69,92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\SceneTest.cpp(226,93): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
   Generating Code...
-  Compiling...
-  VenomProjectile.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-  VMath.cpp
-  WarAxe.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  Weapon.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  Window.cpp
-  WinScreen.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\WinScreen.cpp(84,12): warning C4305: 'return': truncation from 'double' to 'float'
-  Zweihander.cpp
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(25,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Character.h(75,95): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(63,46): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\ComponentFramework\Weapon.h(64,49): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-  Generating Code...
-  ComponentFramework.vcxproj -> C:\Users\sargi\Desktop\School\Sem 3\Midstone\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe
+  ComponentFramework.vcxproj -> D:\GitHub\GAME211_Midstone_Repository\Midstone Framework\Debug\Midstone Framework.exe

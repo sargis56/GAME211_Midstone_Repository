@@ -14,8 +14,8 @@
 #include "SceneManager.h"
 using namespace std;
 
-Scene20::Scene20() : character(nullptr), characterMesh(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorBottom(nullptr), doorTop(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
-health(NULL), healthBar(nullptr), healthUITexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr), speed(NULL), weapon(NULL) {
+Scene20::Scene20() : character(nullptr), characterMesh(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorBottom(nullptr), doorTop(nullptr), doorGoldTexture(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
+health(NULL), healthBar(nullptr), healthUITexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr), speed(NULL), weapon(NULL), doorMesh(nullptr){
 	Debug::Info("Created SceneDev: ", __FILE__, __LINE__);
 }
 
@@ -83,13 +83,15 @@ void Scene20::BuildRoom() {
 	floorTexture->LoadImage("textures/floor.jpg");
 	doorTexture = new Texture();
 	doorTexture->LoadImage("textures/Scenery/DoorModel_D.png");
+	doorGoldTexture = new Texture();
+	doorGoldTexture->LoadImage("textures/Scenery/DoorModel_D_Gold.png");
 
 	wall1 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall2 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall3 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	wall4 = new StaticMesh(boxMesh, shaderPtr, wallTexture);
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
-	doorTop = new Door(doorMesh, shaderPtr, doorTexture, Vec3(0.0, 4.5, -15.0f));
+	doorTop = new Door(doorMesh, shaderPtr, doorGoldTexture, Vec3(0.0, 4.5, -15.0f));
 	doorBottom = new Door(doorMesh, shaderPtr, doorTexture, Vec3(0.0, -4.5, -15.0f));
 }
 void Scene20::BuildHealthUI() {
@@ -105,7 +107,7 @@ void Scene20::Update(const float deltaTime) {
 	}
 	//door and character updates
 	if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 10;
+		sceneNumber = 20;
 	}
 	if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 		sceneNumber = 2;
@@ -188,7 +190,7 @@ void Scene20::getCharacterPos(const Vec3 storedPos_) {
 		returnedPos = Vec3(storedPos_.x, (storedPos_.y * -1 + -1), storedPos_.z);
 	}
 	else {
-		returnedPos = storedPos_ * -1;
+		returnedPos = Vec3((storedPos_.x * -1), (storedPos_.y * -1), storedPos_.z);
 	}
 }
 
@@ -221,4 +223,5 @@ void Scene20::OnDestroy() {
 	if (floor) delete floor, floor = nullptr;
 	if (doorBottom) delete doorBottom, doorBottom = nullptr;
 	if (doorTop) delete doorTop, doorTop = nullptr;
+
 }

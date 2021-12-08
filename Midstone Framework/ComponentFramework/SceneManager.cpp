@@ -7,9 +7,9 @@
 #include "TitleScreen.h"
 #include "DeathScreen.h"
 #include "WinScreen.h"
+
 #include "Scene00.h"
 #include "Scene10.h"
-#include "Scene10Under.h"
 #include "Scene0NEG1.h"
 #include "Scene0NEG2.h"
 #include "Scene1NEG1.h"
@@ -18,6 +18,16 @@
 #include "Scene12.h"
 #include "Scene20.h"
 #include "Scene30.h"
+
+#include "Scene00Under.h"
+#include "Scene10Under.h"
+#include "Scene0NEG1Under.h"
+#include "Scene0NEG2Under.h"
+#include "Scene1NEG1Under.h"
+#include "Scene01Under.h"
+#include "Scene11Under.h"
+#include "Scene12Under.h"
+#include "Scene20Under.h"
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
@@ -90,6 +100,13 @@ void SceneManager::GetEvents() {
 			switch (sdlEvent.key.keysym.scancode) {
 			case SDL_SCANCODE_SPACE:
 				if (playerDimension == false) {
+					if (currentNumber == 1) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 11;
+						BuildScene(SCENE00UNDER);
+						playerDimension = true;
+						//break;
+					}
 					if (currentNumber == 2) {
 						roomCleared[currentNumber] = currentScene->setSceneCleared();
 						currentNumber = 12;
@@ -97,12 +114,117 @@ void SceneManager::GetEvents() {
 						playerDimension = true;
 						//break;
 					}
+					if (currentNumber == 3) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 13;
+						BuildScene(SCENE0NEG1UNDER);
+						playerDimension = true;
+						//break;
+					}
+					if (currentNumber == 4) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 14;
+						BuildScene(SCENE1NEG1UNDER);
+						playerDimension = true;
+						//break;
+					}
+					if (currentNumber == 5) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 15;
+						BuildScene(SCENE0NEG2UNDER);
+						playerDimension = true;
+						//break;
+					}
+					if (currentNumber == 6) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 16;
+						BuildScene(SCENE01UNDER);
+						playerDimension = true;
+						//break;
+					}
+					if (currentNumber == 7) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 17;
+						BuildScene(SCENE11UNDER);
+						playerDimension = true;
+						//break;
+					}
+					if (currentNumber == 8) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 18;
+						BuildScene(SCENE12UNDER);
+						playerDimension = true;
+						//break;
+					}
+					if (currentNumber == 9) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 19;
+						BuildScene(SCENE20UNDER);
+						playerDimension = true;
+						//break;
+					}
 				}
 				else if (playerDimension == true) {
+					if (currentNumber == 11) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 1;
+						BuildScene(SCENE00);
+						playerDimension = false;
+						//break;
+					}
 					if (currentNumber == 12) {
 						roomCleared[currentNumber] = currentScene->setSceneCleared();
 						currentNumber = 2;
 						BuildScene(SCENE10);
+						playerDimension = false;
+						//break;
+					}
+					if (currentNumber == 13) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 3;
+						BuildScene(SCENE0NEG1);
+						playerDimension = false;
+						//break;
+					}
+					if (currentNumber == 14) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 4;
+						BuildScene(SCENE1NEG1);
+						playerDimension = false;
+						//break;
+					}
+					if (currentNumber == 15) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 5;
+						BuildScene(SCENE0NEG2);
+						playerDimension = false;
+						//break;
+					}
+					if (currentNumber == 16) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 6;
+						BuildScene(SCENE01);
+						playerDimension = false;
+						//break;
+					}
+					if (currentNumber == 17) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 7;
+						BuildScene(SCENE11);
+						playerDimension = false;
+						//break;
+					}
+					if (currentNumber == 18) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 8;
+						BuildScene(SCENE12);
+						playerDimension = false;
+						//break;
+					}
+					if (currentNumber == 19) {
+						roomCleared[currentNumber] = currentScene->setSceneCleared();
+						currentNumber = 9;
+						BuildScene(SCENE20);
 						playerDimension = false;
 						//break;
 					}
@@ -164,12 +286,37 @@ void SceneManager::SwitchScene() {
 		if (currentNumber == 9) {
 			BuildScene(SCENE20);
 		}
-		if (currentNumber == 10) {
-			BuildScene(SCENE30);
-		}
 
+		if (currentNumber == 11) {
+			BuildScene(SCENE00UNDER);
+		}
 		if (currentNumber == 12) {
 			BuildScene(SCENE10UNDER);
+		}
+		if (currentNumber == 13) {
+			BuildScene(SCENE0NEG1UNDER);
+		}
+		if (currentNumber == 14) {
+			BuildScene(SCENE1NEG1UNDER);
+		}
+		if (currentNumber == 15) {
+			BuildScene(SCENE0NEG2UNDER);
+		}
+		if (currentNumber == 16) {
+			BuildScene(SCENE01UNDER);
+		}
+		if (currentNumber == 17) {
+			BuildScene(SCENE11UNDER);
+		}
+		if (currentNumber == 18) {
+			BuildScene(SCENE12UNDER);
+		}
+		if (currentNumber == 19) {
+			BuildScene(SCENE20UNDER);
+		}
+
+		if (currentNumber == 20) {
+			BuildScene(SCENE30);
 		}
 
 		if (currentNumber == 30) {
@@ -331,6 +478,87 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		break;
 	case SCENE30:
 		currentScene = new Scene30();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	//Underworld cases ---------------------------------------------------------
+	case SCENE00UNDER:
+		currentScene = new Scene00Under();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE0NEG1UNDER:
+		currentScene = new Scene0NEG1Under();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE0NEG2UNDER:
+		currentScene = new Scene0NEG2Under();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE1NEG1UNDER:
+		currentScene = new Scene1NEG1Under();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE01UNDER:
+		currentScene = new Scene01Under();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE11UNDER:
+		currentScene = new Scene11Under();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE12UNDER:
+		currentScene = new Scene12Under();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE20UNDER:
+		currentScene = new Scene20Under();
 		//sending the speed back to the new scene
 		currentScene->getSceneCleared(roomCleared[currentNumber]);
 		currentScene->getCharacterHealth(mainHealth);

@@ -294,6 +294,30 @@
     <ClCompile Include="Spear.cpp">
       <Filter>Source Files\GameObjects\Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="Scene00Under.cpp">
+      <Filter>Source Files\Scenes\Underworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene0NEG1Under.cpp">
+      <Filter>Source Files\Scenes\Underworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene0NEG2Under.cpp">
+      <Filter>Source Files\Scenes\Underworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene01Under.cpp">
+      <Filter>Source Files\Scenes\Underworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene1NEG1Under.cpp">
+      <Filter>Source Files\Scenes\Underworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene11Under.cpp">
+      <Filter>Source Files\Scenes\Underworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene12Under.cpp">
+      <Filter>Source Files\Scenes\Underworld</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene20Under.cpp">
+      <Filter>Source Files\Scenes\Underworld</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -508,6 +532,30 @@
     </ClInclude>
     <ClInclude Include="Spear.h">
       <Filter>Header Files\GameObjects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene00Under.h">
+      <Filter>Header Files\Scenes\Underworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene0NEG1Under.h">
+      <Filter>Header Files\Scenes\Underworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene0NEG2Under.h">
+      <Filter>Header Files\Scenes\Underworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene01Under.h">
+      <Filter>Header Files\Scenes\Underworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene1NEG1Under.h">
+      <Filter>Header Files\Scenes\Underworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene11Under.h">
+      <Filter>Header Files\Scenes\Underworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene12Under.h">
+      <Filter>Header Files\Scenes\Underworld</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene20Under.h">
+      <Filter>Header Files\Scenes\Underworld</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

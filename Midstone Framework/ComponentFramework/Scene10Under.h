@@ -43,7 +43,7 @@ private:
 	//Engine Variables
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
-	int sceneNumber = 100;
+	int sceneNumber = 12;
 public:
 	//Scene setup
 	explicit Scene10Under();
