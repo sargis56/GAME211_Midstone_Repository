@@ -44,6 +44,7 @@ bool Scene30::OnCreate() {
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
 	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(180, Vec3(0, 0, 1)));
+	endOrb->setModelMatrix(MMath::translate(endOrb->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
 	return true;
 }
 
@@ -75,6 +76,12 @@ void Scene30::BuildAllEnemies() {
 	boss = new FinalEnemy(bossMesh, shaderPtr, bossTexture, room, character, 0);
 	boss->OnCreate();
 	boss->setPos(Vec3(0.0, 3.0, -15.0));
+
+	ObjLoader::loadOBJ("meshes/Sphere.obj");
+	endOrbMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	endOrbTexture = new Texture();
+	endOrbTexture->LoadImage("textures/yellow.jpg");
+	endOrb = new HealingItem(endOrbMesh, shaderPtr, endOrbTexture, Vec3(0.0, 0.0, -15.0));
 }
 
 void Scene30::BuildRoom() {
@@ -123,6 +130,12 @@ void Scene30::Update(const float deltaTime) {
 			}
 		}
 	}
+	if (boss->isAlive() == false) {
+		if (endOrb->getActive() && endOrb->collisionCheck(character)) {
+			sceneNumber = 30;
+		}
+	}
+
 	//door and character updates
 	//if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 	//	sceneNumber = 1;
@@ -156,6 +169,9 @@ void Scene30::Render() const {
 	if (roomUpdate == false) {
 		if (boss->isAlive()) {
 			boss->Render();
+		}
+		if (boss->isAlive() == false) {
+			endOrb->Render();
 		}
 	}
 	//door and character renders

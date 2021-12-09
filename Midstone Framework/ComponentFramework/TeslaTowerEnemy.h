@@ -25,7 +25,7 @@ private:
 	Projectile* projectile;
 	Character* character;
 	Vec3 projectileDestination;
-	float health = 100;
+	float health = 1000;
 	bool isDead = true;
 	int textureChangeTimer = 0;
 	bool textureChange = false;

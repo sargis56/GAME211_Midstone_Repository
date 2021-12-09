@@ -352,6 +352,9 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		break;
 	case DEATHSCREEN:
 		currentScene = new DeathScreen();
+		for (int x = 0; x < 40; x++) { //reset all rooms
+			roomCleared[x] = false;
+		}
 		status = currentScene->OnCreate();
 		break;
 	case WINSCREEN:

@@ -125,11 +125,10 @@ void Scene1NEG1::Update(const float deltaTime) {
 			}
 			if (archerEnemy->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
 				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
-				health -= 5; //set characters new health after taking damage
+				health -= 20; //set characters new health after taking damage
 			}
 			if (archerEnemy->WeaponColCheck(character) && character->getAttacking() == true) {
 				//Enemy takes damage
-				//archerEnemy->TakeDamage(character->getDamageFromPlayer());
 				archerEnemy->TakeDamage(character->getDamageFromPlayer());
 				archerTexture->LoadImage("textures/red.jpg");
 				//printf("\nEnemy has taken damage");
@@ -143,7 +142,7 @@ void Scene1NEG1::Update(const float deltaTime) {
 			}
 			if (ratEnemy->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
 				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
-				health -= 5; //set characters new health after taking damage
+				health -= 15; //set characters new health after taking damage
 			}
 			if (ratEnemy->WeaponColCheck(character) && character->getAttacking() == true) {
 				//Enemy takes damage

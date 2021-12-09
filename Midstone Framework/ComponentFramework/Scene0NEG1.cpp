@@ -45,6 +45,7 @@ bool Scene0NEG1::OnCreate() {
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(12.4f, 7.5f, 1.0f));
 	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(90, Vec3(0, 0, 1)));
 	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(-90, Vec3(0, 0, 1)));
+	healthpot->setModelMatrix(MMath::translate(healthpot->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
 	return true;
 }
 
@@ -85,6 +86,12 @@ void Scene0NEG1::BuildAllEnemies() {
 	demon->setPos(Vec3(0.0f, -3.0f, -15.0f));
 	mage1->setPos(Vec3(3.0f, 3.0f, -15.0f));
 	mage2->setPos(Vec3(-3.0f, 3.0f, -15.0f));
+
+	ObjLoader::loadOBJ("meshes/Items/Potion.obj");
+	healthPotMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	healthPotTexture = new Texture();
+	healthPotTexture->LoadImage("textures/green.jpg");
+	healthpot = new HealingItem(healthPotMesh, shaderPtr, healthPotTexture, Vec3(4.0, -3.0, -15.0));
 }
 
 void Scene0NEG1::BuildRoom() {
@@ -170,6 +177,12 @@ void Scene0NEG1::Update(const float deltaTime) {
 				//printf("\nEnemy has taken damage");
 			}
 		}
+		if (healthpot->getActive() && healthpot->collisionCheck(character)) {
+			health = health + 20;
+			if (health > 50) {
+				health = 50;
+			}
+		}
 	}
 	//door and character updates
 	if (demon->isAlive() == false && mage1->isAlive() == false && mage2->isAlive() == false || roomCleared == true) { //enemies are dead - unlock room
@@ -219,6 +232,9 @@ void Scene0NEG1::Render() const {
 		}
 		if (mage2->isAlive()) {
 			mage2->Render();
+		}
+		if (healthpot->getActive()) {
+			healthpot->Render();
 		}
 	}
 	//door and character renders

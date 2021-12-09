@@ -10,6 +10,7 @@
 #include "HealthUI.h"
 #include "MageEnemy.h"
 #include "DemonEnemy.h"
+#include "HealingItem.h"
 
 using namespace MATH;
 
@@ -24,7 +25,7 @@ class Scene0NEG1 : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* characterMesh, * boxMesh, * doorMesh, *demonMesh, *mageMesh;
+	Mesh* characterMesh, * boxMesh, * doorMesh, *demonMesh, *mageMesh, *healthPotMesh;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
@@ -39,10 +40,11 @@ private:
 	//Enemies and Items
 	MageEnemy* mage1, * mage2;
 	DemonEnemy* demon;
+	HealingItem* healthpot;
 	//Shader Pointer
 	Shader* shaderPtr;
 	//Texture Pointer
-	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *demonTexture, *mageTexture;
+	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *demonTexture, *mageTexture, *healthPotTexture;
 	//Engine Variables
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;

@@ -9,6 +9,7 @@
 #include "Door.h"
 #include "HealthUI.h"
 #include "FinalEnemy.h"
+#include "HealingItem.h"
 
 using namespace MATH;
 
@@ -23,7 +24,7 @@ class Scene30 : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* characterMesh, * boxMesh, * doorMesh, *bossMesh;
+	Mesh* characterMesh, * boxMesh, * doorMesh, *bossMesh, *endOrbMesh;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
@@ -36,11 +37,12 @@ private:
 	bool roomCleared = false;
 	bool roomUpdate = false;
 	//Enemies and Items
+	HealingItem* endOrb;
 	FinalEnemy *boss;
 	//Shader Pointer
 	Shader* shaderPtr;
 	//Texture Pointer
-	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *bossTexture;
+	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *bossTexture, *endOrbTexture;
 	//Engine Variables
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
