@@ -44,6 +44,8 @@ bool Scene20Under::OnCreate() {
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
 	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+	healthpot->setModelMatrix(MMath::translate(healthpot->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
+	zwei->setModelMatrix(MMath::translate(zwei->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(180, Vec3(0, 0, 1)));
 	return true;
 }
@@ -69,7 +71,32 @@ void Scene20Under::BuildCharacter() {
 }
 
 void Scene20Under::BuildAllEnemies() {
+	ObjLoader::loadOBJ("meshes/Enemies/Demon.obj");
+	demonMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	demonTexture = new Texture();
+	demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+	demon1 = new DemonEnemy(demonMesh, shaderPtr, demonTexture, room, 10);
+	demon1->setPos(Vec3(0, 0, -15));
+	demon2 = new DemonEnemy(demonMesh, shaderPtr, demonTexture, room, 10);
+	demon2->setPos(Vec3(3, 3, -15));
+	demon3 = new DemonEnemy(demonMesh, shaderPtr, demonTexture, room, 10);
+	demon3->setPos(Vec3(-3, 3, -15));
+	demon4 = new DemonEnemy(demonMesh, shaderPtr, demonTexture, room, 10);
+	demon4->setPos(Vec3(3, -3, -15));
+	demon5 = new DemonEnemy(demonMesh, shaderPtr, demonTexture, room, 10);
+	demon5->setPos(Vec3(-3, -3, -15));
 
+	ObjLoader::loadOBJ("meshes/Items/Potion.obj");
+	healthPotMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	healthPotTexture = new Texture();
+	healthPotTexture->LoadImage("textures/green.jpg");
+	healthpot = new HealingItem(healthPotMesh, shaderPtr, healthPotTexture, Vec3(0.0, 0.0, -15.0));
+
+	ObjLoader::loadOBJ("meshes/Weapons/Zwei.obj");
+	zweiMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	weaponTexture = new Texture();
+	weaponTexture->LoadImage("textures/green.jpg");
+	zwei = new Zweihander(zweiMesh, shaderPtr, weaponTexture, Vec3(-7.5f, -3.0f, -15.0f));
 }
 
 void Scene20Under::BuildRoom() {
@@ -103,18 +130,124 @@ void Scene20Under::BuildHealthUI() {
 void Scene20Under::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
-		
+		if (zwei->getActive()) {
+			zwei->collisionCheck(character);
+		}
+		if (demon1->isAlive()) {
+			demon1->Update(deltaTime);
+			if (demon1->getTimer() >= 20) {
+				demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+				demon1->ResetTimer();
+			}
+			if (demon1->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (demon1->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				demon1->TakeDamage(character->getDamageFromPlayer());
+				demonTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
+		if (demon2->isAlive()) {
+			demon2->Update(deltaTime);
+			if (demon2->getTimer() >= 20) {
+				demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+				demon2->ResetTimer();
+			}
+			if (demon2->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (demon2->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				demon2->TakeDamage(character->getDamageFromPlayer());
+				demonTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
+		if (demon3->isAlive()) {
+			demon3->Update(deltaTime);
+			if (demon3->getTimer() >= 20) {
+				demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+				demon3->ResetTimer();
+			}
+			if (demon3->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (demon3->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				demon3->TakeDamage(character->getDamageFromPlayer());
+				demonTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
+		if (demon4->isAlive()) {
+			demon4->Update(deltaTime);
+			if (demon4->getTimer() >= 20) {
+				demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+				demon4->ResetTimer();
+			}
+			if (demon4->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (demon4->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				demon4->TakeDamage(character->getDamageFromPlayer());
+				demonTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
+		if (demon5->isAlive()) {
+			demon5->Update(deltaTime);
+			if (demon5->getTimer() >= 20) {
+				demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+				demon5->ResetTimer();
+			}
+			if (demon5->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (demon5->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				demon5->TakeDamage(character->getDamageFromPlayer());
+				demonTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
+		if (healthpot->getActive() && healthpot->collisionCheck(character)) {
+			health = health + 20;
+			if (health > 50) {
+				health = 50;
+			}
+		}
 	}
 	//door and character updates
-	if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 20;
-	}
-	if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 12;
+	if (demon1->isAlive() == false && demon2->isAlive() == false && demon3->isAlive() == false && demon4->isAlive() == false && demon5->isAlive() == false || roomCleared == true) { //enemies are dead - unlock room
+		roomCleared = true;
+		if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 20;
+		}
+		if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 12;
+		}
 	}
 	if (health <= 0) { //check if the player is dead
 		sceneNumber = 31;
 	}
+	demon2->setModelMatrix(MMath::translate(demon2->getPos())* MMath::rotate(demon2->FollowPlayer(character) + 90, Vec3(0.0f, 0.0f, 1.0f)));
+	demon3->setModelMatrix(MMath::translate(demon3->getPos())* MMath::rotate(demon3->FollowPlayer(character) + 90, Vec3(0.0f, 0.0f, 1.0f)));
+	demon4->setModelMatrix(MMath::translate(demon4->getPos())* MMath::rotate(demon4->FollowPlayer(character) + 90, Vec3(0.0f, 0.0f, 1.0f)));
+	demon5->setModelMatrix(MMath::translate(demon5->getPos())* MMath::rotate(demon5->FollowPlayer(character) + 90, Vec3(0.0f, 0.0f, 1.0f)));
+	demon1->setModelMatrix(MMath::translate(demon1->getPos())* MMath::rotate(demon1->FollowPlayer(character) + 90, Vec3(0.0f, 0.0f, 1.0f)));
 	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()) * MMath::rotate(character->getRotation(), Vec3(0.0f, 0.0f, 1.0f)));
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
@@ -138,7 +271,27 @@ void Scene20Under::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
-		
+		if (zwei->getActive()) {
+			zwei->Render();
+		}
+		if (demon1->isAlive()) {
+			demon1->Render();
+		}
+		if (demon2->isAlive()) {
+			demon2->Render();
+		}
+		if (demon3->isAlive()) {
+			demon3->Render();
+		}
+		if (demon4->isAlive()) {
+			demon4->Render();
+		}
+		if (demon5->isAlive()) {
+			demon5->Render();
+		}
+		if (healthpot->getActive()) {
+			healthpot->Render();
+		}
 	}
 	//door and character renders
 	if (character->getVisibility()) {

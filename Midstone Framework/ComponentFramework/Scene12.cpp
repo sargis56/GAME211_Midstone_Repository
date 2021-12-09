@@ -68,7 +68,25 @@ void Scene12::BuildCharacter() {
 }
 
 void Scene12::BuildAllEnemies() {
-
+	ObjLoader::loadOBJ("meshes/Enemies/Archer.obj");
+	archerMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	archerTexture = new Texture();
+	archerTexture->LoadImage("textures/Enemies/Archer_D.png");
+	archerEnemy = new ArcherEnemy(archerMesh, shaderPtr, archerTexture, room, character);
+	archerEnemy->OnCreate();
+	archerEnemy->setPos(Vec3(-2.0, -2.0, -15.0));
+	ObjLoader::loadOBJ("meshes/Enemies/Rat.obj");
+	ratMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	ratTexture = new Texture();
+	ratTexture->LoadImage("textures/Enemies/Rat_Texture.jpg");
+	ratEnemy = new RatEnemy(ratMesh, shaderPtr, ratTexture, room);
+	ratEnemy->setPos(Vec3(3.0f, 2.0f, -15.0f));
+	ObjLoader::loadOBJ("meshes/Enemies/Demon.obj");
+	demonMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	demonTexture = new Texture();
+	demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+	demon = new DemonEnemy(demonMesh, shaderPtr, demonTexture, room, 10);
+	demon->setPos(Vec3(1.0f, -2.0f, -15.0f));
 }
 
 void Scene12::BuildRoom() {
@@ -99,15 +117,73 @@ void Scene12::BuildHealthUI() {
 void Scene12::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
-		
+		if (archerEnemy->isAlive()) {
+			archerEnemy->Update(deltaTime);
+			if (archerEnemy->getTimer() >= 20) {
+				archerTexture->LoadImage("textures/Enemies/Archer_D.png");
+				archerEnemy->ResetTimer();
+			}
+			if (archerEnemy->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 20; //set characters new health after taking damage
+			}
+			if (archerEnemy->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				archerEnemy->TakeDamage(character->getDamageFromPlayer());
+				archerTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
+		if (ratEnemy->isAlive()) {
+			ratEnemy->Update(deltaTime);
+			if (ratEnemy->getTimer() >= 20) {
+				ratTexture->LoadImage("textures/Enemies/Rat_Texture.jpg");
+				ratEnemy->ResetTimer();
+			}
+			if (ratEnemy->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (ratEnemy->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				ratTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
+		if (demon->isAlive()) {
+			demon->Update(deltaTime);
+			if (demon->getTimer() >= 20) {
+				demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+				demon->ResetTimer();
+			}
+			if (demon->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (demon->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				demon->TakeDamage(character->getDamageFromPlayer());
+				demonTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
 	}
 	//door and character updates
-	if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 7;
+	if (archerEnemy->isAlive() == false && demon->isAlive() == false && ratEnemy->isAlive() == false || roomCleared == true) { //enemies are dead - unlock room
+		roomCleared = true;
+		if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 7;
+		}
 	}
 	if (health <= 0) { //check if the player is dead
 		sceneNumber = 31;
 	}
+	demon->setModelMatrix(MMath::translate(demon->getPos()) * MMath::rotate(demon->FollowPlayer(character) + 90, Vec3(0.0f, 0.0f, 1.0f)));
+	ratEnemy->setModelMatrix(MMath::translate(ratEnemy->getPos()) * MMath::rotate(ratEnemy->getRotation(), Vec3(0, 0, 1)));
+	archerEnemy->setModelMatrix(MMath::translate(archerEnemy->getPos()) * MMath::scale(Vec3(0.5, 0.5, 0.5)) * MMath::rotate(archerEnemy->getRotation() + 90, Vec3(0, 0, 1)));
 	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()) * MMath::rotate(character->getRotation(), Vec3(0.0f, 0.0f, 1.0f)));
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
@@ -131,7 +207,15 @@ void Scene12::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
-		
+		if (archerEnemy->isAlive()) {
+			archerEnemy->Render();
+		}
+		if (demon->isAlive()) {
+			demon->Render();
+		}
+		if (ratEnemy->isAlive()) {
+			ratEnemy->Render();
+		}
 	}
 	//door and character renders
 	if (character->getVisibility()) {

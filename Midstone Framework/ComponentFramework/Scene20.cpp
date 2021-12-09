@@ -44,6 +44,7 @@ bool Scene20::OnCreate() {
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
 	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+	spear->setModelMatrix(MMath::translate(spear->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(180, Vec3(0, 0, 1)));
 	return true;
 }
@@ -69,7 +70,27 @@ void Scene20::BuildCharacter() {
 }
 
 void Scene20::BuildAllEnemies() {
+	ObjLoader::loadOBJ("meshes/Enemies/Demon.obj");
+	demonMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	demonTexture = new Texture();
+	demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+	demon1 = new DemonEnemy(demonMesh, shaderPtr, demonTexture, room, 10);
+	demon1->setPos(Vec3(-2.0f, -3.0f, -15.0f));
+	demon2 = new DemonEnemy(demonMesh, shaderPtr, demonTexture, room, 10);
+	demon2->setPos(Vec3(2.0f, 3.0f, -15.0f));
+	ObjLoader::loadOBJ("meshes/Enemies/MagicTurret.obj");
+	turretMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	turretTexture = new Texture();
+	turretTexture->LoadImage("textures/Enemies/Turret_Texture.jpg");
+	turret = new MageTurretEnemy(turretMesh, shaderPtr, turretTexture, room);
+	turret->OnCreate();
+	turret->setPos(Vec3(0, 0, -15));
 
+	ObjLoader::loadOBJ("meshes/Weapons/Spear.obj");
+	spearMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	weaponTexture = new Texture();
+	weaponTexture->LoadImage("textures/green.jpg");
+	spear = new Spear(spearMesh, shaderPtr, weaponTexture, Vec3(-5.0f, 2.5f, -15.0f));
 }
 
 void Scene20::BuildRoom() {
@@ -103,18 +124,80 @@ void Scene20::BuildHealthUI() {
 void Scene20::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
-		
+		if (demon1->isAlive()) {
+			demon1->Update(deltaTime);
+			if (demon1->getTimer() >= 20) {
+				demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+				demon1->ResetTimer();
+			}
+			if (demon1->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (demon1->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				demon1->TakeDamage(character->getDamageFromPlayer());
+				demonTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
+		if (demon2->isAlive()) {
+			demon2->Update(deltaTime);
+			if (demon2->getTimer() >= 20) {
+				demonTexture->LoadImage("textures/Enemies/Demon_Texture.jpg");
+				demon2->ResetTimer();
+			}
+			if (demon2->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (demon2->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				demon2->TakeDamage(character->getDamageFromPlayer());
+				demonTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
+		if (turret->isAlive()) {
+			turret->Update(deltaTime);
+			if (turret->getTimer() >= 20) {
+				turretTexture->LoadImage("textures/Enemies/Turret_Texture.jpg");
+				turret->ResetTimer();
+			}
+			if (turret->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 20; //set characters new health after taking damage
+			}
+			if (turret->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				turret->TakeDamage(character->getDamageFromPlayer());
+				turretTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
+		if (spear->getActive()) {
+			spear->collisionCheck(character);
+		}
 	}
 	//door and character updates
-	if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 20;
-	}
-	if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
-		sceneNumber = 2;
+	if (demon1->isAlive() == false && demon2->isAlive() == false && turret->isAlive() == false || roomCleared == true) { //enemies are dead - unlock room
+		roomCleared = true;
+		if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 20;
+		}
+		if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 2;
+		}
 	}
 	if (health <= 0) { //check if the player is dead
 		sceneNumber = 31;
 	}
+	demon1->setModelMatrix(MMath::translate(demon1->getPos()) * MMath::rotate(demon1->FollowPlayer(character) + 90, Vec3(0.0f, 0.0f, 1.0f)));
+	demon2->setModelMatrix(MMath::translate(demon2->getPos()) * MMath::rotate(demon2->FollowPlayer(character) + 90, Vec3(0.0f, 0.0f, 1.0f)));
+	turret->setModelMatrix(MMath::translate(turret->getPos()) * MMath::scale(Vec3(0.5, 0.5, 0.5f)));
 	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()) * MMath::rotate(character->getRotation(), Vec3(0.0f, 0.0f, 1.0f)));
 	healthBar->setModelMatrix(MMath::translate(Vec3(0.0f, -3.5f, -5.0f)) * MMath::scale(0.05f * (health + 0.01), 0.3f, 0.01f) * MMath::rotate(-10.0f, 1.0, 0.0, 0.0));
@@ -138,7 +221,18 @@ void Scene20::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
-		
+		if (demon1->isAlive()) {
+			demon1->Render();
+		}
+		if (demon2->isAlive()) {
+			demon2->Render();
+		}
+		if (turret->isAlive()) {
+			turret->Render();
+		}
+		if (spear->getActive()) {
+			spear->Render();
+		}
 	}
 	//door and character renders
 	if (character->getVisibility()) {

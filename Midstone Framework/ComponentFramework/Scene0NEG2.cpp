@@ -43,6 +43,7 @@ bool Scene0NEG2::OnCreate() {
 	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(12.4f, 7.5f, 1.0f));
+	halbred->setModelMatrix(MMath::translate(halbred->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(-90, Vec3(0, 0, 1)));
 	return true;
 }
@@ -91,6 +92,12 @@ void Scene0NEG2::BuildAllEnemies() {
 	speedTexture = new Texture();
 	speedTexture->LoadImage("textures/yellow.jpg");
 	speedItem = new SpeedItem(speedMesh, shaderPtr, speedTexture, 0.2, Vec3(0.0, -4.0,-15.0));
+
+	ObjLoader::loadOBJ("meshes/Weapons/Halbred.obj");
+	halbredMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	weaponTexture = new Texture();
+	weaponTexture->LoadImage("textures/green.jpg");
+	halbred = new Halbred(halbredMesh, shaderPtr, weaponTexture, Vec3(-7.5f, 2.5f, -15.0f));
 }
 
 void Scene0NEG2::BuildRoom() {
@@ -121,6 +128,9 @@ void Scene0NEG2::BuildHealthUI() {
 void Scene0NEG2::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
+		if (halbred->getActive()) {
+			halbred->collisionCheck(character);
+		}
 		if (speedItem->getActive()) {
 			speedItem->collisionCheck(character);
 		}
@@ -216,6 +226,9 @@ void Scene0NEG2::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
+		if (halbred->getActive()) {
+			halbred->Render();
+		}
 		if (speedItem->getActive()) {
 			speedItem->Render();
 		}

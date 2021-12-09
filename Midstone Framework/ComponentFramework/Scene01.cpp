@@ -45,6 +45,7 @@ bool Scene01::OnCreate() {
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
 	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(90, Vec3(0, 0, 1)));
 	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+	hammer->setModelMatrix(MMath::translate(hammer->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	healthpot->setModelMatrix(MMath::translate(healthpot->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
 	return true;
 }
@@ -95,6 +96,12 @@ void Scene01::BuildAllEnemies() {
 	healthPotTexture = new Texture();
 	healthPotTexture->LoadImage("textures/green.jpg");
 	healthpot = new HealingItem(healthPotMesh, shaderPtr, healthPotTexture, Vec3(-5.0, 3.0, -15.0));
+
+	ObjLoader::loadOBJ("meshes/Weapons/Hammer.obj");
+	hammerMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	weaponTexture = new Texture();
+	weaponTexture->LoadImage("textures/green.jpg");
+	hammer = new Hammer(hammerMesh, shaderPtr, weaponTexture, Vec3(-5.0f, 0.0f, -15.0f));
 }
 
 void Scene01::BuildRoom() {
@@ -126,6 +133,9 @@ void Scene01::BuildHealthUI() {
 void Scene01::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
+		if (hammer->getActive()) {
+			hammer->collisionCheck(character);
+		}
 		if (turret1->isAlive()) {
 			turret1->Update(deltaTime);
 			if (turret1->getTimer() >= 20) {
@@ -264,6 +274,9 @@ void Scene01::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
+		if (hammer->getActive()) {
+			hammer->Render();
+		}
 		if (turret1->isAlive()) {
 			turret1->Render();
 		}

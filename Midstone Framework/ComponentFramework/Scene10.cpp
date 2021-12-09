@@ -47,6 +47,7 @@ bool Scene10::OnCreate() {
 	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
 	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(-90, Vec3(0, 0, 1)));
 	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(180, Vec3(0, 0, 1)));
+	axe->setModelMatrix(MMath::translate(axe->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	healthpot->setModelMatrix(MMath::translate(healthpot->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
 	return true;
 }
@@ -85,6 +86,12 @@ void Scene10::BuildAllEnemies() {
 	healthPotTexture = new Texture();
 	healthPotTexture->LoadImage("textures/green.jpg");
 	healthpot = new HealingItem(healthPotMesh, shaderPtr, healthPotTexture, Vec3(5.0,3.0,-15.0));
+
+	ObjLoader::loadOBJ("meshes/Weapons/Axe.obj");
+	axeMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	weaponTexture = new Texture();
+	weaponTexture->LoadImage("textures/green.jpg");
+	axe = new Axe(axeMesh, shaderPtr, weaponTexture, Vec3(-5.0f, -3.0f, -15.0f));
 }
 
 void Scene10::BuildRoom() {
@@ -135,6 +142,9 @@ void Scene10::Update(const float deltaTime) {
 				ratTexture->LoadImage("textures/red.jpg");
 				//printf("\nEnemy has taken damage");
 			}
+		}
+		if (axe->getActive()) {
+			axe->collisionCheck(character);
 		}
 		if (health <= 0) { //check if the player is dead
 			sceneNumber = 31;
@@ -192,6 +202,9 @@ void Scene10::Render() const {
 		}
 		if (healthpot->getActive()) {
 			healthpot->Render();
+		}
+		if (axe->getActive()) {
+			axe->Render();
 		}
 	}
 	//door and character renders

@@ -8,6 +8,7 @@
 #include "StaticMesh.h"
 #include "Door.h"
 #include "HealthUI.h"
+#include "Shovel.h"
 
 using namespace MATH;
 

@@ -45,6 +45,7 @@ bool Scene1NEG1Under::OnCreate() {
 	wall3->setModelMatrix(MMath::translate(Vec3(0.0, -5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	wall4->setModelMatrix(MMath::translate(Vec3(0.0, 5.75, -15.0)) * MMath::scale(11.5f, 0.75f, 1.0f));
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
+	healthpot->setModelMatrix(MMath::translate(healthpot->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
 	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(-90, Vec3(0, 0, 1)));
 	return true;
 }
@@ -75,6 +76,19 @@ void Scene1NEG1Under::BuildAllEnemies() {
 	archerTexture = new Texture();
 	archerTexture->LoadImage("textures/Enemies/Archer_D.png");
 	archerEnemy = new ArcherEnemy(archerMesh, shaderPtr, archerTexture, room, character);
+
+	ObjLoader::loadOBJ("meshes/Enemies/Rat.obj");
+	ratMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	ratTexture = new Texture();
+	ratTexture->LoadImage("textures/Enemies/Rat_Texture.jpg");
+	ratEnemy = new RatEnemy(ratMesh, shaderPtr, ratTexture, room);
+	ratEnemy->setPos(Vec3(0.0f, 2.0f, -15.0f));
+
+	ObjLoader::loadOBJ("meshes/Items/Potion.obj");
+	healthPotMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	healthPotTexture = new Texture();
+	healthPotTexture->LoadImage("textures/green.jpg");
+	healthpot = new HealingItem(healthPotMesh, shaderPtr, healthPotTexture, Vec3(5.0, 3.0, -15.0));
 }
 
 void Scene1NEG1Under::BuildRoom() {
@@ -123,19 +137,44 @@ void Scene1NEG1Under::Update(const float deltaTime) {
 				//printf("\nEnemy has taken damage");
 			}
 		}
+
+		if (ratEnemy->isAlive()) {
+			ratEnemy->Update(deltaTime);
+			if (ratEnemy->getTimer() >= 20) {
+				ratTexture->LoadImage("textures/Enemies/Rat_Texture.jpg");
+				ratEnemy->ResetTimer();
+			}
+			if (ratEnemy->DamageCheck(character) && character->getInvincibility() == false && character->getAttacking() == false) {
+				character->setinvincibilityTimer(100); //setting the timer for the invinciblity
+				health -= 15; //set characters new health after taking damage
+			}
+			if (ratEnemy->WeaponColCheck(character) && character->getAttacking() == true) {
+				//Enemy takes damage
+				//ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				ratEnemy->TakeDamage(character->getDamageFromPlayer());
+				ratTexture->LoadImage("textures/red.jpg");
+				//printf("\nEnemy has taken damage");
+			}
+		}
 		if (health <= 0) { //check if the player is dead
 			sceneNumber = 31;
 		}
+		if (healthpot->getActive() && healthpot->collisionCheck(character)) {
+			health = health + 20;
+			if (health > 50) {
+				health = 50;
+			}
+		}
 	}
-	if (archerEnemy->isAlive() == false || roomCleared == true) { //enemies are dead - unlock room
+	if (archerEnemy->isAlive() == false && ratEnemy->isAlive() == false || roomCleared == true) { //enemies are dead - unlock room
 		roomCleared = true;
 		//door updates
 		if (doorRight->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 			sceneNumber = 12;
 		}
 	}
-	float archerRotation = archerEnemy->getRotation() * 80;
-	archerEnemy->setModelMatrix(MMath::translate(archerEnemy->getPos()) * MMath::scale(Vec3(0.5,0.5,0.5)) * MMath::rotate(archerEnemy->getRotation(), Vec3(0, 0, 1)));
+	ratEnemy->setModelMatrix(MMath::translate(ratEnemy->getPos()) * MMath::rotate(ratEnemy->getRotation(), Vec3(0, 0, 1)));
+	archerEnemy->setModelMatrix(MMath::translate(archerEnemy->getPos()) * MMath::scale(Vec3(0.5,0.5,0.5)) * MMath::rotate(archerEnemy->getRotation() + 90, Vec3(0, 0, 1)));
 	//character updates
 	character->checkInvincibility(); //checking if the character is invincible
 	character->setModelMatrix(MMath::translate(character->getPos()) * MMath::rotate(character->getRotation(), Vec3(0.0f, 0.0f, 1.0f)));
@@ -161,6 +200,12 @@ void Scene1NEG1Under::Render() const {
 	if (roomUpdate == false) {
 		if (archerEnemy->isAlive()) {
 			archerEnemy->Render();
+		}
+		if (ratEnemy->isAlive()) {
+			ratEnemy->Render();
+		}
+		if (healthpot->getActive()) {
+			healthpot->Render();
 		}
 	}
 	//door and character renders

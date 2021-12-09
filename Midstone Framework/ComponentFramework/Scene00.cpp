@@ -44,6 +44,7 @@ bool Scene00::OnCreate() {
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(12.4f, 7.5f, 1.0f));
 	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(90,Vec3(0,0,1)));
 	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+	shovel->setModelMatrix(MMath::translate(shovel->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	doorRight->setModelMatrix(MMath::translate(doorRight->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(-90, Vec3(0, 0, 1)));
 	return true;
 }
@@ -69,7 +70,11 @@ void Scene00::BuildCharacter() {
 }
 
 void Scene00::BuildAllEnemies() {
-
+	ObjLoader::loadOBJ("meshes/Weapons/Shovel.obj");
+	shovelMesh = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	weaponTexture = new Texture();
+	weaponTexture->LoadImage("textures/green.jpg");
+	shovel = new Shovel(shovelMesh, shaderPtr, weaponTexture, Vec3(0.0f, 2.0f, -15.0f));
 }
 
 void Scene00::BuildRoom() {
@@ -101,7 +106,12 @@ void Scene00::BuildHealthUI() {
 void Scene00::Update(const float deltaTime) {
 	//enemy and item updates
 	if (roomUpdate == false) {
-		
+		if (shovel->getActive()) {
+			shovel->collisionCheck(character);
+		}
+	}
+	if (shovel->getActive() == false) {
+		roomCleared = true;
 	}
 	//door and character updates
 	if (doorTop->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
@@ -139,7 +149,9 @@ void Scene00::Render() const {
 
 	//enemy and item renders
 	if (roomUpdate == false) {
-		
+		if (shovel->getActive()) {
+			shovel->Render();
+		}
 	}
 	//door and character renders
 	if (character->getVisibility()) {

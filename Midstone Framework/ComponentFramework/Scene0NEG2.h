@@ -11,6 +11,7 @@
 #include "ArcherEnemy.h"
 #include "MageTurretEnemy.h"
 #include "SpeedItem.h"
+#include "Halbred.h"
 
 using namespace MATH;
 
@@ -25,7 +26,7 @@ class Scene0NEG2 : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* characterMesh, * boxMesh, * doorMesh, *archerMesh, *turretMesh, *speedMesh;
+	Mesh* characterMesh, * boxMesh, * doorMesh, *archerMesh, *turretMesh, *speedMesh, *halbredMesh;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
@@ -41,10 +42,11 @@ private:
 	ArcherEnemy* archer1, *archer2;
 	MageTurretEnemy* turret;
 	SpeedItem* speedItem;
+	Halbred* halbred;
 	//Shader Pointer
 	Shader* shaderPtr;
 	//Texture Pointer
-	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *archerTexture, *turretTexture, *speedTexture;
+	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *archerTexture, *turretTexture, *speedTexture, *weaponTexture;
 	//Engine Variables
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;

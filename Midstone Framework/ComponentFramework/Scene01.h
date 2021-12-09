@@ -11,6 +11,7 @@
 #include "MageTurretEnemy.h"
 #include "TeslaTowerEnemy.h"
 #include "HealingItem.h"
+#include "Hammer.h"
 
 using namespace MATH;
 
@@ -25,7 +26,7 @@ class Scene01 : public Scene {
 private:
 	//character pointers and variables
 	Character* character;
-	Mesh* characterMesh, * boxMesh, * doorMesh, *turretMesh, * healthPotMesh;
+	Mesh* characterMesh, * boxMesh, * doorMesh, *turretMesh, * healthPotMesh, *hammerMesh;
 	float health, speed;
 	int weapon;
 	Vec3 returnedPos;
@@ -41,10 +42,11 @@ private:
 	HealingItem* healthpot;
 	MageTurretEnemy* turret1;
 	TeslaTowerEnemy* turret2, * turret3, * turret4, * turret5;
+	Hammer* hammer;
 	//Shader Pointer
 	Shader* shaderPtr;
 	//Texture Pointer
-	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *turretTexture, *healthPotTexture;
+	Texture* texturePtr, *wallTexture, *floorTexture, *doorTexture, *healthUITexture, *turretTexture, *healthPotTexture, *weaponTexture;
 	//Engine Variables
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
