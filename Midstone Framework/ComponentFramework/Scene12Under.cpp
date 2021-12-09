@@ -45,6 +45,7 @@ bool Scene12Under::OnCreate() {
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
 	warAxe->setModelMatrix(MMath::translate(warAxe->getPos()) * MMath::scale(0.25f, 0.25f, 0.25f));
 	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(90, Vec3(0, 0, 1)));
+	healthpot->setModelMatrix(MMath::translate(healthpot->getPos()) * MMath::scale(0.7f, 0.7f, 0.7f));
 	return true;
 }
 
