@@ -73,6 +73,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>C:\GameDev\OpenGL\include;C:\GameDev\SDL\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\GameDev\OpenGL\include;C:\GameDev\SDL\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -157,6 +160,7 @@
     <ClCompile Include="Scene20Under.cpp" />
     <ClCompile Include="Scene30.cpp" />
     <ClCompile Include="SceneDev.cpp" />
+    <ClCompile Include="SceneNEG11Under.cpp" />
     <ClCompile Include="Shovel.cpp" />
     <ClCompile Include="Spear.cpp" />
     <ClCompile Include="SpeedItem.cpp" />
@@ -234,6 +238,7 @@
     <ClInclude Include="Scene20Under.h" />
     <ClInclude Include="Scene30.h" />
     <ClInclude Include="SceneDev.h" />
+    <ClInclude Include="SceneNEG11Under.h" />
     <ClInclude Include="Shovel.h" />
     <ClInclude Include="Spear.h" />
     <ClInclude Include="SpeedItem.h" />

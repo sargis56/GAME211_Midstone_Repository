@@ -39,7 +39,8 @@ private:
 		SCENE11UNDER,
 		SCENE12UNDER,
 		SCENE20UNDER,
-		SCENE30UNDER
+		SCENE30UNDER,
+		SCENENEG11UNDER
 	};
 
 	class Scene* currentScene;

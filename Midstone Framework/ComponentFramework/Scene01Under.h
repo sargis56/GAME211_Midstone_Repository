@@ -30,7 +30,7 @@ private:
 	Vec3 returnedPos;
 	//room setup pointers
 	Room room;
-	Door *doorLeft, *doorTop;
+	Door *doorLeft, *doorTop, *doorBottom;
 	StaticMesh* wall1, * wall2, * wall3, * wall4, * floor;
 	HealthUI* healthBar;
 	Vec3 light1;

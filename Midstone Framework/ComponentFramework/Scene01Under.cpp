@@ -14,7 +14,7 @@
 #include "SceneManager.h"
 using namespace std;
 
-Scene01Under::Scene01Under() : character(nullptr), characterMesh(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorLeft(nullptr), doorTop(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
+Scene01Under::Scene01Under() : character(nullptr), characterMesh(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorLeft(nullptr), doorTop(nullptr), doorBottom(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
 health(NULL), healthBar(nullptr), healthUITexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr), speed(NULL), weapon(NULL) {
 	Debug::Info("Created SceneDev: ", __FILE__, __LINE__);
 }
@@ -45,6 +45,7 @@ bool Scene01Under::OnCreate() {
 	floor->setModelMatrix(MMath::translate(Vec3(0.0, 0.0, -17.0)) * MMath::scale(11.4f, 5.5f, 1.0f));
 	doorLeft->setModelMatrix(MMath::translate(doorLeft->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(90, Vec3(0, 0, 1)));
 	doorTop->setModelMatrix(MMath::translate(doorTop->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f));
+	doorBottom->setModelMatrix(MMath::translate(doorBottom->getPos()) * MMath::scale(0.5f, 0.5f, 0.5f) * MMath::rotate(180, Vec3(0, 0, 1)));
 	return true;
 }
 
@@ -105,6 +106,7 @@ void Scene01Under::BuildRoom() {
 	floor = new StaticMesh(boxMesh, shaderPtr, floorTexture);
 	doorLeft = new Door(doorMesh, shaderPtr, doorTexture, Vec3(-9.5, 0.0, -15.0f));
 	doorTop = new Door(doorMesh, shaderPtr, doorTexture, Vec3(0.0, 4.5, -15.0f));
+	doorBottom = new Door(doorMesh, shaderPtr, doorTexture, Vec3(0.0, -4.5, -15.0f));
 }
 void Scene01Under::BuildHealthUI() {
 	healthUITexture = new Texture();
@@ -179,6 +181,9 @@ void Scene01Under::Update(const float deltaTime) {
 		if (doorLeft->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
 			sceneNumber = 11;
 		}
+		if (doorBottom->CollisionCheck(character)) {  //If character touches the door, switch scene to next level
+			sceneNumber = 33;
+		}
 	}
 	if (health <= 0) { //check if the player is dead
 		sceneNumber = 31;
@@ -232,6 +237,7 @@ void Scene01Under::Render() const {
 	floor->Render();
 	doorLeft->Render();
 	doorTop->Render();
+	doorBottom->Render();
 	glUseProgram(0);
 }
 

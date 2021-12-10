@@ -28,6 +28,7 @@
 #include "Scene11Under.h"
 #include "Scene12Under.h"
 #include "Scene20Under.h"
+#include "SceneNEG11Under.h"
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
@@ -328,6 +329,10 @@ void SceneManager::SwitchScene() {
 		if (currentNumber == 32) {
 			isRunning = false;
 		}
+
+		if (currentNumber == 33) {
+			BuildScene(SCENENEG11UNDER);
+		}
 	}
 }
 
@@ -563,6 +568,16 @@ void SceneManager::BuildScene(SCENE_NUMBER scene) {
 		break;
 	case SCENE20UNDER:
 		currentScene = new Scene20Under();
+		//sending the speed back to the new scene
+		currentScene->getSceneCleared(roomCleared[currentNumber]);
+		currentScene->getCharacterHealth(mainHealth);
+		currentScene->getCharacterPos(Vec3(mainPos));
+		currentScene->getCharacterSpeed(mainSpeed);
+		currentScene->getWeapon(mainWeapon);
+		status = currentScene->OnCreate();
+		break;
+	case SCENENEG11UNDER:
+		currentScene = new SceneNEG11Under();
 		//sending the speed back to the new scene
 		currentScene->getSceneCleared(roomCleared[currentNumber]);
 		currentScene->getCharacterHealth(mainHealth);

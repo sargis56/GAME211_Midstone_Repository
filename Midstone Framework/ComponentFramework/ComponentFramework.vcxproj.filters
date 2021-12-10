@@ -318,6 +318,9 @@
     <ClCompile Include="Scene20Under.cpp">
       <Filter>Source Files\Scenes\Underworld</Filter>
     </ClCompile>
+    <ClCompile Include="SceneNEG11Under.cpp">
+      <Filter>Source Files\Scenes\Underworld</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -555,6 +558,9 @@
       <Filter>Header Files\Scenes\Underworld</Filter>
     </ClInclude>
     <ClInclude Include="Scene20Under.h">
+      <Filter>Header Files\Scenes\Underworld</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneNEG11Under.h">
       <Filter>Header Files\Scenes\Underworld</Filter>
     </ClInclude>
   </ItemGroup>
