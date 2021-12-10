@@ -117,7 +117,7 @@ bool RatEnemy::DamageCheck(Character* character) {
 }
 
 bool RatEnemy::WeaponColCheck(Character* character) {
-	if (VMath::distance(character->getPos(), pos) < (2 + character->getCurrentWeaponReach())) { //
+	if (VMath::distance(character->getPos(), pos) < (character->getCurrentWeaponReach())) { //
 		return true;
 	}
 	else {

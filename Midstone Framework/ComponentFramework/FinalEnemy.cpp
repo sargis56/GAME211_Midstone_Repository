@@ -186,7 +186,7 @@ void FinalEnemy::HandleEvents(const SDL_Event& event) {
 } /// Just a stub
 
 bool FinalEnemy::WeaponColCheck(Character* character) {
-	if (VMath::distance(character->getPos(), pos) < (2 + character->getCurrentWeaponReach())) { //
+	if (VMath::distance(character->getPos(), pos) < (character->getCurrentWeaponReach())) { //
 		return true;
 	}
 	else {
