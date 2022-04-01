@@ -78,35 +78,35 @@ void Character::HandleEvents(const SDL_Event& event) {
 			swing = true;
 			attacking = true;
 			damageFromPlayer = getCurrentSwingDamage();
-			printf("\n-SWING-\n");
+			//printf("\n-SWING-\n");
 		}
 		if (event.button.button == SDL_BUTTON_RIGHT)
 		{
 			stab = true;
 			attacking = true;
 			damageFromPlayer = getCurrentStabDamage();
-			printf("\n-STAB-\n");
+			//printf("\n-STAB-\n");
 		}
 		if (event.button.button == SDL_BUTTON_MIDDLE)
 		{
-			printf("\n-ALT MODE-");
+			//printf("\n-ALT MODE-");
 			if (altWeaponDamageType != 0)
 			{
 				if (altWeaponMode == false)
 				{
 					altWeaponMode = true;
-					printf("-ON-\n");
+					//printf("-ON-\n");
 				}
 				else
 				{
 					altWeaponMode = false;
-					printf("-OFF-\n");
+					//printf("-OFF-\n");
 				}
 			}
 			else
 			{
 				altWeaponMode = false;
-				printf("-OFF-\n");
+				//printf("-OFF-\n");
 			}
 			
 		}
@@ -114,7 +114,7 @@ void Character::HandleEvents(const SDL_Event& event) {
 
 	if (event.type == SDL_MOUSEBUTTONUP)
 	{
-		printf("\n-N0 ATTACKS-\n");
+		//printf("\n-N0 ATTACKS-\n");
 		stab = false;
 		swing = false;
 		attacking = false;

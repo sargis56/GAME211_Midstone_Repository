@@ -11,7 +11,7 @@ std::vector<Vec3> ObjLoader::vertices;
 std::vector<Vec2> ObjLoader::uvCoords;
 
 bool ObjLoader::loadOBJ(const char * path) {
-	printf("Loading OBJ file %s...\n", path);
+	//printf("Loading OBJ file %s...\n", path);
 	normals.clear();
 	vertices.clear();
 	uvCoords.clear();

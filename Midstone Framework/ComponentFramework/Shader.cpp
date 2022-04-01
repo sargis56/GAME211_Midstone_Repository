@@ -161,7 +161,7 @@ void Shader::setUniformLocations(){
 	unsigned int loc;
 
 	glGetProgramiv(shaderID, GL_ACTIVE_UNIFORMS, &count);
-	printf("There are %d active Uniforms\n",count);
+	//printf("There are %d active Uniforms\n",count);
 
 	/// get the length of the longest named uniform 
 	glGetProgramiv(shaderID, GL_ACTIVE_UNIFORM_MAX_LENGTH, &maxUniformListLength);
@@ -178,7 +178,7 @@ void Shader::setUniformLocations(){
 		std::string uniformName = name;
 		uniformMap[uniformName] = loc;
 
-		printf("\"%s\" loc:%d\n", uniformName.c_str() , uniformMap[uniformName]);
+		//printf("\"%s\" loc:%d\n", uniformName.c_str() , uniformMap[uniformName]);
 	}
 	free(name);
 }

@@ -16,7 +16,7 @@ using namespace std;
 
 SceneDev::SceneDev() : character(nullptr), characterMesh(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorLeft(nullptr), doorBottom(nullptr), doorRight(nullptr), doorTop(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
 health(NULL), healthBar(nullptr), healthUITexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr), speed(NULL), weapon(NULL) {
-	Debug::Info("Created SceneDev: ", __FILE__, __LINE__);
+	//Debug::Info("Created SceneDev: ", __FILE__, __LINE__);
 }
 
 SceneDev::~SceneDev() {}

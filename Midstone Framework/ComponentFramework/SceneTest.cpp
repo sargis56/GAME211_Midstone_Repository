@@ -16,7 +16,7 @@ using namespace std;
 
 SceneTest::SceneTest() : character(nullptr), meshPtr(nullptr), shaderPtr(nullptr), snakeMeshPtr(nullptr), snakeTexture(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorTexture(nullptr), enemy1(nullptr), floor(nullptr), floorTexture(nullptr),
 health(NULL), healthBar(nullptr), healthUITexture(nullptr), ratMeshPtr(nullptr), turretTexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr), speedItem(nullptr) {
-	Debug::Info("Created SceneTest: ", __FILE__, __LINE__);
+	//Debug::Info("Created SceneTest: ", __FILE__, __LINE__);
 }
 
 SceneTest::~SceneTest() {}

@@ -80,7 +80,7 @@ bool Weapon::collisionCheck(Character* character) {
 			character->setAltWeaponReach(0);
 		}
 
-		printf("\nPlayer wepaon stats have been changed: Swing Damage: %f | Stab Damage: %f | Reach %f | Delay: %f\n", character->getCurrentSwingDamage(), character->getCurrentStabDamage(), character->getCurrentWeaponReach(), character->getCurrentWeaponDelay());
+		//printf("\nPlayer Weapon Stats Have Been Changed: Swing Damage: %f | Stab Damage: %f | Reach %f | Delay: %f\n", character->getCurrentSwingDamage(), character->getCurrentStabDamage(), character->getCurrentWeaponReach(), character->getCurrentWeaponDelay());
 
 		weaponDropActive = false;
 		return true;
@@ -124,7 +124,7 @@ void Weapon::setWeapon(Character* character) {
 		character->setAltWeaponReach(0);
 	}
 
-	printf("\nPlayer wepaon stats have been changed: Swing Damage: %f | Stab Damage: %f | Reach %f | Delay: %f\n", character->getCurrentSwingDamage(), character->getCurrentStabDamage(), character->getCurrentWeaponReach(), character->getCurrentWeaponDelay());
+	//printf("\nPlayer wepaon stats have been changed: Swing Damage: %f | Stab Damage: %f | Reach %f | Delay: %f\n", character->getCurrentSwingDamage(), character->getCurrentStabDamage(), character->getCurrentWeaponReach(), character->getCurrentWeaponDelay());
 
 	weaponDropActive = false;
 }

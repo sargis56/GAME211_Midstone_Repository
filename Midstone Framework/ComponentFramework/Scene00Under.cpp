@@ -16,7 +16,7 @@ using namespace std;
 
 Scene00Under::Scene00Under() : character(nullptr), characterMesh(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorLeft(nullptr), doorRight(nullptr), doorTop(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
 health(NULL), healthBar(nullptr), healthUITexture(nullptr), wall1(nullptr), wall2(nullptr), wall4(nullptr), wallTexture(nullptr), speed(NULL), weapon(NULL) {
-	Debug::Info("Created Scene00: ", __FILE__, __LINE__);
+	//Debug::Info("Created Scene00: ", __FILE__, __LINE__);
 }
 
 Scene00Under::~Scene00Under() {}

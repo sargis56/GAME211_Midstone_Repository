@@ -8,8 +8,8 @@
   
 int main() {
 	static_assert(sizeof(void*) == 4, "This program is not ready for 64-bit build");
-	std::string name = { "Graphics Game Engine" };
-	Debug::DebugInit(name + "_Log");
+	std::string name = { "Hexes Underworld" };
+	//Debug::DebugInit(name + "_Log");
 	Debug::Info("Starting the GameSceneManager", __FILE__, __LINE__);
 	
 	SceneManager* gsm = new SceneManager();

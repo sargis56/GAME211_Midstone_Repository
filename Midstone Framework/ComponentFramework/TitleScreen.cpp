@@ -16,7 +16,7 @@
 
 TitleScreen::TitleScreen(): camera(nullptr) {
 	camera = new Camera();
-	Debug::Info("Created Scene4: ", __FILE__, __LINE__);
+	//Debug::Info("Created Scene4: ", __FILE__, __LINE__);
 }
 
 TitleScreen::~TitleScreen() {

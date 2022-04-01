@@ -16,7 +16,7 @@ using namespace std;
 
 SceneNEG11Under::SceneNEG11Under() : character(nullptr), characterMesh(nullptr), shaderPtr(nullptr), texturePtr(nullptr), boxMesh(nullptr), doorTop(nullptr), doorTexture(nullptr), floor(nullptr), floorTexture(nullptr),
 health(NULL), healthBar(nullptr), healthUITexture(nullptr), wall1(nullptr), wall2(nullptr), wall3(nullptr), wall4(nullptr), wallTexture(nullptr), speed(NULL), weapon(NULL) {
-	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
+	//Debug::Info("Created Scene0: ", __FILE__, __LINE__);
 }
 
 SceneNEG11Under::~SceneNEG11Under() {}

@@ -38,6 +38,7 @@ void SkyBox::Render() const {
 void SkyBox::HandleEvents(const SDL_Event& event) {}
 
 bool SkyBox::loadTextures(const char* posX, const char* negX, const char* posY, const char* negY, const char* posZ, const char* negZ) {
+	//std::cout << "SKYBOXLOAD" << std::endl;
 	if (ObjLoader::loadOBJ("meshes/Cube.obj") == false) {
 		return false;
 	}
